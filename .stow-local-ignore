@@ -1,0 +1,9 @@
+# scripts
+init-stow.sh
+
+# README
+README.*
+
+# git
+.git
+.gitignore

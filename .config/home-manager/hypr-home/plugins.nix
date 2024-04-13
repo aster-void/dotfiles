@@ -1,0 +1,10 @@
+{pkgs, ...} :
+{
+  home.packages = with pkgs; [
+    hyprshot
+  ];
+  home.sessionVariables = {
+    # hyprshot saving directory
+    # HYPRSHOT_DIR = "~/Pictures/Screenshots"; #... didn't work well; use home directory as a temporary storage.
+  };
+}
