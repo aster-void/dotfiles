@@ -1,1 +1,1 @@
-stow ~/.dotconfig
+(cd ~/.dotfiles && stow .)
