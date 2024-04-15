@@ -1,6 +1,5 @@
 # scripts
-init.sh
-init-stow.sh
+init.*.sh
 
 # README
 README.*
