@@ -1,3 +1,7 @@
+# monitor=DP-1,1920x1080@60,0x0,1
+monitor=DP-1,highrr,0x0,1
+monitor=eDP-1,auto,auto,1.5
+
 # mouse sens is dependent on hardware
 input {
 	sensitivity = 0
