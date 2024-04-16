@@ -6,3 +6,6 @@ monitor=,preferred,auto,1
 input {
 	sensitivity = 0
 }
+
+# extensions
+source = ./save-battery
