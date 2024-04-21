@@ -19,6 +19,7 @@
     ./shell.nix
     ./helix.nix
     ./hypr-home/hyprland.nix
+    ./waybar.nix
   ];
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -40,6 +41,7 @@
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    waybar
 
     lolcat
     sl
