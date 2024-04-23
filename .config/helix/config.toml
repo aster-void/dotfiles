@@ -1,0 +1,13 @@
+theme = "catppuccin_frappe"
+# catppuccin_frappe, onedark, 
+
+[editor]
+line-number = "relative"
+middle-click-paste = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+
+[editor.file-picker]
+hidden = false

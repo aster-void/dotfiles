@@ -1,0 +1,34 @@
+[[language]]
+name = "nix"
+auto-format = true
+formatter.command = "nixpkgs-format"
+
+[[language]]
+name = "rust"
+auto-format = true
+language-servers = ["rust-analyzer"]
+
+[[language]]
+name = "toml"
+formatter.command = "taplo"
+formatter.args = ["fmt", "-"]
+
+[[langugages]]
+name = "go"
+auto-format = true
+
+[[language]]
+name = "markdown"
+auto-format = true
+
+[[language]]
+name = "html"
+language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+
+[[language]]
+name = "javascript"
+auto-format = true
+
+[[language]]
+name = "jsx"
+auto-format = true
