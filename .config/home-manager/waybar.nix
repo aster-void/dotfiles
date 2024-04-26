@@ -3,7 +3,6 @@
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    /* ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"} */
     style = builtins.readFile "/home/aster/.dotfiles/.config/home-manager/waybar.style.css";
     settings = [{
       height = 30;

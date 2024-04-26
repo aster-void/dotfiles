@@ -343,7 +343,7 @@
   #clock {}
 
   window#waybar {
-    padding-top: 8px;
+    margin: 10px 20px;
     border-bottom: none;
     background-color: rgba(34, 40, 49, 0.5);
     color: rgb(34, 40, 49);
