@@ -1,6 +1,9 @@
-# monitor=DP-1,1920x1080@60,0x0,1
-#monitor=DP-1,highrr,0x0,1
-monitor=,preferred,auto,1
+$mainMonitor = DP-1
+$subMonitor = DP-2
+$resolution = highrr # 1920x1080@60
+
+monitor=$mainMonitor,$resolution,0x0,1
+# monitor=$subMonitor,$resolution,0x0,$scale,mirror,$mainMonitor
 
 # mouse sens is dependent on hardware
 input {
@@ -8,4 +11,4 @@ input {
 }
 
 # extensions
-source = ./save-battery
+source = ./save-battery.conf

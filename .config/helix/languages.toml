@@ -1,7 +1,11 @@
 [[language]]
 name = "nix"
 auto-format = true
-formatter.command = "nixpkgs-format"
+formatter.command = "nixpkgs-fmt"
+language-servers = ["nixd"]
+
+[language-server.nixd]
+command = "nixd"
 
 [[language]]
 name = "rust"
@@ -24,6 +28,10 @@ auto-format = true
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+
+[[language]]
+name="css"
+language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
 
 [[language]]
 name = "javascript"
