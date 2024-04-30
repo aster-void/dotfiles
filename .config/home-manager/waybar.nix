@@ -6,6 +6,9 @@
     style = builtins.readFile "/home/aster/.dotfiles/.config/home-manager/waybar.style.css";
     settings = [{
       height = 30;
+      margin-top = 5;
+      margin-left = 30;
+      margin-right = 30;
       layer = "top";
       position = "top";
       tray = { spacing = 10; };

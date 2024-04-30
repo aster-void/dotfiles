@@ -1,19 +1,44 @@
   * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "MesloLGL Nerd Font", FontAwesome;
+    font-family: "MesloLGL Nerd Font", "FontAwesome";
     font-size: 13px;
 
     border-radius: 10px;
     margin: 0px 5px;
-    background-color: #31363F;
     color: #76ABAE;
   }
 
-  window#waybar {
-    padding-top: 8px;
-    background-color: rgba(34, 40, 49, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+  /* theme: https://colorhunt.co/palette/22283131363f76abaeeeeeee */
+  #clock,
+  #battery,
+  #cpu,
+  #memory,
+  #disk,
+  #temperature,
+  #backlight,
+  #network,
+  #pulseaudio,
+  #wireplumber,
+  #custom-media,
+  #tray,
+  #mode,
+  #idle_inhibitor,
+  #scratchpad,
+  #power-profiles-daemon,
+  #mpd {
+    padding: 0 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: #222831;
+    background-color: #76ABAE;
+  }
+
+  #waybar {
+    /* background-color: rgba(34, 40, 49, 0.5); */
+    background-color: #222831;
     color: #ffffff;
+    border-radius: 15px;
+    opacity: 0.8;
     transition-property: background-color;
     transition-duration: .5s;
     border-bottom: none;
@@ -57,9 +82,6 @@
   }
 
   /* you can set a style on hover for any module like this */
-  #pulseaudio:hover {
-    background-color: #a37800;
-  }
 
   #workspaces button {
     padding: 0 5px;
@@ -85,27 +107,6 @@
     box-shadow: inset 0 -3px #ffffff;
   }
 
-  #clock,
-  #battery,
-  #cpu,
-  #memory,
-  #disk,
-  #temperature,
-  #backlight,
-  #network,
-  #pulseaudio,
-  #wireplumber,
-  #custom-media,
-  #tray,
-  #mode,
-  #idle_inhibitor,
-  #scratchpad,
-  #power-profiles-daemon,
-  #mpd {
-    padding: 0 10px;
-    color: #ffffff;
-  }
-
   #window,
   #workspaces {
     margin: 0 4px;
@@ -119,15 +120,6 @@
   /* If workspaces is the rightmost module, omit right margin */
   .modules-right>widget:last-child>#workspaces {
     margin-right: 0;
-  }
-
-  #clock {
-    background-color: #64727D;
-  }
-
-  #battery {
-    background-color: #ffffff;
-    color: #000000;
   }
 
   #battery.charging,
@@ -194,17 +186,8 @@
     background-color: #90b1b1;
   }
 
-  #network {
-    background-color: #2980b9;
-  }
-
   #network.disconnected {
     background-color: #f53c3c;
-  }
-
-  #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
   }
 
   #pulseaudio.muted {
@@ -241,10 +224,6 @@
 
   #temperature.critical {
     background-color: #eb4d4b;
-  }
-
-  #tray {
-    background-color: #2980b9;
   }
 
   #tray>.passive {
@@ -333,8 +312,4 @@
 
   #privacy-item.audio-out {
     background-color: #0069d4;
-  }
-
-  #pulseaudio {
-    background-color: #76ABAE;
   }
