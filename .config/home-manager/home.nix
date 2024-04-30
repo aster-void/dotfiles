@@ -26,17 +26,17 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-      firefox
-      nodejs_21
-      vscode
-      slack
-      chromium
-      zoom-us
-      yt-dlp
-      screenfetch
-      neofetch
-      discord
-      steam
+    firefox
+    nodejs_22
+    vscode
+    slack
+    chromium
+    zoom-us
+    yt-dlp
+    screenfetch
+    neofetch
+    discord
+    steam
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?

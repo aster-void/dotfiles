@@ -1,15 +1,23 @@
   * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "MesloLGL Nerd Font", FontAwesome;
     font-size: 13px;
+
+    border-radius: 10px;
+    margin: 0px 5px;
+    background-color: #31363F;
+    color: #76ABAE;
   }
 
   window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
+    padding-top: 8px;
+    background-color: rgba(34, 40, 49, 0.5);
     border-bottom: 3px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
+    border-bottom: none;
+    color: rgb(34, 40, 49);
   }
 
   window#waybar.hidden {
@@ -327,17 +335,9 @@
     background-color: #0069d4;
   }
 
-
-  * {
-    font-family: "MesloLGL Nerd Font";
-    border-radius: 10px;
-    margin: 0px 5px;
-    background-color: #31363F;
-    color: #76ABAE;
-  }
-
   #pulseaudio {
     background-color: #76ABAE;
+<<<<<<< HEAD
   }
 
   #clock {}
@@ -347,4 +347,6 @@
     border-bottom: none;
     background-color: rgba(34, 40, 49, 0.5);
     color: rgb(34, 40, 49);
+=======
+>>>>>>> 2d9e77d (2024-04-30)
   }

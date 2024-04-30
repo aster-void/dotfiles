@@ -5,3 +5,5 @@
 
 ~/.dotfiles/.config/hypr/init.sh
 ~/.dotfiles/.config/kitty/init.sh
+
+~/.dotfiles/update.sh

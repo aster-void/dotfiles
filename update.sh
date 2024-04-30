@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-home-manager switch & \
-(cd ~/.dotfiles && stow .)
+(cd ~/.dotfiles && stow .) &\
+home-manager switch
