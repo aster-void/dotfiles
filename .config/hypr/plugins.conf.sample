@@ -1,1 +1,4 @@
-source=./save-battery.conf
+# source=./plugins/no-blur.hyprland.conf
+# source=./plugins/no-animations.hyprland.conf
+# source=./plugins/full-opacity.hyprland.conf
+# source=./plugins/save-battery.hyprland.conf
