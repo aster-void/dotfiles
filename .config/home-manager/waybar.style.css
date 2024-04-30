@@ -337,16 +337,4 @@
 
   #pulseaudio {
     background-color: #76ABAE;
-<<<<<<< HEAD
-  }
-
-  #clock {}
-
-  window#waybar {
-    margin: 10px 20px;
-    border-bottom: none;
-    background-color: rgba(34, 40, 49, 0.5);
-    color: rgb(34, 40, 49);
-=======
->>>>>>> 2d9e77d (2024-04-30)
   }
