@@ -4,8 +4,8 @@ fi
 if [ ! -f plugins.conf ]; then
   cp plugins.conf.sample plugins.conf
 fi
-if [ ! -f monitor.conf ]; then
-  cp monitor.conf.sample monitor.conf
+if [ ! -f monitors.hyprland.conf ]; then
+  cp monitors.hyprland.conf.sample monitors.hyprland.conf
 fi
 if [ ! -f hyprpaper.conf ]; then
   cp hyprpaper.conf.sample hyprpaper.conf

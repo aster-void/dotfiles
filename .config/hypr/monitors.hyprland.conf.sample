@@ -1,0 +1,4 @@
+$mainMonitor = eDP-1
+$subMonitor = DP-1
+
+monitor=$subMonitor,preferred,auto,1,mirror,$mainMonitor
