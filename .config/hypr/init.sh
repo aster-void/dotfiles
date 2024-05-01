@@ -7,3 +7,6 @@ fi
 if [ ! -f monitor.conf ]; then
   cp monitor.conf.sample monitor.conf
 fi
+if [ ! -f hyprpaper.conf ]; then
+  cp hyprpaper.conf.sample hyprpaper.conf
+fi
