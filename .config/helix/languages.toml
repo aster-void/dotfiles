@@ -1,3 +1,4 @@
+
 [[language]]
 name = "nix"
 auto-format = true
@@ -12,30 +13,54 @@ name = "rust"
 auto-format = true
 language-servers = ["rust-analyzer"]
 
+# [language.config.inlayHints]
+# bindingModeHints.enable = true
+# chainingHints.enable = true
+# closingBraceHints.enable = true
+# closingBraceHints.minLines = 1
+# closureCaptureHints.enable = true
+# closureReturnTypeHints.enable = "always"
+# expressionAdjustmentHints.enable = true
+# rangeExclusiveHints.enable = true
+
 [[language]]
 name = "toml"
 formatter.command = "taplo"
 formatter.args = ["fmt", "-"]
 
+
 [[langugages]]
 name = "go"
 auto-format = true
+
+# [language.config.hints]
+# assignVariableTypes = true
+# compositeLiteralFields = true
+# constantValues = true
+# functionTypeParameters = true
+# parameterNames = true
+# rangeVariableTypes = true
+
 
 [[language]]
 name = "markdown"
 auto-format = true
 
+
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+
 
 [[language]]
 name="css"
 language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
 
+
 [[language]]
 name = "javascript"
 auto-format = true
+
 
 [[language]]
 name = "jsx"

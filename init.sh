@@ -6,4 +6,6 @@
 ~/.dotfiles/.config/hypr/init.sh
 ~/.dotfiles/.config/kitty/init.sh
 
+rustup component add rust-analyzer
+
 ~/.dotfiles/update.sh

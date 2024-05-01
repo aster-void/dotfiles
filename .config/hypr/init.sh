@@ -4,3 +4,6 @@ fi
 if [ ! -f plugins.conf ]; then
   cp plugins.conf.sample plugins.conf
 fi
+if [ ! -f monitor.conf ]; then
+  cp monitor.conf.sample monitor.conf
+fi
