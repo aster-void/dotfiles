@@ -1,0 +1,5 @@
+imports = [
+  "./keybinds.toml",
+  "./decoration.toml",
+  "./themes.toml"
+]
