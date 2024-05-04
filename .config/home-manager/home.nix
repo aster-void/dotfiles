@@ -17,7 +17,7 @@
 
   imports = [
     ./shell.nix
-    # ./helix.nix .. moved to ../helix/config.toml
+    ./ls.nix # for language servers
     ./hypr-home/hyprland.nix
     ./waybar.nix
   ];

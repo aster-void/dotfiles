@@ -46,6 +46,11 @@ auto-format = true
 name = "markdown"
 auto-format = true
 
+[[language]]
+name = "mdx"
+file-types = ["mdx"]
+scope = ".mdx"
+language-servers = [ "markdown-oxide"]
 
 [[language]]
 name = "html"
