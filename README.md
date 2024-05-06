@@ -10,4 +10,4 @@ git clone git@github.com:aster-void/dotfiles.git ~/.dotfiles && ~/.dotfiles/init
 
 ## available apps
 
-kitty, alacritty, hyprland, waybar, and all apps within home-manager and nixos-config.
+alacritty, hyprland, waybar, and all apps within home-manager and nixos-config.
