@@ -70,3 +70,4 @@ auto-format = true
 [[language]]
 name = "jsx"
 auto-format = true
+language-servers = ["typescript-language-server"]
