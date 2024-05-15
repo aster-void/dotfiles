@@ -33,14 +33,6 @@ formatter.args = ["fmt", "-"]
 name = "go"
 auto-format = true
 
-# [language.config.hints]
-# assignVariableTypes = true
-# compositeLiteralFields = true
-# constantValues = true
-# functionTypeParameters = true
-# parameterNames = true
-# rangeVariableTypes = true
-
 
 [[language]]
 name = "markdown"
@@ -55,7 +47,6 @@ language-servers = [ "markdown-oxide"]
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
-
 
 [[language]]
 name="css"

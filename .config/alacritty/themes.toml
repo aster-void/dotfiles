@@ -1,6 +1,7 @@
 import = [
   # default also looks good
   # "~/.config/alacritty/themes/themes/catppuccin_frappe.toml",
+  # "~/.config/alacritty/themes/themes/catppuccin_latte.toml", # light theme
   "~/.config/alacritty/themes/themes/catppuccin_mocha.toml",
   #? "~/.config/alacritty/themes/themes/mariana.toml",
   # "~/.config/alacritty/themes/themes/material_theme.toml",

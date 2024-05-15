@@ -1,5 +1,8 @@
-theme = "catppuccin_macchiato"
+theme = "catppuccin_frappe"
+# Dark:
 # catppuccin_{frappe, macchiato} onedark, 
+# Light:
+# catppuccin_latte
 
 [editor]
 line-number = "relative"
