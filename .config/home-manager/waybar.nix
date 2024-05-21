@@ -35,7 +35,7 @@
       clock = {
         format = "{:%Y-%m-%d %H:%M}";
         alt = false;
-        tooltip-format = "<tt><small>{calendar}</small></tt>";
+        tooltip-format = "<tt>{calendar}</tt>";
         calendar = {
           mode = "month";
           on-scroll = 1;
@@ -58,11 +58,11 @@
       memory = { format = "{}% "; };
       network = {
         interval = 1;
-        tooltip-format = " {bandwidthUpBits}  {bandwidthDownBits}";
+        tooltip-format = "{ifname} | {essid}:  {bandwidthUpBits}  {bandwidthDownBits}";
         format-disconnected = "Disconnected ⚠";
-        format-ethernet = "{ifname}: {ipaddr}/{cidr} 󰈁";
-        format-linked = "{ifname} (No IP) 󰌷";
-        format-wifi = "{essid} ({signalStrength}%) ";
+        format-ethernet = "{ipaddr}/{cidr} 󰈁";
+        format-linked = "(No IP) 󰌷";
+        format-wifi = "({signalStrength}%) ";
       };
       pulseaudio = {
         format = "{volume}% {icon} {format_source}";
