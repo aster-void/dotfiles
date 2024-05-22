@@ -60,9 +60,9 @@
       memory = { format = "{}% "; };
       network = {
         interval = 1;
-        tooltip-format = "{ifname} | {essid}:  {bandwidthUpBits}  {bandwidthDownBits}";
+        tooltip-format = " {essid}  {bandwidthUpBits}  {bandwidthDownBits} | {ipaddr} {ifname}";
         format-disconnected = "Disconnected⚠";
-        format-ethernet = "{ipaddr}/{cidr}󰈁";
+        format-ethernet = "Ethernet 󰈁";
         format-linked = "No IP 󰌷";
         format-wifi = "{signalStrength}%";
       };
