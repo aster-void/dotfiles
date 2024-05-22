@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-~/.dotfiles/init-home-manager.sh
-~/.dotfiles/init-stow.sh
+dir="~/.dotfiles"
 
-~/.dotfiles/.config/hypr/init.sh
-~/.dotfiles/.config/kitty/init.sh
+${dir}/.home-manager.init.sh
+${dir}/.stow.init.sh $dir
+
+${dir}/.config/hypr/.init.sh $dir
+${dir}/.config/alacritty/.init.sh
 
 rustup component add rust-analyzer
 
-~/.dotfiles/update.sh
+${dir}/update.sh

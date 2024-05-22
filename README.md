@@ -8,6 +8,11 @@ then run this.
 git clone git@github.com:aster-void/dotfiles.git ~/.dotfiles && ~/.dotfiles/init.sh
 ```
 
+## Not to do
+
+do not execute scripts that start with '.' (such as .init.sh).
+they are intended to be called from other scripts.
+
 ## available apps
 
 alacritty, hyprland, waybar, and all apps within home-manager and nixos-config.

@@ -1,4 +1,7 @@
-if [ ! -f hardware-dep.conf ]; then 
+dir=$1
+cd ${dir}/.config/hypr
+
+if [ ! -f hardware-dep.conf ]; then
   cp hardware-dep.conf.sample hardware-dep.conf
 fi
 if [ ! -f plugins.conf ]; then
