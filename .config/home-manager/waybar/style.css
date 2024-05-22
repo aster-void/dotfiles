@@ -24,9 +24,9 @@
   #window,
   #media,
   #mpd {
+    background-color: inherit;
     padding: 0 7px;
     color: #76ABAE;
-    background-color: #222831;
     font-size: x-small;
   }
 
@@ -51,12 +51,11 @@
   }
 
   #waybar {
-    /* background-color: rgba(34, 40, 49, 0.5); */
     /* padding doesn't work if written in here, edit waybar.nix/programs.waybar.settings.margin-* instead. */
-    background-color: #222831;
+    /* background-color: #222831; */
+    background-color: rgba(34, 40, 49, 0.8);
     color: #ffffff;
     color: #76ABAE;
-    opacity: 0.8;
     transition-property: background-color;
     transition-duration: .5s;
     border-bottom: none;
