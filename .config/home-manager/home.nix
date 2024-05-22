@@ -19,7 +19,7 @@
     ./shell.nix
     ./ls.nix # for language servers
     ./hypr-home/hyprland.nix
-    ./waybar.nix
+    ./waybar/config.nix
   ];
   # The home.packages option allows you to install Nix packages into your
   # environment.

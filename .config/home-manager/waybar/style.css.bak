@@ -2,10 +2,6 @@
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: "MesloLGL Nerd Font", "FontAwesome";
     font-size: 13px;
-
-    border-radius: 10px;
-    margin: 0px 5px;
-    color: #76ABAE;
   }
 
   /* theme: https://colorhunt.co/palette/22283131363f76abaeeeeeee */
@@ -26,18 +22,25 @@
   #scratchpad,
   #power-profiles-daemon,
   #mpd {
-    padding: 0 10px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    padding: 0 7px;
+    border-radius: 7px;
+    margin: 4px 1px;
     color: #222831;
     background-color: #76ABAE;
   }
 
+  #clock {
+    margin-right: 5px;
+  }
+
   #waybar {
     /* background-color: rgba(34, 40, 49, 0.5); */
+    /* padding doesn't work if written in here, edit waybar.nix/programs.waybar.settings.margin-* instead. */
     background-color: #222831;
     color: #ffffff;
-    border-radius: 15px;
+    color: #76ABAE;
+    margin: 0px 5px;
+    border-radius: 13px;
     opacity: 0.8;
     transition-property: background-color;
     transition-duration: .5s;

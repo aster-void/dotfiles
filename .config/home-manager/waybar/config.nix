@@ -3,20 +3,22 @@
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = builtins.readFile "/home/aster/.dotfiles/.config/home-manager/waybar.style.css";
+    style = builtins.readFile "/home/aster/.dotfiles/.config/home-manager/waybar/style.css";
     settings = [{
-      height = 30;
-      margin-top = 5;
-      margin-left = 30;
-      margin-right = 30;
+      return-type = "json";
+      height = 26;
       layer = "top";
       position = "top";
       tray = { spacing = 10; };
+      modules-left = [
+        "hyprland/workspaces"
+        "hyprland/mode"
+      ];
       modules-center = [ "hyprland/window" ];
-      modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
       modules-right = [
-        "pulseaudio"
         "tray"
+        # "privacy-item"
+        "pulseaudio"
         "network"
         "battery"
         "clock"
@@ -59,15 +61,15 @@
       network = {
         interval = 1;
         tooltip-format = "{ifname} | {essid}:  {bandwidthUpBits}  {bandwidthDownBits}";
-        format-disconnected = "Disconnected ⚠";
-        format-ethernet = "{ipaddr}/{cidr} 󰈁";
-        format-linked = "(No IP) 󰌷";
-        format-wifi = "({signalStrength}%) ";
+        format-disconnected = "Disconnected⚠";
+        format-ethernet = "{ipaddr}/{cidr}󰈁";
+        format-linked = "No IP 󰌷";
+        format-wifi = "{signalStrength}%";
       };
       pulseaudio = {
-        format = "{volume}% {icon} {format_source}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
+        format = "{volume}%{icon} {format_source}";
+        format-bluetooth = "{volume}%{icon} {format_source}";
+        format-bluetooth-muted = "{icon} {format_source}";
         format-icons = {
           default = [ "" "" "" ];
           car = "";
@@ -77,8 +79,8 @@
           phone = "";
           portable = "";
         };
-        format-muted = " {format_source}";
-        format-source = "{volume}% ";
+        format-muted = "{format_source}";
+        format-source = "";
         format-source-muted = "";
         on-click = "pavucontrol";
       };
@@ -90,7 +92,8 @@
       };
     }];
   };
-  /* default config as jsonc:
+}
+/* default config as jsonc:
   
         // "layer": "top", // Waybar at top layer
         // "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -293,4 +296,3 @@
         }
         }
         */
-}
