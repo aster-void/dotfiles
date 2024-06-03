@@ -1,7 +1,7 @@
 # change this to your monitor (run `hyprctl monitors list` to see all monitors)
 $monitor = DP-1
 
-$path = /home/aster/wallpaper/storage/wallpaper.png
+$path = /home/aster/decoration/wallpaper/storage/wallpaper.png
 
 preload = $path
 
