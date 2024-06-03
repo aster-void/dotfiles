@@ -1,4 +1,9 @@
+# hardware dep
 /hardware-dep.conf
 /plugins.conf
 /hyprpaper.conf
 /hardware/
+/card
+
+# local
+/plugins.conf

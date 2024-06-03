@@ -1,8 +1,18 @@
 theme = "catppuccin_frappe"
 # Dark:
-# catppuccin_{frappe, macchiato} onedark, 
+# - catppuccin_{frappe, macchiato}
+# - onedark
+# - dark_plus,
+# - everforest_dark, 
 # Light:
-# catppuccin_latte
+# - bogster_light 
+#   vivid:
+#   - papercolor-light 
+#   - onelight
+#   - zed_onelight
+#   - catppuccin_latte
+# Transparent:
+# - base16_transparent
 
 [editor]
 line-number = "relative"

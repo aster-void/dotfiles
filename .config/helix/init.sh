@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./init-ls.sh
+./init-lang-servers.sh
