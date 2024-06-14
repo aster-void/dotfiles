@@ -3,3 +3,4 @@
 1. learn about flakes https://www.youtube.com/watch?v=jO2o0IN0LPE
 1. set up alacritty theme 
 1. install some notificatio daemon like dunst
+1. make a shutdown button in applet
