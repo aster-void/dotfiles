@@ -1,4 +1,4 @@
-if [ ! $(nix-channel --list | wc -l) == 0 ]; then
+if [ ! $(nix-channel --list | grep "home-manager" | wc -l) == 0 ]; then
   echo "skipping home manager initialization"
   exit 0
 fi

@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-dir="~/.dotfiles"
+dir=$(cd `dirname -- $0`; pwd)
+cd $dir
 
-${dir}/.home-manager.init.sh
-${dir}/.stow.init.sh $dir
+./home-manager-init.sh
+./stow-init.sh
 
-${dir}/.config/hypr/.init.sh $dir
-${dir}/.config/alacritty/.init.sh
+./.config/hypr/init.sh
+./.config/alacritty/init.sh
 
 rustup component add rust-analyzer
 
-${dir}/update.sh
+./update.sh
