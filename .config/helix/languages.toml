@@ -29,8 +29,12 @@ formatter.command = "taplo"
 formatter.args = ["fmt", "-"]
 
 
-[[langugages]]
+[[langugage]]
 name = "go"
+auto-format = true
+
+[[langugage]]
+name = "gleam"
 auto-format = true
 
 
@@ -44,6 +48,7 @@ file-types = ["mdx"]
 scope = ".mdx"
 language-servers = [ "markdown-oxide"]
 
+
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
@@ -52,11 +57,9 @@ language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
 name="css"
 language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
 
-
 [[language]]
 name = "javascript"
 auto-format = true
-
 
 [[language]]
 name = "jsx"
