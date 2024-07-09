@@ -17,7 +17,6 @@
 
   imports = [
     ./shell.nix
-    ./ls.nix # for language servers
     ./hypr-home/hyprland.nix
     ./waybar/config.nix
   ];
