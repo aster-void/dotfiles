@@ -13,6 +13,12 @@ name = "rust"
 auto-format = true
 language-servers = ["rust-analyzer"]
 
+[[language]]
+name = "clangd"
+auto-format = true
+scope = ".c"
+file-types = ["C"]
+
 # [language.config.inlayHints]
 # bindingModeHints.enable = true
 # chainingHints.enable = true
@@ -46,7 +52,7 @@ auto-format = true
 name = "mdx"
 file-types = ["mdx"]
 scope = ".mdx"
-language-servers = [ "markdown-oxide"]
+language-servers = ["markdown-oxide"]
 
 
 [[language]]
@@ -54,7 +60,7 @@ name = "html"
 language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
 
 [[language]]
-name="css"
+name = "css"
 language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
 
 [[language]]
