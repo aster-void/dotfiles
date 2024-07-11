@@ -4,4 +4,6 @@ if [ ! $(nix-channel --list | grep "home-manager" | wc -l) == 0 ]; then
 fi
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager && \
 nix-channel --update && \
+
+nix-shell -p home-manager --run home-manager swich
 home switch

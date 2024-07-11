@@ -9,6 +9,4 @@ cd $dir
 ./.config/hypr/init.sh
 ./.config/alacritty/init.sh
 
-rustup component add rust-analyzer
-
 ./update.sh
