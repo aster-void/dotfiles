@@ -19,6 +19,10 @@ auto-format = true
 scope = ".c"
 file-types = ["C"]
 
+[[language]]
+name = "fsharp"
+auto-format = true
+
 # [language.config.inlayHints]
 # bindingModeHints.enable = true
 # chainingHints.enable = true
