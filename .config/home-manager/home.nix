@@ -16,6 +16,7 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   imports = [
+    ./aagl.nix
     ./shell.nix
     ./hypr-home/hyprland.nix
     ./waybar/config.nix
