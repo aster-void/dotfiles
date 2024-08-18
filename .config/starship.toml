@@ -1,0 +1,5 @@
+# シェルのプロンプトの間に空行を挿入する
+add_newline = true
+
+[character] # 設定対象のモジュール名は 'character'
+success_symbol = '[➜](bold green)' # セグメント 'success_symbol' を '➜' 配色 'bold green' (太字の緑色) に設定
