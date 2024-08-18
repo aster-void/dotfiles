@@ -15,3 +15,4 @@ bleopt exec_errexit_mark=
 # bleopt exec_elapsed_mark=$'\e[94m[%ss (%s %%)]\e[m'
 # Tip: you may instead change the threshold of showing the mark
 bleopt exec_elapsed_enabled='sys+usr>=10*60*1000' # e.g. ten minutes for total CPU usage
+bleopt prompt_ps1_final='$(starship module character)'
