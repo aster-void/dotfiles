@@ -28,4 +28,4 @@ let
     # '')
   ];
 in
-self-hosting ++ downloaded
+downloaded ++ self-hosting

@@ -1,16 +1,24 @@
 { pkgs, ... }:
 let
-  cargo-compete = pkgs.rustPlatform.buildRustPackage rec {
+  cargo-compete = pkgs.rustPlatform.buildRustPackage {
     pname = "cargo-compete";
     version = "0.10.7";
 
-    src = pkgs.fetchFromGitHub {
-      owner = "owner";
-      repo = pname;
-      rev = version;
-      hash = "sha256-+s5RBC3XSgb8omTbUNLywZnP6jSxZBKSS1BmXOjRF8M=";
+    buildInputs = with pkgs; [
+      openssl
+      pkg-config
+    ];
+    nativeBuildInputs = with pkgs; [
+      openssl
+      pkg-config
+    ];
+
+    src = pkgs.fetchurl {
+      url = "https://github.com/qryxip/cargo-compete/archive/refs/tags/v0.10.7.tar.gz";
+      hash = "sha256-1KukT6Tr58LPN22vmoaRI8/DALJehEx3hswkMZnFk+c=";
     };
-    cargoHash = "sha256-wJpIWorqycG8C42BmiAb1/UIDib5G06sEE1b2qPtVAU=";
+
+    cargoHash = "sha256-gj+UiYVViYEYupboYqVBypkt8fpt7WBv04+Tjy/qeQc=";
     doCheck = false;
   };
 in
