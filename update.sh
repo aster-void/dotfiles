@@ -2,7 +2,6 @@
 
 cd `dirname -- $0`
 
-./cargo-install.sh
 echo "updating home manager..."
 nix-channel --update 2>&1 > /dev/null
 home-manager switch 2>&1 > /dev/null
