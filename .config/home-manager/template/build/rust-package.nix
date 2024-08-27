@@ -4,13 +4,27 @@ let
     pname = "package name";
     version = "package version";
 
+    # still not sure how they differ from each other, but they sure do.
+    # some theory suggests that buildInputs is for compile time dependencies and
+    # nativeBuildInputs is for runtime dependencies.
+    buildInputs = [ ];
+    nativeBuildInputs = [ ];
+
     src = pkgs.fetchFromGitHub {
       owner = "owner";
       repo = pname;
       rev = version;
-      hash = "sha256-+s5RBC3XSgb8omTbUNLywZnP6jSxZBKSS1BmXOjRF8M=";
+      # let nix decide the hash for you
+      hash = "";
     };
-    cargoHash = "sha256-gsE9qHigEm5R1+lJU9uazWJ/8yZZjE0eVJDtZlX0SmM=";
+    # or, you can also do:
+    # src = pkgs.fetchurl {
+    #   url = "https://example.com/url/to/the/file.tar.gz";
+    #   hash = "";
+    # };
+
+    # let nix decide the hash for you
+    cargoHash = "";
     doCheck = false;
   };
 in
