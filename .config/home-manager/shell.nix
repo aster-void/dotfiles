@@ -10,6 +10,8 @@
     bashrcExtra = ''
       eval $(zoxide init bash)
       eval $(starship init bash)
+
+      stow ~/.dotfiles
     '';
   };
 }
