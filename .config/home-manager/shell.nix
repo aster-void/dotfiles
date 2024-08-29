@@ -1,28 +1,24 @@
 let
-  shellAliases = {
-    hm = "home-manager";
-    hb = "home-manager build";
-    hs = "home-manager switch";
-    ccp = "cargo compete";
-  };
+  alias = import ./shell/aliases.nix;
 in
-{
+{ ... }: {
+  # don't forget to run this periodically: stow ~/.dotfiles
   programs.bash = {
     enable = true;
-    inherit shellAliases;
-
+    shellAliases = alias.common // alias.bash;
     bashrcExtra = ''
       source ~/.shellinit/zoxide.bash
       source ~/.shellinit/starship.bash
     '';
-    # don't forget to run this periodically: stow ~/.dotfiles
   };
+
   programs.nushell = {
     enable = true;
-    inherit shellAliases;
+    shellAliases = alias.common // alias.nushell;
     extraConfig = ''
       source ~/.shellinit/zoxide.nu
       source ~/.shellinit/starship.nu
     '';
   };
 }
+
