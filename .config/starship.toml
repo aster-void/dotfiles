@@ -21,4 +21,25 @@ symbol = ' '
 style="bold blue"
 
 [nix_shell]
-symbol = '󱄅 '
+format = 'on [$symbol$state( \($name\))]($style) '
+symbol = '󱄅 ' 
+
+
+[git_status]
+format = '([< $ahead_behind $all_status>]($style) )'
+style ="yellow"
+
+conflicted = "<=>"
+ahead = "^"
+behind = "v"
+stashed = "stash"
+modified = "*"
+staged = "+"
+renamed = ">"
+deleted = "d"
+
+[directory]
+truncation_length = 4
+read_only = " [readonly]"
+read_only_style = "yellow bold"
+repo_root_style = "blue"
