@@ -1,0 +1,1 @@
+eval -- "$(/run/current-system/sw/bin/starship init bash --print-full-init)"
