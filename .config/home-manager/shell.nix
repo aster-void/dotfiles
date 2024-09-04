@@ -3,6 +3,13 @@ let
 in
 { ... }: {
   # don't forget to run this periodically: stow ~/.dotfiles
+
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.bash = {
     enable = true;
     shellAliases = alias.common // alias.bash;

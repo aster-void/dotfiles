@@ -20,6 +20,9 @@ symbol = ' '
 symbol = ' '
 style="bold blue"
 
+[python]
+symbol = '[p](blue)[y](yellow)'
+
 [nix_shell]
 format = 'on [$symbol$state( \($name\))]($style) '
 symbol = '󱄅 ' 
