@@ -1,4 +1,3 @@
-# シェルのプロンプトの間に空行を挿入する
 add_newline = true
 
 [character] # 設定対象のモジュール名は 'character'
@@ -21,7 +20,7 @@ symbol = ' '
 style="bold blue"
 
 [python]
-symbol = '[p](blue)[y](yellow)'
+symbol = '[p](blue)[y](yellow) '
 
 [nix_shell]
 format = 'on [$symbol$state( \($name\))]($style) '
