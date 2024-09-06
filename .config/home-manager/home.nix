@@ -43,10 +43,10 @@
   #
   #  /etc/profiles/per-user/aster/etc/profile.d/hm-session-vars.sh
   #
-  home. sessionVariables = {
+  home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
   # Let Home Manager install and manage itself.
-  programs. home-manager. enable = true;
+  programs.home-manager.enable = true;
 }
