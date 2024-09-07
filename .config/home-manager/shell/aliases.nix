@@ -38,7 +38,6 @@
     home = "home-manager";
 
     # zoom-us = "flatpak run us.zoom.Zoom";
-    ccp = "cargo compete";
   };
   bash = {
     cg = "cd $(git root)";
