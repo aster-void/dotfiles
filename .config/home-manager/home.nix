@@ -6,7 +6,7 @@
   home.stateVersion = "24.11";
 
   imports = [
-    ./aagl.nix
+    # ./aagl.nix
     ./shell.nix
     ./hypr-home/hyprland.nix
     ./waybar/config.nix

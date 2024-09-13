@@ -1,9 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    style = builtins.readFile "/home/aster/.dotfiles/.config/home-manager/waybar/style.css";
+    style = builtins.readFile ./style.css;
     settings = [{
       return-type = "json";
       height = 26;
