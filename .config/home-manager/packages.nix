@@ -3,7 +3,6 @@ let
   self-hosting = import ./build/import.nix { inherit lib pkgs; };
   downloaded = with pkgs;  [
     # Development
-    nodejs_22
     vscode
     act
     postgresql
