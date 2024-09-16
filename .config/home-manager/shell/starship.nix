@@ -23,6 +23,9 @@
   nodejs = {
     symbol = "󰎙 ";
     style = "bold green";
+    detect_extensions = [ ];
+    detect_files = [ "package-lock.json" ".nvmrc" ];
+    detect_folders = [ ];
   };
   bun = {
     symbol = "󰞈 Bun ";
