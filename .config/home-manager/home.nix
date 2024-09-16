@@ -1,8 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, username, ... }:
 
 {
-  home.username = "aster";
-  home.homeDirectory = "/home/aster";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "24.11";
 
   imports = [
@@ -41,7 +41,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/aster/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/${username}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";

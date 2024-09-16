@@ -15,6 +15,15 @@
     symbol = " ";
   };
 
+  nodejs = {
+    symbol = "󰎙 ";
+    style = "bold green";
+  };
+  bun = {
+    symbol = "󰞈 Bun ";
+    style = "bold pink";
+  };
+
   c = {
     symbol = " ";
     style = "bold blue";
