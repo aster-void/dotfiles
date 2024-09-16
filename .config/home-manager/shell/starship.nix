@@ -1,5 +1,10 @@
 {
   add_newline = true;
+  palette = "aster";
+  palettes.aster = {
+    pink = "#FFC1CC"; # bubble pink
+    mustard = "#af8700";
+  };
 
   golang = {
     symbol = " ";
