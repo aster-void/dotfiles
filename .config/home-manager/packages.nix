@@ -7,6 +7,11 @@ let
     act
     postgresql
 
+    ## Langservers
+    biome
+    typescript-language-server
+    tailwindcss-language-server
+
     # GUI Applications
 
     ## Connect
