@@ -1,3 +1,5 @@
+[language-server]
+biome = { command = "biome", args = ["lsp-proxy"] }
 
 [[language]]
 name = "nix"
@@ -35,6 +37,7 @@ auto-format = true
 
 [[language]]
 name = "toml"
+auto-format = true
 formatter.command = "taplo"
 formatter.args = ["fmt", "-"]
 
@@ -71,19 +74,19 @@ language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
 name = "typescript"
 auto-format = true
 language-servers = [
+  "biome",
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  "biome",
 ]
 
 [[language]]
 name = "tsx"
 auto-format = true
 language-servers = [
+  "biome",
+  "tailwindcss-ls",
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  "biome",
-  "tailwindcss-ls"
 ]
