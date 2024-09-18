@@ -6,6 +6,7 @@ let
     vscode
     act
     postgresql
+    svelte-language-server
 
     ## Langservers
     biome

@@ -90,3 +90,8 @@ language-servers = [
     "format",
   ] },
 ]
+
+[[language]]
+name = "svelte"
+auto-format = true
+language-servers = ["svelteserver"]
