@@ -71,24 +71,28 @@ name = "css"
 language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
 
 [[language]]
+name = "javascript"
+auto-format = true
+
+[[language]]
 name = "typescript"
 auto-format = true
 language-servers = [
-  "biome",
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
+  "biome",
 ]
 
 [[language]]
 name = "tsx"
 auto-format = true
 language-servers = [
-  "biome",
-  "tailwindcss-ls",
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
+  "tailwindcss-ls",
+  "biome",
 ]
 
 [[language]]
