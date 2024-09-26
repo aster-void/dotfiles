@@ -37,8 +37,7 @@ let
     lollypop
 
     ## .*fetch
-    screenfetch
-    neofetch
+    fastfetch
 
     # Desktop Enhancement
     waybar
