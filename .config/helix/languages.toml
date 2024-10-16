@@ -1,5 +1,6 @@
 [language-server]
 biome = { command = "biome", args = ["lsp-proxy"] }
+rust-analyzer.config = { checkOnSave.command = "clippy" }
 
 [[language]]
 name = "nix"

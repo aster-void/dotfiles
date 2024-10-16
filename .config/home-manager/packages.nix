@@ -12,6 +12,8 @@ let
     biome
     typescript-language-server
     tailwindcss-language-server
+    clippy
+    metals # scala
 
     # GUI Applications
 
