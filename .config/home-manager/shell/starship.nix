@@ -32,6 +32,15 @@
     style = "bold pink";
   };
 
+  java = {
+    symbol = " ";
+    detect_files = [ "pom.xml" "build.gradle.kts" ".java-version" "deps.edn" "project.clj" "build.boot" ".sdkmanrc" ];
+  };
+  scala = {
+    symbol = " ";
+    style = "red dimmed";
+  };
+
   c = {
     symbol = " ";
     style = "bold blue";
