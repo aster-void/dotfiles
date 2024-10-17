@@ -32,6 +32,10 @@ let
     evince # document viewer
 
     # CLI Applications
+
+    ## t muxer
+    zellij
+
     ## Music
     cmus
     cava
