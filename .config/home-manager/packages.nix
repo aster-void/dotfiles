@@ -14,6 +14,7 @@ let
     tailwindcss-language-server
     clippy
     metals # scala
+    astro-language-server
 
     # GUI Applications
 
