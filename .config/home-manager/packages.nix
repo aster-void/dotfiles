@@ -6,6 +6,7 @@ let
     act
     postgresql
     svelte-language-server
+    ollama
 
     wget
 
