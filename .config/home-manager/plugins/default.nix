@@ -1,0 +1,5 @@
+{ ... }: {
+  imports = [
+    ./wsl-vscode.nix
+  ];
+}

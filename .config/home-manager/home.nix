@@ -7,6 +7,8 @@
 
   imports = [
     # ./aagl.nix
+    ./plugins
+    ./local.nix
     ./shell.nix
     ./hypr-home/hyprland.nix
     ./waybar/config.nix

@@ -8,6 +8,8 @@ let
     postgresql
     svelte-language-server
 
+    wget
+
     ## Langservers
     biome
     typescript-language-server
