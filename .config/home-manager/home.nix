@@ -6,12 +6,12 @@
   home.stateVersion = "24.11";
 
   imports = [
-    # ./aagl.nix
     ./plugins
     ./local.nix
     ./shell.nix
     ./hypr-home/hyprland.nix
     ./waybar/config.nix
+    ./nixvim.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
