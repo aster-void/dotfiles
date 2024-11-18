@@ -5,4 +5,5 @@
   nixos-wsl-vscode = {
     enable = true;
   };
+  nixvim.enable = true;
 }
