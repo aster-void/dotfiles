@@ -5,5 +5,10 @@
   nixos-wsl-vscode = {
     enable = true;
   };
+  packages = {
+    core.enable = true;
+    desktop.enable = true;
+    self-hosted.enable = true;
+  };
   # nixvim.enable = true;
 }

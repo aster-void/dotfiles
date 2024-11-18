@@ -1,4 +1,4 @@
-{ lib, pkgs, username, ... }:
+{ username, ... }:
 
 {
   home.username = username;
@@ -12,12 +12,10 @@
     ./hypr-home/hyprland.nix
     ./waybar/config.nix
     ./nixvim.nix
+    ./packages.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
-
-  home.packages = import ./packages.nix { inherit lib pkgs; };
-
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

@@ -1,15 +1,14 @@
-{ lib, pkgs }:
+{ lib, pkgs, config, ... }:
 let
-  self-hosting = import ./build/import.nix { inherit lib pkgs; };
-  downloaded = with pkgs;  [
+  cfg = config.packages;
+  self-hosted = import ./build/import.nix { inherit lib pkgs; };
+  core = with pkgs;  [
     # Development
     act
     postgresql
     svelte-language-server
-    ollama
-
     wget
-
+    ollama
     ## Langservers
     biome
     typescript-language-server
@@ -17,41 +16,32 @@ let
     clippy
     metals # scala
     astro-language-server
-
+    ## terminal multiplexer
+    zellij
+  ];
+  desktop = with pkgs; [
     # GUI Applications
-
     ## Connect
     slack
     discord
-
     ## Browsers
     firefox
     chromium
     brave
     # firefox-devedition
-
     ## Office
     libreoffice
     evince # document viewer
-
     # CLI Applications
-
-    ## t muxer
-    zellij
-
     ## Music
     cmus
     cava
     yt-dlp
     lollypop
-
     ## .*fetch
     fastfetch
-
     # Desktop Enhancement
     waybar
-
-
     ##
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -66,4 +56,14 @@ let
     # '')
   ];
 in
-downloaded ++ self-hosting
+{
+  options.packages = {
+    core.enable = lib.mkEnableOption "Enable core packages";
+    desktop.enable = lib.mkEnableOption "Enable desktop packages";
+    self-hosted.enable = lib.mkEnableOption "Enable self-built packages (doesn't exist yet)";
+  };
+  config.home.packages =
+    (if cfg.desktop.enable then desktop else [ ]) ++
+    (if cfg.core.enable then core else [ ]) ++
+    (if cfg.self-hosted.enable then self-hosted else [ ]);
+}
