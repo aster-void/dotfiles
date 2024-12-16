@@ -1,8 +1,14 @@
-{ ... }:
+{ lib, config, ... }:
+let
+  cfg = config.waybar;
+in
 {
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
+  options.waybar = {
+    enable = lib.mkEnableOption "Enable Waybar (locally defined)";
+  };
+  config.programs.waybar = lib.mkIf cfg.enable {
+    # enable = true;
+    # systemd.enable = true;
     style = builtins.readFile ./style.css;
     settings = [{
       return-type = "json";

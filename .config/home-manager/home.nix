@@ -7,10 +7,10 @@
 
   imports = [
     ./plugins
+    ./apps
     ./local.nix
     ./shell.nix
     ./hypr-home/hyprland.nix
-    ./waybar/config.nix
     ./nixvim.nix
     ./packages.nix
   ];
