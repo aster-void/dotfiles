@@ -35,7 +35,7 @@ let
     # CLI Applications
     ## Music
     cmus
-    cava
+    # cava # fails to build
     yt-dlp
     lollypop
     ## .*fetch

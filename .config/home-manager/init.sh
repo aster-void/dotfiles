@@ -1,1 +1,4 @@
-git clone https://github.com/alacritty/alacritty-theme.git ~/.config/alacritty/themes
+#!/usr/bin/env bash
+cd $(dirname -- $0)
+
+cp samples/* .

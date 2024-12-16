@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+# if [ ! $(nix-channel --list | grep "home-manager" | wc -l) == 0 ]; then
+  # echo "skipping home manager initialization"
+  # exit 0
+# fi
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager && \
+nix-channel --update && \
 
-dir=$(cd `dirname -- $0`; pwd)
-cd $dir
+./.config/home-manager/init.sh
 
-./home-manager-init.sh
-
-./.config/hypr/init.sh
-./.config/alacritty/init.sh
-
-./update.sh
+nix-shell -p stow --run 'stow .'
+nix-shell -p home-manager --run 'home-manager switch'
