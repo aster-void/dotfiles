@@ -1,4 +1,5 @@
 [general]
+# see https://github.com/alacritty/alacritty-theme for more info
 import = [
   # Dark Theme
   # default also looks good
