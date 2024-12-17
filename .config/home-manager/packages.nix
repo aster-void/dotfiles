@@ -8,7 +8,6 @@ let
     postgresql
     svelte-language-server
     wget
-    ollama
     ## Langservers
     biome
     typescript-language-server
@@ -28,6 +27,8 @@ let
     firefox
     chromium
     brave
+    # LLM
+    ollama
     # firefox-devedition
     ## Office
     libreoffice
@@ -38,13 +39,9 @@ let
     # cava # fails to build
     yt-dlp
     lollypop
-    ## .*fetch
+    ## term view
     fastfetch
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
+    cava
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -57,7 +54,7 @@ in
   options.packages = {
     core.enable = lib.mkEnableOption "Enable core packages";
     desktop.enable = lib.mkEnableOption "Enable desktop packages";
-    self-hosted.enable = lib.mkEnableOption "Enable self-built packages (doesn't exist yet)";
+    self-hosted.enable = lib.mkEnableOption "Enable self-built packages";
   };
   config.home.packages =
     (if cfg.desktop.enable then desktop else [ ]) ++
