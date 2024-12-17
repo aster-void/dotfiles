@@ -1,6 +1,2 @@
 [general]
-import = [
-  "~/.config/alacritty/keybinds.toml",
-  "~/.config/alacritty/decoration.toml",
-  "~/.config/alacritty/themes.toml",
-]
+import = ["./keybinds.toml", "./decoration.toml", "./themes.toml"]
