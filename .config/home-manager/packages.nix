@@ -36,12 +36,11 @@ let
     # CLI Applications
     ## Music
     cmus
-    # cava # fails to build
     yt-dlp
     lollypop
     ## term view
     fastfetch
-    cava
+    # cava # fails to build
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
