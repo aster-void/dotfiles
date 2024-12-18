@@ -1,5 +1,11 @@
 # My entire config
 
+## WARNING
+
+I don't maintain the files nor the docs very often, so many things may be left outdated.
+Also many apps are configured just for me, such as keyboard layout of plasma.
+This repo is open just for reference, and is not intended to be used out of the box.
+
 ## clone
 first clone nixos-config into /etc/nixos and run nixos-rebuild switch
 then run this.
