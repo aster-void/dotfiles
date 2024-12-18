@@ -8,6 +8,7 @@
   imports = [
     ./plugins
     ./apps
+    ./plasma
     ./local.nix
     ./shell.nix
     ./nixvim.nix
