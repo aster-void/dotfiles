@@ -2,10 +2,10 @@
   keyboard = {
     layouts = [{
       layout = "us";
-      variant = "workman";
+      variant = "Workman";
     }];
     repeatDelay = 250;
-    repeatRate = 30;
+    repeatRate = 40;
     options = [
       "caps:esc"
     ];
