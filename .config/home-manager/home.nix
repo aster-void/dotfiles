@@ -10,7 +10,6 @@
     ./apps
     ./local.nix
     ./shell.nix
-    ./hypr-home/hyprland.nix
     ./nixvim.nix
     ./packages.nix
   ];
