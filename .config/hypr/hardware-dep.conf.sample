@@ -10,5 +10,8 @@ input {
 	sensitivity = 0
 }
 
-# extensions
-source = ./save-battery.conf
+# plugins
+# source=./plugins/no-blur.hyprland.conf
+# source=./plugins/no-animations.hyprland.conf
+# source=./plugins/full-opacity.hyprland.conf
+# source=./plugins/save-battery.hyprland.conf
