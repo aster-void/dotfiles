@@ -1,5 +1,5 @@
 let
-  alias = import ./shell/aliases.nix;
+  alias = import ./aliases.nix;
 in
 { ... }: {
   # don't forget to run this periodically: stow ~/.dotfiles
@@ -22,7 +22,7 @@ in
 
   programs.starship = {
     enable = true;
-    settings = import ./shell/starship.nix;
+    settings = import ./starship.nix;
   };
 
   programs.zoxide = {

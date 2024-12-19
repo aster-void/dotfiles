@@ -33,8 +33,7 @@
         ];
 
         extraSpecialArgs = {
-          inherit inputs;
-          inherit username system;
+          inherit inputs username system;
         };
 
         # Optionally use extraSpecialArgs

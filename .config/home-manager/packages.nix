@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }:
 let
   cfg = config.packages;
-  self-hosted = import ./packages/import.nix { inherit lib pkgs; };
+  self-hosted = import ./build { inherit lib pkgs; };
   core = with pkgs;  [
     # Development
     act
