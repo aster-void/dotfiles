@@ -9,26 +9,16 @@
     ./apps
     ./shell
     ./plasma
-    # ./etc/ime.nix
+    ./desktop-entries
+    # ./etc/ime.nix # it's installed system wide so nw
     ./local.nix
     ./packages.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
 
-  # Home Manager can manage your environment variables through
-  # 'home.sessionVariables'. If you don't want to manage your shell through Home
-  # Manager then you have to manually source 'hm-session-vars.sh' located at
-  # either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/${username}/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    # EDITOR = "hx";
   };
 
   # Let Home Manager install and manage itself.
