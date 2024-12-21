@@ -9,6 +9,7 @@
     ./apps
     ./shell
     ./plasma
+    # ./etc/ime.nix
     ./local.nix
     ./packages.nix
   ];

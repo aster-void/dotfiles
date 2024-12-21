@@ -2,7 +2,7 @@
   keyboard = {
     layouts = [{
       layout = "us";
-      variant = "Workman";
+      variant = "English (Workman)";
     }];
     repeatDelay = 250;
     repeatRate = 40;

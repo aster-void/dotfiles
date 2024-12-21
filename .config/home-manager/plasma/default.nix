@@ -1,6 +1,7 @@
+# DISABLED
 { ... }: {
-  programs.plasma = {
-    enable = true;
-    input = import ./input.nix;
-  };
+  # programs.plasma = {
+  # enable = true;
+  # input = import ./input.nix;
+  # };
 }
