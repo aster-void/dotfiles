@@ -22,6 +22,14 @@
       username = "aster";
     in
     {
+      devShell.${system} = pkgs.mkShell {
+        name = "Home Manager";
+        buildInputs = with pkgs; [ lefthook nixpkgs-fmt deadnix ];
+        shellHook = ''
+          lefthook install
+        '';
+      };
+
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 

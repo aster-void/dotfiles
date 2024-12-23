@@ -1,0 +1,3 @@
+# Because I have turned on git-ignore = true on editor.file-picker,
+# I must list here files / dirs that I want to ignore from file picker
+/.direnv
