@@ -10,5 +10,11 @@
       exec = "discord --enable-wayland-ime %U";
       icon = "${pkgs.discord}/share/pixmaps/discord.png";
     };
+    vscode = {
+      name = "VS Code";
+      exec = "code --enable-wayland-ime %U";
+      # TODO: use config.programs.vscode.package if it exists
+      icon = "${pkgs.vscode}/share/pixmaps/vscode.png";
+    };
   };
 }
