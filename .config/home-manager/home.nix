@@ -18,7 +18,7 @@
 
   home.sessionVariables = {
     # EDITOR = "hx";
-    NIXOS_OZONE_WL=1;
+    NIXOS_OZONE_WL = 1;
   };
 
   # Let Home Manager install and manage itself.
