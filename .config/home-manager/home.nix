@@ -9,7 +9,6 @@
     ./apps
     ./shell
     ./plasma
-    ./desktop-entries
     # ./etc/ime.nix # it's installed system wide so nw
     ./local.nix
     ./packages.nix
@@ -19,6 +18,7 @@
 
   home.sessionVariables = {
     # EDITOR = "hx";
+    NIXOS_OZONE_WL=1;
   };
 
   # Let Home Manager install and manage itself.
