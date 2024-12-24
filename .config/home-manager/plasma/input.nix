@@ -12,10 +12,10 @@
   };
   touchpads = [
     {
-      name = "touchpad";
+      name = "DNBK1000:00 06CB:CECE Touchpad";
       # @CHANGEME: change name and vendorId to your touchpad (can be found with `cat /proc/bus/input/devices`)
-      productId = "06cb";
-      vendorId = "cece";
+      vendorId = "06cb";
+      productId = "cece";
       enable = true;
       disableWhileTyping = true;
       pointerSpeed = 0.20;
