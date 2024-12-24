@@ -17,6 +17,8 @@ let
     astro-language-server
     ## terminal multiplexer
     zellij
+    ## Text Editor
+    inputs.helix.packages.${system}.default
   ];
   desktop = with pkgs; [
     # GUI Applications
