@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, system, ... }:
 let
   cfg = config.packages;
   self-hosted = import ./build { inherit lib pkgs; };
@@ -27,6 +27,7 @@ let
     firefox
     chromium
     brave
+    inputs.zen-browser.packages.${system}.specific
     # LLM
     ollama
     # firefox-devedition
