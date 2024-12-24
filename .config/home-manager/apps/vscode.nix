@@ -9,6 +9,7 @@
       yoavbls.pretty-ts-errors
       svelte.svelte-vscode
       jnoortheen.nix-ide
+      hediet.vscode-drawio
     ];
   };
 }
