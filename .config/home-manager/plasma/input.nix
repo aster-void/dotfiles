@@ -2,18 +2,18 @@
   keyboard = {
     layouts = [{
       layout = "us";
-      variant = "English (Workman)";
+      variant = "workman";
     }];
     repeatDelay = 250;
     repeatRate = 40;
     options = [
-      "caps:esc"
+      "caps:escape"
     ];
   };
   touchpads = [
     {
-      name = "DNBK1000:00 06CB:CECE Touchpad";
       # @CHANGEME: change name and vendorId to your touchpad (can be found with `cat /proc/bus/input/devices`)
+      name = "DNBK1000:00 06CB:CECE Touchpad";
       vendorId = "06cb";
       productId = "cece";
       enable = true;
