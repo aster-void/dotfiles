@@ -6,10 +6,10 @@
   home.stateVersion = "24.11";
 
   imports = [
+    ./etc
     ./apps
     ./shell
     ./plasma
-    # ./etc/ime.nix # it's installed system wide so nw
     ./local.nix
     ./packages.nix
   ];
