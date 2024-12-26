@@ -6,7 +6,7 @@ let
   # - catppuccin.mochaMauve # and others
   # - material-cursor
   # - empty-butterfly-cursor.{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
-  cursor = cursors.empty-butterfly-cursor.cyan;
+  cursor = cursors.empty-butterfly-cursor.white;
 in
 {
   home.pointerCursor = {
