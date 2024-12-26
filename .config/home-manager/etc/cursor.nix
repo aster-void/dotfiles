@@ -1,6 +1,11 @@
 { pkgs, ... }:
 let
   cursors = import ./cursors { inherit pkgs; };
+
+  # available:
+  # - catppuccin.mochaMauve # and others
+  # - material-cursor
+  # - empty-butterfly-cursor.{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
   cursor = cursors.empty-butterfly-cursor.cyan;
 in
 {

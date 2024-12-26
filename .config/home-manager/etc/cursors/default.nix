@@ -4,7 +4,7 @@ let
 in
 {
   # supports X cursor and hyprcursor
-  catppuccin-mocha = {
+  catppuccin = {
     name = "Catppuccin Mocha Mauve";
     package = pkgs.catppuccin-cursors.mochaMauve;
   };
@@ -22,5 +22,5 @@ in
         name = "Empty Butterfly Cursor ${name}";
         inherit package;
       })
-      (import ./empty-butterfly-cursor pkgs);
+      (import ../../store/cursors/empty-butterfly-cursor pkgs);
 }
