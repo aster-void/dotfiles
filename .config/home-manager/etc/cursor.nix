@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   cursors = import ./cursors { inherit pkgs; };
-  cursor = cursors.material-cursor;
+  cursor = cursors.empty-butterfly-cursor.butter;
 in
 {
   home.pointerCursor = {
