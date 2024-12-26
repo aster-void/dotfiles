@@ -18,9 +18,9 @@ in
   # only supports X cursor
   empty-butterfly-cursor =
     lib.attrsets.mapAttrs
-      (key: val: {
-        name = "Empty Butterfly Cursor ${key}";
-        package = val;
+      (name: package: {
+        name = "Empty Butterfly Cursor ${name}";
+        inherit package;
       })
       (import ./empty-butterfly-cursor pkgs);
 }
