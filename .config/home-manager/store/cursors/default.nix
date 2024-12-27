@@ -1,7 +1,10 @@
-{ pkgs }:
-let
-  lib = pkgs.lib;
-in
+{ lib
+, fetchFromGitHub
+, callPackage
+
+, catppuccin-cursors
+, ...
+} @ pkgs:
 {
   # supports X cursor and hyprcursor
   catppuccin =
@@ -10,7 +13,7 @@ in
         name = "Catppuccin-Cursor-${name}";
         inherit package;
       })
-      pkgs.catppuccin-cursors;
+      catppuccin-cursors;
 
   # seems to only support X cursor
   material-cursor = {
@@ -26,4 +29,22 @@ in
         inherit package;
       })
       (import ./empty-butterfly-cursor pkgs);
+
+  # Hyprcursor only, not currently working
+  rose-pine = {
+    name = "Rose-Pine-HyprCursor";
+    package = callPackage "${fetchFromGitHub {
+      owner = "ndom91";
+      repo = "rose-pine-hyprcursor";
+      rev = "v0.3.2";
+      hash = "sha256-ArUX5qlqAXUqcRqHz4QxXy3KgkfasTPA/Qwf6D2kV0U=";
+    }}/nix"
+      { nixpkgs = pkgs; };
+  };
+
+  # Hyprcursor only
+  googledot-violet = {
+    name = "GoogleDot-Violet";
+    package = import ./GoogleDot-Violet pkgs;
+  };
 }

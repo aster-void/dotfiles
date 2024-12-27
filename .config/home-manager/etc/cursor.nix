@@ -1,12 +1,15 @@
 { pkgs, ... }:
 let
-  cursors = import ../store/cursors { inherit pkgs; };
+  cursors = import ../store/cursors pkgs;
+  cursor = cursors.${use};
 
   # available:
   # - catppuccin.mochaMauve # and others
   # - material-cursor
   # - empty-butterfly-cursor.{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
-  cursor = cursors.empty-butterfly-cursor.white;
+  # - rose-pine
+  # - googledot-violet
+  use = "material-cursor";
 in
 {
   home.pointerCursor = {
