@@ -29,7 +29,7 @@ let
     firefox
     chromium
     brave
-    inputs.zen-browser.packages.${system}.specific
+    inputs.zen-browser.packages.${system}.default
     # LLM
     ollama
     # firefox-devedition
