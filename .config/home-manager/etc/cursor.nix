@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  cursors = import ./cursors { inherit pkgs; };
+  cursors = import ../store/cursors { inherit pkgs; };
 
   # available:
   # - catppuccin.mochaMauve # and others

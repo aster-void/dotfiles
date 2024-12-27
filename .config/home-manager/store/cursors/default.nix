@@ -4,10 +4,13 @@ let
 in
 {
   # supports X cursor and hyprcursor
-  catppuccin = {
-    name = "Catppuccin Mocha Mauve";
-    package = pkgs.catppuccin-cursors.mochaMauve;
-  };
+  catppuccin =
+    lib.attrsets.mapAttrs
+      (name: package: {
+        name = "Catppuccin-Cursor-${name}";
+        inherit package;
+      })
+      pkgs.catppuccin-cursors;
 
   # seems to only support X cursor
   material-cursor = {
@@ -19,8 +22,8 @@ in
   empty-butterfly-cursor =
     lib.attrsets.mapAttrs
       (name: package: {
-        name = "Empty Butterfly Cursor ${name}";
+        name = "Empty-Butterfly-Cursor-${name}";
         inherit package;
       })
-      (import ../../store/cursors/empty-butterfly-cursor pkgs);
+      (import ./empty-butterfly-cursor pkgs);
 }
