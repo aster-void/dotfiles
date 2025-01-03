@@ -1,6 +1,6 @@
 [Groups/0]
 # Group Name
-Name=Default
+Name="Group 1"
 # Layout
 Default Layout=us-workman
 # Default Input Method
@@ -18,6 +18,21 @@ Name=mozc
 # Layout
 Layout=
 
+[Groups/1]
+# Group Name
+Name="Group 2"
+# Layout
+Default Layout=us
+# Default Input Method
+DefaultIM=keyboard-us
+
+[Groups/1/Items/0]
+# Name
+Name=keyboard-us
+# Layout
+Layout=
+
 [GroupOrder]
-0=Default
+0="Group 1"
+1="Group 2"
 
