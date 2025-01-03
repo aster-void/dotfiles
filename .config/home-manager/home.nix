@@ -9,7 +9,6 @@
     ./etc
     ./apps
     ./shell
-    ./plasma
     ./local.nix
     ./packages.nix
   ];

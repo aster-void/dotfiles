@@ -7,11 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +18,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, plasma-manager, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -45,7 +40,6 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-          plasma-manager.homeManagerModules.plasma-manager
           ./home.nix
         ];
 
