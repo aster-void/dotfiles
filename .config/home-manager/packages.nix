@@ -22,6 +22,8 @@ let
   ];
   desktop = with pkgs; [
     # GUI Applications
+    ## Desktop
+    waybar
     ## Connect
     slack
     discord

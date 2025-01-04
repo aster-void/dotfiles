@@ -1,7 +1,6 @@
 { ... }: {
   imports = [
     ./plugins/wsl-vscode.nix
-    ./plugins/waybar/config.nix
   ];
   packages = {
     core.enable = true;
