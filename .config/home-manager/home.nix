@@ -9,8 +9,8 @@
     ./etc
     ./apps
     ./shell
-    ./local.nix
-    ./packages.nix
+    ./packages/share.nix
+    ./packages/desktop.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

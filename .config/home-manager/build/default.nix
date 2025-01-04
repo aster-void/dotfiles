@@ -6,6 +6,6 @@ let
   #   };
   v-analyzer = import ./v-analyzer { inherit pkgs; };
 in
-[
-  v-analyzer
-]
+{
+  inherit v-analyzer;
+}
