@@ -5,6 +5,7 @@
 
     ## Desktop
     waybar
+    eww
 
     ## Social
     slack
