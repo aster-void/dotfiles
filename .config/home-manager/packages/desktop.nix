@@ -24,6 +24,8 @@
     evince # document viewer
 
     # CLI Applications
+    ## Terminal (akctually it's rather a GUI application than a CLI application)
+    ghostty
 
     ## Music
     cmus

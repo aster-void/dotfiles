@@ -22,11 +22,9 @@
     bash-language-server
 
     ## terminal multiplexer
-
     zellij
 
     ## Text Editor
-
     inputs.helix.packages.${system}.default
   ];
 }
