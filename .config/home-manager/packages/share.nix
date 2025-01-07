@@ -7,6 +7,9 @@
     svelte-language-server
     wget
 
+    ## Nix
+    hydra-check
+
     ## Langservers
 
     biome
