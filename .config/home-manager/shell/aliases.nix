@@ -27,6 +27,7 @@
 
     lg = "lazygit";
 
+    fetch = "nitch"; # to not change my mustle memory
 
     sl = "ls";
     claer = "clear";

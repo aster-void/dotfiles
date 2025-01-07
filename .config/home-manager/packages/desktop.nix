@@ -34,6 +34,7 @@
 
     ## visual effect
     fastfetch
+    nitch
     cava
 
     # # You can also create simple shell scripts directly inside your
