@@ -4,7 +4,6 @@ update_info=kxkb.upd:remove-empty-lists,kxkb.upd:add-back-resetoptions,kxkb_vari
 [Layout]
 DisplayNames=
 LayoutList=us
-Model=pc104alt
 Options=caps:escape
 ResetOldOptions=true
 Use=true
