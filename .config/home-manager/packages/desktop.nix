@@ -4,8 +4,6 @@
     # GUI Applications
 
     ## Desktop
-    waybar
-    eww
 
     ## Social
     slack
