@@ -18,7 +18,7 @@ theme = "catppuccin_frappe"
 line-number = "relative"
 middle-click-paste = false
 idle-timeout = 0
-scroll-lines = 8
+scroll-lines = 5
 
 [editor.cursor-shape]
 insert = "bar"
