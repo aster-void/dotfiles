@@ -4,6 +4,7 @@
     # GUI Applications
 
     ## Desktop
+    hyprshot
 
     ## Social
     slack
