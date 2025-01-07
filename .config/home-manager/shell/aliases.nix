@@ -1,5 +1,4 @@
 {
-
   common = {
     ".." = "cd ../";
     "..." = "cd ../../";
@@ -31,14 +30,15 @@
 
     sl = "ls";
     claer = "clear";
+    cl = "clear";
 
     hs = "home-manager switch";
-    hypr = "cd ~/.config/hypr/; ls";
     hb = "home-manager switch";
     home = "home-manager";
 
     # zoom-us = "flatpak run us.zoom.Zoom";
   };
+
   bash = {
     cg = "cd $(git root)";
     sizeof = "du -sh";
