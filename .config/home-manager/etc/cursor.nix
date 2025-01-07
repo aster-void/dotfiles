@@ -9,7 +9,7 @@ let
   # - empty-butterfly-cursor.{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
   # - rose-pine
   # - googledot-violet
-  use = "material-cursor";
+  use = "rose-pine";
 in
 {
   home.pointerCursor = {
