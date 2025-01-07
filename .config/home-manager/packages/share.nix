@@ -16,6 +16,7 @@
     metals # scala
     astro-language-server
     hyprls
+    bash-language-server
 
     ## terminal multiplexer
 
