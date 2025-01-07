@@ -1,6 +1,6 @@
 # hardware dep
-hyprland/hardware-dep.conf
-hyprpaper.conf
+/hyprland/hardware-dep.conf
+/hyprpaper.conf
 
 # local
-hyprland/plugins.conf
+/hyprland/plugins.conf
