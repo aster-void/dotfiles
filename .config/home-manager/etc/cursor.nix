@@ -12,9 +12,10 @@ let
   use = "rose-pine";
 in
 {
+  # eh no
   home.pointerCursor = {
     inherit (cursor) name package;
-    # x11.enable = true;
+    x11.enable = true;
     gtk.enable = true;
     hyprcursor.enable = true;
     hyprcursor.size = 32;

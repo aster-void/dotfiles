@@ -15,6 +15,7 @@
     clippy
     metals # scala
     astro-language-server
+    hyprls
 
     ## terminal multiplexer
 

@@ -32,7 +32,7 @@
 
   # Hyprcursor only, not currently working
   rose-pine = {
-    name = "Rose-Pine-HyprCursor";
+    name = "rose-pine-hyprcursor";
     package = callPackage "${fetchFromGitHub {
       owner = "ndom91";
       repo = "rose-pine-hyprcursor";
