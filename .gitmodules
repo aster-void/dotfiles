@@ -1,4 +1,4 @@
 
 [submodule ".icons/rose-pine"]
-	path = .icons/rose-pine
+	path = .icons/rose-pine-xcursor
 	url = https://github.com/rose-pine/cursor
