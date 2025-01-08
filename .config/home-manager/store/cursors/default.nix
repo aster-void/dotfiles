@@ -1,50 +1,56 @@
-{ lib
+{ pkgs
+, lib
 , fetchFromGitHub
 , callPackage
 
 , catppuccin-cursors
 , ...
-} @ pkgs:
-{
+}:
+let
+  mkCursor = pkgs.callPackage ./helper/mkCursorPackage.nix { };
+
+  # --- collections of multiple cursors
+
   # supports X cursor and hyprcursor
-  catppuccin =
-    lib.attrsets.mapAttrs
-      (name: package: {
-        name = "Catppuccin-Cursor-${name}";
-        inherit package;
+  catppuccins =
+    lib.attrsets.mapAttrs'
+      (name: value: {
+        name = "catppuccin-cursor-${name}";
+        inherit value;
       })
       catppuccin-cursors;
 
-  # seems to only support X cursor
-  material-cursor = {
-    name = "Material Cursor";
-    package = import ./material-cursor.nix pkgs;
-  };
-
   # only supports X cursor
-  empty-butterfly-cursor =
+  empty-butterfly-cursors =
     lib.attrsets.mapAttrs
-      (name: package: {
-        name = "Empty-Butterfly-Cursor-${name}";
-        inherit package;
+      (name: value: {
+        name = "empty-butterfly-cursor-${name}";
+        inherit value;
       })
       (import ./empty-butterfly-cursor pkgs);
 
+  # --- single cursors --- 
+
+  # seems to only support X cursor
+  material-cursor = callPackage ./material-cursor.nix { };
+
   # Hyprcursor only, not currently working
-  rose-pine = {
-    name = "rose-pine-hyprcursor";
-    package = callPackage "${fetchFromGitHub {
-      owner = "ndom91";
-      repo = "rose-pine-hyprcursor";
-      rev = "v0.3.2";
-      hash = "sha256-ArUX5qlqAXUqcRqHz4QxXy3KgkfasTPA/Qwf6D2kV0U=";
-    }}/nix"
-      { nixpkgs = pkgs; };
-  };
+  rose-pine = mkCursor "rose-pine" (fetchFromGitHub {
+    owner = "ndom91";
+    repo = "rose-pine-hyprcursor";
+    rev = "v0.3.2";
+    hash = "sha256-ArUX5qlqAXUqcRqHz4QxXy3KgkfasTPA/Qwf6D2kV0U=";
+  });
 
   # Hyprcursor only
-  googledot-violet = {
-    name = "GoogleDot-Violet";
-    package = import ./GoogleDot-Violet pkgs;
-  };
+  googledot-violet = pkgs.callPackage ./GoogleDot-Violet;
+
+in
+catppuccins // empty-butterfly-cursors // {
+  inherit
+    material-cursor
+    rose-pine
+    googledot-violet
+    ;
 }
+

@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
-  cursors = import ../store/cursors pkgs;
-  cursor = cursors.${use};
+  cursors = pkgs.callPackage ../store/cursors { };
 
   # available:
   # - catppuccin.mochaMauve # and others
@@ -9,12 +8,12 @@ let
   # - empty-butterfly-cursor.{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
   # - rose-pine
   # - googledot-violet
-  use = "rose-pine";
+  name = "rose-pine";
 in
 {
-  # eh no
   home.pointerCursor = {
-    inherit (cursor) name package;
+    inherit name;
+    package = cursors.${name};
     x11.enable = true;
     gtk.enable = true;
     hyprcursor.enable = true;
