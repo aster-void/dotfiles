@@ -16,7 +16,8 @@
   nixpkgs.config.allowUnfree = true;
 
   home.sessionVariables = {
-    # EDITOR = "hx";
+    EDITOR = "hx";
+    BROWSER = "zen";
     NIXOS_OZONE_WL = 1;
   };
 

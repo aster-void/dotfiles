@@ -5,6 +5,8 @@
 
     ## Desktop
     hyprshot
+    walker
+    rofi
 
     ## Social
     slack
