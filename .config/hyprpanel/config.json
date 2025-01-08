@@ -1,6 +1,6 @@
 {
   "bar.launcher.icon": "   ",
-  "bar.customModules.updates.pollingInterval": 21600000,
+  "bar.customModules.updates.pollingInterval": 1440000,
   "hyprpanel.restartAgs": true,
   "scalingPriority": "gdk",
   "theme.matugen": false,
@@ -19,7 +19,7 @@
   "theme.osd.border.color": "#b4befe",
   "theme.osd.bar_color": "#b4beff",
   "menus.clock.weather.unit": "metric",
-  "menus.clock.time.military": false,
+  "menus.clock.time.military": true,
   "menus.clock.time.hideSeconds": true,
   "theme.bar.buttons.workspaces.smartHighlight": true,
   "bar.workspaces.numbered_active_indicator": "highlight",
@@ -39,5 +39,7 @@
   "theme.bar.buttons.notifications.spacing": "1rem",
   "bar.notifications.show_total": true,
   "theme.bar.buttons.notifications.enableBorder": false,
-  "bar.notifications.hideCountWhenZero": true
+  "bar.notifications.hideCountWhenZero": true,
+  "menus.clock.weather.location": "Tokyo",
+  "menus.clock.weather.interval": 180000
 }
