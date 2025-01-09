@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   # notification
-  services.dunst.enable = true;
+  # services.dunst.enable = true;
   # widgets / bars
   # programs.waybar.enable = true;
   # home.packages = [ pkgs.eww ]; # eww module doesn't support autostart yet.
