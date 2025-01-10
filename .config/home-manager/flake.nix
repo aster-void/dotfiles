@@ -34,7 +34,13 @@
     {
       devShell.${system} = pkgs.mkShell {
         name = "Home Manager";
-        buildInputs = with pkgs; [ lefthook nixpkgs-fmt deadnix ];
+        buildInputs = with pkgs; [
+          lefthook
+          nixpkgs-fmt
+          deadnix
+
+          nwg-look
+        ];
         shellHook = ''
           lefthook install
         '';
