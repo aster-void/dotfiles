@@ -7,3 +7,6 @@
 # git
 .git
 .gitignore
+
+# lefthook
+lefthook.yml
