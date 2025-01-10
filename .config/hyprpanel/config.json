@@ -41,5 +41,8 @@
   "theme.bar.buttons.notifications.enableBorder": false,
   "bar.notifications.hideCountWhenZero": true,
   "menus.clock.weather.location": "Tokyo",
-  "menus.clock.weather.interval": 180000
+  "menus.clock.weather.interval": 180000,
+  "bar.customModules.updates.updateCommand": "/nix/store/zpq41pqxhfsjad619z4k156nmq9wqqjv-hyprpanel/share/scripts/checkUpdates.sh -arch",
+  "bar.customModules.updates.leftClick": "$TERMINAL -e /nix/store/zpq41pqxhfsjad619z4k156nmq9wqqjv-hyprpanel/share/scripts/runUpdates.sh -arch",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "bash -c \"/nix/store/zpq41pqxhfsjad619z4k156nmq9wqqjv-hyprpanel/share/scripts/snapshot.sh\""
 }
