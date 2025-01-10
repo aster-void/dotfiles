@@ -16,7 +16,7 @@
     firefox
     chromium
     brave
-    inputs.zen-browser.packages.${system}.default
+    inputs.zen-browser.packages.${system}.twilight
     # LLM
     ollama
 
