@@ -1,7 +1,14 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+let
+  self-hostd = pkgs.callPackage ../build/default.nix { };
+in
+{
   home.packages = with pkgs; [
 
     # GUI Applications
+
+    # waydroid
+    self-hostd.waydroid-ui
 
     ## Desktop
     hyprshot
