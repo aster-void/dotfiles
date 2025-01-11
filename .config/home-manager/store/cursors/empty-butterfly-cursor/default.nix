@@ -28,7 +28,7 @@ lib.attrsets.mapAttrs
         mkdir tmp
         unzip ./${full-name}.zip -d ./tmp >/dev/null
         ls ./tmp
-        mv ./tmp/${full-name}/${lib.strings.removeSuffix "-Linux" full-name} $out/share/icons/
+        mv ./tmp/${full-name}/${lib.strings.removeSuffix "-Linux" full-name} $out/share/icons/empty-butterfly-cursor-${name}
         rm ./tmp -rf
       '';
     }

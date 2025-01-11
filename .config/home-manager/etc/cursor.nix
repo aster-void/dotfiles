@@ -5,10 +5,10 @@ let
   # available:
   # - catppuccin.mochaMauve # and others
   # - material-cursor
-  # - empty-butterfly-cursor.{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
+  # - empty-butterfly-cursor-{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
   # - rose-pine
   # - googledot-violet
-  name = "rose-pine";
+  name = "empty-butterfly-cursor-white";
 in
 {
   home.pointerCursor = {

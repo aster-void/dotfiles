@@ -22,7 +22,7 @@ let
 
   # only supports X cursor
   empty-butterfly-cursors =
-    lib.attrsets.mapAttrs
+    lib.attrsets.mapAttrs'
       (name: value: {
         name = "empty-butterfly-cursor-${name}";
         inherit value;
