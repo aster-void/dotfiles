@@ -14,7 +14,7 @@ in
   home.pointerCursor = {
     inherit name;
     package = cursors.${name};
-    # x11.enable = true;
+    x11.enable = true;
     gtk.enable = true;
     hyprcursor.enable = true;
     hyprcursor.size = 32;
