@@ -14,11 +14,12 @@ in
     shellAliases = alias.common // alias.nushell;
   };
 
-  programs.direnv = {
-    enable = true;
-    enableBashIntegration = true;
-    nix-direnv.enable = true;
-  };
+  # enabled OS-wide.
+  # programs.direnv = {
+  #   enable = true;
+  #   enableBashIntegration = true;
+  #   nix-direnv.enable = true;
+  # };
 
   programs.starship = {
     enable = true;
