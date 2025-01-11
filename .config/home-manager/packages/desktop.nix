@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 let
-  self-hostd = pkgs.callPackage ../build/default.nix { };
+  self-hosted = pkgs.callPackage ../build/default.nix { };
 in
 {
   home.packages = with pkgs; [
@@ -8,7 +8,8 @@ in
     # GUI Applications
 
     # waydroid
-    self-hostd.waydroid-ui
+    self-hosted.waydroid-ui
+    self-hosted.reload
 
     ## Desktop
     hyprshot
