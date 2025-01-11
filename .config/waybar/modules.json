@@ -1,8 +1,8 @@
 {
-  "custom/arch": {
-    "format": "󰣇",
+  "custom/nixos": {
+    "format": " ",
     "tooltip": true,
-    "tooltip-format": "btw"
+    "tooltip-format": "NixOS"
   },
   "hyprland/workspaces": {
     "disable-scroll": true,

@@ -97,13 +97,14 @@ window#waybar {
   box-shadow: none;
 }
 
-#custom-arch {
+#custom-nixos {
+  color: #1793d1;
   margin-left: 5px;
   padding: 0 10px;
   font-size: 25px;
   transition: color .5s;
 }
 
-#custom-arch:hover {
-  color: #1793d1;
+#custom-nixos:hover {
+  color: white;
 }
