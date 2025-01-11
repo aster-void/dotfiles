@@ -11,9 +11,11 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
-    # 最新のを使いたい
+    # /* 最新のを使いたい */
+    # Color Swatch を使いたい
     helix = {
-      url = "github:helix-editor/helix";
+      # url = "github:helix-editor/helix";
+      url = "github:nik-rev/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
