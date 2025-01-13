@@ -38,3 +38,7 @@ enable = true
 focus-lost = true
 after-delay.enable = true
 after-delay.timeout = 1000
+
+[keys.normal]
+C-x = [":fmt", ":wq"]
+A-f = [":fmt"]
