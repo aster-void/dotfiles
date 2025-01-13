@@ -17,8 +17,12 @@ theme = "catppuccin_frappe"
 [editor]
 line-number = "relative"
 middle-click-paste = false
-idle-timeout = 0
-scroll-lines = 5
+idle-timeout = 50          # show LSP hints as fast as possible
+scroll-lines = 5           # because it has become slow on touchpad
+
+# inline hints
+end-of-line-diagnostics = "hint"
+inline-diagnostics.cursor-line = "error"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -29,3 +33,8 @@ hidden = false
 
 [editor.soft-wrap]
 enable = true
+
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+after-delay.timeout = 1000
