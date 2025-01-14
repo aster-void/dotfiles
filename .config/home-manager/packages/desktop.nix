@@ -33,6 +33,7 @@ in
     ## Office
     libreoffice
     evince # document viewer
+    video-trimmer # trim videos. what did you expect?
 
     # CLI Applications
     ## Terminal (akctually it's rather a GUI application than a CLI application)
