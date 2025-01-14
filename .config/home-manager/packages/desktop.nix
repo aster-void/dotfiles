@@ -18,8 +18,14 @@ in
     nwg-launchers
     walker
     rofi
-    ### audio ctl
+    waybar
+    polybar
+    eww
+    
+    ### media ctl
     pavucontrol
+    pulseaudio
+    brightnessctl
 
     ## bluetooth
     bluez
