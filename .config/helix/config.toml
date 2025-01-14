@@ -41,6 +41,7 @@ after-delay.timeout = 1000
 
 [keys.normal]
 C-x = [":fmt", ":wq"]
+A-x = [":fmt", ":wq"]
 A-f = [":fmt"]
 
 [editor.indent-guides]
