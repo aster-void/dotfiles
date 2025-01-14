@@ -29,7 +29,7 @@ in
 
     ## bluetooth
     bluez
-    bluez-utils
+    bluez-tools
 
     ## Social
     slack
