@@ -42,3 +42,12 @@ after-delay.timeout = 1000
 [keys.normal]
 C-x = [":fmt", ":wq"]
 A-f = [":fmt"]
+
+[editor.indent-guides]
+render = true
+# character = "╎"
+character = "▏" # Some characters that work well: "╎", "▏", "┆", "┊", "⸽"
+# character = "┆"
+# character = "┊"
+# character = "⸽"
+skip-levels = 2
