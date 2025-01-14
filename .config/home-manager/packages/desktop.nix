@@ -15,6 +15,8 @@ in
     hyprshot
     walker
     rofi
+    ### waybar
+    pavucontrol
 
     ## Social
     slack
@@ -24,7 +26,7 @@ in
     firefox
     chromium
     brave
-    inputs.zen-browser.packages.${system}.twilight
+    inputs.zen-browser.packages.${system}.beta
     # LLM
     ollama
 
@@ -49,6 +51,7 @@ in
 
     ## debug
     libnotify
+    speedtest-cli
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your

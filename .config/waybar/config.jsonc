@@ -21,12 +21,14 @@
     // "memory",
     // "temperature",
     // "hyprland/language",
+    "pulseaudio",
+    "network",
     "battery",
     "battery#bat2",
     "clock"
   ],
   //Modules configuration
   "include": [
-    "~/.config/waybar/modules.json"
+    "~/.config/waybar/modules.jsonc"
   ]
 }
