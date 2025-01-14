@@ -8,6 +8,7 @@
     wget
 
     ## Nix
+
     hydra-check
 
     ## Langservers
@@ -20,6 +21,8 @@
     astro-language-server
     hyprls
     bash-language-server
+    nil
+    alejandra
 
     ## terminal multiplexer
     zellij

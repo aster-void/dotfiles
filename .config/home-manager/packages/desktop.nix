@@ -4,19 +4,26 @@ let
 in
 {
   home.packages = with pkgs; [
-
-    # GUI Applications
-
-    # waydroid
     self-hosted.waydroid-ui
     self-hosted.reload
 
     ## Desktop
     hyprshot
+    gpu-screen-recorder
+    mako # notification daemon
+
+    ### bars
+    ags
+    ### Launchers
+    nwg-launchers
     walker
     rofi
-    ### waybar
+    ### audio ctl
     pavucontrol
+
+    ## bluetooth
+    bluez
+    bluez-utils
 
     ## Social
     slack
@@ -35,7 +42,10 @@ in
     evince # document viewer
     video-trimmer # trim videos. what did you expect?
 
-    # CLI Applications
+    matugen # material you colorgen
+    dart-sass
+    gnome-bluetooth
+
     ## Terminal (akctually it's rather a GUI application than a CLI application)
     ghostty
     kitty
@@ -44,6 +54,8 @@ in
     cmus
     yt-dlp
     lollypop
+    mpd
+    mpc
 
     ## visual effect
     fastfetch
