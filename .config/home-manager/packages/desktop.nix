@@ -47,6 +47,7 @@ in
     libreoffice
     evince # document viewer
     video-trimmer # trim videos. what did you expect?
+    xournalpp
 
     matugen # material you colorgen
     dart-sass

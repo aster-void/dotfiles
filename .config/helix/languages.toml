@@ -6,8 +6,8 @@ rust-analyzer.config = { checkOnSave.command = "clippy" }
 [[language]]
 name = "nix"
 auto-format = true
-formatter.command = "ale-fmt"
-language-servers = ["nil"]
+formatter.command = "alejandra"
+language-servers = ["nil", "nixd"]
 
 [language-server.nixd]
 command = "nixd"

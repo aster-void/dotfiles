@@ -1,5 +1,9 @@
-{ pkgs, inputs, ... }: {
-  home.packages = with pkgs;  [
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  home.packages = with pkgs; [
     # Development
 
     act
@@ -22,6 +26,7 @@
     hyprls
     bash-language-server
     nil
+    nixd
     alejandra
 
     ## terminal multiplexer
