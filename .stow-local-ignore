@@ -8,5 +8,9 @@
 .git
 .gitignore
 
-# lefthook
+# dev
 lefthook.yml
+.direnv
+.helix
+shell.nix
+.ignore
