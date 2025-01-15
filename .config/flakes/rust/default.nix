@@ -7,10 +7,11 @@
     rustc = toolchain;
     cargo = toolchain;
   };
+  cargo-toml = fromTOML (builtins.readFile ./Cargo.toml);
 in
   rustPlatform.buildRustPackage {
-    pname = "hello";
-    version = "0.0.0";
+    inherit (cargo-toml.package) version;
+    pname = cargo-toml.package.name;
     src = ./.;
     cargoLock.lockFile = ./Cargo.lock;
   }
