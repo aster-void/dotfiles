@@ -1,18 +1,13 @@
-# pre-push:
-#   commands:
-#     packages-audit:
-#       tags: frontend security
-#       run: yarn audit
-#     gems-audit:
-#       tags: backend security
-#       run: bundle audit
-
 pre-commit:
   parallel: true
   commands:
     fmt:
       glob: "*.nix"
       run: alejandra {staged_files}
+      stage_fixed: true
     deadnix:
       glob: "*.nix"
-      run: deadnix .
+      run: deadnix --fail .
+    statix:
+      glob: "*.nix"
+      run: statix check .

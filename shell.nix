@@ -3,8 +3,9 @@ pkgs.mkShell {
   name = "dotfile";
   buildInputs = with pkgs; [
     lefthook
-    nixpkgs-fmt
+    alejandra
     deadnix
+    statix
 
     nwg-look
   ];

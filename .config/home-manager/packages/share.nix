@@ -28,6 +28,7 @@
     nil
     nixd
     alejandra
+    statix
 
     ## terminal multiplexer
     zellij
