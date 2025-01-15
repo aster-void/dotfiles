@@ -23,46 +23,44 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-      };
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+    };
 
-      username = "aster";
-    in
-    {
-      devShell.${system} = pkgs.mkShell {
-        name = "Home Manager";
-        buildInputs = with pkgs; [
-          lefthook
-          nixpkgs-fmt
-          deadnix
+    username = "aster";
+  in {
+    devShell.${system} = pkgs.mkShell {
+      name = "Home Manager";
+      buildInputs = with pkgs; [
+        lefthook
+        nixpkgs-fmt
+        deadnix
 
-          nwg-look
-        ];
-        shellHook = ''
-          lefthook install
-        '';
-      };
+        nwg-look
+      ];
+      shellHook = ''
+        lefthook install
+      '';
+    };
 
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          ./home.nix
-        ];
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      modules = [
+        ./home.nix
+      ];
 
-        extraSpecialArgs = {
-          inherit inputs username system;
-        };
+      extraSpecialArgs = {
+        inherit inputs username system;
       };
     };
-  nixConfig = {
-    # extra-substituters = [ "https://helix.cachix.org" ];
-    # extra-trusted-public-keys = [ "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=" ];
   };
 }

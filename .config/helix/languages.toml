@@ -2,15 +2,18 @@
 astro-ls = { command = "astro-ls", args = ["--stdio"] }
 biome = { command = "biome", args = ["lsp-proxy"] }
 rust-analyzer.config = { checkOnSave.command = "clippy" }
+tailwindcss-language-server = { command = "tailwindcss-language-server", args = [
+  "--stdio",
+] }
+vscode-css-language-server = { command = "vscode-css-language-server", args = [
+  "--stdio",
+] }
 
 [[language]]
 name = "nix"
 auto-format = true
 formatter.command = "alejandra"
 language-servers = ["nil", "nixd"]
-
-[language-server.nixd]
-command = "nixd"
 
 [[language]]
 name = "rust"
@@ -66,11 +69,14 @@ language-servers = ["markdown-oxide"]
 
 [[language]]
 name = "html"
-language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
+language-servers = [
+  "tailwindcss-language-server",
+  "vscode-html-language-server",
+]
 
 [[language]]
 name = "css"
-language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
+language-servers = ["vscode-css-language-server", "tailwindcss-language-server"]
 
 [[language]]
 name = "javascript"
@@ -93,18 +99,27 @@ language-servers = [
   { name = "typescript-language-server", except-features = [
     "format",
   ] },
-  "tailwindcss-ls",
+  "tailwindcss-language-server",
   "biome",
 ]
+
+# [[language]]
+# name = "tailwindcss"
+# scope = "source.svelte" # whats this?
+
+# auto-format = true
+# roots = ["tailwind.config.js", "tailwind.config.ts"]
+# language-servers = ["tailwindcss-language-server"]
 
 [[language]]
 name = "svelte"
 auto-format = true
-language-servers = ["svelteserver"]
+language-servers = ["svelteserver", "tailwindcss-language-server"]
+
 [[language]]
 name = "astro"
 scope = "source.astro"
 injection-regex = "astro"
 file-types = ["astro"]
 roots = ["package.json", "astro.config.mjs"]
-language-servers = ["astro-ls"]
+language-servers = ["tailwindcss-language-server", "astro-ls"]
