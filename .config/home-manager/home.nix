@@ -1,8 +1,4 @@
 {username, ...}: {
-  home.username = username;
-  home.homeDirectory = "/home/${username}";
-  home.stateVersion = "24.11";
-
   imports = [
     ./etc
     ./apps
@@ -13,10 +9,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.sessionVariables = {
-    EDITOR = "hx";
-    BROWSER = "zen";
-    NIXOS_OZONE_WL = 1;
+  home = {
+    inherit username;
+    homeDirectory = "/home/${username}";
+    stateVersion = "24.11";
+
+    sessionVariables = {
+      EDITOR = "hx";
+      BROWSER = "zen";
+      NIXOS_OZONE_WL = 1;
+    };
   };
 
   # Let Home Manager install and manage itself.
