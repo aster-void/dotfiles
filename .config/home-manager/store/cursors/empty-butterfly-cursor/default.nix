@@ -1,9 +1,9 @@
-{ lib
-, stdenvNoCC
-, unzip
-, ...
-}:
-let
+{
+  lib,
+  stdenvNoCC,
+  unzip,
+  ...
+}: let
   sources = {
     butter = "Empty-Butterfly-Butter-vr7-Linux";
     cyan = "Empty-Butterfly-Cyan-vr7-Linux";
@@ -16,21 +16,21 @@ let
     yellow = "Empty-Butterfly-Yellow-vr7-Linux";
   };
 in
-lib.attrsets.mapAttrs
+  lib.attrsets.mapAttrs
   (
     name: full-name:
-    stdenvNoCC.mkDerivation {
-      name = "Empty-Butterfly-Cursor-${name}";
-      src = ./.;
-      nativeBuildInputs = [ unzip ];
-      buildPhase = ''
-        mkdir -p $out/share/icons
-        mkdir tmp
-        unzip ./${full-name}.zip -d ./tmp >/dev/null
-        ls ./tmp
-        mv ./tmp/${full-name}/${lib.strings.removeSuffix "-Linux" full-name} $out/share/icons/empty-butterfly-cursor-${name}
-        rm ./tmp -rf
-      '';
-    }
+      stdenvNoCC.mkDerivation {
+        name = "Empty-Butterfly-Cursor-${name}";
+        src = ./.;
+        nativeBuildInputs = [unzip];
+        buildPhase = ''
+          mkdir -p $out/share/icons
+          mkdir tmp
+          unzip ./${full-name}.zip -d ./tmp >/dev/null
+          ls ./tmp
+          mv ./tmp/${full-name}/${lib.strings.removeSuffix "-Linux" full-name} $out/share/icons/empty-butterfly-cursor-${name}
+          rm ./tmp -rf
+        '';
+      }
   )
   sources

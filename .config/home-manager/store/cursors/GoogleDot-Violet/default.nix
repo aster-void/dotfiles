@@ -1,10 +1,12 @@
-{ stdenvNoCC
-, unzip
-, ...
-}: stdenvNoCC.mkDerivation {
+{
+  stdenvNoCC,
+  unzip,
+  ...
+}:
+stdenvNoCC.mkDerivation {
   name = "GoogleDot-Violet";
   src = ./.;
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [unzip];
   buildPhase = ''
     mkdir /build/tmp -p
     cd /build/tmp

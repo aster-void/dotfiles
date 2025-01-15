@@ -1,6 +1,7 @@
-{ pkgs }: pkgs.writeShellApplication {
+{pkgs}:
+pkgs.writeShellApplication {
   name = "reload";
-  runtimeInputs = [ pkgs.killall ];
+  runtimeInputs = [pkgs.killall];
 
   text = ''
     case $1 in

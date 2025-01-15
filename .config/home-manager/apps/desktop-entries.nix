@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   xdg.desktopEntries = {
     slack = {
       name = "Slack";

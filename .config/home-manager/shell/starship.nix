@@ -23,9 +23,9 @@
   nodejs = {
     symbol = "󰎙 ";
     style = "bold green";
-    detect_extensions = [ ];
-    detect_files = [ "yarn.lock" "package-lock.json" ".nvmrc" ];
-    detect_folders = [ ];
+    detect_extensions = [];
+    detect_files = ["yarn.lock" "package-lock.json" ".nvmrc"];
+    detect_folders = [];
   };
   bun = {
     symbol = "󰞈 Bun ";
@@ -34,7 +34,7 @@
 
   java = {
     symbol = " ";
-    detect_files = [ "pom.xml" "build.gradle.kts" ".java-version" "deps.edn" "project.clj" "build.boot" ".sdkmanrc" ];
+    detect_files = ["pom.xml" "build.gradle.kts" ".java-version" "deps.edn" "project.clj" "build.boot" ".sdkmanrc"];
   };
   scala = {
     symbol = " ";
@@ -51,7 +51,7 @@
   };
 
   nix_shell = {
-    format = "on [$symbol$state( \($name\))]($style) ";
+    format = "in [$symbol$state( \($name\))]($style) ";
     symbol = "󱄅 ";
   };
 

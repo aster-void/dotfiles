@@ -1,5 +1,4 @@
-{ pkgs }:
-let
+{pkgs}: let
   package-name = pkgs.rustPlatform.buildRustPackage rec {
     pname = "package name";
     version = "package version";
@@ -7,8 +6,8 @@ let
     # still not sure how they differ from each other, but they sure do.
     # some theory suggests that buildInputs is for compile time dependencies and
     # nativeBuildInputs is for runtime dependencies.
-    buildInputs = [ ];
-    nativeBuildInputs = [ ];
+    buildInputs = [];
+    nativeBuildInputs = [];
 
     src = pkgs.fetchFromGitHub {
       owner = "owner";
@@ -28,4 +27,4 @@ let
     doCheck = false;
   };
 in
-package-name
+  package-name

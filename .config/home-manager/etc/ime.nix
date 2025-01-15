@@ -1,4 +1,4 @@
-{ }
+{}
 # enabled system-wide.
 # { pkgs, ... }:
 # let
@@ -17,3 +17,4 @@
 #     XMODIFIERS = "@im=fcitx";
 #   };
 # }
+

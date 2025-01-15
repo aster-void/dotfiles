@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./wsl-vscode.nix
   ];

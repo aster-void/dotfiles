@@ -1,38 +1,37 @@
-{ pkgs
-, lib
-, fetchFromGitHub
-, callPackage
-
-, catppuccin-cursors
-, ...
-}:
-let
-  mkCursor = pkgs.callPackage ./helper/mkCursorPackage.nix { };
+{
+  pkgs,
+  lib,
+  fetchFromGitHub,
+  callPackage,
+  catppuccin-cursors,
+  ...
+}: let
+  mkCursor = pkgs.callPackage ./helper/mkCursorPackage.nix {};
 
   # --- collections of multiple cursors
 
   # supports X cursor and hyprcursor
   catppuccins =
     lib.attrsets.mapAttrs'
-      (name: value: {
-        name = "catppuccin-cursor-${name}";
-        inherit value;
-      })
-      catppuccin-cursors;
+    (name: value: {
+      name = "catppuccin-cursor-${name}";
+      inherit value;
+    })
+    catppuccin-cursors;
 
   # only supports X cursor
   empty-butterfly-cursors =
     lib.attrsets.mapAttrs'
-      (name: value: {
-        name = "empty-butterfly-cursor-${name}";
-        inherit value;
-      })
-      (import ./empty-butterfly-cursor pkgs);
+    (name: value: {
+      name = "empty-butterfly-cursor-${name}";
+      inherit value;
+    })
+    (import ./empty-butterfly-cursor pkgs);
 
-  # --- single cursors --- 
+  # --- single cursors ---
 
   # seems to only support X cursor
-  material-cursor = callPackage ./material-cursor.nix { };
+  material-cursor = callPackage ./material-cursor.nix {};
 
   # Hyprcursor only, not currently working
   rose-pine = mkCursor "rose-pine" (fetchFromGitHub {
@@ -44,13 +43,13 @@ let
 
   # Hyprcursor only
   googledot-violet = pkgs.callPackage ./GoogleDot-Violet;
-
 in
-catppuccins // empty-butterfly-cursors // {
-  inherit
-    material-cursor
-    rose-pine
-    googledot-violet
-    ;
-}
-
+  catppuccins
+  // empty-butterfly-cursors
+  // {
+    inherit
+      material-cursor
+      rose-pine
+      googledot-violet
+      ;
+  }

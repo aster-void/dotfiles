@@ -1,6 +1,7 @@
-{ pkgs }: pkgs.writeShellApplication {
+{pkgs}:
+pkgs.writeShellApplication {
   name = "waydroid-ui";
-  runtimeInputs = [ pkgs.waydroid ];
+  runtimeInputs = [pkgs.waydroid];
 
   text = ''
     waydroid show-full-ui

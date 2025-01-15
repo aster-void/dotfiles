@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-let
-  cursors = pkgs.callPackage ../store/cursors { };
+{pkgs, ...}: let
+  cursors = pkgs.callPackage ../store/cursors {};
 
   # available:
   # - catppuccin.mochaMauve # and others
@@ -9,8 +8,7 @@ let
   # - rose-pine
   # - googledot-violet
   name = "empty-butterfly-cursor-white";
-in
-{
+in {
   home.pointerCursor = {
     inherit name;
     package = cursors.${name};

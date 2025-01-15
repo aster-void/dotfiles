@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   cargo-compete = pkgs.rustPlatform.buildRustPackage {
     pname = "cargo-compete";
     version = "0.10.7";
@@ -22,4 +21,4 @@ let
     doCheck = false;
   };
 in
-cargo-compete
+  cargo-compete

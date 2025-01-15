@@ -10,11 +10,9 @@
 pre-commit:
   parallel: true
   commands:
-    nixpkgs-fmt:
+    fmt:
       glob: "*.nix"
-      run: nixpkgs-fmt .
-      root: ./.config/home-manager
+      run: alejandra {staged_files}
     deadnix:
       glob: "*.nix"
       run: deadnix .
-      root: ./.config/home-manager

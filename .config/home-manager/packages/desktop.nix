@@ -1,8 +1,10 @@
-{ pkgs, inputs, ... }:
-let
-  self-hosted = pkgs.callPackage ../build/default.nix { };
-in
 {
+  pkgs,
+  inputs,
+  ...
+}: let
+  self-hosted = pkgs.callPackage ../build/default.nix {};
+in {
   home.packages = with pkgs; [
     self-hosted.waydroid-ui
     self-hosted.reload
@@ -21,11 +23,12 @@ in
     waybar
     polybar
     eww
-    
+
     ### media ctl
     pavucontrol
     pulseaudio
     brightnessctl
+    asciinema
 
     ## bluetooth
     bluez
@@ -40,8 +43,12 @@ in
     chromium
     brave
     inputs.zen-browser.packages.${system}.beta
+
     # LLM
     ollama
+
+    # editor
+    zed-editor
 
     ## Office
     libreoffice

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   ## README: you need to install wget too.
   # environment.variables = ldEnv;
   config.home.file.".vscode-server/server-env-setup".source = "${pkgs.fetchFromGitHub {
@@ -8,5 +8,3 @@
     hash = "sha256-m18X5GZPrKKNyNDg4Xy4wjd076gMA+sb+pLuMzFGDPE=";
   }}/server-env-setup";
 }
-
-

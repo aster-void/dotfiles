@@ -1,14 +1,15 @@
-{ git
-, gnumake
-, inkscape
-, xorg
-, stdenvNoCC
-, fetchFromGitHub
-, ...
+{
+  git,
+  gnumake,
+  inkscape,
+  xorg,
+  stdenvNoCC,
+  fetchFromGitHub,
+  ...
 }:
 stdenvNoCC.mkDerivation {
   name = "material-cursor";
-  nativeBuildInputs = [ git gnumake inkscape xorg.xcursorgen ];
+  nativeBuildInputs = [git gnumake inkscape xorg.xcursorgen];
   src = fetchFromGitHub {
     owner = "varlesh";
     repo = "material-cursors";
@@ -24,4 +25,3 @@ stdenvNoCC.mkDerivation {
     make install
   '';
 }
-
