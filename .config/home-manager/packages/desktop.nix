@@ -16,13 +16,16 @@ in {
 
     ### bars
     ags
+    waybar
+    polybar
+    eww
     ### Launchers
     nwg-launchers
     walker
     rofi
-    waybar
-    polybar
-    eww
+
+    ## watch config files and reboot the packages accordingly
+    self-hosted.reload-d
 
     ### media ctl
     pavucontrol
