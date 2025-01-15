@@ -24,6 +24,7 @@
       };
       rust-bin = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
     in {
+      packages.default = pkgs.callPackage ./. {toolchain = rust-bin;};
       devShells.default = pkgs.mkShell {
         packages = [
           rust-bin
