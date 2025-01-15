@@ -35,7 +35,7 @@
 
     username = "aster";
   in {
-    devShell.${system} = pkgs.mkShell {
+    devShells.${system}.default = pkgs.mkShell {
       name = "Home Manager";
       buildInputs = with pkgs; [
         lefthook
