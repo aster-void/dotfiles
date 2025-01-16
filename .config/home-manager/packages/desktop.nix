@@ -72,7 +72,7 @@ in {
     yt-dlp
     lollypop
     mpd
-    mpc
+    playerctl
 
     ## visual effect
     fastfetch

@@ -10,7 +10,7 @@
     "hyprland/workspaces",
     // "custom/swap",
     "hyprland/mode",
-    "custom/cava-internal",
+    "custom/cava-bar",
     "mpd#m2",
     "mpd#m3",
     "mpd#m4",
@@ -48,7 +48,7 @@
     "format": " {elapsedTime:%M:%S}",
     "format-disconnected": "⚠  Disconnected",
     "format-stopped": " Not Playing",
-    "on-click": "mpc toggle",
+    "on-click": "playerctl toggle",
     "state-icons": {
       "playing": "",
       "paused": ""
@@ -60,7 +60,7 @@
     "format-paused": "",
     "format-stopped": "",
     // Commands to execute on events
-    "on-click": "mpc -q pause && mpc -q prev && mpc -q start"
+    "on-click": "playerctl pause && playerct previous && playerctl start"
   },
   "mpd#3": {
     "interval": 1,
@@ -93,8 +93,8 @@
     "interval": 5,
     "exec": "mpc current --format='\"title\":\"%title%\",\"artist\":\"%artist%\"'"
   },
-  "custom/cava-internal": {
-    "exec": "sh ~/.config/waybar/scripts/Cava.sh",
+  "custom/cava-bar": {
+    "exec": "sh ~/.config/waybar/modules/cava.sh",
     "format": "{}",
     "tooltip": false,
     "on-click": "reload waybar",

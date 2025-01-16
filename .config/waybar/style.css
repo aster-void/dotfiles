@@ -120,7 +120,7 @@ window#waybar {
 #clock,
 #clock.calendar,
 #custom-swap,
-#custom-cava-internal,
+#custom-cava-bar,
 #battery,
 #cpu,
 #memory,
@@ -150,7 +150,7 @@ window#waybar {
 
 
 /* standalone module group */
-#custom-cava-internal {
+#custom-cava-bar {
   border-radius: 10px;
 }
 
@@ -195,7 +195,7 @@ window#waybar {
 }
 
 #mpd,
-#custom-cava-internal {
+#custom-cava-bar {
   color: @mauve;
 }
 
