@@ -9,19 +9,19 @@
     "custom/launcher",
     "hyprland/workspaces",
     // "custom/swap",
-    "tray",
     "hyprland/mode",
     "custom/cava-internal",
-    "mpd#2",
-    "mpd#3",
-    "mpd#4",
+    "mpd#m2",
+    "mpd#m3",
+    "mpd#m4",
     "mpd"
   ],
   "modules-center": [
     "hyprland/window"
   ],
   "modules-right": [
-    "clock",
+    "tray",
+    "clock#calendar",
     // "backlight",
     "pulseaudio",
     // "custom/keyboard-layout",
@@ -29,6 +29,7 @@
     // "memory",
     "battery",
     "network",
+    "clock",
     "custom/power"
   ],
   // Modules configuration
@@ -38,7 +39,7 @@
     "format": "{name}",
     "format-icons": {
       "active": "●",
-      "default": "◯",
+      "default": "◯"
     }
   },
   "mpd": {
@@ -118,6 +119,12 @@
     "spacing": 5
   },
   "clock": {
+    // %I: hour (12hr) %H: hour (24hr)
+    // %M: Minute %p: AM/PM
+    "format": "{:%I:%M %p}"
+  },
+  // calendar
+  "clock#calendar": {
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
@@ -139,10 +146,8 @@
       "on-scroll-up": "shift_up",
       "on-scroll-down": "shift_down"
     },
-    // %I: hour (12hr) %H: hour (24hr)
-    // %M: Minute %p: AM/PM
     // %Y: Year %m: Month %d: Date
-    "format": "{:%I:%M %p | %d %b (%a)}", //12 hour format
+    "format": "{:%d %b (%a)}", //12 hour format
     // "format": " {:%d %m %Y  %H:%M}", //24 hour format
     // //"timezones": [ "Kolkata" ],
     // //"max-length": 200
