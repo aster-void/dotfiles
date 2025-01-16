@@ -135,8 +135,7 @@ window#waybar {
 #tray,
 #custom-power,
 #custom-pacman,
-#custom-launcher,
-#mpd {
+#custom-launcher {
   padding: 5px 8px;
   border-style: solid;
   background-color: shade(@base, 1);
@@ -155,7 +154,7 @@ window#waybar {
 }
 
 /* left side of module group */
-#mpd.m2 {
+#custom-player.prev {
   background-color: @base;
   border-radius: 10px 0px 0px 10px;
   margin: 8px 0px 8px 6px;
@@ -163,24 +162,23 @@ window#waybar {
 }
 
 /* middle of module group */
-#mpd.m3 {
+#custom-player.play {
   background-color: @base;
   border-radius: 0px 0px 0px 0px;
   margin: 8px 0px 8px 0px;
   padding: 4px;
-
 }
 
-/* right side of moule group */
-#custom-keyboard-layout #mpd.m4 {
+/* right side of module group */
+#custom-player.next {
   background-color: @base;
   border-radius: 0 10px 10px 0;
-  margin-right: 10px;
+  margin: 8px 6px 8px 0px;
   padding: 4px 10px 4px 14px;
 }
 
 /* transparent bg */
-#mpd {
+#custom-player.main {
   border-radius: 10px;
   margin-left: 5px;
   margin-right: 5px;
@@ -194,7 +192,12 @@ window#waybar {
   margin-right: 15px;
 }
 
-#mpd,
+#custom-player.prev,
+#custom-player.play,
+#custom-player.next {
+  color: @sky;
+}
+
 #custom-cava-bar {
   color: @mauve;
 }

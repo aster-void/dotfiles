@@ -11,10 +11,10 @@
     // "custom/swap",
     "hyprland/mode",
     "custom/cava-bar",
-    "mpd#m2",
-    "mpd#m3",
-    "mpd#m4",
-    "mpd"
+    "custom/player#prev",
+    "custom/player#play",
+    "custom/player#next",
+    "custom/player#main"
   ],
   "modules-center": [
     "hyprland/window"
@@ -22,11 +22,7 @@
   "modules-right": [
     "tray",
     "clock#calendar",
-    // "backlight",
     "pulseaudio",
-    // "custom/keyboard-layout",
-    // "temperature",
-    // "memory",
     "battery",
     "network",
     "clock",
@@ -42,56 +38,21 @@
       "default": "◯"
     }
   },
-  "mpd": {
-    "tooltip": true,
-    "tooltip-format": "{artist} - {album} - {title} - Total Time : {totalTime:%M:%S}",
-    "format": " {elapsedTime:%M:%S}",
-    "format-disconnected": "⚠  Disconnected",
-    "format-stopped": " Not Playing",
-    "on-click": "playerctl toggle",
-    "state-icons": {
-      "playing": "",
-      "paused": ""
-    }
+  "custom/player#main": {
+    "exec": "while true; do echo '$(playerctl metadata title); sleep 0.2; done",
+    "on-click": "playerctl toggle"
   },
-  "mpd#2": {
+  "custom/player#prev": {
     "format": "",
-    "format-disconnected": "",
-    "format-paused": "",
-    "format-stopped": "",
-    // Commands to execute on events
-    "on-click": "playerctl pause && playerct previous && playerctl start"
+    "on-click": "playerct previous"
   },
-  "mpd#3": {
-    "interval": 1,
-    "format": "{stateIcon}",
-    "format-disconnected": "",
-    "format-paused": "{stateIcon}",
-    "format-stopped": "",
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    },
-    // Commands to execute on events
-    "on-click": "mpc toggle"
+  "custom/player#play": {
+    "exec": "while true; do playerctl status; sleep 0.2; done",
+    "on-click": "playerctl play-pause"
   },
-  "mpd#4": {
+  "custom/player#next": {
     "format": "",
-    "format-disconnected": "",
-    "format-paused": "",
-    "format-stopped": "",
-    // Commands to execute on events
-    "on-click": "mpc -q pause && mpc -q next && mpc -q start"
-  },
-  "custom/swap": {
-    "on-click": "~/.config/waybar/scripts/swap.sh",
-    "tooltip": "Swap between waybar configs",
-    "format": "Bg  "
-  },
-  "custom/mpd": {
-    "format": " {title} - {artist}",
-    "interval": 5,
-    "exec": "mpc current --format='\"title\":\"%title%\",\"artist\":\"%artist%\"'"
+    "on-click": "playerctl next"
   },
   "custom/cava-bar": {
     "exec": "sh ~/.config/waybar/modules/cava.sh",
@@ -101,18 +62,8 @@
     "layer": "below",
     "output": "all"
   },
-  "hyprland/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
   "hyprland/window": {
     "format": "{}"
-  },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
   },
   "tray": {
     "icon-size": 14,
