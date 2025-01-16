@@ -30,16 +30,6 @@ file-types = ["C"]
 name = "fsharp"
 auto-format = true
 
-# [language.config.inlayHints]
-# bindingModeHints.enable = true
-# chainingHints.enable = true
-# closingBraceHints.enable = true
-# closingBraceHints.minLines = 1
-# closureCaptureHints.enable = true
-# closureReturnTypeHints.enable = "always"
-# expressionAdjustmentHints.enable = true
-# rangeExclusiveHints.enable = true
-
 [[language]]
 name = "toml"
 auto-format = true
@@ -76,7 +66,15 @@ language-servers = [
 
 [[language]]
 name = "css"
+file-types = ["css", "scss", "less"]
 language-servers = ["vscode-css-language-server", "tailwindcss-language-server"]
+
+[[language]]
+name = "less"
+scope = "source.less"
+file-types = ["less"]
+language-servers = ["vscode-css-language-server"]
+grammar = "css"
 
 [[language]]
 name = "javascript"
@@ -102,14 +100,6 @@ language-servers = [
   "tailwindcss-language-server",
   "biome",
 ]
-
-# [[language]]
-# name = "tailwindcss"
-# scope = "source.svelte" # whats this?
-
-# auto-format = true
-# roots = ["tailwind.config.js", "tailwind.config.ts"]
-# language-servers = ["tailwindcss-language-server"]
 
 [[language]]
 name = "svelte"
