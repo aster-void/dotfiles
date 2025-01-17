@@ -10,6 +10,7 @@
 
 # dev
 lefthook.yml
+.envrc
 .direnv
 .helix
 shell.nix
