@@ -25,7 +25,7 @@
     "pulseaudio",
     "battery",
     "network",
-    "clock",
+    "clock#clock",
     "custom/power"
   ],
   // Modules configuration
@@ -69,7 +69,7 @@
     "icon-size": 14,
     "spacing": 5
   },
-  "clock": {
+  "clock#clock": {
     // %I: hour (12hr) %H: hour (24hr)
     // %M: Minute %p: AM/PM
     "format": "{:%I:%M %p}"
@@ -231,7 +231,7 @@
     "on-click": "~/.config/waybar/scripts/keyhint.sh"
   },
   "custom/launcher": {
-    "format": " ",
+    "format": " ",
     "on-click": "exec nwg-drawer -c 7 -is 70 -spacing 23",
     "tooltip": false
   }
