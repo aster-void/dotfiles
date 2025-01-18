@@ -5,7 +5,10 @@
     ./shell
     ./packages/share.nix
     ./packages/desktop.nix
+    ./plugins
   ];
+
+  programs.asdf.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
