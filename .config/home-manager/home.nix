@@ -8,7 +8,7 @@
     ./plugins
   ];
 
-  programs.asdf.enable = true;
+  programs.asdf.enable = false;
 
   nixpkgs.config.allowUnfree = true;
 
