@@ -10,6 +10,7 @@
     postgresql
     svelte-language-server
     wget
+    bat
 
     # he won't allow me install nix shell on that repo
     bun
