@@ -12,9 +12,6 @@
     wget
     bat
 
-    # he won't allow me install nix shell on that repo
-    bun
-
     ## Nix
 
     hydra-check
