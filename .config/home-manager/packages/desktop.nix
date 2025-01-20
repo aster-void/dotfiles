@@ -8,6 +8,7 @@ in {
   home.packages = with pkgs; [
     self-hosted.waydroid-ui
     self-hosted.reload
+    self-hosted.setpaper
 
     ## Desktop
     hyprshot
