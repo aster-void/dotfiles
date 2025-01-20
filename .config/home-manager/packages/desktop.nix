@@ -13,6 +13,7 @@ in {
     hyprshot
     gpu-screen-recorder
     mako # notification daemon
+    blobdrop # drag & drop from shell
 
     ### bars
     ags
