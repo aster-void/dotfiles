@@ -9,6 +9,7 @@ in {
     self-hosted.waydroid-ui
     self-hosted.reload
     self-hosted.setpaper
+    self-hosted.wpick
 
     ## Desktop
     hyprshot

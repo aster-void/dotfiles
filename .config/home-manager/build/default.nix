@@ -4,4 +4,5 @@
   reload = pkgs.callPackage ./reload.nix {};
   reload-d = pkgs.callPackage ./reload-d.nix {};
   setpaper = pkgs.callPackage ./setpaper {};
+  wpick = pkgs.callPackage ./wpick.nix {};
 }
