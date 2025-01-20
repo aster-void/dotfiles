@@ -39,5 +39,8 @@
 
     ## Text Editor
     inputs.helix.packages.${system}.default
+
+    ## git tools
+    tig
   ];
 }
