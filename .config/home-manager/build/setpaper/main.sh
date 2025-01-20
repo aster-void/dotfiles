@@ -4,7 +4,7 @@ Usage of setpaper.
 
   Flags:
     -h|--help : show this help
-    -s|-w|--save|--write : save to ~/.config/wallpaper
+    --no-write : don't save to ~/.config/wallpaper
 
   Example:
     setpaper ./wallpaper.jpg # sets wallpaper that doesn't save after reboot
@@ -20,20 +20,20 @@ function error() {
 }
 
 # predefine functions
-function load() {
+function _load() {
   hyprctl hyprpaper unload "$1"
   hyprctl hyprpaper preload "$1"
   hyprctl hyprpaper wallpaper ",$1"
 }
 
-save=false
+save=true
 path=""
 
 # parse args
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -s|-w|--save|--write)
-      save="true" ;;
+    --no-write)
+      save="false" ;;
     -h|--help)
       _help ;;
     -*)
@@ -53,7 +53,7 @@ fi
 abs_path="$(realpath "$path")"
 if "$save"; then
   ln -sf "$abs_path" ~/.config/wallpaper
-  load ~/.config/wallpaper
+  _load ~/.config/wallpaper
 else
-  load "$abs_path"
+  _load "$abs_path"
 fi
