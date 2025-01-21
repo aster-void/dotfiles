@@ -124,9 +124,19 @@ window#waybar {
 /* standalone module group */
 #custom-cava-bar,
 #tray,
-#custom-power {
+#custom-power,
+#custom-launcher {
   border-radius: 10px;
   margin: 8px 6px 8px 6px;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bolder;
+  border-radius: 10px;
+  padding: 3px 8px 3px 8px;
+}
+
+#custom-launcher {
+  padding-right: 4px;
 }
 
 /* left side of module group */
@@ -243,11 +253,6 @@ window#waybar {
 #custom-launcher {
   background-color: @mauve;
   color: @base;
-  font-size: 18px;
-  font-weight: bolder;
-  border-radius: 10px;
-  padding: 3px 4px 3px 8px;
-  margin-left: 10px;
 }
 
 #custom-power {
