@@ -1,14 +1,22 @@
 function _help() {
   echo "
-Usage of setpaper.
+  setpaper: a small wrapper of hyprpaper to set the paper and reload.
+
+  Usage:
+  * set \`path\` to ~/.config/wallpaper (or \$XDG_CONFIG_HOME/wallpaper if you have custom XDG_CONFIG_HOME)
+      in hyprpaper.conf (usually located at ~/.config/hypr/hyprpaper.conf)
+  * (optional) set 
 
   Flags:
     -h|--help : show this help
-    --no-write : don't save to ~/.config/wallpaper
+
+    -w|--wall : write to wallpaper
+    -l|--lock : write to lock screen background
 
   Example:
-    setpaper ./wallpaper.jpg # sets wallpaper that doesn't save after reboot
-    setpaper --save ./wallpaper.png # sets wallpaper and saves it
+    setpaper -w ./wallpaper.jpg # sets wallpaper to wallpaper.jpg
+    setpaper -w -l ./wallpaper.png # sets wallpaper to both wallpaper and lock screen
+    setpaper ./wallpaper.jpeg # temporarily changes the wallpaper, which resets after restart
 "
   exit 0
 }
@@ -20,20 +28,23 @@ function error() {
 }
 
 # predefine functions
-function _load() {
+function _load_wall() {
   hyprctl hyprpaper unload "$1"
   hyprctl hyprpaper preload "$1"
   hyprctl hyprpaper wallpaper ",$1"
 }
 
-save=true
+save_wall="false"
+save_lock="false"
 path=""
 
 # parse args
 while [[ $# -gt 0 ]]; do
   case $1 in
-    --no-write)
-      save="false" ;;
+    -w|--wall)
+      save_wall="true" ;;
+    -l|--lock)
+      save_lock="true" ;;
     -h|--help)
       _help ;;
     -*)
@@ -43,6 +54,7 @@ while [[ $# -gt 0 ]]; do
   esac
   shift
 done
+
 if [ "$path" == "" ]; then
   error "Path not provided"
 elif [ ! -f "$path" ]; then
@@ -51,9 +63,15 @@ fi
 
 # operate
 abs_path="$(realpath "$path")"
-if "$save"; then
-  ln -sf "$abs_path" ~/.config/wallpaper
-  _load ~/.config/wallpaper
-else
-  _load "$abs_path"
+CONFIG_DIR="${XDG_CONFIG_HOME:-"~/.config"}"
+if "$save_wall"; then
+  ln -sf "$abs_path" "$CONFIG_DIR/wallpaper"
+  _load_wall "$CONFIG_DIR/wallpaper"
+fi
+if "$save_lock"; then
+  ln -sf "$abs_path" "$CONFIG_DIR/lock"
+fi
+
+if [[ "$save_wall" == false && "$save_lock" == false ]]; then
+  _load_wall "$abs_path"
 fi

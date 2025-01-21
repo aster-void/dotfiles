@@ -4,7 +4,7 @@
   ...
 }: {
   # notification
-  services.dunst.enable = true;
+  # services.dunst.enable = true;
   # widgets / bars
   # programs.waybar.enable = true;
 

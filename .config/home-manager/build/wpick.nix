@@ -1,8 +1,22 @@
 {pkgs}:
 pkgs.writeShellApplication {
   name = "wpick";
-  runtimeInputs = with pkgs; [yazi]; # I can probably assume xargs exists in the env
+  runtimeInputs = [
+    pkgs.yazi
+    (pkgs.callPackage ./setpaper {})
+  ]; # I can probably assume xargs exists in the env
   text = ''
-    yazi --chooser-file=/dev/stdout | xargs setpaper
+    path=$(yazi --chooser-file=/dev/stdout)
+    case $1 in
+      l|lock)
+        setpaper --lock "$path"
+      ;;
+      a|all)
+        setpaper --wall --lock "$path"
+      ;;
+      *)
+        setpaper --wall "$path"
+      ;;
+    esac
   '';
 }

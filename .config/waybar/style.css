@@ -131,7 +131,8 @@ window#waybar {
 
 /* left side of module group */
 #custom-player.prev,
-#clock.calendar {
+#clock.calendar,
+#cpu {
   background-color: @base;
   border-radius: 10px 0px 0px 10px;
   margin: 8px 0px 8px 6px;
@@ -151,7 +152,8 @@ window#waybar {
 
 /* right side of module group */
 #custom-player.next,
-#clock.clock {
+#clock.clock,
+#memory {
   background-color: @base;
   border-radius: 0 10px 10px 0;
   margin: 8px 6px 8px 0px;

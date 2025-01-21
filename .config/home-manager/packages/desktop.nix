@@ -12,9 +12,12 @@ in {
     self-hosted.wpick
 
     ## Desktop
+    ### notification daemon
+    mako
+    dunst
+    ### others
     hyprshot
     gpu-screen-recorder
-    mako # notification daemon
     blobdrop # drag & drop from shell
 
     ### bars

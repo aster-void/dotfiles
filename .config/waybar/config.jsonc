@@ -21,6 +21,8 @@
   ],
   "modules-right": [
     "tray",
+    "cpu",
+    "memory",
     "clock#calendar",
     "pulseaudio",
     "battery",
@@ -132,7 +134,7 @@
   //     "interval": 1
   // },
   "cpu": {
-    "format": "﬙ {usage: >3}%",
+    "format": " {usage: >3}%",
     "on-click": "alacritty -e htop"
   },
   "memory": {
