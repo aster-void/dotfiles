@@ -6,8 +6,7 @@ pkgs.writeShellApplication {
     (pkgs.callPackage ./setpaper {})
   ]; # I can probably assume xargs exists in the env
   text = ''
-    path=$(yazi --chooser-file=/dev/stdout)
-    case $1 in
+    case "$1" in
       h|help|-h|--help)
         echo "
           usage:
@@ -15,8 +14,12 @@ pkgs.writeShellApplication {
             wpick lock # pick your lock screen
             wpick all # choose both your wallpaper and wall
             wpick help # show this help
-        ";
-      ;;
+        "
+        exit 0;;
+    esac
+
+    path=$(yazi --chooser-file=/dev/stdout)
+    case $1 in
       l|lock)
         setpaper --lock "$path"
       ;;
