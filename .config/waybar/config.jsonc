@@ -8,7 +8,6 @@
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces",
-    // "custom/swap",
     "hyprland/mode",
     "custom/cava-bar",
     "custom/player#prev",
@@ -22,6 +21,7 @@
   "modules-right": [
     "tray",
     "cpu",
+    "temperature",
     "memory",
     "clock#calendar",
     "pulseaudio",
