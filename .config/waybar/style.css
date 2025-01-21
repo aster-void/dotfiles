@@ -141,7 +141,8 @@ window#waybar {
 /* middle of module group */
 #custom-player.play,
 #pulseaudio,
-#network {
+#network,
+#battery {
   background-color: @base;
   border-radius: 0px 0px 0px 0px;
   margin: 8px 0px 8px 0px;
@@ -191,9 +192,6 @@ window#waybar {
 
 #battery {
   color: #d8dee9;
-  /* border-bottom: 2px solid #d8dee9; */
-  border-radius: 0 10px 10px 0;
-  margin-right: 10px;
 }
 
 #battery.charging {
