@@ -69,7 +69,8 @@ if "$save_wall"; then
   _load_wall "$CONFIG_DIR/wallpaper"
 fi
 if "$save_lock"; then
-  ln -sf "$abs_path" "$CONFIG_DIR/lock"
+  # WORKAROUND: hyprlock doesn't recognize soft links yet.
+  ln -f "$abs_path" "$CONFIG_DIR/lock"
 fi
 
 if [[ "$save_wall" == false && "$save_lock" == false ]]; then
