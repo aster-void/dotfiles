@@ -4,26 +4,40 @@ pkgs.writeShellApplication {
   runtimeInputs = [
     pkgs.yazi
     (pkgs.callPackage ./setpaper {})
-  ]; # I can probably assume xargs exists in the env
+  ];
+
   text = ''
+    function _help() {
+      echo "
+        usage:
+          wpick wall # pick your wallpaper
+          wpick lock # pick your lock screen
+          wpick all # choose both your wallpaper and wall at once
+          wpick help # show this help
+      "
+      exit 0
+    }
+
+    if [[ $# -ne 1 ]]; then
+      _help
+    fi
     case "$1" in
       h|help|-h|--help)
-        echo "
-          usage:
-            wpick # pick your wallpaper
-            wpick lock # pick your lock screen
-            wpick all # choose both your wallpaper and wall
-            wpick help # show this help
-        "
-        exit 0;;
+        _help
+      ;;
     esac
 
-    path=$(yazi --chooser-file=/dev/stdout)
-    case $1 in
-      l|lock)
+    case "$1" in
+      l|lock|-l|--lock)
+        path=$(yazi --chooser-file=/dev/stdout)
         setpaper --lock "$path"
       ;;
-      a|all)
+      w|wall|-w|--wall)
+        path=$(yazi --chooser-file=/dev/stdout)
+        setpaper --wall "$path"
+      ;;
+      a|all|-a|--all)
+        path=$(yazi --chooser-file=/dev/stdout)
         setpaper --wall --lock "$path"
       ;;
       -*)
@@ -31,8 +45,8 @@ pkgs.writeShellApplication {
         exit 1
       ;;
       *)
-        setpaper --wall "$path"
-      ;;
+        echo "please provide valid option. options: lock, wall, all"
+        exit 1
     esac
   '';
 }

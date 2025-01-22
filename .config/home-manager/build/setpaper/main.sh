@@ -3,9 +3,8 @@ function _help() {
   setpaper: a small wrapper of hyprpaper to set the paper and reload.
 
   Usage:
-  * set \`path\` to ~/.config/wallpaper (or \$XDG_CONFIG_HOME/wallpaper if you have custom XDG_CONFIG_HOME)
-      in hyprpaper.conf (usually located at ~/.config/hypr/hyprpaper.conf)
-  * (optional) set 
+  * in hyprpaper.conf, set \`path\` to ~/.config/wallpaper (or \$XDG_CONFIG_HOME/wallpaper if you have custom XDG_CONFIG_HOME)
+  * (optional) in hyprlock.conf, set \`background.path\` to ~/.config/lock
 
   Flags:
     -h|--help : show this help
