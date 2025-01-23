@@ -100,7 +100,7 @@
       "on-scroll-down": "shift_down"
     },
     // %Y: Year %m: Month %d: Date
-    "format": "{:%d %b (%a)}", //12 hour format
+    "format": "{:%b %d / %a}", //12 hour format
     // "format": " {:%d %m %Y  %H:%M}", //24 hour format
     // //"timezones": [ "Kolkata" ],
     // //"max-length": 200
