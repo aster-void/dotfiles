@@ -125,7 +125,8 @@ window#waybar {
 #custom-cava-bar,
 #tray,
 #custom-power,
-#custom-launcher {
+#custom-launcher,
+#hyprland-window {
   border-radius: 10px;
   margin: 8px 6px 8px 6px;
   margin-left: 10px;
@@ -198,16 +199,16 @@ window#waybar {
 }
 
 #hyprland-window {
-  border-radius: 10px;
-  margin: 8px 10px;
+  color: @sky;
+  background-color: @mauve;
 }
 
 #battery {
-  color: #d8dee9;
+  color: @blue;
 }
 
 #battery.charging {
-  color: #81a1c1;
+  color: @teal;
   /* border-bottom: 2px solid #81a1c1; */
 }
 
