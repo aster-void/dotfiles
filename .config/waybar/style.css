@@ -91,7 +91,7 @@ window#waybar {
 }
 
 #clock,
-#clock.calendar,
+#clock.date,
 #custom-swap,
 #custom-cava-bar,
 #battery,
@@ -141,7 +141,7 @@ window#waybar {
 
 /* left side of module group */
 #custom-player.prev,
-#clock.calendar,
+#clock.date,
 #cpu {
   background-color: @base;
   border-radius: 10px 0px 0px 10px;
