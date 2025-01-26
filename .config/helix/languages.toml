@@ -2,12 +2,10 @@
 astro-ls = { command = "astro-ls", args = ["--stdio"] }
 biome = { command = "biome", args = ["lsp-proxy"] }
 rust-analyzer.config = { checkOnSave.command = "clippy" }
-tailwindcss-language-server = { command = "tailwindcss-language-server", args = [
-  "--stdio",
-] }
-vscode-css-language-server = { command = "vscode-css-language-server", args = [
-  "--stdio",
-] }
+tailwind = { command = "tailwindcss-language-server", args = ["--stdio"] }
+vscode-css = { command = "vscode-css-language-server", args = ["--stdio"] }
+ts = { command = "typescript-language-server", args = ["--stdio"] }
+js = { command = "javascript-typescript-langserver", args = ["--stdio"] }
 
 [[language]]
 name = "nix"
@@ -59,15 +57,12 @@ language-servers = ["markdown-oxide"]
 
 [[language]]
 name = "html"
-language-servers = [
-  "tailwindcss-language-server",
-  "vscode-html-language-server",
-]
+language-servers = ["tailwind", "vscode-html-language-server"]
 
 [[language]]
 name = "css"
 file-types = ["css", "scss", "less"]
-language-servers = ["vscode-css-language-server", "tailwindcss-language-server"]
+language-servers = ["vscode-css-language-server", "tailwind"]
 
 [[language]]
 name = "less"
@@ -79,32 +74,28 @@ grammar = "css"
 [[language]]
 name = "javascript"
 auto-format = true
+language-servers = ["js"]
 
 [[language]]
 name = "typescript"
 auto-format = true
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+formatter = { command = "biome", args = [
+  "--stdin",
+  "--stdin-file-path",
+  "source.ts",
+] }
+language-servers = [{ name = "ts", except-features = ["format"] }, "biome"]
 
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "tailwindcss-language-server",
-  "biome",
-]
+formatter = { command = "biome", args = ["--stdin-file-path", "a.tsx"] }
+language-servers = ["ts", "biome", "tailwind"]
 
 [[language]]
 name = "svelte"
 auto-format = true
-language-servers = ["svelteserver", "tailwindcss-language-server"]
+language-servers = ["svelteserver", "tailwind"]
 
 [[language]]
 name = "astro"
@@ -112,4 +103,4 @@ scope = "source.astro"
 injection-regex = "astro"
 file-types = ["astro"]
 roots = ["package.json", "astro.config.mjs"]
-language-servers = ["tailwindcss-language-server", "astro-ls"]
+language-servers = ["tailwind", "astro-ls"]

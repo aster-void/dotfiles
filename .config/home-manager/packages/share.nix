@@ -8,7 +8,6 @@
 
     act
     postgresql
-    svelte-language-server
     wget
     bat
 
@@ -20,7 +19,9 @@
 
     biome
     typescript-language-server
+    javascript-typescript-langserver
     tailwindcss-language-server
+    svelte-language-server
     clippy
     metals # scala
     astro-language-server
