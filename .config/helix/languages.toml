@@ -6,6 +6,7 @@ tailwind = { command = "tailwindcss-language-server", args = ["--stdio"] }
 vscode-css = { command = "vscode-css-language-server", args = ["--stdio"] }
 ts = { command = "typescript-language-server", args = ["--stdio"] }
 js = { command = "javascript-typescript-langserver", args = ["--stdio"] }
+deno = { command = "deno", args = ["lsp"] }
 
 [[language]]
 name = "nix"
@@ -95,7 +96,8 @@ language-servers = ["ts", "biome", "tailwind"]
 [[language]]
 name = "svelte"
 auto-format = true
-language-servers = ["svelteserver", "tailwind"]
+# formatter = { command = "deno", args = ["fmt", "-"] }
+language-servers = ["svelteserver", "deno", "tailwind"]
 
 [[language]]
 name = "astro"
