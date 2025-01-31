@@ -7,6 +7,15 @@ vscode-css = { command = "vscode-css-language-server", args = ["--stdio"] }
 ts = { command = "typescript-language-server", args = ["--stdio"] }
 js = { command = "javascript-typescript-langserver", args = ["--stdio"] }
 deno = { command = "deno", args = ["lsp"] }
+lsp-ai.command = "lsp-ai"
+helix-gpt.command = "helix-gpt"
+
+[language-server.lsp-ai.config.models.model1]
+type = "open_ai"
+chat_endpoint = "https://api.groq.com/openai/v1/chat/completions"
+model = "llama3-70b-8192"
+max_requests_per_second = 1
+auth_token_env_var_name = "GROQ_API_KEY"
 
 [[language]]
 name = "nix"
@@ -80,18 +89,20 @@ language-servers = ["js"]
 [[language]]
 name = "typescript"
 auto-format = true
-formatter = { command = "biome", args = [
-  "--stdin",
-  "--stdin-file-path",
-  "source.ts",
-] }
-language-servers = [{ name = "ts", except-features = ["format"] }, "biome"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path=a.ts"] }
+language-servers = [
+  "lsp-ai",
+  { name = "ts", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "tsx"
 auto-format = true
-formatter = { command = "biome", args = ["--stdin-file-path", "a.tsx"] }
-language-servers = ["ts", "biome", "tailwind"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path=a.tsx"] }
+language-servers = ["helix-gpt", "ts", "biome", "tailwind"]
 
 [[language]]
 name = "svelte"
