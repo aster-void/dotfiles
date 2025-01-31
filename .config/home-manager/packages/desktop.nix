@@ -12,13 +12,15 @@ in {
     self-hosted.wpick
 
     ## Desktop
-    ### notification daemon
-    mako
-    dunst
+
     ### others
     hyprshot
     gpu-screen-recorder
     blobdrop # drag & drop from shell
+
+    ### notification daemon
+    mako
+    dunst
 
     ### bars
     ags
@@ -58,6 +60,7 @@ in {
 
     # editor
     zed-editor
+    code-cursor
 
     ## Office
     libreoffice
