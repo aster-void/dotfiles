@@ -108,7 +108,7 @@ language-servers = ["helix-gpt", "ts", "biome", "tailwind"]
 name = "svelte"
 auto-format = true
 # formatter = { command = "deno", args = ["fmt", "-"] }
-language-servers = ["svelteserver", "deno", "tailwind"]
+language-servers = ["tailwind", "svelteserver", "deno"]
 
 [[language]]
 name = "astro"
