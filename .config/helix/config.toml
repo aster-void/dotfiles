@@ -54,3 +54,14 @@ character = "▏" # Some characters that work well: "╎", "▏", "┆", "┊", 
 # character = "┊"
 # character = "⸽"
 skip-levels = 2
+
+[editor.whitespace]
+render = "all"
+
+[editor.whitespace.characters]
+space = " "
+nbsp = "⍽"
+nnbsp = "␣"
+tab = "→"
+newline = "⏎"
+tabpad = "·"
