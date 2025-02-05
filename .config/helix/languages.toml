@@ -20,7 +20,7 @@ auth_token_env_var_name = "GROQ_API_KEY"
 [[language]]
 name = "nix"
 auto-format = true
-formatter.command = "alejandra"
+formatter = { command = "alejandra", args = ["-", "--quiet"] }
 language-servers = ["nil", "nixd"]
 
 [[language]]
