@@ -15,6 +15,7 @@ in {
 
     ### others
     hyprshot
+    self-hosted.hyprshade
     gpu-screen-recorder
     blobdrop # drag & drop from shell
 

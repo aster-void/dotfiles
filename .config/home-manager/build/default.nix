@@ -1,8 +1,15 @@
-{pkgs, ...}: {
-  v-analyzer = pkgs.callPackage ./v-analyzer {};
-  waydroid-ui = pkgs.callPackage ./waydroid-ui.nix {};
-  reload = pkgs.callPackage ./reload.nix {};
-  reload-d = pkgs.callPackage ./reload-d.nix {};
-  setpaper = pkgs.callPackage ./setpaper {};
-  wpick = pkgs.callPackage ./wpick.nix {};
+{
+  python312Packages,
+  callPackage,
+  ...
+}: {
+  v-analyzer = callPackage ./v-analyzer {};
+  waydroid-ui = callPackage ./waydroid-ui.nix {};
+  reload = callPackage ./reload.nix {};
+  reload-d = callPackage ./reload-d.nix {};
+  setpaper = callPackage ./setpaper {};
+  wpick = callPackage ./wpick.nix {};
+  hyprshade = callPackage ./hyprshade.nix {
+    inherit (python312Packages) buildPythonPackage hatchling more-itertools click;
+  };
 }

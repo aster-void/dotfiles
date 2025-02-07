@@ -33,6 +33,7 @@
     nixd
     alejandra
     statix
+    glsl_analyzer
 
     ## terminal multiplexer
     zellij
