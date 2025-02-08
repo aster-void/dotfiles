@@ -67,7 +67,7 @@ language-servers = ["markdown-oxide"]
 
 [[language]]
 name = "html"
-language-servers = ["tailwind", "vscode-html-language-server"]
+language-servers = ["emmet-ls", "tailwind", "vscode-html-language-server"]
 
 [[language]]
 name = "css"
@@ -102,13 +102,13 @@ language-servers = [
 name = "tsx"
 auto-format = true
 formatter = { command = "biome", args = ["format", "--stdin-file-path=a.tsx"] }
-language-servers = ["helix-gpt", "ts", "biome", "tailwind"]
+language-servers = ["emmet-ls", "ts", "biome", "tailwind"]
 
 [[language]]
 name = "svelte"
 auto-format = true
 # formatter = { command = "deno", args = ["fmt", "-"] }
-language-servers = ["tailwind", "svelteserver", "deno"]
+language-servers = ["emmet-ls", "tailwind", "svelteserver", "deno"]
 
 [[language]]
 name = "astro"

@@ -1,6 +1,6 @@
-theme = "catppuccin_frappe"
+theme = "catppuccin_mocha"
 # Dark:
-# - catppuccin_{frappe, macchiato}
+# - catppuccin_{frappe, macchiato, mocha}
 # - onedark
 # - dark_plus,
 # - everforest_dark, 

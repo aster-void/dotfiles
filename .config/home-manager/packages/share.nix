@@ -34,6 +34,7 @@
     alejandra
     statix
     glsl_analyzer
+    emmet-ls
 
     ## terminal multiplexer
     zellij
