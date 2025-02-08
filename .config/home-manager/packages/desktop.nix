@@ -71,6 +71,7 @@ in {
     matugen # material you colorgen
     dart-sass
     gnome-bluetooth
+    gthumb # lightweight image cropper ++
 
     ## Terminal (akctually it's rather a GUI application than a CLI application)
     ghostty
