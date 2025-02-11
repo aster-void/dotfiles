@@ -45,6 +45,9 @@ in {
     bluez
     bluez-tools
 
+    ## GPU
+    nvtopPackages.full
+
     ## Social
     slack
     discord
