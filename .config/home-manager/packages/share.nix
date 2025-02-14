@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  stable,
   ...
 }: {
   home.packages = with pkgs; [
@@ -21,7 +22,6 @@
 
     biome
     typescript-language-server
-    javascript-typescript-langserver
     tailwindcss-language-server
     svelte-language-server
     clippy
@@ -41,6 +41,7 @@
 
     ## Text Editor
     inputs.helix.packages.${system}.default
+    # helix
 
     ## git tools
     tig

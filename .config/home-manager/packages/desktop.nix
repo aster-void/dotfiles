@@ -23,7 +23,7 @@ in {
     dunst
 
     ### bars
-    ags
+    # ags
     waybar
     polybar
     eww

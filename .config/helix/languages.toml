@@ -91,10 +91,8 @@ name = "typescript"
 auto-format = true
 formatter = { command = "biome", args = ["format", "--stdin-file-path=a.ts"] }
 language-servers = [
-  "lsp-ai",
-  { name = "ts", except-features = [
-    "format",
-  ] },
+  # "lsp-ai",
+  { name = "ts", except-features = ["format"] },
   "biome",
 ]
 

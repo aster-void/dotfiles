@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,13 +26,13 @@
 
   outputs = {
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-    };
+    pkgs = nixpkgs.legacyPackages.${system};
+    stable = nixpkgs-stable.legacyPackages.${system};
 
     username = "aster";
   in {
@@ -59,7 +60,7 @@
       ];
 
       extraSpecialArgs = {
-        inherit inputs username system;
+        inherit inputs username system stable;
       };
     };
   };
