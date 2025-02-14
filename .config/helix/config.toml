@@ -35,7 +35,7 @@ hidden = false
 enable = true
 
 [editor.auto-save]
-focus-lost = true
+focus-lost = false
 after-delay.enable = false
 after-delay.timeout = 1000
 
