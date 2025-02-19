@@ -40,7 +40,6 @@ after-delay.enable = false
 after-delay.timeout = 1000
 
 [keys.normal]
-C-x = [":fmt", ":wq"]
 A-f = [":fmt"]
 
 [keys.insert]
