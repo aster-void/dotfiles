@@ -1,4 +1,8 @@
-let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   alias = import ./aliases.nix;
 in {
   # don't forget to run this periodically: stow ~/.dotfiles
@@ -21,10 +25,17 @@ in {
     zoxide = {
       enable = true;
 
-      enableBashIntegration = true;
+      enableBashIntegration = false; # HACK: see below
       enableNushellIntegration = true;
       enableZshIntegration = true;
     };
+
+    # HACK: zoxide init should be the last command to be executed in .bashrc
+    bash.initExtra =
+      lib.mkOrder 2000
+      ''
+        eval "$(${lib.getExe pkgs.zoxide} init bash)"
+      '';
 
     # enabled OS-wide.
     # direnv = {
