@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  stable,
   ...
 }: {
   home.packages = with pkgs; [
@@ -13,6 +12,7 @@
     postgresql
     wget
     bat
+    xh
 
     ## Nix
 
