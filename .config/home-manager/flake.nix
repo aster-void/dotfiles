@@ -14,7 +14,9 @@
 
     # 最新のを使いたい
     helix = {
-      url = "github:helix-editor/helix";
+      # my patch applied
+      # url = "github:helix-editor/helix";
+      url = "github:aster-void/helix?ref=feat/select-write-strategy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

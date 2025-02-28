@@ -17,8 +17,9 @@ theme = "catppuccin_mocha"
 [editor]
 line-number = "relative"
 middle-click-paste = false
-idle-timeout = 50          # show LSP hints as fast as possible
-scroll-lines = 5           # because it has become slow on touchpad
+idle-timeout = 50              # show LSP hints as fast as possible
+scroll-lines = 5               # because it has become slow on touchpad
+writing-strategy = "overwrite" # my patch
 
 # inline hints
 end-of-line-diagnostics = "hint"
