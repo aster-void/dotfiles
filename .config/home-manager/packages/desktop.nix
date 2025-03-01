@@ -41,6 +41,7 @@ in {
     brightnessctl
     asciinema
 
+    solaar # logicool conf
     ## bluetooth
     bluez
     bluez-tools
