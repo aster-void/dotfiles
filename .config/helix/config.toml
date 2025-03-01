@@ -19,7 +19,7 @@ line-number = "relative"
 middle-click-paste = false
 idle-timeout = 50          # show LSP hints as fast as possible
 scroll-lines = 5           # because it has become slow on touchpad
-backup-strategy = "none"
+backup.kind = "copy"
 
 # inline hints
 end-of-line-diagnostics = "hint"
