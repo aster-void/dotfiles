@@ -123,3 +123,10 @@ formatter = { command = "biome", args = [
   "--stdin-file-path",
   "a.json",
 ] }
+[[language]]
+name = "jsonc"
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "a.json",
+] }
