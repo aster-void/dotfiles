@@ -16,14 +16,14 @@
     helix = {
       # my patch applied
       # url = "github:helix-editor/helix";
-      url = "github:aster-void/helix?ref=feat/select-write-strategy";
+      url = "github:aster-void/helix?ref=all-patch-applied";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprpanel = {
+    # url = "github:Jas-SinghFSU/HyprPanel";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
