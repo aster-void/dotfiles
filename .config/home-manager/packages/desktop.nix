@@ -51,7 +51,7 @@ in {
 
     ## Social
     slack
-    discord
+    vesktop # discord
 
     ## Browsers
     firefox
