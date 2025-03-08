@@ -110,6 +110,7 @@ language-servers = ["emmet-ls", "tailwind", "svelteserver", "deno", "ts"]
 
 [[language]]
 name = "astro"
+auto-format = true
 scope = "source.astro"
 injection-regex = "astro"
 file-types = ["astro"]
