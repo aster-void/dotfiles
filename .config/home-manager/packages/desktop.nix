@@ -15,6 +15,7 @@ in {
 
     ### others
     hyprshot
+    hyprpicker
     gpu-screen-recorder
     blobdrop # drag & drop from shell
 
