@@ -59,6 +59,7 @@ in {
     chromium
     brave
     inputs.zen-browser.packages.${system}.beta
+    vivaldi
 
     # LLM
     ollama

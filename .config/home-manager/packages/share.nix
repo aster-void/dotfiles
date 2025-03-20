@@ -13,6 +13,7 @@
     wget
     bat
     xh
+    tokei
 
     ## Nix
 
