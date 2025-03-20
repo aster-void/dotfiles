@@ -84,7 +84,7 @@ grammar = "css"
 [[language]]
 name = "javascript"
 auto-format = true
-language-servers = ["js"]
+language-servers = ["ts", "js"]
 
 [[language]]
 name = "typescript"
