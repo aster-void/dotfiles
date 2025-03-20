@@ -16,7 +16,8 @@ in {
     ### others
     hyprshot
     hyprpicker
-    gpu-screen-recorder
+    gpu-screen-recorder # screen recorder
+    wf-recorder # another screen recorder
     blobdrop # drag & drop from shell
 
     ### notification daemon
