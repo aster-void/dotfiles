@@ -32,6 +32,7 @@
     sl = "ls";
     claer = "clear";
     cl = "clear";
+    l = "ls -Alh";
 
     hs = "home-manager switch";
     hb = "home-manager switch";
