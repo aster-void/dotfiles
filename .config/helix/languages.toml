@@ -99,8 +99,7 @@ language-servers = [
 [[language]]
 name = "tsx"
 auto-format = true
-formatter = { command = "biome", args = ["format", "--stdin-file-path=a.tsx"] }
-language-servers = ["emmet-ls", "ts", "biome", "tailwind"]
+language-servers = ["biome", "emmet-ls", "ts", "tailwind"]
 
 [[language]]
 name = "svelte"
