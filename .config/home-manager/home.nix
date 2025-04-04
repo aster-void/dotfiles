@@ -19,7 +19,7 @@
 
     sessionVariables = {
       EDITOR = "hx";
-      BROWSER = "zen";
+      BROWSER = "zen-beta";
       NIXOS_OZONE_WL = 1;
     };
   };
