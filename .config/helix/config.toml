@@ -38,7 +38,7 @@ enable = true
 [editor.auto-save]
 focus-lost = false
 after-delay.enable = false
-after-delay.timeout = 1000
+# after-delay.timeout = 1000
 
 [keys.normal]
 A-f = [":fmt"]
