@@ -1,3 +1,5 @@
 .direnv
 # used to copy from other repos
 /references
+
+.config/vesktop
