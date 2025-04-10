@@ -53,6 +53,7 @@ in {
 
     ## Social
     slack
+    notion-app-enhanced
     vesktop # discord
     discord
 
