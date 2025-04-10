@@ -38,7 +38,7 @@
     hb = "home-manager switch";
     home = "home-manager";
 
-    # zoom-us = "flatpak run us.zoom.Zoom";
+    zoom-us = "flatpak run us.zoom.Zoom";
   };
 
   bash = {

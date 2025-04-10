@@ -20,6 +20,8 @@
       "x-scheme-handler/https" = browserDesktop;
       "x-scheme-handler/slack" = createEntry pkgs.slack "slack.desktop";
       "x-scheme-handler/notion" = createEntry pkgs.notion-app-enhanced "notion-app-enhanced.desktop";
+      "application/x-zoom" = "/var/lib/flatpak/app/us.zoom.Zoom/current/active/export/share/applications/us.zoom.Zoom.desktop";
+      "x-scheme-handler/zoommtg" = "/var/lib/flatpak/app/us.zoom.Zoom/current/active/export/share/applications/us.zoom.Zoom.desktop";
     };
   };
 }
