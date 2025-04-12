@@ -21,6 +21,7 @@
       "x-scheme-handler/ftp" = browser;
       "x-scheme-handler/http" = browser;
       "x-scheme-handler/https" = browser;
+      "x-scheme-handler/discord" = createEntry pkgs.vesktop "vesktop.desktop";
       "x-scheme-handler/slack" = createEntry pkgs.slack "slack.desktop";
       "x-scheme-handler/notion" = createEntry pkgs.notion-app-enhanced "notion-app-enhanced.desktop";
       "application/x-zoom" = "/var/lib/flatpak/app/us.zoom.Zoom/current/active/export/share/applications/us.zoom.Zoom.desktop";
