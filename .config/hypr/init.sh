@@ -1,15 +1,10 @@
-cd $(dirname -- $0)
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname -- "$0")"
 
 (
-  cd hyprland;
-  if [ ! -f hardware-dep.conf ]; then
-    cp samples/hardware-dep.conf hardware-dep.conf
-  fi
-  if [ ! -f plugins.conf ]; then
-    cp samples/plugins.conf plugins.conf
-  fi
+  cd hyprland
+  cp -n samples/hardware-dep.conf hardware-dep.conf
+  cp -n samples/plugins.conf plugins.conf
 )
-
-if [ ! -f hyprpaper.conf ]; then
-  cp samples/hyprpaper.conf hyprpaper.conf
-fi
