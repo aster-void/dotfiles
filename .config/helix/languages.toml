@@ -93,7 +93,7 @@ formatter = { command = "biome", args = ["format", "--stdin-file-path=a.ts"] }
 language-servers = [
   # "lsp-ai",
   { name = "ts", except-features = ["format"] },
-  "biome",
+  { name = "biome", except-features = ["format"] },
 ]
 
 [[language]]
