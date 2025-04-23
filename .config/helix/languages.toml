@@ -130,3 +130,7 @@ formatter = { command = "biome", args = [
   "--stdin-file-path",
   "a.json",
 ] }
+[[language]]
+name = "typst"
+auto-format = true
+formatter = { command = "typstyle", args = [] }

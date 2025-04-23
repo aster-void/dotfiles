@@ -36,6 +36,7 @@
     statix
     glsl_analyzer
     emmet-ls
+    typstyle
 
     ## terminal multiplexer
     zellij
