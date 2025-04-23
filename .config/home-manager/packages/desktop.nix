@@ -70,6 +70,7 @@ in {
     # editor
     # zed-editor # does not build
     code-cursor
+    drawio
 
     ## Office
     libreoffice
