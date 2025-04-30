@@ -37,6 +37,7 @@
     glsl_analyzer
     emmet-ls
     typstyle
+    fixjson
 
     ## terminal multiplexer
     zellij

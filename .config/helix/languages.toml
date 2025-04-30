@@ -118,11 +118,7 @@ language-servers = ["tailwind", "astro-ls"]
 
 [[language]]
 name = "json"
-formatter = { command = "biome", args = [
-  "format",
-  "--stdin-file-path",
-  "a.json",
-] }
+formatter = { command = "fixjson" }
 [[language]]
 name = "jsonc"
 formatter = { command = "biome", args = [
