@@ -134,3 +134,12 @@ formatter = { command = "typstyle", args = [] }
 name = "elixir"
 auto-format = true
 formatter = { command = "mix", args = ["format", "-"] }
+[[language]]
+name = "heex"
+auto-format = true
+formatter = { command = "mix", args = [
+  "format",
+  "--stdin-filename",
+  "a.heex",
+  "-",
+] }
