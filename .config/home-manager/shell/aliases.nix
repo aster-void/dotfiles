@@ -5,7 +5,7 @@
     "...." = "cd ../../../";
     "....." = "cd ../../../../";
 
-    n = "nvim";
+    # n = "nvim";
     h = "hx";
     "h." = "hx .";
 
@@ -39,6 +39,7 @@
     home = "home-manager";
 
     zoom-us = "flatpak run us.zoom.Zoom";
+    sd = "shutdown";
   };
 
   bash = {
