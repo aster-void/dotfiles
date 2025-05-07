@@ -72,6 +72,7 @@ in {
     # zed-editor # does not build
     code-cursor
     drawio
+    obsidian
 
     ## Office
     libreoffice
