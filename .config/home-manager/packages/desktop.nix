@@ -56,7 +56,6 @@ in {
     notion-app-enhanced
     vesktop # discord
     discord
-    legcord # discord
 
     ## Browsers
     firefox
