@@ -72,6 +72,7 @@ in {
     code-cursor
     drawio
     obsidian
+    windsurf
 
     ## Office
     libreoffice
