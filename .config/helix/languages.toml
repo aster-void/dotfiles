@@ -21,7 +21,7 @@ auth_token_env_var_name = "GROQ_API_KEY"
 name = "nix"
 auto-format = true
 formatter = { command = "alejandra", args = ["-", "--quiet"] }
-language-servers = ["helix-gpt", "nil", "nixd"]
+language-servers = ["nil", "nixd", "helix-gpt"]
 
 [[language]]
 name = "rust"

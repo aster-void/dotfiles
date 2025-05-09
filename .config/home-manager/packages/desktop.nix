@@ -68,7 +68,7 @@ in {
     ollama
 
     # editor
-    # zed-editor # does not build
+    zed-editor
     code-cursor
     drawio
     obsidian

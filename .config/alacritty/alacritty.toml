@@ -2,4 +2,4 @@
 import = ["./keybinds.toml", "./decoration.toml", "./themes.toml"]
 
 [scrolling]
-multiplier = 20
+multiplier = 10
