@@ -21,58 +21,56 @@ auth_token_env_var_name = "GROQ_API_KEY"
 name = "nix"
 auto-format = true
 formatter = { command = "alejandra", args = ["-", "--quiet"] }
-language-servers = ["nil", "nixd"]
+language-servers = ["helix-gpt", "nil", "nixd"]
 
 [[language]]
 name = "rust"
 auto-format = true
-language-servers = ["rust-analyzer"]
-
-[[language]]
-name = "clangd"
-auto-format = true
-scope = ".c"
-file-types = ["C"]
-
-[[language]]
-name = "fsharp"
-auto-format = true
+language-servers = ["helix-gpt", "rust-analyzer"]
 
 [[language]]
 name = "toml"
 auto-format = true
-formatter.command = "taplo"
-formatter.args = ["fmt", "-"]
+formatter = { command = "taplo", args = ["fmt", "-"] }
+language-servers = ["helix-gpt", "rust-analyzer"]
 
 
 [[langugage]]
 name = "go"
 auto-format = true
+language-servers = ["helix-gpt"]
 
 [[langugage]]
 name = "gleam"
 auto-format = true
+language-servers = ["helix-gpt"]
 
 
 [[language]]
 name = "markdown"
 auto-format = true
+language-servers = ["helix-gpt"]
 
 [[language]]
 name = "mdx"
 file-types = ["mdx"]
 scope = ".mdx"
-language-servers = ["markdown-oxide"]
+language-servers = ["helix-gpt", "markdown-oxide"]
 
 
 [[language]]
 name = "html"
-language-servers = ["emmet-ls", "tailwind", "vscode-html-language-server"]
+language-servers = [
+  "helix-gpt",
+  "emmet-ls",
+  "tailwind",
+  "vscode-html-language-server",
+]
 
 [[language]]
 name = "css"
 file-types = ["css", "scss", "less"]
-language-servers = ["vscode-css-language-server", "tailwind"]
+language-servers = ["helix-gpt", "vscode-css-language-server", "tailwind"]
 
 [[language]]
 name = "less"
@@ -84,28 +82,39 @@ grammar = "css"
 [[language]]
 name = "javascript"
 auto-format = true
-language-servers = ["ts", "js"]
+language-servers = ["helix-gpt", "ts", "js"]
 
 [[language]]
 name = "typescript"
 auto-format = true
 formatter = { command = "biome", args = ["format", "--stdin-file-path=a.ts"] }
 language-servers = [
-  # "lsp-ai",
-  { name = "ts", except-features = ["format"] },
-  { name = "biome", except-features = ["format"] },
+  { name = "ts", except-features = [
+    "format",
+  ] },
+  "helix-gpt",
+  { name = "biome", except-features = [
+    "format",
+  ] },
 ]
 
 [[language]]
 name = "tsx"
 auto-format = true
-language-servers = ["biome", "emmet-ls", "ts", "tailwind"]
+language-servers = ["helix-gpt", "biome", "emmet-ls", "ts", "tailwind"]
 
 [[language]]
 name = "svelte"
 auto-format = true
 # formatter = { command = "deno", args = ["fmt", "-"] }
-language-servers = ["emmet-ls", "tailwind", "svelteserver", "deno", "ts"]
+language-servers = [
+  "helix-gpt",
+  "emmet-ls",
+  "tailwind",
+  "svelteserver",
+  "deno",
+  "ts",
+]
 
 [[language]]
 name = "astro"
@@ -114,7 +123,7 @@ scope = "source.astro"
 injection-regex = "astro"
 file-types = ["astro"]
 roots = ["package.json", "astro.config.mjs"]
-language-servers = ["tailwind", "astro-ls"]
+language-servers = ["helix-gpt", "tailwind", "astro-ls"]
 
 [[language]]
 name = "json"
@@ -130,6 +139,7 @@ formatter = { command = "biome", args = [
 name = "typst"
 auto-format = true
 formatter = { command = "typstyle", args = [] }
+language-servers = ["helix-gpt"]
 [[language]]
 name = "elixir"
 auto-format = true
