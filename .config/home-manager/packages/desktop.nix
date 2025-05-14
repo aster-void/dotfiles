@@ -79,6 +79,7 @@ in {
     evince # document viewer
     video-trimmer # trim videos. what did you expect?
     xournalpp
+    pinta # image editor
 
     matugen # material you colorgen
     dart-sass
