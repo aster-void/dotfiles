@@ -74,6 +74,9 @@ in {
     obsidian
     windsurf
 
+    # video chat
+    jitsi
+
     ## Office
     libreoffice
     evince # document viewer
