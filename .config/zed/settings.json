@@ -1,40 +1,20 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  // "vim_mode": true,
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
   "ui_font_size": 16,
   "buffer_font_size": 16,
-  "formatter": "auto",
-  "format_on_save": "on",
-  "languages": {
-    "TypeScript": {
-      "formatter": "language_server",
-      "code_actions_on_format": {
-        "source.organizeImports": true
-      }
-    },
-    "TSX": {
-      "formatter": "language_server",
-      "code_actions_on_format": {
-        "source.organizeImports": true
-      }
-    },
-    "Svelte": {
-      "code_actions_on_format": {
-        "source.organizeImports": true
-      }
-    }
-  },
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "Catppuccin Frappé - No Italics"
+    "light": "Catppuccin Macchiato",
+    "dark": "One Dark"
   },
-  "auto_install_extensions": {
-    "biome": true,
-    "catppuccin": true,
-    "html": true,
-    "svelte": true
-  }
+  "formatter": "biome",
+  "format_on_save": "biome",
+  "ui_font_family": "CodeNewRoman Nerd Font Mono"
 }

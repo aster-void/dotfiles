@@ -1,5 +1,7 @@
 {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
-    "github.copilot.nextEditSuggestions.enabled": true
+  "svelte.enable-ts-plugin": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false
 }
