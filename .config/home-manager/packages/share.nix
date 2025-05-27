@@ -14,6 +14,8 @@
     bat
     xh
     tokei
+    stow
+    eza
 
     ## Nix
 
@@ -48,5 +50,6 @@
 
     ## git tools
     tig
+    diff-so-fancy
   ];
 }

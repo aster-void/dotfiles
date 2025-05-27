@@ -37,6 +37,10 @@
     stable = nixpkgs-stable.legacyPackages.${system};
 
     username = "aster";
+    gitconfig = {
+      user = "aster";
+      email = "137767097+aster-void@users.noreply.github.com";
+    };
   in {
     devShells.${system}.default = pkgs.mkShell {
       name = "Home Manager";
@@ -62,7 +66,7 @@
       ];
 
       extraSpecialArgs = {
-        inherit inputs username system stable;
+        inherit inputs username system stable gitconfig;
       };
     };
   };
