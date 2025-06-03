@@ -37,11 +37,10 @@ in {
         eval "$(${lib.getExe pkgs.zoxide} init bash)"
       '';
 
-    # enabled OS-wide.
-    # direnv = {
-    #   enable = true;
-    #   enableBashIntegration = true;
-    #   nix-direnv.enable = true;
-    # };
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
   };
 }

@@ -49,6 +49,7 @@
     # helix
 
     ## git tools
+    gh
     tig
     diff-so-fancy
   ];
