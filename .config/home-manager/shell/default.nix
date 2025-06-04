@@ -11,6 +11,7 @@ in {
     bash = {
       enable = true;
       shellAliases = alias.common // alias.bash;
+      enableCompletion = false;
     };
 
     nushell = {
@@ -25,22 +26,20 @@ in {
     zoxide = {
       enable = true;
 
-      enableBashIntegration = false; # HACK: see below
+      enableBashIntegration = true;
       enableNushellIntegration = true;
       enableZshIntegration = true;
     };
-
-    # HACK: zoxide init should be the last command to be executed in .bashrc
-    bash.initExtra =
-      lib.mkOrder 2000
-      ''
-        eval "$(${lib.getExe pkgs.zoxide} init bash)"
-      '';
 
     direnv = {
       enable = true;
       enableBashIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    fish = {
+      enable = true;
+      shellAliases = alias.common // alias.bash; # standard aliases for POSIX
     };
   };
 }

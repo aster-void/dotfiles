@@ -3,3 +3,6 @@ import = ["./keybinds.toml", "./decoration.toml", "./themes.toml"]
 
 [scrolling]
 multiplier = 10
+
+[terminal]
+shell = { program = "fish" }

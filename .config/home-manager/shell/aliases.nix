@@ -29,10 +29,13 @@
 
     fetch = "nitch"; # to not change my mustle memory
 
-    sl = "ls";
     claer = "clear";
     cl = "clear";
-    l = "ls -Alh";
+
+    sl = "ls";
+    lsa = "ls -a";
+    ls = "ez";
+    ez="eza --icons --group-directories-first";
 
     hs = "home-manager switch";
     hb = "home-manager switch";
@@ -50,6 +53,7 @@
     gd = "git diff --color-words | diff-so-fancy | less --tabs=4 -RF";
     nixman = "cd /etc/nixos/; sudo -s;";
   };
+  
   nushell = {
     cg = "cd (git root)";
   };
