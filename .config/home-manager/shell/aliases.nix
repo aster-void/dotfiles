@@ -34,8 +34,10 @@
 
     sl = "ls";
     lsa = "ls -a";
+    la = "ls -a";
     ls = "ez";
-    ez="eza --icons --group-directories-first";
+    ez = "eza --icons --group-directories-first";
+    l = "clear";
 
     hs = "home-manager switch";
     hb = "home-manager switch";
@@ -53,7 +55,7 @@
     gd = "git diff --color-words | diff-so-fancy | less --tabs=4 -RF";
     nixman = "cd /etc/nixos/; sudo -s;";
   };
-  
+
   nushell = {
     cg = "cd (git root)";
   };
