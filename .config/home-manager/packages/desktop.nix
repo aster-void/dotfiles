@@ -57,6 +57,7 @@ in {
     vesktop # discord
     discord
     legcord
+    appflowy
 
     ## Browsers
     firefox

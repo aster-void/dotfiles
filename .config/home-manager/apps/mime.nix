@@ -1,31 +1,30 @@
 {
-  inputs,
-  system,
-  lib,
-  pkgs,
-  ...
-}: {
   xdg.mime.enable = true;
   xdg.mimeApps = let
-    createEntry = bin: desktopFilename: "${lib.getExe bin}/share/applications/${desktopFilename}";
-    browser = createEntry inputs.zen-browser.packages.${system}.beta "zen-beta.desktop";
+    browser = "zen-beta.desktop";
   in {
     enable = true;
     defaultApplications = {
-      "application/xhtml+xml" = browser;
       "text/html" = browser;
       "text/xml" = browser;
       "image/png" = browser;
       "image/jpeg" = browser;
       "image/jpg" = browser;
+      "application/x-extension-html" = browser;
+      "application/x-extension-htm" = browser;
+      "application/x-extension-shtml" = browser;
+      "application/x-extension-xhtml" = browser;
+      "application/x-extension-xht" = browser;
+      "application/xhtml+xml" = browser;
       "x-scheme-handler/ftp" = browser;
       "x-scheme-handler/http" = browser;
       "x-scheme-handler/https" = browser;
-      "x-scheme-handler/discord" = createEntry pkgs.vesktop "vesktop.desktop";
-      "x-scheme-handler/slack" = createEntry pkgs.slack "slack.desktop";
-      "x-scheme-handler/notion" = createEntry pkgs.notion-app-enhanced "notion-app-enhanced.desktop";
-      "application/x-zoom" = "/var/lib/flatpak/app/us.zoom.Zoom/current/active/export/share/applications/us.zoom.Zoom.desktop";
-      "x-scheme-handler/zoommtg" = "/var/lib/flatpak/app/us.zoom.Zoom/current/active/export/share/applications/us.zoom.Zoom.desktop";
+      "x-scheme-handler/chrome" = browser;
+      "x-scheme-handler/discord" = "vesktop.desktop";
+      "x-scheme-handler/slack" = "slack.desktop";
+      "x-scheme-handler/notion" = "notion-app-enhanced.desktop";
+      "application/x-zoom" = "us.zoom.Zoom.desktop";
+      "x-scheme-handler/zoommtg" = "us.zoom.Zoom.desktop";
     };
   };
 }
