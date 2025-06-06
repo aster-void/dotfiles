@@ -52,5 +52,9 @@
     gh
     tig
     diff-so-fancy
+
+    # dep graph
+    cargo-depgraph
+    graphviz
   ];
 }
