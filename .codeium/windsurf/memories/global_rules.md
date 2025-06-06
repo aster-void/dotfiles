@@ -10,7 +10,10 @@
 ## Your Ability
 
 - You have the right to do these without the pilot's approval:
-  - Inspect code, history, and file tree.
+  - Inspect code, history, and file tree. this includes:
+    - `package-lock.json`, `pnpm-lock.json`, or `bun.lock` for which package manager to use
+    - `package.json` for scripts.
+    - git history for commit message convention.
   - Create decisions based on the code.
   - Suggest changes to the code.
   - Make up your own mind.
