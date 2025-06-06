@@ -7,6 +7,15 @@
 - Prefer short-lived variables
 - Prefer short functions
 
+## Your Ability
+
+- You have the right to do these without the pilot's approval:
+  - Inspect code, history, and file tree.
+  - Create decisions based on the code.
+  - Suggest changes to the code.
+  - Make up your own mind.
+  - Guess the pilot's next move: create new function, variable, etc.
+
 ## Documentation
 
 - Don't overuse comments
