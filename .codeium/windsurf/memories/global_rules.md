@@ -25,3 +25,9 @@
     - you give it a timeout
     - if I terminate it, it's because it has stopped and you don't respond.
 - If I don't explicitly review your changes, it means the diff was good.
+
+## Commit Message
+
+- Prefix commit message, e.g. `fix:`, `feat:`, `chore:`, `breaking:`
+- Commit message should describe what has become possible after the commit, rather than describint what has changed in detail
+- Commit message should only contain one line. Avoid commit "body".
