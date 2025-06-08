@@ -1,9 +1,5 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  alias = import ./aliases.nix;
+{shared, ...}: let
+  alias = shared.shell-aliases;
 in {
   # don't forget to run this periodically: stow ~/.dotfiles
 
