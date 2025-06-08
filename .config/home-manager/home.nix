@@ -3,8 +3,6 @@
     ./etc
     ./apps
     ./shell
-    ./packages/share.nix
-    ./packages/desktop.nix
     ./plugins
   ];
 

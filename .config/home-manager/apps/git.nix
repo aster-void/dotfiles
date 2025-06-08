@@ -1,43 +1,16 @@
 # TODO: share the config between nixos-config
-{gitconfig, ...}: {
+{shared, ...}: let
+  inherit (shared) git-config;
+in {
   programs.git = {
+    inherit (git-config) aliases;
     enable = true;
-    userName = gitconfig.user;
-    userEmail = gitconfig.email;
+    userName = git-config.user.user;
+    userEmail = git-config.user.email;
     extraConfig = {
-      core.editor = "hx";
-      init.defaultBranch = "main";
-      pull.rebase = "true";
-    };
-
-    aliases = {
-      a = "add";
-      aa = "add -A";
-      c = "commit";
-      cm = "commit -m";
-      co = "checkout";
-      cob = "checkout -b";
-      sw = "switch";
-      swc = "switch -c";
-      b = "branch";
-      ba = "branch -a";
-      bd = "branch -d";
-      bda = "branch -d `git branch | grep -v \*`";
-      s = "status";
-      sv = "status -v";
-      f = "fetch --prune";
-      u = "push --set-upstream origin HEAD";
-      lo = "log --oneline";
-      logo = "log --oneline"; # not a logo
-      ls = "ls-files";
-      graph = "log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short";
-      unstage = "reset HEAD --";
-      root = "rev-parse --show-toplevel";
-      last = "log -1 HEAD";
-      nuke = "checkout -f HEAD";
-      uncommit = "reset HEAD~";
-      amend = "commit --amend --no-edit";
-      recommit = "commit --amend";
+      core.editor = git-config.core.editor;
+      init.defaultBranch = git-config.init.defaultBranch;
+      pull.rebase = git-config.pull.rebase;
     };
   };
 }
