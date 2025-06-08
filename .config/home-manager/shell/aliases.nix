@@ -42,6 +42,7 @@
     hs = "home-manager switch";
     hb = "home-manager switch";
     home = "home-manager";
+    nixgc = "nixos-collect-garbage";
 
     zoom-us = "flatpak run us.zoom.Zoom";
     sd = "shutdown";
