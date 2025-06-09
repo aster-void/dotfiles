@@ -68,7 +68,7 @@
       standard-wsl-packaegs = [
         "cli"
         [
-          pkgs.helix
+          inputs.helix.packages.${system}.default
         ]
       ];
       standard-desktop-packages = [
