@@ -14,7 +14,16 @@
     "light": "Catppuccin Macchiato",
     "dark": "One Dark"
   },
-  "formatter": "biome",
-  "format_on_save": "biome",
+  "languages": {
+    "JavaScript": {
+      "formatter": "prettier",
+      "format_on_save": "on"
+    },
+    "JSON": {
+      "formatter": "prettier",
+      "format_on_save": "on"
+    }
+  },
+  "format_on_save": "on",
   "ui_font_family": "CodeNewRoman Nerd Font Mono"
 }
