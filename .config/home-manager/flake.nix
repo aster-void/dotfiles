@@ -32,8 +32,15 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
     shared = shared-config.config;
+
+    build = pkgs.callPackage ./build/default.nix {};
 
     username = "aster";
     extraSpecialArgs = {
@@ -79,6 +86,7 @@
         [
           inputs.helix.packages.${system}.default
           inputs.zen-browser.packages.${system}.beta
+          # build.line # I give up. install it via steam.
         ]
       ];
     in {

@@ -12,4 +12,5 @@
   hyprshade = callPackage ./hyprshade.nix {
     inherit (python312Packages) buildPythonPackage hatchling more-itertools click;
   };
+  line = callPackage ./line.nix {};
 }
