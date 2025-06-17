@@ -2,44 +2,35 @@
 
 ## General
 
-- Prefer simple solutions
-- Prefer self-explanatory code
-- Prefer short-lived variables
-- Prefer short functions
+## Coding Style
 
-## Your Ability
+- Prefer simple solutions.
+- Prefer self-explanatory code.
+- Prefer short and self-explanatory variable names.
+- Make wrong code look wrong. you may add prefixes or suffixes to variables if that makes wrong things more clear. (e.g. `distance_km` `kg_weight`)
+- Prefer short-lived variables.
+- Prefer short functions.
+- TypeScript: Always add extensions to imports: `import "./foo.ts"`, not `import "./foo"`.
 
-- You have the right to do these without the pilot's approval:
-  - Inspect code, history, and file tree. this includes:
-    - `package-lock.json`, `pnpm-lock.json`, or `bun.lock` for which package manager to use
-    - `package.json` for scripts.
-    - git history for commit message convention.
-  - Create decisions based on the code.
-  - Suggest changes to the code.
-  - Make up your own mind.
-  - Guess the pilot's next move: create new function, variable, etc.
+### Codebase structure
+
+- Large file is bad file. Split logic into multiple files as soon as possible.
+- Prefer flat directory structure until it's no longer managable (~15 files).
 
 ## Documentation
 
-- Don't overuse comments
-- Use comments to explain the intent, not the implementation
-- Comment only the documentation
-- Use types for type-checkable documentation
-- Use docstrings for documentation for human readers
+- Don't overuse comments.
+- Use comments to explain the intent, not the implementation.
+- Comment only the documentation.
+- Use types for type-checkable documentation.
 
 ## Cascade Session
 
-- Avoid running commands unless absoutely necessary.
-  reason:
-    - windsurf can't terminate it properly
-    - it lags the computer
-  if it's absolutely necessary, make sure
-    - you give it a timeout
-    - if I terminate it, it's because it has stopped and you don't respond.
 - If I don't explicitly review your changes, it means the diff was good.
 
 ## Commit Message
 
-- Prefix commit message, e.g. `fix:`, `feat:`, `chore:`, `breaking:`
-- Commit message should describe what has become possible after the commit, rather than describint what has changed in detail
-- Commit message should only contain one line. Avoid commit "body".
+- Prefix commit message, e.g. `fix:`, `feat:`, `chore:`, `breaking:`.
+- Commit message should describe what has become possible after the commit, rather than describint what has changed in detail.
+- Commit message should only contain one line. Avoid commit body.
+
