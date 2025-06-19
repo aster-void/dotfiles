@@ -11,5 +11,11 @@
     "terminal.integrated.fontFamily": "MesloLGM Nerd Font Mono",
     "terminal.integrated.defaultProfile.linux": "fish",
     "editor.defaultFormatter": "biomejs.biome",
-    "workbench.colorTheme": "Catppuccin Frappé"
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "[svelte]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "svelte.enable-ts-plugin": true
 }
