@@ -57,12 +57,12 @@ character = "▏" # Some characters that work well: "╎", "▏", "┆", "┊", 
 skip-levels = 2
 
 [editor.whitespace]
-render = "all"
+# render = "all"
 
 [editor.whitespace.characters]
 space = " "
 nbsp = "⍽"
 nnbsp = "␣"
-tab = "→"
-newline = "⏎"
-tabpad = "·"
+# newline = "⏎"
+# tab = "→"
+# tabpad = "·"
