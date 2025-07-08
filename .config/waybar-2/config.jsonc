@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 24,
+  "height": 30,
   "margin": "0 0 0 0",
   //"width": 1350, // Waybar width
   // Choose the order of the modules idle_inhibitor
@@ -21,12 +21,12 @@
   "modules-right": [
     "tray",
     "cpu",
-    "memory",
     "temperature",
-    "network",
+    "memory",
+    "clock#date",
     "pulseaudio",
     "battery",
-    "clock#date",
+    "network",
     "clock#clock",
     "custom/power"
   ],
@@ -41,13 +41,12 @@
     }
   },
   "custom/player#main": {
-    "exec": "playerctl metadata --format '{{ title }}' 2>/dev/null || echo ''",
-    "interval": 1,
-    "max-length": 50
+    "exec": "while true; do echo '$(playerctl metadata title); sleep 0.2; done",
+    "on-click": "playerctl toggle"
   },
   "custom/player#prev": {
     "format": "",
-    "on-click": "playerctl previous"
+    "on-click": "playerct previous"
   },
   "custom/player#play": {
     "exec": "while true; do playerctl status; sleep 0.2; done",
@@ -79,19 +78,19 @@
   },
   // date
   "clock#date": {
-    "tooltip-format": "<span size='x-large'><b>🌟 {calendar} 🌟</b></span>",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
-      "weeks-pos": "right",
+      // "weeks-pos": "right",
       "on-scroll": 1,
       "on-click-right": "mode",
       "format": {
-        "months": "<span color='#c6a0f6' size='large' weight='bold'>   {}   </span>",
-        "days": "<span color='#b7bdf8' size='medium' weight='normal'> {} </span>",
-        "weeks": "<span color='#91d7e3' size='small' weight='bold'>W{}</span>",
-        "weekdays": "<span color='#eed49f' size='medium' weight='bold'> {} </span>",
-        "today": "<span color='#f5a97f' size='medium' weight='bold'> {} </span>"
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        // "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
     },
     "actions": {
@@ -191,7 +190,7 @@
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "{icon} {volume: >3}%",
+    "format": "{icon}   {volume: >3}%",
     "format-bluetooth": "{icon} {volume: >3}%",
     "format-muted": " muted",
     "format-icons": {

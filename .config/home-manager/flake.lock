@@ -111,11 +111,11 @@
     },
     "shared-config": {
       "locked": {
-        "lastModified": 1750223841,
-        "narHash": "sha256-NFzxa3YDfUwKppLe/evpG7LTX43eZ9hbO4jkerGsqjE=",
+        "lastModified": 1751990131,
+        "narHash": "sha256-SqhZGDHXUqORyTeT119uj5xwMw1JxEVl/YuT3RwI83c=",
         "owner": "aster-void",
         "repo": "shared-config",
-        "rev": "69fd0f0698c27616a54bd68cf5b8733d682382bc",
+        "rev": "929ac576d1aadba7c87d2eade2601ac5f51a22cf",
         "type": "github"
       },
       "original": {

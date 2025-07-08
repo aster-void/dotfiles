@@ -1,271 +1,674 @@
 /* =============================================================================
  *
- * Waybar configuration
+ * ✨ ULTRA STYLISH WAYBAR CONFIGURATION ✨
+ * The World's Most Beautiful Waybar Design
  *
  * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
  *
  * =========================================================================== */
 
 /* -----------------------------------------------------------------------------
- * Keyframes
+ * Keyframes & Animations
  * -------------------------------------------------------------------------- */
 
 @import "machiatto.css";
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px alpha(@mauve, 0.5); }
+  50% { box-shadow: 0 0 20px alpha(@mauve, 0.8), 0 0 30px alpha(@lavender, 0.6); }
+  100% { box-shadow: 0 0 5px alpha(@mauve, 0.5); }
+}
+
+@keyframes slide-in {
+  0% { opacity: 0; margin-top: -10px; }
+  100% { opacity: 1; margin-top: 0; }
+}
+
+@keyframes rainbow {
+  0% { color: @red; }
+  16.66% { color: @peach; }
+  33.33% { color: @yellow; }
+  50% { color: @green; }
+  66.66% { color: @sky; }
+  83.33% { color: @mauve; }
+  100% { color: @red; }
+}
+
+@keyframes float {
+  0% { margin-top: 0px; }
+  50% { margin-top: -2px; }
+  100% { margin-top: 0px; }
+}
+
+@keyframes blink {
+  0% {
+    color: @red;
+    background: linear-gradient(135deg, alpha(@red, 0.3), alpha(@maroon, 0.3));
+    box-shadow: 0 0 15px alpha(@red, 0.6);
+  }
+  50% {
+    color: @text;
+    background: linear-gradient(135deg, alpha(@red, 0.6), alpha(@maroon, 0.6));
+    box-shadow: 0 0 25px alpha(@red, 0.8);
+  }
+  100% {
+    color: @red;
+    background: linear-gradient(135deg, alpha(@red, 0.3), alpha(@maroon, 0.3));
+    box-shadow: 0 0 15px alpha(@red, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
 /* -----------------------------------------------------------------------------
   * Base styles
   * -------------------------------------------------------------------------- */
 
-/* Reset all styles */
-
 * {
-  color: @lavender;
+  color: @text;
   border: 0;
-  padding: 0 0;
-  font-family: UbuntuMono;
-  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
-  /* font-family: "Hack Nerd Font"; */
-  font-size: 14px;
-  font-weight: bold;
-  /* padding-bottom:4px;
-     padding-top: 4px; */
+  padding: 0;
+  font-family: "MesloLGS Nerd Font", "Meslo LG S", "JetBrains Mono", "Hack Nerd Font", UbuntuMono, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 window#waybar {
-  border: 0px solid rgba(0, 0, 0, 0);
-  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  background: linear-gradient(135deg, 
+    alpha(@base, 0.95) 0%, 
+    alpha(@mantle, 0.98) 50%, 
+    alpha(@crust, 0.95) 100%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 20px 20px;
+  animation: slide-in 0.8s ease-out;
+}
+
+/* -----------------------------------------------------------------------------
+ * Workspace styles
+ * -------------------------------------------------------------------------- */
+
+#workspaces {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.9) 0%, 
+    alpha(@surface1, 0.95) 50%, 
+    alpha(@surface2, 0.9) 100%);
+  border-radius: 6px;
+  margin: 2px 0px 2px 8px;
+  padding: 1px 2px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid alpha(@overlay0, 0.3);
 }
 
 #workspaces button {
-  color: @base;
-  border-radius: 50%;
-  /* background-color: @base; */
-  margin: 0px 0px;
-  padding: 4 6 2 0;
+  color: @subtext0;
+  border-radius: 4px;
+  margin: 1px 1px;
+  padding: 2px 6px;
+  min-width: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, 
+    alpha(@base, 0.4) 0%, 
+    alpha(@mantle, 0.3) 100%);
+  border: 1px solid alpha(@overlay0, 0.2);
 }
 
 #workspaces button:hover {
-  color: @mauve;
-  box-shadow: none;
-  /* Remove predefined box-shadow */
-  text-shadow: none;
-  /* Remove predefined text-shadow */
-  border: 0px;
-  background: none;
+  color: @text;
+  margin-top: -2px;
+  font-size: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+              0 0 20px alpha(@mauve, 0.5);
+  background: linear-gradient(135deg, @mauve, @lavender);
+  animation: pulse 1s ease-in-out infinite;
 }
 
 #workspaces button.active {
-  color: @mauve;
-  background-color: @base;
-}
-
-#workspaces button:hover * {
-  color: @mauve;
-  background-color: @base;
-}
-
-#workspaces * {
-  color: whitesmoke;
-}
-
-#workspaces {
-  border-style: solid;
-  background-color: @base;
-  opacity: 1;
-  border-radius: 10px;
-  margin: 8px 0px 8px 8px;
+  color: @base;
+  background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
+  box-shadow: 0 4px 16px alpha(@mauve, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  font-size: 15px;
+  animation: float 2s ease-in-out infinite;
 }
 
 #workspaces button.focused {
-  color: @mauve;
-  border-radius: 20px;
-  /* background-color: @flamingo; */
-}
-
-#workspaces button.focused * {
-  color: @mauve;
+  color: @crust;
+  background: linear-gradient(135deg, @yellow 0%, @peach 50%, @red 100%);
+  box-shadow: 0 4px 16px alpha(@yellow, 0.6);
+  font-size: 14px;
+  animation: rainbow 3s linear infinite;
 }
 
 #mode {
-  color: #ebcb8b;
+  color: @yellow;
+  background: linear-gradient(135deg, alpha(@yellow, 0.2), alpha(@peach, 0.2));
+  border-radius: 12px;
+  margin: 6px 4px;
+  padding: 6px 12px;
+  box-shadow: 0 4px 16px alpha(@yellow, 0.4);
 }
+
+/* -----------------------------------------------------------------------------
+ * Module base styles
+ * -------------------------------------------------------------------------- */
 
 #clock,
 #clock.date,
 #custom-swap,
 #custom-cava-bar,
 #battery,
-#cpu,
-#memory,
 #idle_inhibitor,
-#temperature,
 #custom-keyboard-layout,
 #hyprland-window,
 #backlight,
-#network,
-#pulseaudio,
 #mode,
 #tray,
 #custom-power,
 #custom-pacman,
 #custom-launcher {
-  padding: 5px 8px;
-  border-style: solid;
-  background-color: shade(@base, 1);
-  opacity: 1;
-  margin: 8px 0;
+  padding: 2px 6px;
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.9) 0%, 
+    alpha(@surface1, 0.95) 50%, 
+    alpha(@base, 0.9) 100%);
+  border-radius: 6px;
+  margin: 2px 2px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid alpha(@overlay0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* -----------------------------------------------------------------------------
-  * Module styles
-  * -------------------------------------------------------------------------- */
+ * Hover Effects - Organized by interaction type
+ * -------------------------------------------------------------------------- */
 
+/* Passive information elements - subtle hover */
+.passive-hover:hover,
+#clock:hover,
+#clock.date:hover,
+#clock.clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+              0 0 10px alpha(@mauve, 0.3);
+  background: linear-gradient(135deg, 
+    alpha(@surface1, 0.92) 0%, 
+    alpha(@surface2, 0.95) 50%, 
+    alpha(@surface0, 0.92) 100%);
+}
 
-/* standalone module group */
+/* Clock specific hover - no margin change to prevent movement */
+#clock.date:hover {
+  margin: 6px 0px 6px 4px;
+}
+
+#clock.clock:hover {
+  margin: 6px 4px 6px 0px;
+}
+
+/* Interactive elements - more pronounced hover */
+.interactive-hover:hover,
+#custom-swap:hover,
+#custom-cava-bar:hover,
+#idle_inhibitor:hover,
+#custom-keyboard-layout:hover,
+#hyprland-window:hover,
+#backlight:hover,
+#mode:hover,
+#custom-pacman:hover {
+  margin-top: -2px;
+  font-size: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4),
+              0 0 20px alpha(@mauve, 0.5);
+  background: linear-gradient(135deg, 
+    alpha(@surface1, 0.95) 0%, 
+    alpha(@surface2, 1) 50%, 
+    alpha(@surface0, 0.95) 100%);
+}
+
+/* Action buttons - compact hover */
+.action-hover:hover,
+#custom-power:hover,
+#custom-launcher:hover {
+  margin-top: 2px;
+  font-size: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+              0 0 20px alpha(@mauve, 0.6),
+              inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.95) 0%, 
+    alpha(@surface1, 1) 50%, 
+    alpha(@base, 0.95) 100%);
+}
+
+/* -----------------------------------------------------------------------------
+ * Standalone modules
+ * -------------------------------------------------------------------------- */
+
+/* Clickable standalone modules */
 #custom-cava-bar,
 #tray,
-#custom-power,
-#custom-launcher,
 #hyprland-window {
   border-radius: 10px;
-  margin: 8px 6px 8px 6px;
-  margin-left: 10px;
-  font-size: 18px;
-  font-weight: bolder;
-  border-radius: 10px;
-  padding: 3px 8px 3px 8px;
+  margin: 4px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.9) 0%, 
+    alpha(@surface1, 0.95) 50%, 
+    alpha(@base, 0.9) 100%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid alpha(@overlay0, 0.4);
 }
 
+/* Clickable action buttons */
+#custom-power,
 #custom-launcher {
-  padding-right: 4px;
+  border-radius: 8px;
+  margin: 4px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  min-width: 24px;
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 50%, 
+    alpha(@base, 0.85) 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 1px solid alpha(@overlay0, 0.2);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* left side of module group */
-#custom-player.prev,
-#clock.date,
+/* -----------------------------------------------------------------------------
+ * Grouped modules
+ * -------------------------------------------------------------------------- */
+
+/* System monitoring group: CPU + Memory + Temperature (Non-clickable - smaller) */
 #cpu {
-  background-color: @base;
-  border-radius: 10px 0px 0px 10px;
-  margin: 8px 0px 8px 6px;
-  padding: 4px 12px 4px 10px;
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 4px 0px 0px 4px;
+  margin: 6px 0px 6px 4px;
+  padding: 2px 6px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@overlay0, 0.25);
+  border-right: none;
 }
 
-/* middle of module group */
-#custom-player.play,
-#pulseaudio,
-#network,
-#battery {
-  background-color: @base;
-  border-radius: 0px 0px 0px 0px;
-  margin: 8px 0px 8px 0px;
-  padding: 4px 8px 4px 8px;
-}
-
-/* right side of module group */
-#custom-player.next,
-#clock.clock,
 #memory {
-  background-color: @base;
-  border-radius: 0 10px 10px 0;
-  margin: 8px 6px 8px 0px;
-  padding: 4px 10px 4px 14px;
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 0;
+  margin: 6px 0px;
+  padding: 2px 6px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  border-top: 1px solid alpha(@overlay0, 0.25);
+  border-bottom: 1px solid alpha(@overlay0, 0.25);
+  border-left: none;
+  border-right: none;
 }
 
-/* transparent bg */
+#temperature {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 0 4px 4px 0;
+  margin: 6px 4px 6px 0px;
+  padding: 2px 6px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@overlay0, 0.25);
+  border-left: none;
+}
+
+/* Network & Audio group: Network + Audio (Clickable - bigger) */
+#network {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 6px 0px 0px 6px;
+  margin: 6px 0px 6px 4px;
+  padding: 4px 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@overlay0, 0.25);
+  border-right: none;
+}
+
+#pulseaudio {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 0 6px 6px 0;
+  margin: 6px 4px 6px 0px;
+  padding: 4px 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@overlay0, 0.25);
+  border-left: none;
+}
+
+/* Time group: Date + Clock (Non-clickable - smaller) */
+#clock.date {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 4px 0px 0px 4px;
+  margin: 6px 0px 6px 4px;
+  padding: 2px 6px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@overlay0, 0.25);
+  border-right: none;
+}
+
+#clock.clock {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.85) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 0 4px 4px 0;
+  margin: 6px 4px 6px 0px;
+  padding: 2px 6px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid alpha(@overlay0, 0.25);
+  border-left: none;
+}
+
+/* Player controls group */
+#custom-player.prev {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.9) 0%, 
+    alpha(@surface1, 0.95) 100%);
+  border-radius: 12px 0px 0px 12px;
+  margin: 6px 0px 6px 8px;
+  padding: 8px 12px 8px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid alpha(@overlay0, 0.3);
+  border-right: none;
+}
+
+#custom-player.play {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.9) 0%, 
+    alpha(@surface1, 0.95) 100%);
+  border-radius: 0;
+  margin: 6px 0px;
+  padding: 8px 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid alpha(@overlay0, 0.3);
+  border-right: none;
+  border-left: none;
+}
+
+#custom-player.next {
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.9) 0%, 
+    alpha(@surface1, 0.95) 100%);
+  border-radius: 0 12px 12px 0;
+  margin: 6px 8px 6px 0px;
+  padding: 8px 12px 8px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid alpha(@overlay0, 0.3);
+  border-left: none;
+}
+
+/* transparent bg (Non-clickable - smaller) */
 #custom-player.main {
-  border-radius: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  background-color: rgba(0, 0, 0, 0);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: @sky;
+  margin: 6px 4px;
+  padding: 1px 2px;
+  font-weight: 400;
+  font-size: 10px;
+  font-family: "MesloLGS Nerd Font", "Meslo LG S", "Noto Sans CJK JP", "DejaVu Sans", sans-serif;
+  text-shadow: 0 0 5px alpha(@sky, 0.8);
 }
 
+/* -----------------------------------------------------------------------------
+ * Individual module styles & colors
+ * -------------------------------------------------------------------------- */
+
+/* Player Controls */
 #custom-player.prev,
 #custom-player.play,
 #custom-player.next {
   color: @sky;
+  background: linear-gradient(135deg, alpha(@sky, 0.2), alpha(@sapphire, 0.2));
+  border: 1px solid alpha(@sky, 0.3);
+  text-shadow: 0 0 10px alpha(@sky, 0.8);
+  transition: all 0.3s ease;
 }
 
+#custom-player.prev:hover {
+  color: @base;
+  background: linear-gradient(135deg, @sky, @sapphire);
+  box-shadow: 0 0 20px alpha(@sky, 0.7);
+  margin: 6px 0px 6px 8px;
+}
+
+#custom-player.play:hover {
+  color: @base;
+  background: linear-gradient(135deg, @sky, @sapphire);
+  box-shadow: 0 0 20px alpha(@sky, 0.7);
+  margin: 6px 0px;
+}
+
+#custom-player.next:hover {
+  color: @base;
+  background: linear-gradient(135deg, @sky, @sapphire);
+  box-shadow: 0 0 20px alpha(@sky, 0.7);
+  margin: 6px 8px 6px 0px;
+}
+
+/* Visual Modules */
 #custom-cava-bar {
   color: @mauve;
+  background: linear-gradient(135deg, alpha(@mauve, 0.3), alpha(@lavender, 0.3));
+  border: 1px solid alpha(@mauve, 0.4);
+  box-shadow: 0 0 15px alpha(@mauve, 0.6);
+  text-shadow: 0 0 10px alpha(@mauve, 0.8);
 }
 
 #custom-swap {
-  background-color: @mauve;
-}
-
-#clock {
-  /* background-color:#a3be8c; */
-  color: @sky;
+  background: linear-gradient(135deg, @mauve, @lavender);
+  color: @base;
+  box-shadow: 0 0 15px alpha(@mauve, 0.6);
+  border: 1px solid alpha(@mauve, 0.6);
 }
 
 #hyprland-window {
+  color: @base;
+  background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
+  border: 1px solid alpha(@mauve, 0.6);
+  box-shadow: 0 0 20px alpha(@mauve, 0.5);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+}
+
+/* Time & Date */
+#clock,
+#clock.date,
+#clock.clock {
   color: @sky;
-  background-color: @mauve;
+  background: linear-gradient(135deg, alpha(@sky, 0.2), alpha(@sapphire, 0.2));
+  border: 1px solid alpha(@sky, 0.3);
+  text-shadow: 0 0 10px alpha(@sky, 0.8);
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-#battery {
+/* System Monitoring */
+#cpu {
   color: @blue;
+  background: linear-gradient(135deg, alpha(@blue, 0.2), alpha(@sapphire, 0.2));
+  border: 1px solid alpha(@blue, 0.3);
+  text-shadow: 0 0 10px alpha(@blue, 0.8);
+  font-weight: 700;
 }
 
-#battery.charging {
-  color: @teal;
-  /* border-bottom: 2px solid #81a1c1; */
+#memory {
+  color: @blue;
+  background: linear-gradient(135deg, alpha(@blue, 0.2), alpha(@sapphire, 0.2));
+  border: 1px solid alpha(@blue, 0.3);
+  text-shadow: 0 0 10px alpha(@blue, 0.8);
+  font-weight: 700;
 }
 
-@keyframes blink {
-  to {
-    color: @red;
-    /* border-bottom: 2px solid @red; */
-  }
+#temperature {
+  color: @blue;
+  background: linear-gradient(135deg, alpha(@blue, 0.2), alpha(@sapphire, 0.2));
+  border: 1px solid alpha(@blue, 0.3);
+  text-shadow: 0 0 10px alpha(@blue, 0.8);
+  font-weight: 700;
 }
 
-#battery.critical:not(.charging) {
-  color: #bf616a;
-  /* border-bottom: 2px solid #bf616a; */
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#temperature.critical {
+  color: @red;
+  background: linear-gradient(135deg, alpha(@red, 0.4), alpha(@maroon, 0.4));
+  border: 1px solid alpha(@red, 0.5);
+  animation: blink 0.5s ease-in-out infinite;
+  font-size: 15px;
 }
 
-#network.disabled {
-  color: #bf616a;
-  /* border-bottom: 2px solid #bf616a; */
-}
-
+/* Network & Audio */
 #network {
   color: @green;
+  background: linear-gradient(135deg, alpha(@green, 0.2), alpha(@teal, 0.2));
+  border: 1px solid alpha(@green, 0.3);
+  text-shadow: 0 0 10px alpha(@green, 0.8);
+  transition: all 0.3s ease;
 }
 
+#network.disabled,
 #network.disconnected {
-  color: #bf616a;
+  color: @red;
+  background: linear-gradient(135deg, alpha(@red, 0.2), alpha(@maroon, 0.2));
+  border: 1px solid alpha(@red, 0.4);
+  animation: blink 1s ease-in-out infinite;
 }
 
 #pulseaudio {
   color: @flamingo;
+  background: linear-gradient(135deg, alpha(@flamingo, 0.2), alpha(@pink, 0.2));
+  border: 1px solid alpha(@flamingo, 0.3);
+  text-shadow: 0 0 10px alpha(@flamingo, 0.8);
+  transition: all 0.3s ease;
 }
 
 #pulseaudio.muted {
-  color: #3b4252;
-  /* border-bottom: 2px solid #3b4252; */
+  color: @overlay0;
+  background: linear-gradient(135deg, alpha(@overlay0, 0.2), alpha(@surface2, 0.2));
+  border: 1px solid alpha(@overlay0, 0.3);
+  opacity: 0.6;
+  animation: pulse 2s ease-in-out infinite;
 }
 
+/* Battery */
+#battery {
+  color: @blue;
+  background: linear-gradient(135deg, alpha(@blue, 0.2), alpha(@sapphire, 0.2));
+  border: 1px solid alpha(@blue, 0.3);
+  text-shadow: 0 0 10px alpha(@blue, 0.8);
+  transition: all 0.3s ease;
+}
+
+#battery.charging {
+  color: @teal;
+  background: linear-gradient(135deg, alpha(@teal, 0.3), alpha(@green, 0.3));
+  border: 1px solid alpha(@teal, 0.5);
+  box-shadow: 0 0 15px alpha(@teal, 0.7);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+  background: linear-gradient(135deg, alpha(@red, 0.3), alpha(@maroon, 0.3));
+  border: 1px solid alpha(@red, 0.5);
+  animation: blink 0.8s ease-in-out infinite;
+  font-size: 14px;
+}
+
+/* Action Buttons */
 #custom-launcher {
-  background-color: @mauve;
+  background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
   color: @base;
+  border: 1px solid alpha(@mauve, 0.6);
+  box-shadow: 0 0 20px alpha(@mauve, 0.6);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
 }
 
 #custom-power {
   color: @base;
-  background-color: @red;
+  background: linear-gradient(135deg, @red 0%, @maroon 50%, @peach 100%);
+  border: 1px solid alpha(@red, 0.6);
+  box-shadow: 0 0 20px alpha(@red, 0.6);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
-#window {
-  border-style: hidden;
-  margin-left: 10px;
-  /* margin-top:1px;  
-     padding: 8px 1rem; */
-  margin-right: 10px;
-  color: #eceff4;
+/* System Tray */
+#tray {
+  color: @text;
+  background: linear-gradient(135deg, alpha(@surface0, 0.8), alpha(@surface1, 0.9));
+  border: 1px solid alpha(@overlay0, 0.3);
+  padding: 8px 12px;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
+
+#tray > .passive {
+  transition: all 0.3s ease;
+}
+
+#tray > .active {
+  color: @mauve;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+#tray > .needs-attention {
+  color: @red;
+  animation: blink 1s ease-in-out infinite;
+}
+
+/* Window Title */
+#window {
+  border: none;
+  margin: 6px 12px;
+  padding: 8px 16px;
+  color: @text;
+  background: linear-gradient(135deg, 
+    alpha(@surface0, 0.8) 0%, 
+    alpha(@surface1, 0.9) 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid alpha(@overlay0, 0.3);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
