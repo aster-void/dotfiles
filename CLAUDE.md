@@ -1,82 +1,48 @@
 # CLAUDE.md - Project Knowledge Base
 
-## Waybar CSS Styling Limitations
+## 🚨 WAYBAR CSS RESTRICTIONS - READ CAREFULLY! 🚨
 
-### Unsupported CSS Properties in Waybar
+### ❌ ABSOLUTELY FORBIDDEN CSS Properties in Waybar
+**These properties will cause errors and MUST NEVER be used:**
 - `transform` - Cannot use scale(), translateY(), rotate(), etc.
 - `backdrop-filter` - Blur effects not supported
 - `position` - Cannot use absolute, relative positioning
 - `height` - Cannot set explicit height
 - `line-height` - Not supported for height control
+- `max-height` - Height constraints not supported ⚠️ **CAUSES ERRORS**
+- `min-height` - Height constraints not supported ⚠️ **CAUSES ERRORS**
+- `overflow` - Cannot control content overflow ⚠️ **CAUSES ERRORS**
+- `white-space` - Text wrapping control not supported ⚠️ **CAUSES ERRORS**
+- `text-overflow` - Ellipsis and overflow text handling not supported ⚠️ **CAUSES ERRORS**
 - `-webkit-*` prefixes - Not supported
 
-### Waybar-Compatible Styling Approaches
+### ✅ WAYBAR-COMPATIBLE Height & Size Control
 
-#### Height Control
-- Use `margin` to control apparent height (e.g., `margin: 12px 8px`)
-- Use `padding` for internal spacing (e.g., `padding: 0px 8px`)
-- Use `font-size` to influence button height
-- Use `min-width` and `min-height` for minimum dimensions
+#### Height Control (ONLY these methods work)
+- **`margin`** - Use to control apparent height (e.g., `margin: 12px 8px`)
+- **`padding`** - Use for internal spacing (e.g., `padding: 0px 8px`)
+- **`font-size`** - Influences element height
+- **`min-width`** - Controls minimum width only (NOT height)
 
-#### Animation & Effects
-- Use `animation` property with keyframes
-- Supported animations: `pulse`, `glow`, `blink`, `rainbow`, `float`
-- Use `box-shadow` for glow effects and depth
-- Use `opacity` changes for pulse effects
-- Use `margin-top` changes for floating effects
+#### Text Content Control
+- **Use config file only**: Set `max-length: 50` in config.jsonc
+- **Cannot use CSS**: No `text-overflow`, `white-space`, `overflow` support
+- **Height expansion solution**: Use minimal `padding` and adjust `margin`
 
-#### Visual Effects
-- Use `linear-gradient()` for backgrounds
-- Use `alpha()` function for transparency
-- Use `box-shadow` for depth and glow
-- Use `border-radius` for rounded corners
-- Use `text-shadow` for text effects
+#### Animation & Effects (SAFE)
+- **`animation`** property with keyframes
+- **Supported animations**: `pulse`, `glow`, `blink`, `rainbow`
+- **`box-shadow`** for glow effects and depth
+- **`opacity`** changes for pulse effects
+- **`linear-gradient()`** for backgrounds
+- **`alpha()`** function for transparency
+- **`border-radius`** for rounded corners
+- **`text-shadow`** for text effects
 
-### Successful Waybar Styling Patterns
-
-#### Button Styling
-```css
-#custom-power,
-#custom-launcher {
-  border-radius: 15px;
-  margin: 12px 8px;  /* Vertical margin controls apparent height */
-  font-size: 14px;
-  font-weight: 700;
-  padding: 0px 8px;  /* No vertical padding */
-  min-width: 20px;
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.9) 0%, 
-    alpha(@surface1, 0.95) 50%, 
-    alpha(@base, 0.9) 100%);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  border: 1px solid alpha(@overlay0, 0.4);
-}
-```
-
-#### Hover Effects
-```css
-#element:hover {
-  margin-top: -2px;  /* Simulates translateY transform */
-  font-size: 14px;   /* Simulates scale transform */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-```
-
-#### Animations
-```css
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.8; }
-  100% { opacity: 1; }
-}
-
-@keyframes float {
-  0% { margin-top: 0px; }
-  50% { margin-top: -2px; }
-  100% { margin-top: 0px; }
-}
-```
+## Configuration Files
+- Main config: `/home/aster/.dotfiles/.config/waybar/config.jsonc`
+- Styles: `/home/aster/.dotfiles/.config/waybar/style.css`
+- Color palette: `/home/aster/.dotfiles/.config/waybar/machiatto.css`
 
 ## Color Scheme
 Using Catppuccin Macchiato palette imported from `machiatto.css` with colors like:
@@ -84,54 +50,123 @@ Using Catppuccin Macchiato palette imported from `machiatto.css` with colors lik
 - `@teal`, `@green`, `@yellow`, `@peach`, `@red`
 - `@surface0`, `@surface1`, `@surface2`, `@base`, `@mantle`, `@crust`
 
-## Configuration Files
-- Main config: `/home/aster/.dotfiles/.config/waybar/config.jsonc`
-- Styles: `/home/aster/.dotfiles/.config/waybar/style.css`
-- Color palette: `/home/aster/.dotfiles/.config/waybar/machiatto.css`
+## Critical Discoveries (2025-07-09 Session)
 
-## Working Features
-- Gradient backgrounds with transparency
-- Smooth hover effects using margin and font-size changes
-- Animated modules (pulse, glow, blink, rainbow, float)
-- Grouped modules with connected borders
-- Custom launcher and power buttons with square-like proportions
-- Beautiful box shadows and inset highlights
-- Player controls with music title display
-- Unified hover effects based on clickability
-- Compact design with different sizing for clickable vs non-clickable elements
+### ⚠️ CRITICAL WAYBAR STYLING ERRORS TO AVOID
 
-## New Discoveries (2025-07-09)
+#### 🚨 FORBIDDEN Properties That Cause Errors
+**These will break Waybar with error messages:**
+- `max-height` ❌ **CAUSES: "max-height is not a valid property name"**
+- `min-height` ❌ **CAUSES: "min-height is not a valid property name"**
+- `overflow` ❌ **CAUSES: "overflow is not a valid property name"**
+- `white-space` ❌ **CAUSES: "white-space is not a valid property name"**
+- `text-overflow` ❌ **CAUSES: "text-overflow is not a valid property name"**
 
-### Waybar Configuration Tips
-- **Height Control**: Waybar's `height` property in config.jsonc affects overall bar height
-- **Margin Effects**: Larger vertical margins can make elements appear smaller/more compact
-- **Clickability-Based Design**: Elements should be sized based on their function:
-  - Clickable elements (buttons, controls): Larger padding/margins for better UX
-  - Non-clickable elements (info displays): Smaller padding/margins for compactness
+#### 🔧 How to Fix Height/Content Issues WITHOUT Forbidden Properties
 
-### CSS Limitations and Solutions
-- **Font-size Changes**: Changing `font-size` in hover effects can cause layout shifts
-  - Solution: Keep consistent font-size or use other visual effects
-- **Hover Positioning**: Use consistent margins in hover states to prevent element shifting
-- **Grouped Elements**: Each element in a group needs individual hover styling to maintain borders
+**❌ WRONG - Using forbidden properties:**
+```css
+#hyprland-window {
+  max-height: 16px;        /* ERROR! */
+  overflow: hidden;        /* ERROR! */
+  white-space: nowrap;     /* ERROR! */
+  text-overflow: ellipsis; /* ERROR! */
+}
+```
 
-### Player Control Integration
-- **Music Title Display**: Use `playerctl metadata --format '{{ title }}'` for current track
-- **Text Length Limiting**: Use `head -c 25` and `max-length` for overflow control
-- **Click Behavior**: Music title should be display-only (no click handler)
+**✅ CORRECT - Waybar-compatible approach:**
+```css
+#hyprland-window {
+  margin: 8px 8px;         /* Controls apparent height */
+  padding: 0px 14px;       /* Minimal internal spacing */
+  min-width: 100px;        /* Width control only */
+}
+```
 
-### Design Patterns
-- **Three-Tier Sizing**:
-  1. Large: Clickable action buttons (power, launcher)
-  2. Medium: Clickable controls (network, audio, player buttons)
-  3. Small: Info displays (CPU, memory, time, music title)
-- **Hover Effect Categories**:
-  - Passive: Subtle effects for info displays
-  - Interactive: Medium effects for controls
-  - Action: Prominent effects for main buttons
-- **Compact Design**: Use minimal padding (1-2px) and larger margins (6px) for non-clickable elements
+**✅ For text length control, use config.jsonc:**
+```json
+"hyprland/window": {
+  "format": "{}",
+  "max-length": 50          /* Text truncation in config, NOT CSS */
+}
+```
 
-### Color Scheme Optimizations
-- **System Monitoring**: Unified blue color (@blue) for all resource indicators
-- **Music Display**: Sky blue (@sky) with transparency for non-intrusive display
-- **Button Consistency**: Maintain original color schemes while adjusting hover effects
+#### Problem: Generic Hover Rule Conflicts
+- **Issue**: Generic `.action-hover:hover` rules conflict with individual button hover settings
+- **Symptoms**: Buttons turn black/gray on hover instead of maintaining their colors
+- **Solution**: Remove specific selectors from generic rules and create dedicated hover styles
+```css
+/* WRONG: Generic rule affecting all buttons */
+.action-hover:hover,
+#custom-power:hover,
+#custom-launcher:hover { ... }
+
+/* CORRECT: Individual rules for each button */
+#custom-power:hover { color: @base; background: @red; }
+#custom-launcher:hover { color: @base; background: @mauve; }
+```
+
+#### Problem: Font-size Changes Cause Layout Shifts
+- **Issue**: Changing `font-size` in hover effects makes elements "jump" and shift layout
+- **Symptoms**: Elements move/resize on hover, affecting neighboring elements
+- **Solution**: ❌ Avoid `font-size` changes in hover states
+```css
+/* WRONG: Causes layout shifts */
+#element:hover { font-size: 15px; }
+
+/* CORRECT: Use only visual effects */
+#element:hover { box-shadow: 0 0 20px @color; }
+```
+
+#### Problem: Animation Layout Impact
+- **Issue**: Animations changing `margin-top`, `padding`, or positioning cause layout shifts
+- **Symptoms**: Elements "bounce" or move other elements during animation
+- **Solution**: ❌ Avoid animations that change layout properties
+```css
+/* DANGEROUS: Changes layout */
+@keyframes float {
+  0% { margin-top: 0px; }
+  50% { margin-top: -2px; }
+}
+
+/* SAFE: Only visual changes */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+```
+
+### ✅ Effective Hover Effect Implementation
+
+#### Multi-layer Glow Effects
+```css
+#element:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5),      /* Deep shadow */
+              0 0 30px alpha(@color, 0.9),         /* Inner glow */
+              0 0 60px alpha(@color, 0.6),         /* Outer glow */
+              inset 0 2px 0 rgba(255, 255, 255, 0.3),  /* Top highlight */
+              inset 0 -2px 0 rgba(0, 0, 0, 0.2);   /* Bottom shadow */
+}
+```
+
+#### Safe Animation Types
+- ✅ **opacity**: Changes transparency (pulse effect)
+- ✅ **box-shadow**: Changes glow/shadow effects
+- ✅ **background**: Changes colors/gradients
+- ✅ **border**: Changes border properties
+- ❌ **margin/padding**: Affects layout
+- ❌ **font-size**: Affects element size
+- ❌ **transform**: Not supported in Waybar
+
+### 📋 CSS Rule Management Best Practices
+
+#### Rule Specificity Strategy
+1. **Generic rules**: For common base styles only
+2. **Individual rules**: For specific element behavior
+3. **Hover specificity**: Individual hover rules override generic ones
+4. **Color preservation**: Each button maintains its unique color scheme
+
+#### Layout Stability Principles
+- **Never change**: `margin`, `padding`, `font-size`, `width`, `height` in hover/animations
+- **Safe to change**: `box-shadow`, `background`, `border`, `opacity`, `color`
+- **Test thoroughly**: Any hover effect that might affect neighboring elements

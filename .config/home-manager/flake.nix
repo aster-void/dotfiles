@@ -62,15 +62,20 @@
     };
 
     homeConfigurations = let
-      preprocess = {enable-pkgs}:
+      preprocess = {
+        enable-pkgs,
+        extra-modules ? [],
+      }:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs extraSpecialArgs;
-          modules = [
-            ./home.nix
-            (import ./template/packages.nix {
-              inherit enable-pkgs;
-            })
-          ];
+          modules =
+            [
+              ./home.nix
+              (import ./template/packages.nix {
+                inherit enable-pkgs;
+              })
+            ]
+            ++ extra-modules;
         };
       standard-wsl-packaegs = [
         "cli"
@@ -92,6 +97,9 @@
     in {
       amberwood = preprocess {
         enable-pkgs = standard-desktop-packages;
+        extra-modules = [
+          ./modules/minecraft
+        ];
       };
       amberwood-wsl = preprocess {
         enable-pkgs = standard-wsl-packaegs;
