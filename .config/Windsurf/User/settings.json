@@ -2,11 +2,7 @@
   "editor.codeActionsOnSave": {
     "source.addMissingImports.ts": "always",
     "source.fixAll.ts": "always",
-    // "source.organizeImports": "always",
-    // "source.fixAll.biome": "always",
     "source.biome": "always"
-    // "source.removeUnusedImports": "always"
-    // "source.sortImports": "always"
   },
   "editor.formatOnSave": true,
   "editor.fontFamily": "MesloLGM Nerd Font Mono",
