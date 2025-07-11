@@ -23,9 +23,9 @@
     "cpu",
     "memory",
     "temperature",
+    "battery",
     "network",
     "pulseaudio",
-    "battery",
     "clock#date",
     "clock#clock",
     "custom/power"
