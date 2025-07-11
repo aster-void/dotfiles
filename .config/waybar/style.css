@@ -14,36 +14,87 @@
 @import "machiatto.css";
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.8; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes glow {
-  0% { box-shadow: 0 0 5px alpha(@mauve, 0.5); }
-  50% { box-shadow: 0 0 20px alpha(@mauve, 0.8), 0 0 30px alpha(@lavender, 0.6); }
-  100% { box-shadow: 0 0 5px alpha(@mauve, 0.5); }
+  0% {
+    box-shadow: 0 0 5px alpha(@mauve, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 20px alpha(@mauve, 0.8), 0 0 30px alpha(@lavender, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 0 5px alpha(@mauve, 0.5);
+  }
 }
 
 @keyframes slide-in {
-  0% { opacity: 0; margin-top: -10px; }
-  100% { opacity: 1; margin-top: 0; }
+  0% {
+    opacity: 0;
+    margin-top: -10px;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
 }
 
 @keyframes rainbow {
-  0% { color: @red; }
-  16.66% { color: @peach; }
-  33.33% { color: @yellow; }
-  50% { color: @green; }
-  66.66% { color: @sky; }
-  83.33% { color: @mauve; }
-  100% { color: @red; }
+  0% {
+    color: @red;
+  }
+
+  16.66% {
+    color: @peach;
+  }
+
+  33.33% {
+    color: @yellow;
+  }
+
+  50% {
+    color: @green;
+  }
+
+  66.66% {
+    color: @sky;
+  }
+
+  83.33% {
+    color: @mauve;
+  }
+
+  100% {
+    color: @red;
+  }
 }
 
 @keyframes float {
-  0% { margin-top: 0px; }
-  50% { margin-top: -2px; }
-  100% { margin-top: 0px; }
+  0% {
+    margin-top: 0px;
+  }
+
+  50% {
+    margin-top: -2px;
+  }
+
+  100% {
+    margin-top: 0px;
+  }
 }
 
 @keyframes blink {
@@ -52,11 +103,13 @@
     background: linear-gradient(135deg, alpha(@red, 0.3), alpha(@maroon, 0.3));
     box-shadow: 0 0 15px alpha(@red, 0.6);
   }
+
   50% {
     color: @text;
     background: linear-gradient(135deg, alpha(@red, 0.6), alpha(@maroon, 0.6));
     box-shadow: 0 0 25px alpha(@red, 0.8);
   }
+
   100% {
     color: @red;
     background: linear-gradient(135deg, alpha(@red, 0.3), alpha(@maroon, 0.3));
@@ -65,8 +118,13 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* -----------------------------------------------------------------------------
@@ -86,13 +144,79 @@
 
 window#waybar {
   border: 0;
-  background: linear-gradient(135deg, 
-    alpha(@base, 0.95) 0%, 
-    alpha(@mantle, 0.98) 50%, 
-    alpha(@crust, 0.95) 100%);
+  background: linear-gradient(135deg,
+      alpha(@base, 0.95) 0%,
+      alpha(@mantle, 0.98) 50%,
+      alpha(@crust, 0.95) 100%);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   border-radius: 0 0 20px 20px;
   animation: slide-in 0.8s ease-out;
+}
+
+/* -----------------------------------------------------------------------------
+ * Common Utility Classes (DRY principles)
+ * -------------------------------------------------------------------------- */
+
+/* Common Background Gradients */
+.bg-surface {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.9) 0%,
+      alpha(@surface1, 0.95) 50%,
+      alpha(@base, 0.9) 100%);
+}
+
+.bg-surface-compact {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.85) 0%,
+      alpha(@surface1, 0.9) 100%);
+}
+
+.bg-surface-player {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.9) 0%,
+      alpha(@surface1, 0.95) 100%);
+}
+
+/* Common Box Shadows */
+.shadow-light {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-medium {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.shadow-strong {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Common Borders */
+.border-light {
+  border: 1px solid alpha(@overlay0, 0.25);
+}
+
+.border-medium {
+  border: 1px solid alpha(@overlay0, 0.3);
+}
+
+.border-strong {
+  border: 1px solid alpha(@overlay0, 0.4);
+}
+
+/* Common Text Effects */
+.text-glow {
+  text-shadow: 0 0 10px alpha(currentColor, 0.8);
+}
+
+/* Common Transitions */
+.transition-fast {
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.transition-smooth {
+  transition: all 0.3s ease;
 }
 
 /* -----------------------------------------------------------------------------
@@ -100,15 +224,15 @@ window#waybar {
  * -------------------------------------------------------------------------- */
 
 #workspaces {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.9) 0%, 
-    alpha(@surface1, 0.95) 50%, 
-    alpha(@surface2, 0.9) 100%);
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.9) 0%,
+      alpha(@surface1, 0.95) 50%,
+      alpha(@surface2, 0.9) 100%);
   border-radius: 6px;
   margin: 2px 0px 2px 8px;
   padding: 1px 2px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border: 1px solid alpha(@overlay0, 0.3);
 }
 
@@ -119,9 +243,9 @@ window#waybar {
   padding: 2px 6px;
   min-width: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg, 
-    alpha(@base, 0.4) 0%, 
-    alpha(@mantle, 0.3) 100%);
+  background: linear-gradient(135deg,
+      alpha(@base, 0.4) 0%,
+      alpha(@mantle, 0.3) 100%);
   border: 1px solid alpha(@overlay0, 0.2);
 }
 
@@ -130,7 +254,7 @@ window#waybar {
   margin-top: -2px;
   font-size: 14px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
-              0 0 20px alpha(@mauve, 0.5);
+    0 0 20px alpha(@mauve, 0.5);
   background: linear-gradient(135deg, @mauve, @lavender);
   animation: pulse 1s ease-in-out infinite;
 }
@@ -139,7 +263,7 @@ window#waybar {
   color: @base;
   background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
   box-shadow: 0 4px 16px alpha(@mauve, 0.6),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   font-size: 15px;
   animation: float 2s ease-in-out infinite;
 }
@@ -180,14 +304,14 @@ window#waybar {
 #custom-pacman,
 #custom-launcher {
   padding: 2px 6px;
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.9) 0%, 
-    alpha(@surface1, 0.95) 50%, 
-    alpha(@base, 0.9) 100%);
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.9) 0%,
+      alpha(@surface1, 0.95) 50%,
+      alpha(@base, 0.9) 100%);
   border-radius: 6px;
   margin: 2px 2px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border: 1px solid alpha(@overlay0, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -207,13 +331,14 @@ window#waybar {
 #temperature:hover,
 #network:hover,
 #pulseaudio:hover,
+#backlight:hover,
 #tray:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
-              0 0 10px alpha(@mauve, 0.3);
-  background: linear-gradient(135deg, 
-    alpha(@surface1, 0.92) 0%, 
-    alpha(@surface2, 0.95) 50%, 
-    alpha(@surface0, 0.92) 100%);
+    0 0 10px alpha(@mauve, 0.3);
+  background: linear-gradient(135deg,
+      alpha(@surface1, 0.92) 0%,
+      alpha(@surface2, 0.95) 50%,
+      alpha(@surface0, 0.92) 100%);
 }
 
 /* Clock specific hover - no margin change to prevent movement */
@@ -232,17 +357,16 @@ window#waybar {
 #idle_inhibitor:hover,
 #custom-keyboard-layout:hover,
 #hyprland-window:hover,
-#backlight:hover,
-#mode:hover,
-#custom-pacman:hover {
+#bluetooth:hover,
+#mode:hover {
   margin-top: -2px;
   font-size: 14px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4),
-              0 0 20px alpha(@mauve, 0.5);
-  background: linear-gradient(135deg, 
-    alpha(@surface1, 0.95) 0%, 
-    alpha(@surface2, 1) 50%, 
-    alpha(@surface0, 0.95) 100%);
+    0 0 20px alpha(@mauve, 0.5);
+  background: linear-gradient(135deg,
+      alpha(@surface1, 0.95) 0%,
+      alpha(@surface2, 1) 50%,
+      alpha(@surface0, 0.95) 100%);
 }
 
 /* Action buttons - compact hover (disabled to prevent conflicts) */
@@ -250,12 +374,12 @@ window#waybar {
   margin-top: 2px;
   font-size: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
-              0 0 20px alpha(@mauve, 0.6),
-              inset 0 2px 0 rgba(255, 255, 255, 0.2);
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.95) 0%, 
-    alpha(@surface1, 1) 50%, 
-    alpha(@base, 0.95) 100%);
+    0 0 20px alpha(@mauve, 0.6),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.95) 0%,
+      alpha(@surface1, 1) 50%,
+      alpha(@base, 0.95) 100%);
 }
 
 /* Power button specific hover with enhanced effects */
@@ -263,10 +387,10 @@ window#waybar {
   color: @base;
   background: linear-gradient(135deg, @red 0%, @maroon 50%, @peach 100%);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5),
-              0 0 30px alpha(@red, 0.9),
-              0 0 60px alpha(@red, 0.6),
-              inset 0 2px 0 rgba(255, 255, 255, 0.3),
-              inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    0 0 30px alpha(@red, 0.9),
+    0 0 60px alpha(@red, 0.6),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
   margin: 4px 6px;
   border: 1px solid alpha(@red, 0.8);
   animation: pulse 1.5s ease-in-out infinite;
@@ -277,10 +401,10 @@ window#waybar {
   color: @base;
   background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5),
-              0 0 30px alpha(@mauve, 0.9),
-              0 0 60px alpha(@mauve, 0.6),
-              inset 0 2px 0 rgba(255, 255, 255, 0.3),
-              inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    0 0 30px alpha(@mauve, 0.9),
+    0 0 60px alpha(@mauve, 0.6),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
   margin: 4px 6px;
   border: 1px solid alpha(@mauve, 0.8);
 }
@@ -299,12 +423,12 @@ window#waybar {
   font-weight: 600;
   padding: 6px 14px;
   min-height: 16px;
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.9) 0%, 
-    alpha(@surface1, 0.95) 50%, 
-    alpha(@base, 0.9) 100%);
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.9) 0%,
+      alpha(@surface1, 0.95) 50%,
+      alpha(@base, 0.9) 100%);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   border: 1px solid alpha(@overlay0, 0.4);
 }
 
@@ -317,12 +441,12 @@ window#waybar {
   font-weight: 600;
   padding: 6px 12px;
   min-width: 24px;
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 50%, 
-    alpha(@base, 0.85) 100%);
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.85) 0%,
+      alpha(@surface1, 0.9) 50%,
+      alpha(@base, 0.85) 100%);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   border: 1px solid alpha(@overlay0, 0.2);
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -332,40 +456,30 @@ window#waybar {
  * -------------------------------------------------------------------------- */
 
 /* System monitoring group: CPU + Memory + Temperature + Battery (Non-clickable - smaller) */
-#cpu {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
-  border-radius: 4px 0px 0px 4px;
-  margin: 6px 0px 6px 4px;
+/* Common properties for system monitoring group */
+#cpu,
+#memory,
+#temperature,
+#battery {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.85) 0%,
+      alpha(@surface1, 0.9) 100%);
   padding: 2px 6px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Individual positioning and borders */
+#cpu {
+  border-radius: 4px 0px 0px 4px;
+  margin: 6px 0px 6px 4px;
   border: 1px solid alpha(@overlay0, 0.25);
   border-right: none;
 }
 
-#memory {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
-  border-radius: 0;
-  margin: 6px 0px;
-  padding: 2px 6px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-  border-top: 1px solid alpha(@overlay0, 0.25);
-  border-bottom: 1px solid alpha(@overlay0, 0.25);
-  border-left: none;
-  border-right: none;
-}
-
+#memory,
 #temperature {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
   border-radius: 0;
   margin: 6px 0px;
-  padding: 2px 6px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
   border-top: 1px solid alpha(@overlay0, 0.25);
   border-bottom: 1px solid alpha(@overlay0, 0.25);
   border-left: none;
@@ -373,102 +487,139 @@ window#waybar {
 }
 
 #battery {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
   border-radius: 0 4px 4px 0;
   margin: 6px 4px 6px 0px;
-  padding: 2px 6px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
   border: 1px solid alpha(@overlay0, 0.25);
   border-left: none;
 }
 
-/* Network & Audio group: Network + Audio (Clickable - bigger) */
-#network {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
-  border-radius: 6px 0px 0px 6px;
-  margin: 6px 0px 6px 4px;
+/* Connectivity group: Network + Audio + Bluetooth (Clickable - bigger) */
+/* Common properties for connectivity group */
+#network,
+#pulseaudio,
+#bluetooth {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.85) 0%,
+      alpha(@surface1, 0.9) 100%);
   padding: 4px 8px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Individual positioning and borders */
+#network {
+  border-radius: 6px 0px 0px 6px;
+  margin: 6px 0px 6px 4px;
   border: 1px solid alpha(@overlay0, 0.25);
   border-right: none;
 }
 
 #pulseaudio {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
+  border-radius: 0;
+  margin: 6px 0px;
+  border-top: 1px solid alpha(@overlay0, 0.25);
+  border-bottom: 1px solid alpha(@overlay0, 0.25);
+  border-left: none;
+  border-right: none;
+}
+
+#bluetooth {
   border-radius: 0 6px 6px 0;
   margin: 6px 4px 6px 0px;
+  border: 1px solid alpha(@overlay0, 0.25);
+  border-left: none;
+  color: @sapphire;
+  text-shadow: 0 0 10px alpha(@sapphire, 0.8);
+  transition: all 0.3s ease;
+}
+
+/* Backlight - standalone module */
+#backlight {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.85) 0%,
+      alpha(@surface1, 0.9) 100%);
+  border-radius: 6px;
+  margin: 6px 4px;
   padding: 4px 8px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
   border: 1px solid alpha(@overlay0, 0.25);
-  border-left: none;
+  color: @yellow;
+  text-shadow: 0 0 10px alpha(@yellow, 0.8);
+  transition: all 0.3s ease;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: @overlay0;
+  background: linear-gradient(135deg, alpha(@overlay0, 0.2), alpha(@surface2, 0.2));
+  border: 1px solid alpha(@overlay0, 0.3);
+  opacity: 0.6;
+}
+
+#bluetooth.connected {
+  color: @sapphire;
+  background: linear-gradient(135deg, alpha(@sapphire, 0.3), alpha(@blue, 0.3));
+  border: 1px solid alpha(@sapphire, 0.5);
+  box-shadow: 0 0 15px alpha(@sapphire, 0.6);
+  animation: pulse 3s ease-in-out infinite;
 }
 
 /* Time group: Date + Clock (Non-clickable - smaller) */
-#clock.date {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
-  border-radius: 4px 0px 0px 4px;
-  margin: 6px 0px 6px 4px;
+/* Common properties for time group */
+#clock.date,
+#clock.clock {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.85) 0%,
+      alpha(@surface1, 0.9) 100%);
   padding: 2px 6px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
   border: 1px solid alpha(@overlay0, 0.25);
+}
+
+/* Individual positioning and borders */
+#clock.date {
+  border-radius: 4px 0px 0px 4px;
+  margin: 6px 0px 6px 4px;
   border-right: none;
 }
 
 #clock.clock {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.85) 0%, 
-    alpha(@surface1, 0.9) 100%);
   border-radius: 0 4px 4px 0;
   margin: 6px 4px 6px 0px;
-  padding: 2px 6px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-  border: 1px solid alpha(@overlay0, 0.25);
   border-left: none;
 }
 
 /* Player controls group */
+/* Common properties for player controls */
+#custom-player.prev,
+#custom-player.play,
+#custom-player.next {
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.9) 0%,
+      alpha(@surface1, 0.95) 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid alpha(@overlay0, 0.3);
+}
+
+/* Individual positioning and styling */
 #custom-player.prev {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.9) 0%, 
-    alpha(@surface1, 0.95) 100%);
   border-radius: 12px 0px 0px 12px;
   margin: 6px 0px 6px 8px;
   padding: 8px 12px 8px 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid alpha(@overlay0, 0.3);
   border-right: none;
 }
 
 #custom-player.play {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.9) 0%, 
-    alpha(@surface1, 0.95) 100%);
   border-radius: 0;
   margin: 6px 0px;
   padding: 8px 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid alpha(@overlay0, 0.3);
   border-right: none;
   border-left: none;
 }
 
 #custom-player.next {
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.9) 0%, 
-    alpha(@surface1, 0.95) 100%);
   border-radius: 0 12px 12px 0;
   margin: 6px 8px 6px 0px;
   padding: 8px 12px 8px 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid alpha(@overlay0, 0.3);
   border-left: none;
 }
 
@@ -490,7 +641,7 @@ window#waybar {
  * Individual module styles & colors
  * -------------------------------------------------------------------------- */
 
-/* Player Controls */
+/* Player Controls - consolidated styling */
 #custom-player.prev,
 #custom-player.play,
 #custom-player.next {
@@ -501,24 +652,48 @@ window#waybar {
   transition: all 0.3s ease;
 }
 
-#custom-player.prev:hover {
-  color: @base;
-  background: linear-gradient(135deg, @sky, @sapphire);
-  box-shadow: 0 0 20px alpha(@sky, 0.7);
-  margin: 6px 0px 6px 8px;
+/* Player status-specific styles - using simpler selectors */
+#custom-player.play.playing {
+  color: @green;
+  background: linear-gradient(135deg, alpha(@green, 0.3), alpha(@teal, 0.3));
+  border: 1px solid alpha(@green, 0.5);
+  box-shadow: 0 0 15px alpha(@green, 0.6);
+  animation: pulse 2s ease-in-out infinite;
 }
 
-#custom-player.play:hover {
-  color: @base;
-  background: linear-gradient(135deg, @sky, @sapphire);
-  box-shadow: 0 0 20px alpha(@sky, 0.7);
-  margin: 6px 0px;
+#custom-player.play.paused {
+  color: @yellow;
+  background: linear-gradient(135deg, alpha(@yellow, 0.3), alpha(@peach, 0.3));
+  border: 1px solid alpha(@yellow, 0.5);
+  box-shadow: 0 0 15px alpha(@yellow, 0.6);
 }
 
+#custom-player.play.stopped {
+  color: @overlay0;
+  background: linear-gradient(135deg, alpha(@overlay0, 0.2), alpha(@surface2, 0.2));
+  border: 1px solid alpha(@overlay0, 0.3);
+  opacity: 0.6;
+}
+
+/* Player controls hover - consolidated common properties */
+#custom-player.prev:hover,
+#custom-player.play:hover,
 #custom-player.next:hover {
   color: @base;
   background: linear-gradient(135deg, @sky, @sapphire);
   box-shadow: 0 0 20px alpha(@sky, 0.7);
+}
+
+/* Individual hover margins */
+#custom-player.prev:hover {
+  margin: 6px 0px 6px 8px;
+}
+
+#custom-player.play:hover {
+  margin: 6px 0px;
+}
+
+#custom-player.next:hover {
   margin: 6px 8px 6px 0px;
 }
 
@@ -553,7 +728,7 @@ window#waybar {
   min-width: 100px;
 }
 
-/* Time & Date */
+/* Time & Date - consolidated styling */
 #clock,
 #clock.date,
 #clock.clock {
@@ -565,23 +740,9 @@ window#waybar {
   letter-spacing: 0.5px;
 }
 
-/* System Monitoring */
-#cpu {
-  color: @blue;
-  background: linear-gradient(135deg, alpha(@blue, 0.2), alpha(@sapphire, 0.2));
-  border: 1px solid alpha(@blue, 0.3);
-  text-shadow: 0 0 10px alpha(@blue, 0.8);
-  font-weight: 700;
-}
-
-#memory {
-  color: @blue;
-  background: linear-gradient(135deg, alpha(@blue, 0.2), alpha(@sapphire, 0.2));
-  border: 1px solid alpha(@blue, 0.3);
-  text-shadow: 0 0 10px alpha(@blue, 0.8);
-  font-weight: 700;
-}
-
+/* System Monitoring - consolidated colors and styling */
+#cpu,
+#memory,
 #temperature {
   color: @blue;
   background: linear-gradient(135deg, alpha(@blue, 0.2), alpha(@sapphire, 0.2));
@@ -664,24 +825,26 @@ window#waybar {
   animation: blink 0.8s ease-in-out infinite;
 }
 
-/* Action Buttons */
-#custom-launcher {
-  background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
-  color: @base;
-  border: 1px solid alpha(@mauve, 0.6);
-  box-shadow: 0 0 20px alpha(@mauve, 0.6);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  font-weight: 700;
-}
-
+/* Action Buttons - consolidated common properties */
+#custom-launcher,
 #custom-power {
   color: @base;
-  background: linear-gradient(135deg, @red 0%, @maroon 50%, @peach 100%);
-  border: 1px solid alpha(@red, 0.6);
-  box-shadow: 0 0 20px alpha(@red, 0.6);
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   font-weight: 700;
   transition: all 0.3s ease;
+}
+
+/* Individual button styling */
+#custom-launcher {
+  background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
+  border: 1px solid alpha(@mauve, 0.6);
+  box-shadow: 0 0 20px alpha(@mauve, 0.6);
+}
+
+#custom-power {
+  background: linear-gradient(135deg, @red 0%, @maroon 50%, @peach 100%);
+  border: 1px solid alpha(@red, 0.6);
+  box-shadow: 0 0 20px alpha(@red, 0.6);
 }
 
 /* System Tray */
@@ -695,16 +858,16 @@ window#waybar {
   transition: all 0.3s ease;
 }
 
-#tray > .passive {
+#tray>.passive {
   transition: all 0.3s ease;
 }
 
-#tray > .active {
+#tray>.active {
   color: @mauve;
   animation: pulse 2s ease-in-out infinite;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   color: @red;
   animation: blink 1s ease-in-out infinite;
 }
@@ -715,9 +878,9 @@ window#waybar {
   margin: 8px 12px;
   padding: 0px 16px;
   color: @text;
-  background: linear-gradient(135deg, 
-    alpha(@surface0, 0.8) 0%, 
-    alpha(@surface1, 0.9) 100%);
+  background: linear-gradient(135deg,
+      alpha(@surface0, 0.8) 0%,
+      alpha(@surface1, 0.9) 100%);
   border-radius: 15px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   border: 1px solid alpha(@overlay0, 0.3);
@@ -727,4 +890,3 @@ window#waybar {
   /* Use min-width to control dimensions (Waybar compatible) */
   min-width: 100px;
 }
-

@@ -26,6 +26,8 @@
     "battery",
     "network",
     "pulseaudio",
+    "bluetooth",
+    "backlight",
     "clock#date",
     "clock#clock",
     "custom/power"
@@ -50,8 +52,9 @@
     "on-click": "playerctl previous"
   },
   "custom/player#play": {
-    "exec": "while true; do playerctl status; sleep 0.2; done",
-    "on-click": "playerctl play-pause"
+    "exec": "while true; do playerctl status 2>/dev/null || echo 'Stopped'; sleep 0.2; done",
+    "on-click": "playerctl play-pause",
+    "format": "{}"
   },
   "custom/player#next": {
     "format": "",
@@ -136,31 +139,32 @@
   //     "interval": 1
   // },
   "cpu": {
-    "format": " {usage: >3}%",
-    "on-click": "alacritty -e htop"
+    "format": "{usage: >3}%",
+    "on-click": "alacritty -e btop",
+    "tooltip-format": "CPU Usage: {usage}%\\nLoad: {load}\\nClick to open btop"
   },
   "memory": {
-    "format": " {: >3}%",
-    "on-click": "alacritty -e htop"
+    "format": "{: >3}%",
+    "on-click": "alacritty -e btop",
+    "tooltip-format": "Memory Usage: {percentage}%\\nUsed: {used}GiB / {total}GiB\\nAvailable: {avail}GiB\\nClick to open btop"
   },
   "temperature": {
     // "thermal-zone": 2,
     "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
     "critical-threshold": 80,
+    "on-click": "alacritty -e btop",
     // "format-critical": "{temperatureC}°C ",
-    "format": "  {temperatureC}°C"
+    "format": " {temperatureC}°C"
   },
   "backlight": {
     // "device": "acpi_video1",
     "format": "{icon} {percent: >3}%",
     "format-icons": [
-      "",
-      ""
+      "",
     ],
-    // "on-scroll-down": "brightnessctl -c backlight set 5%-",
-    // "on-scroll-down": "light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob",
-    // "on-scroll-up": "brightnessctl -c backlight set +5%"
-    // "on-scroll-up": "light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob"
+    "on-scroll-up": "brightnessctl set +2%",
+    "on-scroll-down": "brightnessctl set 2%-",
+    "tooltip-format": "Brightness: {percent}%\\nScroll to adjust"
   },
   "battery": {
     "states": {
@@ -168,7 +172,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}   {capacity: >3}%",
+    "format": "{icon} {capacity: >3}%",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": [
@@ -180,10 +184,23 @@
     ]
     //"format-icons": ["", "", "", "", "", "", "", "", "", ""]
   },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "",
+    "format-off": "",
+    "format-on": "",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} ({device_battery_percentage}%)",
+    "tooltip-format": "Bluetooth: {status}\\nConnected devices: {num_connections}",
+    "tooltip-format-connected": "Bluetooth: {status}\\nConnected: {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)",
+    "on-click": "blueman-manager"
+  },
   "network": {
     // "interface": "wlp2s0", // (Optional) To force the use of this interface
-    "format": "⚠  Disabled",
-    "format-wifi": "    {essid}",
+    "format": "⚠ Disabled",
+    "format-wifi": "  {essid}",
     // "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
     "format-ethernet": "  Wired",
     "format-disconnected": "⚠  Disconnected",
@@ -210,14 +227,6 @@
     "on-click": "pavucontrol"
     // "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
     // "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
-  },
-  "custom/pacman": {
-    "format": " {}",
-    "interval": 7200, // every two hours
-    "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
-    "exec-if": "exit 0", // always run; consider advanced run conditions
-    "on-click": "alacritty -e sudo pacman -Syu", // update system
-    "signal": 8
   },
   "custom/power": {
     "format": "⏻",
