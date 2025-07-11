@@ -140,19 +140,19 @@
   // },
   "cpu": {
     "format": "{usage: >3}%",
-    "on-click": "alacritty -e btop",
+    "on-click": "alacritty --option font.size=8 -e btop",
     "tooltip-format": "CPU Usage: {usage}%\\nLoad: {load}\\nClick to open btop"
   },
   "memory": {
     "format": "{: >3}%",
-    "on-click": "alacritty -e btop",
+    "on-click": "alacritty --option font.size=8 -e btop",
     "tooltip-format": "Memory Usage: {percentage}%\\nUsed: {used}GiB / {total}GiB\\nAvailable: {avail}GiB\\nClick to open btop"
   },
   "temperature": {
     // "thermal-zone": 2,
     "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
     "critical-threshold": 80,
-    "on-click": "alacritty -e btop",
+    "on-click": "alacritty --option font.size=8 -e btop",
     // "format-critical": "{temperatureC}°C ",
     "format": " {temperatureC}°C"
   },
