@@ -1,26 +1,28 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.addMissingImports.ts": "always",
-    "source.fixAll.ts": "always",
-    "source.biome": "always"
-  },
-  "editor.formatOnSave": true,
-  "editor.fontFamily": "MesloLGM Nerd Font Mono",
-  "terminal.integrated.fontFamily": "MesloLGM Nerd Font Mono",
-  "terminal.integrated.defaultProfile.linux": "fish",
-  "editor.defaultFormatter": "biomejs.biome",
-  "workbench.colorTheme": "Catppuccin Frappé",
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "[svelte]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "svelte.enable-ts-plugin": true,
-  "files.associations": {
-    ".prettierrc": "yaml"
-  },
-  "git.confirmSync": false,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "diffEditor.ignoreTrimWhitespace": false
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "always",
+		"source.addMissingImports.ts": "always",
+		"source.fixAll.ts": "always",
+		"source.biome": "always"
+	},
+	"editor.formatOnSave": true,
+	"editor.fontFamily": "MesloLGM Nerd Font Mono",
+	"terminal.integrated.fontFamily": "MesloLGM Nerd Font Mono",
+	"terminal.integrated.defaultProfile.linux": "fish",
+	"editor.defaultFormatter": "biomejs.biome",
+	"workbench.colorTheme": "Catppuccin Frappé",
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"[svelte]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"svelte.enable-ts-plugin": true,
+	"files.associations": {
+		".prettierrc": "yaml"
+	},
+	"git.confirmSync": false,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"diffEditor.ignoreTrimWhitespace": false,
+	"git.suggestSmartCommit": false
 }
