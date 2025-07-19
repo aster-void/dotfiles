@@ -77,8 +77,9 @@
             ]
             ++ extra-modules;
         };
-      standard-wsl-packaegs = [
+      standard-wsl-packages = [
         "cli"
+        "editor"
         [
           inputs.helix.packages.${system}.default
         ]
@@ -102,7 +103,7 @@
         ];
       };
       amberwood-wsl = preprocess {
-        enable-pkgs = standard-wsl-packaegs;
+        enable-pkgs = standard-wsl-packages;
       };
       bogster = preprocess {
         enable-pkgs = standard-desktop-packages;
@@ -111,7 +112,7 @@
         enable-pkgs = standard-desktop-packages;
       };
       carbon-wsl = preprocess {
-        enable-pkgs = standard-wsl-packaegs;
+        enable-pkgs = standard-wsl-packages;
       };
     };
   };
