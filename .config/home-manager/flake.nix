@@ -81,7 +81,7 @@
         "cli"
         "editor"
         [
-          inputs.helix.packages.${system}.default
+          pkgs.helix
         ]
       ];
       standard-desktop-packages = [
