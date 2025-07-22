@@ -256,7 +256,7 @@ window#waybar {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
     0 0 20px alpha(@mauve, 0.5);
   background: linear-gradient(135deg, @mauve, @lavender);
-  animation: pulse 1s ease-in-out infinite;
+  /* animation: pulse 1s ease-in-out infinite; */
 }
 
 #workspaces button.active {
@@ -265,7 +265,7 @@ window#waybar {
   box-shadow: 0 4px 16px alpha(@mauve, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   font-size: 15px;
-  animation: float 2s ease-in-out infinite;
+  /* animation: float 2s ease-in-out infinite; */
 }
 
 #workspaces button.focused {
@@ -273,7 +273,7 @@ window#waybar {
   background: linear-gradient(135deg, @yellow 0%, @peach 50%, @red 100%);
   box-shadow: 0 4px 16px alpha(@yellow, 0.6);
   font-size: 14px;
-  animation: rainbow 3s linear infinite;
+  /* animation: rainbow 3s linear infinite; */
 }
 
 #mode {
@@ -379,7 +379,7 @@ window#waybar {
     inset 0 -2px 0 rgba(0, 0, 0, 0.2);
   margin: 4px 6px;
   border: 1px solid alpha(@red, 0.8);
-  animation: pulse 1.5s ease-in-out infinite;
+  /* animation: pulse 1.5s ease-in-out infinite; */
 }
 
 /* Launcher button specific hover with enhanced effects */
@@ -559,7 +559,7 @@ window#waybar {
   background: linear-gradient(135deg, alpha(@sapphire, 0.3), alpha(@blue, 0.3));
   border: 1px solid alpha(@sapphire, 0.5);
   box-shadow: 0 0 15px alpha(@sapphire, 0.6);
-  animation: pulse 3s ease-in-out infinite;
+  /* animation: pulse 3s ease-in-out infinite; */
 }
 
 /* Time group: Date + Clock (Non-clickable - smaller) */
@@ -657,7 +657,7 @@ window#waybar {
   background: linear-gradient(135deg, alpha(@green, 0.3), alpha(@teal, 0.3));
   border: 1px solid alpha(@green, 0.5);
   box-shadow: 0 0 15px alpha(@green, 0.6);
-  animation: pulse 2s ease-in-out infinite;
+  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 #custom-player.play.paused {
@@ -754,7 +754,7 @@ window#waybar {
   color: @red;
   background: linear-gradient(135deg, alpha(@red, 0.4), alpha(@maroon, 0.4));
   border: 1px solid alpha(@red, 0.5);
-  animation: blink 0.5s ease-in-out infinite;
+  /* animation: blink 0.5s ease-in-out infinite; */
   font-size: 15px;
 }
 
@@ -765,7 +765,7 @@ window#waybar {
   color: @red;
   background: linear-gradient(135deg, alpha(@red, 0.2), alpha(@maroon, 0.2));
   border: 1px solid alpha(@red, 0.4);
-  animation: blink 1s ease-in-out infinite;
+  /* animation: blink 1s ease-in-out infinite; */
 }
 
 
@@ -774,7 +774,7 @@ window#waybar {
   background: linear-gradient(135deg, alpha(@overlay0, 0.2), alpha(@surface2, 0.2));
   border: 1px solid alpha(@overlay0, 0.3);
   opacity: 0.6;
-  animation: pulse 2s ease-in-out infinite;
+  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 /* Battery */
@@ -792,7 +792,7 @@ window#waybar {
   background: linear-gradient(135deg, alpha(@teal, 0.3), alpha(@green, 0.3));
   border: 1px solid alpha(@teal, 0.5);
   box-shadow: 0 0 15px alpha(@teal, 0.7);
-  animation: pulse 2s ease-in-out infinite;
+  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 #battery.warning:not(.charging) {
@@ -800,14 +800,14 @@ window#waybar {
   background: linear-gradient(135deg, alpha(@yellow, 0.3), alpha(@peach, 0.3));
   border: 1px solid alpha(@yellow, 0.5);
   box-shadow: 0 0 15px alpha(@yellow, 0.6);
-  animation: pulse 3s ease-in-out infinite;
+  /* animation: pulse 3s ease-in-out infinite; */
 }
 
 #battery.critical:not(.charging) {
   color: @red;
   background: linear-gradient(135deg, alpha(@red, 0.3), alpha(@maroon, 0.3));
   border: 1px solid alpha(@red, 0.5);
-  animation: blink 0.8s ease-in-out infinite;
+  /* animation: blink 0.8s ease-in-out infinite; */
 }
 
 /* Action Buttons - consolidated common properties */
@@ -849,12 +849,12 @@ window#waybar {
 
 #tray>.active {
   color: @mauve;
-  animation: pulse 2s ease-in-out infinite;
+  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 #tray>.needs-attention {
   color: @red;
-  animation: blink 1s ease-in-out infinite;
+  /* animation: blink 1s ease-in-out infinite; */
 }
 
 /* Window Title - consolidated styling */
