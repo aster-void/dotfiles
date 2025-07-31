@@ -81,6 +81,7 @@ grammar = "css"
 [[language]]
 name = "javascript"
 auto-format = true
+formatter = { command = "biome", args = ["format", "--stdin-file-path=a.js"] }
 language-servers = ["ts", "js"]
 
 [[language]]
