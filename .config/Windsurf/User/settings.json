@@ -2,6 +2,7 @@
 	"editor.codeActionsOnSave": {
 		"source.organizeImports.biome": "always",
 		"source.addMissingImports.ts": "always",
+		"source.removeUnusedImports": "always",
 		"source.fixAll.ts": "always",
 		"source.biome": "always"
 	},
