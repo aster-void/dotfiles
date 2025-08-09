@@ -112,6 +112,9 @@
       };
       bogster = preprocess {
         enable-pkgs = standard-desktop-packages;
+        extra-modules = [
+          ./modules/minecraft
+        ];
       };
       carbon = preprocess {
         enable-pkgs = standard-desktop-packages;
