@@ -18,6 +18,11 @@ jobs:
           nix_path: "nixpkgs=flake:nixpkgs"
       - run: nix flake update
         working-directory: .config/home-manager
+      - name: Test build configuration
+        run: |
+          # Test build one of the configurations to ensure it's buildable
+          nix build .#homeConfigurations.amberwood.activationPackage --no-link
+        working-directory: .config/home-manager
       - uses: EndBug/add-and-commit@v9
         with:
           message: "(bot)schedule: update flake"
