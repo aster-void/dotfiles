@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    claude-monitor = {
+      url = "github:aster-void/Claude-Code-Usage-Monitor?ref=add-nix-flake-distribution";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # hyprpanel = {
     # url = "github:Jas-SinghFSU/HyprPanel";
     # inputs.nixpkgs.follows = "nixpkgs";
@@ -82,6 +87,7 @@
         "editor"
         [
           pkgs.helix
+          inputs.claude-monitor.packages.${system}.default
         ]
       ];
       standard-desktop-packages = [
@@ -91,6 +97,8 @@
         "large"
         [
           pkgs.helix
+          inputs.claude-monitor.packages.${system}.default
+
           # inputs.helix.packages.${system}.default
           inputs.zen-browser.packages.${system}.beta
           # build.line # I give up. install it via steam.
