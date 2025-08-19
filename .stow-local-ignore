@@ -15,5 +15,6 @@ lefthook.yml
 .helix
 shell.nix
 .ignore
+/result
 
 assets
