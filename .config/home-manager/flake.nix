@@ -103,8 +103,6 @@
           inputs.zen-browser.packages.${system}.beta
           # build.line # I give up. install it via steam.
           build.setpaper
-          build.reload
-          build.reload-d
           build.wpick
         ]
       ];
