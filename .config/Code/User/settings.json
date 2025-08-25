@@ -1,8 +1,13 @@
 {
-    "explorer.confirmDragAndDrop": false,
+    "workbench.colorTheme": "One Dark Pro Mix",
+    "hediet.vscode-drawio.resizeImages": null,
+    "[typst]": {
+        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+    },
+    "[typst-code]": {
+        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+    },
     "explorer.confirmDelete": false,
     "svelte.enable-ts-plugin": true,
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    "git.openRepositoryInParentFolders": "never"
 }
