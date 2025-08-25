@@ -1,24 +1,19 @@
-/* =============================================================================
- *
- * ✨ ULTRA STYLISH WAYBAR CONFIGURATION ✨
- * The World's Most Beautiful Waybar Design
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
- * =========================================================================== */
+/* Waybar Configuration */
 
-/* -----------------------------------------------------------------------------
- * Keyframes & Animations
- * -------------------------------------------------------------------------- */
+/* Animations */
 
 @import "macchiato.css";
 
-/* 50% transparent background colors for better readability */
+/* Transparent Color Variants */
 @define-color surface0_50 alpha(@surface0, 0.5);
 @define-color surface1_50 alpha(@surface1, 0.5);
 @define-color surface2_50 alpha(@surface2, 0.5);
 @define-color base_50 alpha(@base, 0.5);
 @define-color mantle_50 alpha(@mantle, 0.5);
+
+@define-color background_bg @surface1_50;
+@define-color workspace_bg @background_bg;
+@define-color module_bg @surface1_50;
 
 @keyframes pulse {
   0% {
@@ -90,19 +85,6 @@
   }
 }
 
-@keyframes float {
-  0% {
-    margin-top: 0px;
-  }
-
-  50% {
-    margin-top: -2px;
-  }
-
-  100% {
-    margin-top: 0px;
-  }
-}
 
 @keyframes blink {
   0% {
@@ -124,19 +106,7 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* -----------------------------------------------------------------------------
-  * Base styles
-  * -------------------------------------------------------------------------- */
+/* Base Styles */
 
 * {
   color: @text;
@@ -151,125 +121,51 @@
 
 window#waybar {
   border: 0;
-  background: transparent;
-  /* box-shadow: none; */
+  background: @background_bg;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   border-radius: 0 0 20px 20px;
-  animation: slide-in 0.8s ease-out;
 }
 
-/* -----------------------------------------------------------------------------
- * Common Utility Classes (DRY principles)
- * -------------------------------------------------------------------------- */
 
-/* Common Background Gradients */
-.bg-surface {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 50%,
-      @base_50 100%);
-}
+/* Workspaces */
 
-.bg-surface-compact {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
-}
-
-.bg-surface-player {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
-}
-
-/* Common Box Shadows */
-.shadow-light {
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-}
-
-.shadow-medium {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.shadow-strong {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* Common Borders */
-.border-light {
-  border: 1px solid alpha(@overlay0, 0.25);
-}
-
-.border-medium {
-  border: 1px solid alpha(@overlay0, 0.3);
-}
-
-.border-strong {
-  border: 1px solid alpha(@overlay0, 0.4);
-}
-
-/* Common Text Effects */
-.text-glow {
-  text-shadow: 0 0 10px alpha(currentColor, 0.8);
-}
-
-/* Common Transitions */
-.transition-fast {
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.transition-smooth {
-  transition: all 0.3s ease;
-}
-
-/* -----------------------------------------------------------------------------
- * Workspace styles
- * -------------------------------------------------------------------------- */
-
-#workspaces {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 50%,
-      alpha(@surface2, 0.5) 100%);
-  border-radius: 6px;
+#workspaces,
+#hyprland-workspaces {
+  background: transparent;
+  border-radius: 0px;
   margin: 2px 0px 2px 8px;
   padding: 1px 2px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid alpha(@overlay0, 0.3);
+  box-shadow: none;
+  border: none;
 }
 
-#workspaces button {
+#workspaces button,
+#hyprland-workspaces button {
   color: @text;
   border-radius: 4px;
   margin: 1px 1px;
   padding: 2px 6px;
   min-width: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg,
-      @base_50 0%,
-      @mantle_50 100%);
+  background: @base_50;
   border: 1px solid alpha(@overlay0, 0.5);
 }
 
-
-#workspaces button.active {
+#workspaces button.active,
+#hyprland-workspaces button.active {
   color: @base;
   background: linear-gradient(135deg, @mauve 0%, @lavender 50%, @sky 100%);
   box-shadow: 0 4px 16px alpha(@mauve, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   font-size: 15px;
-  /* animation: float 2s ease-in-out infinite; */
 }
 
-#workspaces button.focused {
+#workspaces button.focused,
+#hyprland-workspaces button.focused {
   color: @crust;
   background: linear-gradient(135deg, @yellow 0%, @peach 50%, @red 100%);
   box-shadow: 0 4px 16px alpha(@yellow, 0.6);
   font-size: 14px;
-  /* animation: rainbow 3s linear infinite; */
 }
 
 #mode {
@@ -281,9 +177,7 @@ window#waybar {
   box-shadow: 0 4px 16px alpha(@yellow, 0.4);
 }
 
-/* -----------------------------------------------------------------------------
- * Module base styles
- * -------------------------------------------------------------------------- */
+/* Module Base Styles */
 
 #clock,
 #clock.date,
@@ -309,10 +203,7 @@ window#waybar {
 #custom-player.play,
 #custom-player.next {
   padding: 2px 6px;
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 50%,
-      @base_50 100%);
+  background: @module_bg;
   border-radius: 6px;
   margin: 2px 2px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
@@ -321,25 +212,8 @@ window#waybar {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* -----------------------------------------------------------------------------
- * Hover Effects - Organized by interaction type
- * -------------------------------------------------------------------------- */
 
-/* Interactive information elements - subtle hover */
-
-/* Clock specific hover - removed for static modules */
-
-/* Interactive elements - more pronounced hover */
-
-/* Action buttons - compact hover (disabled to prevent conflicts) */
-
-/* Power button specific hover with enhanced effects */
-
-/* Launcher button specific hover with enhanced effects */
-
-/* -----------------------------------------------------------------------------
- * Standalone modules
- * -------------------------------------------------------------------------- */
+/* Standalone Modules */
 
 /* Clickable standalone modules */
 #custom-cava-bar,
@@ -351,10 +225,7 @@ window#waybar {
   font-weight: 600;
   padding: 6px 14px;
   min-height: 16px;
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 50%,
-      @base_50 100%);
+  background: @module_bg;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   border: 1px solid alpha(@overlay0, 0.4);
@@ -369,34 +240,25 @@ window#waybar {
   font-weight: 600;
   padding: 6px 12px;
   min-width: 24px;
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 50%,
-      @base_50 100%);
+  background: @module_bg;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   border: 1px solid alpha(@overlay0, 0.2);
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* -----------------------------------------------------------------------------
- * Grouped modules
- * -------------------------------------------------------------------------- */
+/* Grouped Modules */
 
 /* System monitoring group: CPU + Memory + Temperature + Battery (Non-clickable - smaller) */
-/* Common properties for system monitoring group */
 #cpu,
 #memory,
 #temperature,
 #battery {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
+  background: @module_bg;
   padding: 2px 6px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Individual positioning and borders */
 #cpu {
   border-radius: 4px 0px 0px 4px;
   margin: 6px 0px 6px 4px;
@@ -423,9 +285,7 @@ window#waybar {
 
 /* Bluetooth - standalone module */
 #bluetooth {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
+  background: @module_bg;
   border-radius: 6px;
   margin: 6px 4px;
   padding: 4px 8px;
@@ -436,18 +296,14 @@ window#waybar {
 }
 
 /* Connectivity & Control group: Network + Audio + Backlight (Clickable - bigger) */
-/* Common properties for connectivity & control group */
 #network,
 #pulseaudio,
 #backlight {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
+  background: @module_bg;
   padding: 4px 8px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Individual positioning and borders for connectivity-control group */
 #network {
   border-radius: 6px 0px 0px 6px;
   margin: 6px 0px 6px 4px;
@@ -486,25 +342,20 @@ window#waybar {
 
 #bluetooth.connected {
   color: @sapphire;
-  background: linear-gradient(135deg, @surface0_50, @surface1_50);
+  background: @module_bg;
   border: 1px solid alpha(@sapphire, 0.8);
   box-shadow: 0 0 15px alpha(@sapphire, 0.6);
-  /* animation: pulse 3s ease-in-out infinite; */
 }
 
 /* Time group: Date + Clock (Non-clickable - smaller) */
-/* Common properties for time group */
 #clock.date,
 #clock.clock {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
+  background: @module_bg;
   padding: 2px 6px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
   border: 1px solid alpha(@overlay0, 0.5);
 }
 
-/* Individual positioning and borders */
 #clock.date {
   border-radius: 4px 0px 0px 4px;
   margin: 6px 0px 6px 4px;
@@ -518,18 +369,14 @@ window#waybar {
 }
 
 /* Player controls group */
-/* Common properties for player controls */
 #custom-player.prev,
 #custom-player.play,
 #custom-player.next {
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
+  background: @module_bg;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   border: 1px solid alpha(@overlay0, 0.5);
 }
 
-/* Individual positioning and styling */
 #custom-player.prev {
   border-radius: 12px 0px 0px 12px;
   margin: 6px 0px 6px 8px;
@@ -552,7 +399,6 @@ window#waybar {
   border-left: none;
 }
 
-/* transparent bg (Non-clickable - smaller) */
 #custom-player.main {
   background: transparent;
   border: none;
@@ -565,26 +411,20 @@ window#waybar {
   font-family: "MesloLGS Nerd Font", "Meslo LG S", "Noto Sans CJK JP", "DejaVu Sans", sans-serif;
 }
 
-/* -----------------------------------------------------------------------------
- * Individual module styles & colors
- * -------------------------------------------------------------------------- */
+/* Individual Module Colors */
 
-/* Player Controls - consolidated styling */
+/* Player Controls */
 #custom-player.prev,
 #custom-player.play,
 #custom-player.next {
   color: @sky;
-  border: 1px solid alpha(@sky, 0.6);
-  transition: all 0.3s ease;
 }
 
-/* Player status-specific styles - using simpler selectors */
 #custom-player.play.playing {
   color: @green;
   background: linear-gradient(135deg, alpha(@green, 0.5), alpha(@teal, 0.5));
   border: 1px solid alpha(@green, 0.8);
   box-shadow: 0 0 15px alpha(@green, 0.6);
-  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 #custom-player.play.paused {
@@ -600,10 +440,7 @@ window#waybar {
   border: 1px solid alpha(@overlay0, 0.6);
 }
 
-/* Player controls hover - consolidated common properties */
 
-
-/* Visual Modules */
 #custom-cava-bar {
   color: @mauve;
   border: 1px solid alpha(@mauve, 0.8);
@@ -621,30 +458,25 @@ window#waybar {
   border: 1px solid alpha(@mauve, 0.8);
   box-shadow: 0 0 20px alpha(@mauve, 0.5);
   font-weight: 700;
-  /* Use margin to control height (Waybar compatible) */
   margin: 8px 8px;
-  /* Use minimal padding to prevent height expansion */
   padding: 0px 14px;
-  /* Use min-width instead of height constraints */
   min-width: 100px;
 }
 
-/* Time & Date - consolidated styling */
+/* Time & Date */
 #clock,
 #clock.date,
 #clock.clock {
   color: @sky;
-  border: 1px solid alpha(@sky, 0.6);
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
-/* System Monitoring - consolidated colors and styling */
+/* System Monitoring */
 #cpu,
 #memory,
 #temperature {
   color: @sky;
-  border: 1px solid alpha(@sky, 0.6);
   font-weight: 700;
 }
 
@@ -652,18 +484,16 @@ window#waybar {
   color: @red;
   background: linear-gradient(135deg, alpha(@red, 0.5), alpha(@maroon, 0.5));
   border: 1px solid alpha(@red, 0.8);
-  /* animation: blink 0.5s ease-in-out infinite; */
   font-size: 15px;
 }
 
-/* Network & Audio */
+/* Network & Audio States */
 
 #network.disabled,
 #network.disconnected {
   color: @red;
   background: linear-gradient(135deg, alpha(@red, 0.5), alpha(@maroon, 0.5));
   border: 1px solid alpha(@red, 0.8);
-  /* animation: blink 1s ease-in-out infinite; */
 }
 
 
@@ -671,7 +501,6 @@ window#waybar {
   color: @overlay0;
   background: linear-gradient(135deg, alpha(@overlay0, 0.5), alpha(@surface2, 0.5));
   border: 1px solid alpha(@overlay0, 0.6);
-  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 /* Battery */
@@ -684,10 +513,9 @@ window#waybar {
 
 #battery.charging {
   color: @teal;
-  background: linear-gradient(135deg, @surface0_50, @surface1_50);
+  background: @module_bg;
   border: 1px solid alpha(@teal, 0.8);
   box-shadow: 0 0 15px alpha(@teal, 0.7);
-  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 #battery.warning:not(.charging) {
@@ -695,25 +523,21 @@ window#waybar {
   background: linear-gradient(135deg, alpha(@yellow, 0.5), alpha(@peach, 0.5));
   border: 1px solid alpha(@yellow, 0.8);
   box-shadow: 0 0 15px alpha(@yellow, 0.6);
-  /* animation: pulse 3s ease-in-out infinite; */
 }
 
 #battery.critical:not(.charging) {
   color: @red;
   background: linear-gradient(135deg, alpha(@red, 0.5), alpha(@maroon, 0.5));
   border: 1px solid alpha(@red, 0.8);
-  /* animation: blink 0.8s ease-in-out infinite; */
 }
 
-/* Action Buttons - consolidated common properties */
+/* Action Buttons */
 #custom-launcher,
 #custom-power {
   color: @text;
   font-weight: 700;
-  transition: all 0.3s ease;
 }
 
-/* Individual button styling */
 #custom-launcher {
   border: 1px solid alpha(@mauve, 0.8);
   box-shadow: 0 0 20px alpha(@mauve, 0.6);
@@ -727,7 +551,7 @@ window#waybar {
 /* System Tray */
 #tray {
   color: @text;
-  background: linear-gradient(135deg, @surface0_50, @surface1_50);
+  background: @module_bg;
   border: 1px solid alpha(@overlay0, 0.6);
   padding: 8px 12px;
   border-radius: 15px;
@@ -741,28 +565,23 @@ window#waybar {
 
 #tray>.active {
   color: @mauve;
-  /* animation: pulse 2s ease-in-out infinite; */
 }
 
 #tray>.needs-attention {
   color: @red;
-  /* animation: blink 1s ease-in-out infinite; */
 }
 
-/* Window Title - consolidated styling */
+/* Window Title */
 #window {
   border: none;
   margin: 8px 12px;
   padding: 0px 16px;
   color: @text;
-  background: linear-gradient(135deg,
-      @surface0_50 0%,
-      @surface1_50 100%);
+  background: @module_bg;
   border-radius: 15px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   border: 1px solid alpha(@overlay0, 0.6);
   font-weight: 600;
   transition: all 0.3s ease;
-  /* Use min-width to control dimensions (Waybar compatible) */
   min-width: 100px;
 }
