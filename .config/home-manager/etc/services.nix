@@ -46,10 +46,7 @@
         Type = "simple";
         ExecStart = "${pkgs.writeShellScript "waybar-watcher" ''
           while true; do
-            ${pkgs.inotify-tools}/bin/inotifywait -e modify,move,create,delete \
-              ~/.config/waybar/config.jsonc \
-              ~/.config/waybar/style.css \
-              ~/.config/waybar/macchiato.css
+            ${pkgs.inotify-tools}/bin/inotifywait -e modify,move,create,delete ~/.config/waybar/**/*
             echo "Waybar config changed, restarting..."
             systemctl --user restart waybar
             sleep 1
