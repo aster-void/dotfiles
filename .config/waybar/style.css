@@ -9,6 +9,9 @@ window#waybar.topbar {
   padding: 8px 12px;
 }
 
+* {
+  border-radius: 12px;
+}
 
 
 /* ------------------------------
@@ -34,8 +37,8 @@ window#waybar.topbar {
 #pulseaudio:hover,
 #bluetooth:hover,
 #backlight:hover,
-#clock:hover,
 #clock.date:hover,
+#clock.clock:hover,
 #custom-power:hover,
 #custom-player-prev:hover,
 #custom-player-play:hover,
@@ -44,7 +47,7 @@ window#waybar.topbar {
 #window:hover,
 #mode:hover,
 #custom-launcher:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: alpha(@overlay1, 0.5);
   border-color: alpha(@overlay2, 0.95);
 }
 
@@ -129,11 +132,11 @@ window#waybar.topbar {
 
 /* Clock グループ内モジュール */
 .seg--clock,
-#clock,
-#clock.date {
+#clock.date,
+#clock.clock {
   background: transparent;
   border: none;
-  margin: 0 2px;
+  margin: 0 0px;
   padding: 0px 4px;
   color: @lavender;
 }
