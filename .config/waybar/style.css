@@ -55,9 +55,6 @@ window#waybar.topbar {
 
 /* player group pill */
 .modules-left>*:nth-last-child(1) {
-  padding: 1px 4px;
-  margin: 2px 4px;
-  border-radius: 12px;
   border: 1px solid alpha(@sky, 0.85);
   background-color: rgba(0, 0, 0, 0.4);
   color: @sky;
