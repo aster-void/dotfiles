@@ -6,12 +6,18 @@ I don't maintain the files nor the docs very often, so many things may be left o
 Also many apps are configured just for me, such as keyboard layout. (I use workman btw)
 This repo is open just for reference, and is not intended to be used out of the box.
 
-## clone
-first clone nixos-config into /etc/nixos and run nixos-rebuild switch
-then run this.
+## bootstrapping 
 
-```shell
-git clone --recursive git@github.com:aster-void/dotfiles.git ~/.dotfiles && ~/.dotfiles/init.sh
+1. clone
+
+```sh
+git clone --recursive git@github.com:aster-void/dotfiles.git ~/.dotfiles
+```
+
+2. run home-manager via nix run
+
+```sh
+nix run github:nix-community/home-manager -- switch --flake .#amberwood # your favorite flavor
 ```
 
 ## available apps
@@ -20,18 +26,18 @@ alacritty, hyprland, waybar, and all apps within home-manager and nixos-config.
 
 ## Before running
 
-search `@CHANGEME` and change everything you find. (you may not find anything then it's ok to not change anything)
+Read flake.nix and search for personal settings.
 
-# Licenses (the part I hate the most)
+# Licenses
 
-the part where I created is licensed under WTFPL.
+the part where I created is licensed under WTFPL. i.e. you can do what the fuck you want.
 
-this repository contains some parts that I did not create, which are licensed accordingly. read LICENSE or LICENSE.md in each directory.
+this repository contains some parts that I did not create, which are licensed accordingly.
 
 ```license
 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2
 
-Copyright (C) 2024 aster-void
+Copyright (C) 2025 aster-void
 
 Everyone is permitted to copy and distribute verbatim or modified 
 copies of this license document, and changing it is allowed as long 

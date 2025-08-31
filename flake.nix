@@ -52,7 +52,7 @@
       meta = {
         inherit system username;
         home = {
-          dotfilesDir = ".dotfiles"; # path to dotfiles from ~ (gets appended after ${home.homeDir}/)
+          dotfilesDir = ".dotfiles"; # path to dotfiles from $HOME (gets appended after ${home.homeDir}/)
         };
       };
       shared = shared-config.config;
