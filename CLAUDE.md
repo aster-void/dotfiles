@@ -40,12 +40,13 @@
 - **`text-shadow`** for text effects
 
 ## Configuration Files
-- Main config: `/home/aster/.dotfiles/.config/waybar/config.jsonc`
-- Styles: `/home/aster/.dotfiles/.config/waybar/style.css`
-- Color palette: `/home/aster/.dotfiles/.config/waybar/machiatto.css`
+- Main config: `/home/aster/.dotfiles/stow/.config/waybar/config.jsonc`
+- Styles: `/home/aster/.dotfiles/stow/.config/waybar/style.css`
+- Color palette: `/home/aster/.dotfiles/stow/.config/waybar/macchiato.css`
+- Alternative configs: `/home/aster/.dotfiles/stow/.config/waybar-1/`, `/home/aster/.dotfiles/stow/.config/waybar-2/`
 
 ## Color Scheme
-Using Catppuccin Macchiato palette imported from `machiatto.css` with colors like:
+Using Catppuccin Macchiato palette imported from `macchiato.css` with colors like:
 - `@mauve`, `@lavender`, `@sky`, `@blue`, `@sapphire`
 - `@teal`, `@green`, `@yellow`, `@peach`, `@red`
 - `@surface0`, `@surface1`, `@surface2`, `@base`, `@mantle`, `@crust`
