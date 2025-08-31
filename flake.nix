@@ -36,20 +36,26 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    dotfilesDir = ".dotfiles"; # path to dotfiles from ~ (gets appended after ${home.homeDir}/)
+    username = "aster";
     pkgs = import nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
       };
     };
-    shared = shared-config.config;
 
-    build = pkgs.callPackage ./home-manager/build/default.nix {};
-
-    username = "aster";
-    extraSpecialArgs = {
-      inherit username system shared dotfilesDir;
+    args = {
+      inherit inputs;
+      my = {
+        pkgs = pkgs.callPackage ./my/pkgs/default.nix {};
+      };
+      meta = {
+        inherit system username;
+        home = {
+          dotfilesDir = ".dotfiles"; # path to dotfiles from ~ (gets appended after ${home.homeDir}/)
+        };
+      };
+      shared = shared-config.config;
     };
   in {
     devShells.${system}.default = pkgs.mkShell {
@@ -66,13 +72,8 @@
       '';
     };
 
-    homeConfigurations = pkgs.callPackage ./home-manager {
-      inherit
-        inputs
-        extraSpecialArgs
-        build
-        ;
-    };
+    homeConfigurations = pkgs.callPackage ./home-manager args;
+
     nixConfig = {
       extra-substituters = ["https://helix.cachix.org"];
       extra-trusted-public-keys = ["helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="];

@@ -1,8 +1,6 @@
 {shared, ...}: let
   alias = shared.shell-aliases;
 in {
-  # don't forget to run this periodically: stow ~/.dotfiles
-
   programs = {
     bash = {
       enable = true;

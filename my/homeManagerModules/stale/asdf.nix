@@ -25,7 +25,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # NOTE: not adding asdf-vm to home.packages because asdf seems to download its own bin under /share
+    # NOTE: not adding asdf-vm to home.packages because asdf seems to download its own bin under /share rather than under /bin
 
     programs = {
       bash.initExtra = lib.optionalString cfg.enableBashIntegration ''

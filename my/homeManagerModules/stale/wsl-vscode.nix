@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  ## README: you need to install wget too.
-  # environment.variables = ldEnv;
   config.home.file.".vscode-server/server-env-setup".source = "${pkgs.fetchFromGitHub {
     owner = "sonowz";
     repo = "vscode-remote-wsl-nixos";

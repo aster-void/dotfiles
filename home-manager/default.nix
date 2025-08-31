@@ -1,71 +1,55 @@
 {
   inputs,
+  my,
+  meta,
+  shared,
   pkgs,
-  build,
-  extraSpecialArgs,
 }: let
   inherit (inputs) home-manager;
-  inherit (pkgs) system;
 
-  preprocess = {
-    enable-pkgs,
-    extra-modules ? [],
-  }:
+  mkConfiguration = {profiles ? []}:
     home-manager.lib.homeManagerConfiguration {
-      inherit pkgs extraSpecialArgs;
-      modules =
-        [
-          ./home.nix
-          (import ./template/packages.nix {
-            inherit enable-pkgs;
-          })
-        ]
-        ++ extra-modules;
+      inherit pkgs;
+      extraSpecialArgs = {
+        inherit inputs my meta shared;
+        inherit (meta) system;
+      };
+      modules = profiles;
     };
-  standard-wsl-packages = [
-    "cli"
-    "editor"
-    [
-      pkgs.helix
-      inputs.claude-monitor.packages.${system}.default
-    ]
-  ];
-  standard-desktop-packages = [
-    "cli"
-    "desktop"
-    "editor"
-    "large"
-    [
-      pkgs.helix
-      inputs.claude-monitor.packages.${system}.default
-
-      # inputs.helix.packages.${system}.default
-      inputs.zen-browser.packages.${system}.beta
-      # build.line # I give up. install it via steam.
-      build.setpaper
-      build.wpick
-    ]
-  ];
 in {
-  amberwood = preprocess {
-    enable-pkgs = standard-desktop-packages;
-    extra-modules = [
-      ./modules/minecraft
+  amberwood = mkConfiguration {
+    profiles = [
+      ./profiles/base
+      ./profiles/desktop
+      ./profiles/dev
     ];
   };
-  amberwood-wsl = preprocess {
-    enable-pkgs = standard-wsl-packages;
-  };
-  bogster = preprocess {
-    enable-pkgs = standard-desktop-packages;
-    extra-modules = [
-      ./modules/minecraft
+  amberwood-wsl = mkConfiguration {
+    profiles = [
+      ./profiles/base
+      ./profiles/wsl
+      ./profiles/dev
     ];
   };
-  carbon = preprocess {
-    enable-pkgs = standard-desktop-packages;
+  bogster = mkConfiguration {
+    profiles = [
+      ./profiles/base
+      ./profiles/desktop
+      ./profiles/dev
+    ];
   };
-  carbon-wsl = preprocess {
-    enable-pkgs = standard-wsl-packages;
+  carbon = mkConfiguration {
+    profiles = [
+      ./profiles/base
+      ./profiles/desktop
+      ./profiles/dev
+    ];
+  };
+  carbon-wsl = mkConfiguration {
+    profiles = [
+      ./profiles/base
+      ./profiles/dev
+      ./profiles/wsl
+    ];
   };
 }

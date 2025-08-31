@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  cursors = pkgs.callPackage ../store/cursors {};
+  cursors = pkgs.callPackage ../../store/cursors {};
 
   # available:
   # - catppuccin.mochaMauve # and others
