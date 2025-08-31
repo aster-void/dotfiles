@@ -22,6 +22,7 @@ in {
       ./profiles/base
       ./profiles/desktop
       ./profiles/dev
+      ./profiles/game
     ];
   };
   amberwood-wsl = mkConfiguration {
@@ -36,6 +37,7 @@ in {
       ./profiles/base
       ./profiles/desktop
       ./profiles/dev
+      ./profiles/game
     ];
   };
   carbon = mkConfiguration {
