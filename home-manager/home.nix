@@ -1,4 +1,11 @@
-{username, ...}: {
+{
+  username,
+  dotfilesDir,
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./etc
     ./apps
@@ -26,4 +33,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   news.display = "silent";
+
+  home.activation.dotfiles = let
+    stow = lib.getExe pkgs.stow;
+  in
+    lib.hm.dag.entryAfter ["writeBoundary"] ''
+      set -euo pipefail
+      ${stow} -R -d "${config.home.homeDirectory}/${dotfilesDir}" -t "${config.home.homeDirectory}" stow
+    '';
 }

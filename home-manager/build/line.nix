@@ -4,7 +4,6 @@
   stdenv,
   fetchurl,
   p7zip,
-  writeShellScript,
   copyDesktopItems,
   makeDesktopItem,
   wineWowPackages,
