@@ -1,11 +1,10 @@
-{
+_: name: let
   common = {
     ".." = "cd ../";
     "..." = "cd ../../";
     "...." = "cd ../../../";
     "....." = "cd ../../../../";
 
-    # n = "nvim";
     h = "hx";
     "h." = "hx .";
 
@@ -20,12 +19,13 @@
     gs = "git status -s";
     gsr = "git status";
     ga = "git add -A";
-    gc = "git commit -m";
     gp = "git push";
     gu = "git push --set-upstream origin HEAD";
     gl = "git pull";
+    nuke = "git checkout -f HEAD && git clean -xdf";
 
     lg = "lazygit";
+    dush = "du -sh";
 
     fetch = "nitch"; # to not change my mustle memory
 
@@ -39,10 +39,17 @@
     ez = "eza --icons --group-directories-first";
     l = "clear";
 
+    flake = "nix flake";
     hs = "home-manager switch";
     hb = "home-manager switch";
     home = "home-manager";
-    nixgc = "nixos-collect-garbage";
+    nixgc = "nix-collect-garbage";
+    rb = "sudo nixos-rebuild";
+    rbs = "sudo nixos-rebuild switch";
+    rbb = "sudo nixos-rebuild boot";
+    rbbb = "sudo nixos-rebuild boot && reboot";
+    rbt = "sudo nixos-rebuild test";
+    yz = "yazi";
 
     zoom-us = "flatpak run us.zoom.Zoom";
     sd = "shutdown";
@@ -60,4 +67,10 @@
   nushell = {
     cg = "cd (git root)";
   };
-}
+in
+  # standard aliases for POSIX
+  if name == "bash" || name == "fish"
+  then common // bash
+  else if name == "nushell"
+  then common // nushell
+  else throw "Unknown shell: ${name}"

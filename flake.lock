@@ -40,28 +40,6 @@
         "type": "github"
       }
     },
-    "helix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1752200728,
-        "narHash": "sha256-lKlkFTDwUSTAX6c7FjybfzjzN8m4FE1vwR//j1NRM/Y=",
-        "owner": "aster-void",
-        "repo": "helix",
-        "rev": "4cfe24da45a609345294ac093bd92da4737b2819",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aster-void",
-        "ref": "all-patch-applied",
-        "repo": "helix",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -122,47 +100,9 @@
     "root": {
       "inputs": {
         "claude-monitor": "claude-monitor",
-        "helix": "helix",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "shared-config": "shared-config",
         "zen-browser": "zen-browser"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "helix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1740623427,
-        "narHash": "sha256-3SdPQrZoa4odlScFDUHd4CUPQ/R1gtH4Mq9u8CBiK8M=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "d342e8b5fd88421ff982f383c853f0fc78a847ab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "shared-config": {
-      "locked": {
-        "lastModified": 1756164938,
-        "narHash": "sha256-Sfvqfumqt0kR4qjrqhDXxPQfyvCZJIjmYTX2Ex7J0mU=",
-        "owner": "aster-void",
-        "repo": "shared-config",
-        "rev": "6d2efe75235d2b48cbcad6e8848b36703250b16f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aster-void",
-        "repo": "shared-config",
-        "type": "github"
       }
     },
     "systems": {

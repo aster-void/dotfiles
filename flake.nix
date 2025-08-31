@@ -7,36 +7,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    shared-config.url = "github:aster-void/shared-config";
-
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-
-    # my patch applied
-    helix = {
-      # url = "github:helix-editor/helix";
-      url = "github:aster-void/helix?ref=all-patch-applied";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     claude-monitor = {
       url = "github:aster-void/Claude-Code-Usage-Monitor?ref=add-nix-flake-distribution";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hyprpanel = {
-    # url = "github:Jas-SinghFSU/HyprPanel";
-    # inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
-  outputs = {
-    nixpkgs,
-    shared-config,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    username = "aster";
+  outputs = {nixpkgs, ...} @ inputs: let
+    meta = import ./meta.nix;
+    inherit (meta) system;
+
     pkgs = import nixpkgs {
       inherit system;
       config = {
@@ -45,17 +28,11 @@
     };
 
     args = {
-      inherit inputs;
+      inherit inputs meta;
       my = {
         pkgs = pkgs.callPackage ./my/pkgs/default.nix {};
       };
-      meta = {
-        inherit system username;
-        home = {
-          dotfilesDir = ".dotfiles"; # path to dotfiles from $HOME (gets appended after ${home.homeDir}/)
-        };
-      };
-      shared = shared-config.config;
+      shared = pkgs.callPackage ./shared {};
     };
   in {
     devShells.${system}.default = pkgs.mkShell {

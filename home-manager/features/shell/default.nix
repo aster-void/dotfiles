@@ -1,16 +1,16 @@
 {shared, ...}: let
-  alias = shared.shell-aliases;
+  inherit (shared.config) mkShellAliases;
 in {
   programs = {
     bash = {
       enable = true;
-      shellAliases = alias.common // alias.bash;
+      shellAliases = mkShellAliases "bash";
       enableCompletion = false;
     };
 
     nushell = {
       enable = true;
-      shellAliases = alias.common // alias.nushell;
+      shellAliases = mkShellAliases "nushell";
     };
 
     starship = {
@@ -33,7 +33,7 @@ in {
 
     fish = {
       enable = true;
-      shellAliases = alias.common // alias.bash; # standard aliases for POSIX
+      shellAliases = mkShellAliases "fish";
     };
   };
 }
