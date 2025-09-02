@@ -14,6 +14,6 @@
   in
     lib.hm.dag.entryAfter ["writeBoundary"] ''
       set -euo pipefail
-      ${stow} -R -d "${config.home.homeDirectory}/${meta.home.dotfilesDir}" -t "${config.home.homeDirectory}" stow
+      ${stow} -R -d "${config.home.homeDirectory}/${meta.home.dotfilesDir}" -t "${config.home.homeDirectory}" stow --adopt
     '';
 }
