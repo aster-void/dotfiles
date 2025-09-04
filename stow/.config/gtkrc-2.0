@@ -1,5 +1,9 @@
-# created by KDE Plasma, Sat Jan 4 23:00:47 2025
+# created by KDE Plasma, Fri Sep 5 00:20:21 2025
 #
 
 gtk-alternative-button-order = 1
+
+include "/run/current-system/sw/share/themes/Breeze/gtk-2.0/gtkrc"
+
+gtk-theme-name="Breeze"
 
