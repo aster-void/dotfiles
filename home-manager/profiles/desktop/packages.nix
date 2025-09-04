@@ -6,14 +6,14 @@
   ...
 }: {
   home.packages =
-    (with my.pkgs; [
+    [
+      inputs.zen-browser.packages.${system}.beta
+    ]
+    ++ (with my.pkgs; [
       # == my tools ==
       setpaper
       wpick
     ])
-    ++ [
-      inputs.zen-browser.packages.${system}.beta
-    ]
     ++ (with pkgs; [
       # == basic tools ==
       # Browser
@@ -77,6 +77,7 @@
       kdePackages.gwenview # file manager that actually works
       vlc # music player
       playerctl
+      libreoffice
 
       # Apps
       ## Social
