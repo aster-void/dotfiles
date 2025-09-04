@@ -6,3 +6,5 @@
 .env
 
 nixos-config
+.claude/settings.local.json
+globalStorage
