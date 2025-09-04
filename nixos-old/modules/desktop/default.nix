@@ -4,13 +4,10 @@
   ...
 }: {
   imports = [
-    # display manager
-    # ./display-manager/sddm.nix
+    # Display manager: using LY (others available: sddm.nix, gdm.nix)
     ./display-manager/ly.nix
-    # ./display-manager/gdm.nix
 
-    # ./desktop/gnome.nix # uncommenting this fails on build, saying "conflicting pipewire and pusleaudio both turned on" or something
-    # ./plasma6.nix
+    # Desktop environment: using Hyprland (others available: gnome.nix, plasma6.nix)
     ./hyprland.nix
   ];
 

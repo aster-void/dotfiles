@@ -32,20 +32,14 @@ in {
       ];
       packages =
         [
-          # { appId = "com.brave.Browser"; origin = "flathub"; }
           "us.zoom.Zoom"
           "org.gnome.Platform//45"
         ]
         ++ lib.lists.optionals cfg.games.enable
         [
-          # {
-          #   appId = "moe.launcher.the-honkers-railway-launcher";
-          #   origin = "launcher.moe";
-          # }
-          # {
-          #   appId = "moe.launcher.sleepy-launcher";
-          #   origin = "launcher.moe";
-          # }
+          # Game launchers available but not currently installed:
+          # - moe.launcher.the-honkers-railway-launcher (Star Rail)
+          # - moe.launcher.sleepy-launcher (Genshin Impact)
           {
             appId = "io.mrarm.mcpelauncher";
             origin = "flathub";
