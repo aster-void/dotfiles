@@ -78,6 +78,7 @@
       vlc # music player
       playerctl
       libreoffice
+      timg # cat for images
 
       # Apps
       ## Social
