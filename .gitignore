@@ -8,3 +8,5 @@
 nixos-config
 .claude/settings.local.json
 globalStorage
+
+stow/.config/Windsurf

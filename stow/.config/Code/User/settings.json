@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "One Dark Pro Mix",
     "hediet.vscode-drawio.resizeImages": null,
     "[typst]": {
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
@@ -9,5 +8,7 @@
     },
     "explorer.confirmDelete": false,
     "svelte.enable-ts-plugin": true,
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "sherlock.userId": "670beefa-15d3-4a16-81ff-fbed42949714",
+    "workbench.colorTheme": "Catppuccin Mocha"
 }
