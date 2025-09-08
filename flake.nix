@@ -112,6 +112,10 @@
         host = "carbon";
         system = "x86_64-linux";
       };
+      dusk = mkSystemConfig {
+        host = "dusk";
+        system = "x86_64-linux";
+      };
     };
 
     nixConfig = {
