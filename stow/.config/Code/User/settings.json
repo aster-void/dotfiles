@@ -10,5 +10,7 @@
     "svelte.enable-ts-plugin": true,
     "git.openRepositoryInParentFolders": "never",
     "sherlock.userId": "670beefa-15d3-4a16-81ff-fbed42949714",
-    "workbench.colorTheme": "Catppuccin Mocha"
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.defaultProfile.linux": "fish"
 }
