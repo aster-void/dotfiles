@@ -34,6 +34,9 @@ in {
     fish = {
       enable = true;
       shellAliases = mkShellAliases "fish";
+      interactiveShellInit = ''
+        set -g fish_greeting
+      '';
     };
   };
 }
