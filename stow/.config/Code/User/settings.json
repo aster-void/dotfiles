@@ -12,5 +12,7 @@
     "sherlock.userId": "670beefa-15d3-4a16-81ff-fbed42949714",
     "workbench.colorTheme": "Catppuccin Mocha",
     "explorer.confirmDragAndDrop": false,
-    "terminal.integrated.defaultProfile.linux": "fish"
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "python.analysis.typeCheckingMode": "strict",
+    "git.autofetch": true
 }

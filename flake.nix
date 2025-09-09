@@ -84,11 +84,18 @@
     devShells.${system}.default = pkgs.mkShell {
       name = "Home Manager";
       packages = with pkgs; [
+        # automation
         lefthook
-        nixpkgs-fmt
-        deadnix
 
+        # nix
+        alejandra
+        deadnix
+        statix
+        nil
+
+        # domain
         nwg-look
+        agenix.packages.${pkgs.system}.default
       ];
       shellHook = ''
         lefthook install
