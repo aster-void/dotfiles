@@ -9,6 +9,7 @@ data = "/home/aster/.local/share/hatch"
 cache = "/home/aster/.cache/hatch"
 
 [dirs.env]
+virtual = ".venv"
 
 [projects]
 
@@ -21,9 +22,7 @@ email = "137767097+aster-void@users.noreply.github.com"
 
 [template.licenses]
 headers = true
-default = [
-    "MIT",
-]
+default = ["MIT"]
 
 [template.plugins.default]
 tests = true
