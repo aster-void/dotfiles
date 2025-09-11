@@ -53,6 +53,8 @@
       # third-party virus definition files? https://rseichter.github.io/fangfrisch/
       fangfrisch.enable = false;
     };
+
+    cloudflare-warp.enable = true;
   };
 
   security.polkit.enable = true;
