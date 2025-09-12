@@ -1,6 +1,7 @@
-{lanzaboote}: {
+{
   pkgs,
   inputs,
+  lanzaboote ? false,
   ...
 }: let
   lanzabootOptions = {

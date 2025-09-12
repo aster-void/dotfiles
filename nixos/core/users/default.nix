@@ -1,8 +1,10 @@
-{shared, ...}: {
+{...}: let
+  meta = import ../../../meta.nix;
+in {
   # Define a user account.
-  users.users.${shared.system.user} = {
+  users.users.${meta.username} = {
     isNormalUser = true;
-    description = shared.system.user;
+    description = meta.username;
     extraGroups = [
       "mlocate"
       "networkmanager"

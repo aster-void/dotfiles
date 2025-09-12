@@ -1,4 +1,10 @@
-_: {
+_: let
+  meta = import ../../meta.nix;
+in {
+  user = {
+    name = meta.git.user;
+    email = meta.git.email;
+  };
   core.editor = "hx";
   init.defaultBranch = "main";
   pull.rebase = "true";

@@ -1,10 +1,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/desktop
-    ../../modules/hardware
-    ../../modules/hardware/bootloader/grub.nix
-    ../../modules/flatpak.nix
+    ../../desktop
+    ../../core/hardware
   ];
 
   services.displayManager.autoLogin.enable = false; # LY doesn't support auto login

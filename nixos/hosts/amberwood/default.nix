@@ -1,13 +1,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/desktop
-    ../../modules/hardware
-    ../../modules/games
-    ../../modules/hardware/bootloader/lanzaboote.nix
-    ../../modules/flatpak.nix
-    ../../modules/drivers/logitech.nix
-    ../../modules/drivers/nvidia.nix
+    ../../desktop
+    ../../core/hardware
+    ../../profiles/gaming
   ];
 
   my.apps.games.enable = true;

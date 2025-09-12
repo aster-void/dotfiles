@@ -21,7 +21,6 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
-    shared-config.url = "github:aster-void/shared-config";
     comin = {
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +30,6 @@
   outputs = {
     nixpkgs,
     agenix,
-    shared-config,
     comin,
     ...
   } @ inputs: let
@@ -52,7 +50,6 @@
       };
       shared = pkgs.callPackage ./shared {};
     };
-    shared = shared-config.config;
 
     mkSystemConfig = {
       host,
@@ -61,7 +58,8 @@
       nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit system inputs host shared;
+          inherit system inputs host;
+          shared = pkgs.callPackage ./shared {};
         };
 
         modules = [
@@ -69,15 +67,6 @@
           comin.nixosModules.comin
           ./nixos/configuration.nix
           ./nixos/hosts/${host}
-          (import ./nixos/templates/packages.nix {
-            enable-pkgs = [
-              "cli"
-              "editor"
-              [
-                pkgs.helix
-              ]
-            ];
-          })
         ];
       };
   in {

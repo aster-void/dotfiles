@@ -351,7 +351,6 @@
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
-        "shared-config": "shared-config",
         "zen-browser": "zen-browser"
       }
     },
@@ -373,21 +372,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "shared-config": {
-      "locked": {
-        "lastModified": 1756164938,
-        "narHash": "sha256-Sfvqfumqt0kR4qjrqhDXxPQfyvCZJIjmYTX2Ex7J0mU=",
-        "owner": "aster-void",
-        "repo": "shared-config",
-        "rev": "6d2efe75235d2b48cbcad6e8848b36703250b16f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aster-void",
-        "repo": "shared-config",
         "type": "github"
       }
     },
