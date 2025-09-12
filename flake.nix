@@ -27,12 +27,7 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    agenix,
-    comin,
-    ...
-  } @ inputs: let
+  outputs = {nixpkgs, ...} @ inputs: let
     meta = import ./meta.nix;
     inherit (meta) system;
 
@@ -44,34 +39,15 @@
     };
 
     args = {
-      inherit inputs meta;
+      inherit inputs meta nixpkgs;
       my = {
         pkgs = pkgs.callPackage ./my/pkgs/default.nix {};
       };
       shared = pkgs.callPackage ./shared {};
     };
-
-    mkSystemConfig = {
-      host,
-      system,
-    }:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit system inputs host;
-          shared = pkgs.callPackage ./shared {};
-        };
-
-        modules = [
-          agenix.nixosModules.default
-          comin.nixosModules.comin
-          ./nixos/configuration.nix
-          ./nixos/hosts/${host}
-        ];
-      };
   in {
     devShells.${system}.default = pkgs.mkShell {
-      name = "Home Manager";
+      name = "dotfiles";
       packages = with pkgs; [
         # automation
         lefthook
@@ -84,35 +60,16 @@
 
         # domain
         nwg-look
-        agenix.packages.${pkgs.system}.default
+        inputs.agenix.packages.${pkgs.system}.default
       ];
       shellHook = ''
         lefthook install
       '';
     };
 
-    devShell.${system} = pkgs.callPackage ./nixos/shell.nix {inherit agenix;};
-
     homeConfigurations = pkgs.callPackage ./home-manager args;
 
-    nixosConfigurations = {
-      amberwood = mkSystemConfig {
-        host = "amberwood";
-        system = "x86_64-linux";
-      };
-      bogster = mkSystemConfig {
-        host = "bogster";
-        system = "x86_64-linux";
-      };
-      carbon = mkSystemConfig {
-        host = "carbon";
-        system = "x86_64-linux";
-      };
-      dusk = mkSystemConfig {
-        host = "dusk";
-        system = "x86_64-linux";
-      };
-    };
+    nixosConfigurations = pkgs.callPackage ./nixos args;
 
     nixConfig = {
       extra-substituters = ["https://helix.cachix.org"];

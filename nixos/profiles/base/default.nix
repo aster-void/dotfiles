@@ -1,17 +1,16 @@
 {
   pkgs,
   shared,
+  meta,
   ...
-}: let
-  meta = import ../../../meta.nix;
-in {
+}: {
   # Git設定
   programs.git = {
     enable = true;
     config = {
       user = {
+        inherit (meta.git) email;
         name = meta.git.user;
-        email = meta.git.email;
       };
       core.editor = "hx";
       init.defaultBranch = "main";

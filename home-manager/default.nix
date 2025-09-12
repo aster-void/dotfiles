@@ -4,6 +4,7 @@
   meta,
   pkgs,
   shared,
+  ...
 }: let
   inherit (inputs) home-manager;
 

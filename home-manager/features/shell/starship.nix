@@ -16,8 +16,7 @@
   };
 
   gleam = {
-    # symbol = " ";
-    symbol = " ";
+    symbol = " ";
   };
 
   nodejs = {
@@ -28,7 +27,7 @@
     detect_folders = [];
   };
   bun = {
-    symbol = "󰞈 Bun ";
+    symbol = " ";
     style = "bold pink";
   };
 
@@ -56,7 +55,7 @@
   };
 
   git_status = {
-    format = "([< $ahead_behind $all_status>]($style) )";
+    format = "([< $ahead_behind $all_status>]($style) )";
     style = "yellow";
 
     conflicted = "<=>";

@@ -1,6 +1,4 @@
-{...}: let
-  meta = import ../../../meta.nix;
-in {
+{meta, ...}: {
   # Define a user account.
   users.users.${meta.username} = {
     isNormalUser = true;
