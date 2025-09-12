@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  # デスクトップ環境用パッケージ（インライン化）
   environment.systemPackages = with pkgs; [
     # Browsers
     firefox

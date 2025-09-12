@@ -25,10 +25,10 @@ in {
           name = "flathub";
           location = "https://flathub.org/repo/flathub.flatpakrepo";
         }
-        {
-          name = "launcher.moe";
-          location = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo";
-        }
+        # {
+        #   name = "launcher.moe";
+        #   location = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo";
+        # }
       ];
       packages =
         [

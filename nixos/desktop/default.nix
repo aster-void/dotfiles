@@ -1,9 +1,8 @@
 {
   imports = [
-    ./packages.nix
-    ./environments
+    ./display-manager
+    ./drivers
     ./flatpak.nix
-    ./logitech.nix
-    ./nvidia.nix
+    ./gui.nix
   ];
 }
