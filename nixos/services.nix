@@ -40,9 +40,6 @@
       interval = "hourly";
     };
 
-    # Enable the OpenSSH daemon.
-    # services.openssh.enable = true;
-
     # Enable ClamAV.
     clamav = {
       daemon.enable = false;
