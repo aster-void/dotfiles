@@ -18,6 +18,7 @@
       modules = [
         inputs.agenix.nixosModules.default
         inputs.comin.nixosModules.comin
+        inputs.lanzaboote.nixosModules.lanzaboote
         ./configuration.nix
         ./hosts/${host}
       ];

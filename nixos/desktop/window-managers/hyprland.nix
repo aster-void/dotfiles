@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./wayland.nix
-  ];
-
   programs.hyprland = {
     # Install the packages from nixpkgs
     enable = true;
