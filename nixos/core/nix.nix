@@ -1,4 +1,3 @@
-# TODO: move each of those configs to corresponding file (create one if not exists)
 {
   nix = {
     settings = {

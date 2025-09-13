@@ -2,7 +2,6 @@
   imports = [
     ./core
     ./profiles
-    ./desktop
   ];
 
   nixpkgs.config.allowUnfree = true;

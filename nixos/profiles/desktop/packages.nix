@@ -1,5 +1,12 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  cfg = config.my.profiles.desktop;
+in {
+  environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
     # Browsers
     firefox
     chromium
@@ -74,5 +81,5 @@
     gtk3
     gtk4
     xwayland
-  ];
+  ]);
 }

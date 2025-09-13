@@ -1,6 +1,7 @@
 # ゲーム用プロファイル
 {
   imports = [
-    ./games
+    ./steam.nix
+    ./flatpak.nix
   ];
 }

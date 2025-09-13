@@ -21,6 +21,7 @@
         inputs.lanzaboote.nixosModules.lanzaboote
         ./configuration.nix
         ./hosts/${host}
+        ./hosts/${host}/hardware-configuration.nix
       ];
     };
 in {
