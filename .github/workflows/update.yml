@@ -16,13 +16,10 @@ jobs:
       - uses: cachix/install-nix-action@v27
         with:
           nix_path: "nixpkgs=flake:nixpkgs"
+      # Test build the configurations to ensure it's buildable
       - run: nix flake update
-        working-directory: .config/home-manager
-      - name: Test build configuration
-        run: |
-          # Test build one of the configurations to ensure it's buildable
-          nix build .#homeConfigurations.amberwood.activationPackage --no-link
-        working-directory: .config/home-manager
+      - run: nix shell github:nix-community/home-manager --command home-manager build --flake .#amberwood
+      - run: nix-shell -p nixos-rebuild --command nixos-rebuild build --flake .#amberwood
       - uses: EndBug/add-and-commit@v9
         with:
           message: "(bot)schedule: update flake"
