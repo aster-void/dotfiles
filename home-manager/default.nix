@@ -18,7 +18,7 @@
       modules = profiles;
     };
 in {
-  amberwood = mkConfiguration {
+  "aster@amberwood" = mkConfiguration {
     profiles = [
       ./profiles/base
       ./profiles/desktop
@@ -26,14 +26,14 @@ in {
       ./profiles/game
     ];
   };
-  amberwood-wsl = mkConfiguration {
+  "aster@amberwood-wsl" = mkConfiguration {
     profiles = [
       ./profiles/base
       ./profiles/wsl
       ./profiles/dev
     ];
   };
-  bogster = mkConfiguration {
+  "aster@bogster" = mkConfiguration {
     profiles = [
       ./profiles/base
       ./profiles/desktop
@@ -41,18 +41,26 @@ in {
       ./profiles/game
     ];
   };
-  carbon = mkConfiguration {
+  "aster@carbon" = mkConfiguration {
     profiles = [
       ./profiles/base
       ./profiles/desktop
       ./profiles/dev
     ];
   };
-  carbon-wsl = mkConfiguration {
+  "aster@carbon-wsl" = mkConfiguration {
     profiles = [
       ./profiles/base
       ./profiles/dev
       ./profiles/wsl
+    ];
+  };
+  "aster@dusk" = mkConfiguration {
+    profiles = [
+      ./profiles/base
+      ./profiles/desktop
+      ./profiles/dev
+      ./profiles/game
     ];
   };
 }
