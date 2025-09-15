@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   # Manual systemd integration for Waybar with Hyprland
   systemd.user = {
-    # Create hyprland-session.target manually
-    targets.hyprland-session = {
+    targets.hyprland = {
       Unit = {
         Description = "Hyprland compositor session";
         Documentation = "man:systemd.special(7)";
@@ -18,21 +17,21 @@
         Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
         Documentation = "https://github.com/Alexays/Waybar/wiki";
         ConditionPathExists = "%t/wayland-1";
-        PartOf = ["hyprland-session.target"];
-        After = ["hyprland-session.target"];
-        Wants = ["hyprland-session.target"];
+        PartOf = ["hyprland.target"];
+        After = ["hyprland.target"];
+        Wants = ["hyprland.target"];
       };
       Service = {
-        Type = "exec";
+        Type = "simple";
         ExecStart = "${pkgs.waybar}/bin/waybar";
         ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
-        KillMode = "mixed";
+        KillMode = "control-group";
       };
       Install = {
-        WantedBy = ["hyprland-session.target"];
+        WantedBy = ["hyprland.target"];
       };
     };
 
@@ -48,7 +47,7 @@
           while true; do
             ${pkgs.inotify-tools}/bin/inotifywait -e modify,move,create,delete ~/.config/waybar/**/*
             echo "Waybar config changed, restarting..."
-            systemctl --user restart waybar
+            systemctl --user reload waybar
             sleep 1
           done
         ''}";
@@ -60,30 +59,29 @@
       };
     };
 
-    # Fcitx5 input method service
-    services.fcitx5-session = {
+    services.fcitx5 = {
       Unit = {
         Description = "Fcitx5 input method";
-        PartOf = ["hyprland-session.target"];
-        After = ["hyprland-session.target"];
+        PartOf = ["hyprland.target"];
+        After = ["hyprland.target"];
       };
       Service = {
-        Type = "notify";
-        ExecStart = "${pkgs.fcitx5}/bin/fcitx5";
+        Type = "dbus";
+        ExecStart = "${pkgs.bash}/bin/bash -c fcitx5";
         Restart = "on-failure";
-        RestartSec = 3;
+        RestartSec = 1;
       };
       Install = {
-        WantedBy = ["hyprland-session.target"];
+        WantedBy = ["hyprland.target"];
       };
     };
 
     # Hyprpaper wallpaper daemon service
-    services.hyprpaper-session = {
+    services.hyprpaper = {
       Unit = {
         Description = "Hyprpaper wallpaper daemon";
-        PartOf = ["hyprland-session.target"];
-        After = ["hyprland-session.target"];
+        PartOf = ["hyprland.target"];
+        After = ["hyprland.target"];
       };
       Service = {
         Type = "simple";
@@ -92,7 +90,7 @@
         RestartSec = 3;
       };
       Install = {
-        WantedBy = ["hyprland-session.target"];
+        WantedBy = ["hyprland.target"];
       };
     };
 
@@ -101,8 +99,8 @@
       Unit = {
         Description = "Dunst notification daemon";
         Documentation = "man:dunst(1)";
-        PartOf = ["hyprland-session.target"];
-        After = ["hyprland-session.target"];
+        PartOf = ["hyprland.target"];
+        After = ["hyprland.target"];
       };
       Service = {
         Type = "dbus";
@@ -112,7 +110,7 @@
         RestartSec = 3;
       };
       Install = {
-        WantedBy = ["hyprland-session.target"];
+        WantedBy = ["hyprland.target"];
       };
     };
 
@@ -120,8 +118,8 @@
     services.walker-session = {
       Unit = {
         Description = "Walker application launcher";
-        PartOf = ["hyprland-session.target"];
-        After = ["hyprland-session.target"];
+        PartOf = ["hyprland.target"];
+        After = ["hyprland.target"];
       };
       Service = {
         Type = "dbus";
@@ -131,17 +129,16 @@
         RestartSec = 3;
       };
       Install = {
-        WantedBy = ["hyprland-session.target"];
+        WantedBy = ["hyprland.target"];
       };
     };
 
-    # Hypridle idle daemon service
     services.hypridle-session = {
       Unit = {
         Description = "Hypridle idle daemon";
         Documentation = "man:hypridle(1)";
-        PartOf = ["hyprland-session.target"];
-        After = ["hyprland-session.target"];
+        PartOf = ["hyprland.target"];
+        After = ["hyprland.target"];
       };
       Service = {
         Type = "simple";
@@ -150,22 +147,8 @@
         RestartSec = 3;
       };
       Install = {
-        WantedBy = ["hyprland-session.target"];
+        WantedBy = ["hyprland.target"];
       };
     };
   };
-
-  # notification
-  # services.dunst.enable = true;
-
-  # hyprpanel always generates config. installing via overlays for now...
-  # home.packages = [inputs.hyprpanel.packages.${pkgs.system}.default];
-  # imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
-  # programs.hyprpanel = {
-  # enable = true;
-  # config.enable = false;
-  # overlay.enable = true;
-  # };
-
-  # wallpaper
 }
