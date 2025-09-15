@@ -15,7 +15,7 @@
     gc = {
       automatic = true;
       options = "--delete-older-than 3d";
-      dates = "weekly";
+      dates = "daily";
     };
   };
 

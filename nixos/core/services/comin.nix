@@ -6,7 +6,7 @@
         name = "origin";
         url = "https://github.com/aster-void/dotfiles";
         branches.main.name = "main";
-        poller.period = 3 * 3600;
+        poller.period = 1 * 3600; # every hour
       }
     ];
   };
