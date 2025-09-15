@@ -59,6 +59,100 @@
         WantedBy = ["default.target"];
       };
     };
+
+    # Fcitx5 input method service
+    services.fcitx5-session = {
+      Unit = {
+        Description = "Fcitx5 input method";
+        PartOf = ["hyprland-session.target"];
+        After = ["hyprland-session.target"];
+      };
+      Service = {
+        Type = "notify";
+        ExecStart = "${pkgs.fcitx5}/bin/fcitx5";
+        Restart = "on-failure";
+        RestartSec = 3;
+      };
+      Install = {
+        WantedBy = ["hyprland-session.target"];
+      };
+    };
+
+    # Hyprpaper wallpaper daemon service
+    services.hyprpaper-session = {
+      Unit = {
+        Description = "Hyprpaper wallpaper daemon";
+        PartOf = ["hyprland-session.target"];
+        After = ["hyprland-session.target"];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
+        Restart = "on-failure";
+        RestartSec = 3;
+      };
+      Install = {
+        WantedBy = ["hyprland-session.target"];
+      };
+    };
+
+    # Dunst notification daemon service
+    services.dunst-session = {
+      Unit = {
+        Description = "Dunst notification daemon";
+        Documentation = "man:dunst(1)";
+        PartOf = ["hyprland-session.target"];
+        After = ["hyprland-session.target"];
+      };
+      Service = {
+        Type = "dbus";
+        BusName = "org.freedesktop.Notifications";
+        ExecStart = "${pkgs.dunst}/bin/dunst";
+        Restart = "on-failure";
+        RestartSec = 3;
+      };
+      Install = {
+        WantedBy = ["hyprland-session.target"];
+      };
+    };
+
+    # Walker application launcher service
+    services.walker-session = {
+      Unit = {
+        Description = "Walker application launcher";
+        PartOf = ["hyprland-session.target"];
+        After = ["hyprland-session.target"];
+      };
+      Service = {
+        Type = "dbus";
+        BusName = "org.gtk.Application.walker";
+        ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
+        Restart = "on-failure";
+        RestartSec = 3;
+      };
+      Install = {
+        WantedBy = ["hyprland-session.target"];
+      };
+    };
+
+    # Hypridle idle daemon service
+    services.hypridle-session = {
+      Unit = {
+        Description = "Hypridle idle daemon";
+        Documentation = "man:hypridle(1)";
+        PartOf = ["hyprland-session.target"];
+        After = ["hyprland-session.target"];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.hypridle}/bin/hypridle";
+        Restart = "on-failure";
+        RestartSec = 3;
+      };
+      Install = {
+        WantedBy = ["hyprland-session.target"];
+      };
+    };
   };
 
   # notification
