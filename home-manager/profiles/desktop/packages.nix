@@ -15,11 +15,41 @@
       wpick
     ])
     ++ (with pkgs; [
-      # == basic tools ==
-      # Browser
+      # Apps
+
+      thunderbird # email client
+
+      ## Browser
       firefox
       chromium
       brave
+
+      ## Social
+      slack
+      discord
+      vesktop # another discord client
+      legcord # yet another discord client
+      jitsi # messaging
+
+      ## Images & Videos
+      amberol # music player
+      kooha # screen recorder
+      nomacs # view and crop image better
+      gthumb # image cropper
+      gimp # image editor
+      inkscape # looks like image and video editor
+
+      ## Note taking
+      appflowy # notion alternative
+      obsidian # note taking app
+
+      ## System
+      mission-center # resource monitor
+      authenticator
+
+      ## Other Apps
+      localsend
+      arandr # display placer
 
       # Develop
       ## Code Editor
@@ -79,31 +109,6 @@
       playerctl
       libreoffice
       timg # cat for images
-
-      # Apps
-      ## Social
-      slack
-      discord
-      vesktop # another discord client
-      legcord # yet another discord client
-      jitsi # what
-
-      ## Notions
-      # notion-app # not supported for linux
-      notion-app-enhanced
-      appflowy # another notion
-
-      obsidian
-
-      ## File Editor
-      nomacs # view and crop image better
-      gthumb
-      gimp
-      inkscape # looks like image and video editor
-      ## Other Apps
-      localsend
-
-      arandr # display placer
 
       # gui drivers? idk
       libsForQt5.qt5.qtwayland
