@@ -15,6 +15,7 @@ in {
 
     starship = {
       enable = true;
+      enableTransience = true;
       settings = import ./starship.nix;
     };
     zoxide = {
