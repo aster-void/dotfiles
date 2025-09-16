@@ -46,7 +46,7 @@ in {
     marksman
     markdown-oxide
     taplo
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     docker-compose-language-service
     yaml-language-server
     hyprls
