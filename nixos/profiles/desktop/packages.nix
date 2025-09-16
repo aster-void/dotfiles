@@ -47,7 +47,7 @@ in {
     polybar
     eww
     nwg-launchers
-    walker
+    fuzzel
     rofi
 
     # Media viewers

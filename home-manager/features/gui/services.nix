@@ -115,24 +115,6 @@
       };
     };
 
-    # Walker application launcher service
-    services.walker-session = {
-      Unit = {
-        Description = "Walker application launcher";
-        PartOf = ["hyprland.target"];
-        After = ["hyprland.target"];
-      };
-      Service = {
-        Type = "dbus";
-        BusName = "org.gtk.Application.walker";
-        ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
-        Restart = "on-failure";
-        RestartSec = 3;
-      };
-      Install = {
-        WantedBy = ["hyprland.target"];
-      };
-    };
 
     services.hypridle-session = {
       Unit = {

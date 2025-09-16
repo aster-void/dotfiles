@@ -99,7 +99,7 @@
       eww
       ## Launchers
       nwg-launchers
-      walker
+      fuzzel
       rofi
 
       # File Viewer
