@@ -7,38 +7,35 @@ Personal dotfiles repository with Nix/NixOS configurations and application dotfi
 
 ## Essential Commands
 
-### NixOS System Management
+### NixOS commands
+
 ```bash
-# Build system configuration (test without switching)
+# Install nixos configuration
+sudo nixos-rebuild switch --flake .
+# build nixos configuration (without installing)
 nixos-rebuild build --flake .
-
-# Switch to new system configuration  
-sudo nixos-rebuild switch --flake .#<hostname>
-
-# Available hosts: amberwood, bogster, carbon, dusk
 ```
 
-### Home Manager
+### Home-Manager commands
+
 ```bash
 # Switch home configuration
-nix run github:nix-community/home-manager -- switch --flake .#<hostname>
-
-# Example for amberwood host
-nix run github:nix-community/home-manager -- switch --flake .#amberwood
+# Est. 2m 30s. Don't run unless explicitly asked to.
+home-manager switch --flake . 
+# Test build configuration without installation (faster)
+home-manager build --flake . 
 ```
 
-### Development and Linting
-```bash
-# Format all Nix files (via lefthook pre-commit)
-alejandra *.nix
+### Linting & Formatting
 
+All linting runs automatically on git commit via lefthook.
+```bash
+# Format all Nix files
+alejandra *.nix
 # Check for dead code
 deadnix --fail .
-
 # Static analysis  
 statix check .
-
-# All linting runs automatically on git commit via lefthook
 ```
 
 ## Architecture Overview
@@ -74,9 +71,8 @@ nixos/
 ```
 
 ### Key Design Principles
-- **Modularity**: Each layer imports what it needs, hosts import `../../desktop`, `../../profiles`, etc.
-- **Inlined Packages**: Package definitions are embedded directly in profiles rather than separate files
-- **Centralized Desktop**: All desktop components imported via `desktop/default.nix`
+
+- **Modularity**: Each layer declares what it does, hosts enable these settings.
 - **Host Specialization**: Host-specific hardware, bootloader, and driver configurations
 
 ### Home Manager Structure  

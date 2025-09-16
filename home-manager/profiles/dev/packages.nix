@@ -11,6 +11,8 @@
     ++ (with pkgs; [
       # Dev Tools
       claude-code
+      crush
+      codex
       postgresql
       litecli
       tokei
