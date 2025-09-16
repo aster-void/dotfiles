@@ -7,7 +7,8 @@
   ];
 in {
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    enable = true;
+    type = "fcitx5";
     fcitx5.addons = fcitx5-addons;
   };
   home.sessionVariables = {
