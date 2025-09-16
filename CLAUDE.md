@@ -19,10 +19,10 @@ nixos-rebuild build --flake .
 ### Home-Manager commands
 
 ```bash
-# Switch home configuration
+# Apply home configuration changes (builds and activates)
 # Est. 2m 30s. Don't run unless explicitly asked to.
 home-manager switch --flake . 
-# Test build configuration without installation (faster)
+# Test build configuration without applying (faster)
 home-manager build --flake . 
 ```
 
