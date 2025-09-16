@@ -1,8 +1,13 @@
-# Claude Code Global Memory
+# SuperClaude Entry Point
 
-## Workflow Instructions
-- 機能実装をする前に仕様を整理して、ユーザーに確認を取って。
-- 作業が完了し、動作を確認したらコミットして。
+@COMMANDS.md
+@FLAGS.md
+@PRINCIPLES.md
+@RULES.md
+@MCP.md
+@PERSONAS.md
+@ORCHESTRATOR.md
+@MODES.md
 
-## Development Best Practices
-- すべての機能の実装前後に、考えうる懸念点を洗い出して。 (セキュリティ面・パフォーマンス面など)
+## Git Tips
+- `git add .` ではなく、`git add -A` を使って。

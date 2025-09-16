@@ -1,36 +1,47 @@
-# Windsurf rules
+# Documentation
 
-## General
+- Comment intentions and rationales.
+- Comment footguns.
+  - Examples include:
+    - Inclusive/exclusive (off-by-one)
+    - Mutation side effects
 
-## Coding Style
+# Coding Style
 
-- Prefer simple solutions.
-- Prefer self-explanatory code.
-- Prefer short and self-explanatory variable names.
-- Make wrong code look wrong. you may add prefixes or suffixes to variables if that makes wrong things more clear. (e.g. `distance_km` `kg_weight`)
-- Prefer short-lived variables.
-- Prefer short functions.
-- TypeScript: Always add extensions to imports: `import "./foo.ts"`, not `import "./foo"`.
+- Abort on error, do not skip errors.
+  - Decide what counts as an error and what doesn't.
+- Use Prefix notation (also known as Hungarian notation) if different variables mean different things but have the same type.
+  - such as:
+    - x / y / width / height
+    - kilometer / yard
+    - pixel / cells
+- variables names should be descriptive yet concise.
+- Split long functions into small functions in same file. ~50 lines is upper limit.
+- Separate logic parts with whitespace. this includes functions, class methods and object declarations.
 
-### Codebase structure
+## Code Organization
 
-- Large file is bad file. Split logic into multiple files as soon as possible.
-- Prefer flat directory structure until it's no longer managable (~15 files).
+- Use feature-based directory structure.
+  - most things should be in `src/features/{feature}`.
+    - this directory may contain `components/`, `func/`, `config/`, `hooks/` etc.
+  - `src/lib` should only contain shared utilities.
 
-## Documentation
+## Svelte function names
 
-- Don't overuse comments.
-- Use comments to explain the intent, not the implementation.
-- Comment only the documentation.
-- Use types for type-checkable documentation.
+- use `useXXX` if the function needs to be called at component initialization. this is my personal preference.
 
-## Cascade Session
+# Suggestion
 
-- If I don't explicitly review your changes, it means the diff was good.
+- Don't suggest formatting changes.
 
-## Commit Message
+# Toolchain
 
-- Prefix commit message, e.g. `fix:`, `feat:`, `chore:`, `breaking:`.
-- Commit message should describe what has become possible after the commit, rather than describint what has changed in detail.
-- Commit message should only contain one line. Avoid commit body.
-
+- Use bun and TypeScript.
+- Use Tailwind and DaisyUI instead of plain CSS.
+- Use Svelte 5 (not svelte 4).
+  - this means,
+    - no implicit reactive variables. use `$state`.
+    - no `$:` for derived variables. use `$derived` instead.
+    - no `$:` for effects. use `$effect` instead.
+    - no `export let`. use `$props()` and `type Props` instead.
+    - no `on:{event}`. use `on{event}` instead.

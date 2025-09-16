@@ -62,6 +62,9 @@
         nwg-look
         inputs.agenix.packages.${pkgs.system}.default
       ];
+      env = {
+        RULES = "secrets/secrets.nix";
+      };
       shellHook = ''
         lefthook install
       '';
