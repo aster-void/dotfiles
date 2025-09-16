@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# Stop hyprland-session.target before exiting Hyprland
-# This ensures clean shutdown of all session-bound services like Waybar
-systemctl --user stop hyprland-session.target
+# Stop graphical-session.target before exiting Hyprland
+# This ensures clean shutdown of all session-bound services like Waybar, fcitx5, etc.
+systemctl --user stop graphical-session.target
 
 # Exit Hyprland
 hyprctl dispatch exit
