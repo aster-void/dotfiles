@@ -16,7 +16,7 @@ in {
   };
   services = lib.mkIf cfg.enable {
     displayManager.autoLogin.user = shared.system.user;
-    displayManager.defaultSession = "hyprland-uwsm";
+    displayManager.defaultSession = "hyprland";
     xserver.enable = true;
     libinput.enable = true;
     xserver.displayManager.setupCommands = ''

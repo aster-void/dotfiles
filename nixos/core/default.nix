@@ -11,6 +11,7 @@
     ./services
     ./console.nix
     ./packages.nix
+    ./fonts.nix
 
     ./hardware
   ];

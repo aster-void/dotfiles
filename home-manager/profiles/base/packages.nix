@@ -43,6 +43,7 @@
     # sys info
     libnotify
     speedtest-cli
+    usbutils
 
     # CLI / term
     ## Tmux

@@ -1,6 +1,17 @@
 {pkgs, ...}: {
   # Manual systemd services for Hyprland session management
   systemd.user = {
+    # Declare graphical-session.target
+    targets.graphical-session = {
+      Unit = {
+        Description = "Graphical session";
+        Documentation = "man:systemd.special(7)";
+        RefuseManualStart = "no";
+        StopWhenUnneeded = "no";
+        Requires = ["default.target"];
+        After = ["default.target"];
+      };
+    };
     # Waybar systemd service
     services.waybar = {
       Unit = {
@@ -49,24 +60,6 @@
       };
     };
 
-    services.fcitx5 = {
-      Unit = {
-        Description = "Fcitx5 input method";
-        PartOf = ["graphical-session.target"];
-        After = ["graphical-session.target"];
-      };
-      Service = {
-        Type = "dbus";
-        BusName = "org.fcitx.Fcitx5";
-        ExecStart = "${pkgs.bash}/bin/bash -c fcitx5";
-        Restart = "on-failure";
-        RestartSec = 1;
-      };
-      Install = {
-        WantedBy = ["graphical-session.target"];
-      };
-    };
-
     # Hyprpaper wallpaper daemon service
     services.hyprpaper = {
       Unit = {
@@ -97,6 +90,9 @@
         Type = "dbus";
         BusName = "org.freedesktop.Notifications";
         ExecStart = "${pkgs.dunst}/bin/dunst";
+        Environment = [
+          "WAYLAND_DISPLAY=wayland-1"
+        ];
         Restart = "on-failure";
         RestartSec = 3;
       };
