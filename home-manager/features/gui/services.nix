@@ -67,6 +67,7 @@
       };
       Service = {
         Type = "dbus";
+        BusName = "org.fcitx.Fcitx5";
         ExecStart = "${pkgs.bash}/bin/bash -c fcitx5";
         Restart = "on-failure";
         RestartSec = 1;
