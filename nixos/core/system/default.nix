@@ -5,7 +5,7 @@
   };
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_6_hardened;
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
 
   programs.nix-ld.enable = true;
 
