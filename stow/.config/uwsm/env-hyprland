@@ -1,0 +1,17 @@
+# UWSM Hyprland-specific Environment Variables
+# Variables exclusive to Hyprland sessions
+
+# Hyprland specific variables
+export HYPRLAND_LOG_WLR=1
+export HYPRLAND_NO_RT=1
+
+# AQ (Aquamarine) variables for Hyprland
+export AQ_DRM_DEVICES=/dev/dri/card1:/dev/dri/card0
+
+# WLR specific for Hyprland
+export WLR_NO_HARDWARE_CURSORS=1
+export WLR_RENDERER_ALLOW_SOFTWARE=1
+
+# Hyprland cursor settings
+export HYPRCURSOR_THEME=Adwaita
+export HYPRCURSOR_SIZE=24

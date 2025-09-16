@@ -96,6 +96,7 @@ home-manager/
 - コミットする前に必ず動作を確認して。
     - nixos の場合は `nixos-rebuild build --flake .`
     - home manager の場合は `home-manager build --flake .`
+- 知識にないものがあったら、すべて Web 検索して。
 
 ### Development Best Practices  
 - すべての機能の実装前後に、考えうる懸念点を洗い出して。 (セキュリティ面・パフォーマンス面など)
