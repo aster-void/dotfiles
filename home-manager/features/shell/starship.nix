@@ -1,5 +1,10 @@
 {
-  add_newline = true;
+  # Two-line prompt: all modules on line 1, PWD on line 2
+  # `\$all` excludes modules explicitly placed in `format` (like `directory`).
+  add_newline = false;
+  # Line 1: username (local) or username@hostname (SSH) + optional "on <branch>" + remaining modules
+  # Line 2: CWD; Line 3: prompt char
+  format = " $username$hostname$git_branch$all$line_break $directory$line_break$character";
   palette = "aster";
   palettes.aster = {
     pink = "#FFC1CC"; # bubble pink
@@ -54,6 +59,16 @@
     symbol = "󱄅 ";
   };
 
+  # Show non-zero exit status of the last command (on line 1 via $all)
+  status = {
+    disabled = false;
+    format = "[✖ $status]($style) ";
+    style = "bold red";
+    map_symbol = true;
+    recognize_signal_names = true;
+    pipestatus = false; # set true to show all statuses in a pipeline
+  };
+
   git_status = {
     format = "([< $ahead_behind $all_status>]($style) )";
     style = "yellow";
@@ -68,10 +83,56 @@
     deleted = "d";
   };
 
+  # Host name (SSH only) at the start (subdued)
+  hostname = {
+    disabled = false;
+    ssh_only = true;
+    format = "[@$hostname]($style) ";
+    style = "mustard dimmed";
+  };
+
+  # Username (always show locally; subdued). Root remains prominent.
+  username = {
+    show_always = true;
+    format = "[$user]($style) ";
+    style_user = "cyan";
+    style_root = "bold red";
+  };
+
+  # Show branch with conditional prefix; prints nothing outside git repos
+  git_branch = {
+    format = "on [$symbol$branch]($style) ";
+    symbol = " ";
+    style = "pink";
+  };
+
   directory = {
-    truncation_length = 4;
+    # Show full path from ~, do not cut at repo root
+    truncate_to_repo = false;
+    truncation_length = 0; # 0 = no truncation
     read_only = " [readonly]";
     read_only_style = "yellow bold";
     repo_root_style = "blue";
+  };
+
+  # Cloud/Container contexts
+  kubernetes = {
+    disabled = false;
+    # e.g., kind-kind (ns) or prod (kube-system)
+    format = "[⎈ $context( \($namespace\))]($style) ";
+    style = "cyan";
+  };
+
+  docker_context = {
+    disabled = false;
+    format = "[ $context]($style) ";
+    only_with_files = false; # show regardless of docker files
+    style = "blue";
+  };
+
+  aws = {
+    disabled = false;
+    format = "[ $profile( \($region\))]($style) ";
+    style = "yellow";
   };
 }
