@@ -1,8 +1,9 @@
 {pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
-      # Japanese fonts
+      # primary fonts
       koruri
+      nerd-fonts.meslo-lg
       # Fallback fonts for compatibility
       noto-fonts
       noto-fonts-cjk-sans
@@ -13,7 +14,7 @@
       defaultFonts = {
         sansSerif = ["Koruri"];
         serif = ["Koruri"];
-        monospace = ["JetBrains Mono" "Noto Sans Mono CJK JP"];
+        monospace = ["MesloLGMNerdFont" "Jetbrains Mono" "Noto Sans Mono CJK JP"];
       };
     };
   };
