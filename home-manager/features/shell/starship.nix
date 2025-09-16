@@ -2,9 +2,14 @@
   # Two-line prompt: all modules on line 1, PWD on line 2
   # `\$all` excludes modules explicitly placed in `format` (like `directory`).
   add_newline = false;
-  # Line 1: username (local) or username@hostname (SSH) + optional "on <branch>" + remaining modules
-  # Line 2: CWD; Line 3: prompt char
-  format = " $username$hostname$git_branch$all$line_break $directory$line_break$character";
+  # Line 1: username@host & branch {all modules}
+  # Line 2: CWD
+  # Line 3: exit_status >
+  format = ''
+    $line_break$username$hostname$git_branch$all
+    $directory
+    $status$character
+  '';
   palette = "aster";
   palettes.aster = {
     pink = "#FFC1CC"; # bubble pink
@@ -65,7 +70,7 @@
     format = "[✖ $status]($style) ";
     style = "bold red";
     map_symbol = true;
-    recognize_signal_names = true;
+    recognize_signal_code = true;
     pipestatus = false; # set true to show all statuses in a pipeline
   };
 
