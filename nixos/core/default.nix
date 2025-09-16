@@ -12,6 +12,7 @@
     ./console.nix
     ./packages.nix
     ./fonts.nix
+    ./keyboard.nix
 
     ./hardware
   ];
