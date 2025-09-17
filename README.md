@@ -24,6 +24,11 @@ nix run github:nix-community/home-manager -- switch --flake .#amberwood # your f
 
 alacritty, hyprland, waybar, and all apps within home-manager and nixos-config.
 
+## Manual Guides
+
+- Lanzaboote (Secure Boot): `docs/manual/lanzaboote.md`
+- Cloudflare Tunnel DNS: `docs/manual/cloudflare-route.md`
+
 ## Before running
 
 Read flake.nix and search for personal settings.
