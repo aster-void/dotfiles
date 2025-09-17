@@ -6,8 +6,8 @@
   # Line 2: CWD
   # Line 3: exit_status >
   format = ''
-    $line_break$username$hostname$git_branch$all
-    $directory
+    $line_break$directory
+    $username$hostname$git_branch$all
     $status$character
   '';
   palette = "aster";

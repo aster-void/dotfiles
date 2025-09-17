@@ -87,12 +87,10 @@
         After = ["graphical-session.target"];
       };
       Service = {
+        Environment = ["WAYLAND_DISPLAY=wayland-1"];
         Type = "dbus";
         BusName = "org.freedesktop.Notifications";
         ExecStart = "${pkgs.dunst}/bin/dunst";
-        Environment = [
-          "WAYLAND_DISPLAY=wayland-1"
-        ];
         Restart = "on-failure";
         RestartSec = 3;
       };
