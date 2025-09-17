@@ -35,6 +35,7 @@
     graphviz
     libnotify
     speedtest-cli
+    helix
 
     # CLI/Terminal
     zellij
@@ -86,6 +87,9 @@
     appimage-run
     filezilla
     networkmanagerapplet
+
+    # service management
+    cloudflared
 
     # Nix tools
     nix-index
