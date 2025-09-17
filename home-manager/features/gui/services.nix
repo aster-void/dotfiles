@@ -17,7 +17,7 @@
       Unit = {
         Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
         Documentation = "https://github.com/Alexays/Waybar/wiki";
-        ConditionPathExists = "%t/wayland-1";
+        # Do not hardcode a specific WAYLAND_DISPLAY; rely on session env
         PartOf = ["graphical-session.target"];
         After = ["graphical-session.target"];
         Wants = ["graphical-session.target"];
@@ -45,11 +45,10 @@
       Service = {
         Type = "simple";
         ExecStart = "${pkgs.writeShellScript "waybar-watcher" ''
-          while true; do
-            ${pkgs.inotify-tools}/bin/inotifywait -e modify,move,create,delete ~/.config/waybar/**/*
-            echo "Waybar config changed, restarting..."
-            systemctl --user reload waybar
-            sleep 1
+          set -euo pipefail
+          ${pkgs.inotify-tools}/bin/inotifywait -m -r -e modify,move,create,delete "$HOME/.config/waybar" | while read -r _; do
+            echo "Waybar config changed, reloading..."
+            systemctl --user reload waybar || true
           done
         ''}";
         Restart = "always";
@@ -87,7 +86,6 @@
         After = ["graphical-session.target"];
       };
       Service = {
-        Environment = ["WAYLAND_DISPLAY=wayland-1"];
         Type = "dbus";
         BusName = "org.freedesktop.Notifications";
         ExecStart = "${pkgs.dunst}/bin/dunst";

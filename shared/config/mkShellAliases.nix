@@ -41,7 +41,7 @@ _: name: let
 
     flake = "nix flake";
     hs = "home-manager switch";
-    hb = "home-manager switch";
+    hb = "home-manager build";
     home = "home-manager";
     nixgc = "nix-collect-garbage";
     rb = "sudo nixos-rebuild";

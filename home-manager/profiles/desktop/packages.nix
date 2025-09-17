@@ -96,7 +96,6 @@
       ## bars
       waybar
       polybar
-      eww
       ## Launchers
       nwg-launchers
       fuzzel

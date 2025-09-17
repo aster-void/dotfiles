@@ -45,7 +45,6 @@ in {
     hyprpaper
     waybar
     polybar
-    eww
     nwg-launchers
     fuzzel
     rofi
