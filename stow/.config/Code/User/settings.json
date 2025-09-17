@@ -14,5 +14,28 @@
     "explorer.confirmDragAndDrop": false,
     "terminal.integrated.defaultProfile.linux": "fish",
     "python.analysis.typeCheckingMode": "strict",
-    "git.autofetch": true
+    "git.autofetch": true,
+  "hediet.vscode-drawio.resizeImages": null,
+  "[typst]": {
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  },
+  "[typst-code]": {
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  },
+  "explorer.confirmDelete": false,
+  "svelte.enable-ts-plugin": true,
+  "git.openRepositoryInParentFolders": "never",
+  "sherlock.userId": "670beefa-15d3-4a16-81ff-fbed42949714",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "editor.formatOnSave": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.analysis.typeCheckingMode": "strict",
+  "notebook.formatOnSave.enabled": true,
+  "python.languageServer": "Default"
 }
