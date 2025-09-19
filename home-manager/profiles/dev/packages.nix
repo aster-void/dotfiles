@@ -49,6 +49,7 @@
 
       ## Nix
       alejandra
+      nixfmt-rfc-style # some repos require this as the formatter
       nil
       nixd
       statix
