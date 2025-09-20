@@ -13,6 +13,7 @@
     ./packages.nix
     ./fonts.nix
     ./keyboard.nix
+    ./secrets.nix
 
     ./hardware
   ];
