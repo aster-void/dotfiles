@@ -105,6 +105,7 @@
       # File Viewer
       feh # image viewer that is too simple
       kdePackages.gwenview # file manager that actually works
+      nemo # file manager
       vlc # music player
       playerctl
       libreoffice
