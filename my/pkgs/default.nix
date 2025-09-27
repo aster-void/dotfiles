@@ -1,4 +1,5 @@
 {
+  inputs,
   python312Packages,
   callPackage,
   ...
@@ -11,4 +12,6 @@
     inherit (python312Packages) buildPythonPackage hatchling more-itertools click;
   };
   line = callPackage ./line.nix {};
+
+  sddmThemes = callPackage ./sddmThemes {inherit inputs;};
 }

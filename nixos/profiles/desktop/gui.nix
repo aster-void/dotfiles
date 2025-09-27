@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  meta,
+  # meta,
   ...
 }: let
   cfg = config.my.profiles.desktop;
@@ -15,7 +15,7 @@ in {
     };
   };
   services = lib.mkIf cfg.enable {
-    displayManager.autoLogin.user = meta.username;
+    # displayManager.autoLogin.user = meta.username;
     displayManager.defaultSession = "hyprland-uwsm";
     xserver.enable = true;
     libinput.enable = true;

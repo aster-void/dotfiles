@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  my,
   ...
 }: let
   cfg = config.my.profiles.desktop;
@@ -11,13 +12,16 @@ in {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      package = pkgs.kdePackages.sddm;
       theme = "sddm-astronaut-theme";
+      extraPackages = with pkgs; [
+        kdePackages.qtmultimedia
+        kdePackages.qtsvg
+        kdePackages.qtdeclarative
+        kdePackages.qtvirtualkeyboard
+      ];
     };
   };
 
-  # Install SDDM theme and required Qt6 dependencies
-  environment.systemPackages = lib.mkIf cfg.enable [
-    pkgs.sddm-astronaut
-    pkgs.kdePackages.qtmultimedia
-  ];
+  environment.systemPackages = [my.pkgs.sddmThemes.sddm-astronaut-theme];
 }

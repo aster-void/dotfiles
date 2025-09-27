@@ -25,6 +25,10 @@
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sddm-astronaut-theme = {
+      url = "github:Keyitdev/sddm-astronaut-theme";
+      flake = false;
+    };
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
@@ -41,7 +45,7 @@
     args = {
       inherit inputs meta nixpkgs;
       my = {
-        pkgs = pkgs.callPackage ./my/pkgs/default.nix {};
+        pkgs = pkgs.callPackage ./my/pkgs/default.nix {inherit inputs;};
       };
       shared = pkgs.callPackage ./shared {};
     };

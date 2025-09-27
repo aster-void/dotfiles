@@ -351,6 +351,7 @@
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
+        "sddm-astronaut-theme": "sddm-astronaut-theme",
         "zen-browser": "zen-browser"
       }
     },
@@ -372,6 +373,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sddm-astronaut-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756565162,
+        "narHash": "sha256-ITufiMTnSX9cg83mlmuufNXxG1dp9OKG90VBZdDeMxw=",
+        "owner": "Keyitdev",
+        "repo": "sddm-astronaut-theme",
+        "rev": "c10bd950544036c7418e0f34cbf1b597dae2b72f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Keyitdev",
+        "repo": "sddm-astronaut-theme",
         "type": "github"
       }
     },
