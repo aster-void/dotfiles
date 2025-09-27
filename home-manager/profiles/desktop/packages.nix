@@ -38,6 +38,7 @@
       gthumb # image cropper
       gimp # image editor
       inkscape # looks like image and video editor
+      pinta # easy-to-use image editor
 
       ## Note taking
       appflowy # notion alternative
