@@ -1,61 +1,59 @@
-# Global Codex Rules (Repo‑Wide)
+# Global Codex Rules (Unified)
 
-These rules guide agent work across this entire repository. They apply to all directories and files unless a more specific AGENTS.md in a subfolder overrides them.
+This AGENTS.md supersedes and merges the prior CLAUDE.md. The file `CLAUDE.md` is a symlink to this document.
 
 ## Scope & Intent
 - Keep changes small, focused, and idiomatic to the repo.
 - Prefer surgical edits over refactors unless explicitly requested.
-- Never commit raw secrets. Use `secrets/` with agenix and keys from `meta.nix`.
+- Never commit raw secrets; use `secrets/` with agenix and keys from `meta.nix`.
 
-## Workflow Preferences
-- Planning: Use the plan tool for multi‑step tasks; skip for trivial changes.
-- Validation: Treat builds as tests. Prefer build over switch unless asked.
-  - NixOS build: `nixos-rebuild build --flake .#<host>`
-  - Home Manager build: `home-manager build --flake .#<user@host>`
-- Switching: Do not run `switch` unless explicitly requested by the user.
-- Lint/format before committing (or rely on lefthook):
-  - `alejandra *.nix`
-  - `deadnix --fail .`
-  - `statix check .`
-- Commits: Use Conventional Commits. Common scopes: `hm:`, `nixos:`, `fix(<host>):`.
-- Searches: Prefer `rg` for file/content searches.
-- Read files in chunks ≤250 lines when quoting output.
-- To apply stow, use command "stow.sh". it's under ./scripts and is added to PATH.
+## Workflow
+- Plan: use the plan tool for multi‑step tasks; skip for trivial ones.
+- Build before switching: `nixos-rebuild build --flake .#<host>`, `home-manager build --flake .#<user@host>`.
+- Only switch on request: `sudo nixos-rebuild switch --flake .`, `home-manager switch --flake .`.
+- Lint/format via lefthook; manual: `alejandra *.nix`, `deadnix --fail .`, `statix check .`.
+- Searches: prefer `rg`; when quoting files, read ≤250 lines.
+- Dotfiles: use `scripts/stow.sh` to apply stow changes.
 
 ## Nix Conventions
 - Formatting: `alejandra` is authoritative (2‑space indent, trailing commas where idiomatic).
-- Paths: Do not hardcode binary paths; prefer `${lib.getExe pkgs.<pkg>}` or `${pkgs.<pkg>}/bin/<exe>`.
-- Structure:
-  - Root entrypoint: `flake.nix` (dev shell, `homeConfigurations`, `nixosConfigurations`).
-  - Home Manager: `home-manager/` with `profiles/`, `features/`, `store/`.
-  - NixOS: `nixos/` with `hosts/<name>/`, `core/`, `profiles/` (see `nixos/default.nix`).
-  - Dotfiles to stow: `stow/`.
-  - Shared bits: `shared/`. Local packages: `my/pkgs/`.
-- Modules should be small/composable. Host specifics live under `nixos/hosts/<host>/` or `home-manager/profiles/`.
+- Do not hardcode binary paths; prefer `${lib.getExe pkgs.<pkg>}` or `${pkgs.<pkg>}/bin/<exe>`.
+- Modules should be small and composable; host specifics live under `nixos/hosts/<host>/` or `home-manager/profiles/`.
+
+## Repository Structure (condensed)
+- Entry: `flake.nix` (dev shell, `homeConfigurations`, `nixosConfigurations`).
+- Metadata: `meta.nix` (user/system details).
+- Shared bits: `shared/`; local packages: `my/pkgs/`.
+- NixOS: `nixos/` with `core/`, `profiles/`, optional `desktop/`, and `hosts/<name>/`.
+- Home Manager: `home-manager/` with `profiles/`, `features/`, `store/`.
+- Dotfiles to stow: `stow/`.
+
+## Design Principles
+- Modularity first; layers declare purpose, hosts opt‑in.
+- Host specialization for hardware/boot/drivers.
+
+## Agent Behavior
+- Be concise and add a short preamble before tool calls.
+- Use `apply_patch` for file edits; keep diffs minimal and scoped.
+- Validate the changed areas specifically; avoid repo‑wide churn.
+- When uncertain, propose options and ask before proceeding.
+
+## Development Guidance
+- Clarify specs with the user before implementing; confirm changes after.
+- Prefer builds as tests; avoid running `switch` unless asked.
+- If something is unfamiliar, research as needed; cite implications when relevant.
+- Keep commits conventional: `hm(<feature>): …`, `nixos(<host>|core|profile): …`, `fix(<host>): …`.
 
 ## Security
-- Secrets policy: add `.age` files under `secrets/` and register in `secrets/secrets.nix`; keys from `meta.nix`.
-- Validate with `deadnix`/`statix`; avoid unused or dangling options.
+- Add secrets as `.age` files under `secrets/` and register in `secrets/secrets.nix`.
+- Validate with `deadnix`/`statix`; avoid unused/dangling options.
 
-## Commit & PR Guidance
-- Conventional Commits examples:
-  - `hm(<feature>): <summary>`
-  - `nixos(<host>|core|profile): <summary>`
-  - `fix(<host>): <summary>`
-- PRs should include: summary, affected hosts/profiles, before/after notes, and screenshots for desktop changes.
+## PR Checklist
+- Include summary, affected hosts/profiles, before/after notes; add screenshots for desktop changes.
 
-## Agent Behavior Defaults
-- Be concise and direct; include a short preamble before running tools.
-- Use `apply_patch` for file changes; keep diffs minimal.
-- Do not add unrelated changes or new tools/config unless requested.
-- Validate changed areas specifically; avoid repo‑wide churn.
-- When in doubt, propose options and ask before proceeding.
-
-## Optional Preferences (edit as desired)
-- Auto‑create a plan for any task touching >1 file: true
-- Auto‑run formatters before commit: true
-- Default branch naming for new branches: `chore/<short-topic>`
-- Run HM/NixOS builds automatically after config changes: false (ask first)
-- Default commit scope for HM changes: `hm:`
-- Default commit scope for NixOS changes by host: `nixos(<host>):`
-
+## Preferences
+- Auto‑create a plan for tasks touching >1 file.
+- Auto‑run formatters before commit.
+- Default branch naming: `chore/<short-topic>`.
+- Do not auto‑switch after config changes unless asked.
+- Default scopes: HM `hm:`, NixOS by host `nixos(<host>):`.
