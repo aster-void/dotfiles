@@ -1,8 +1,8 @@
 {
   config,
   lib,
-  shared,
   pkgs,
+  meta,
   ...
 }: let
   cfg = config.my.profiles.desktop;
@@ -15,8 +15,8 @@ in {
     };
   };
   services = lib.mkIf cfg.enable {
-    displayManager.autoLogin.user = shared.system.user;
-    displayManager.defaultSession = "hyprland";
+    displayManager.autoLogin.user = meta.username;
+    displayManager.defaultSession = "hyprland-uwsm";
     xserver.enable = true;
     libinput.enable = true;
     xserver.displayManager.setupCommands = ''

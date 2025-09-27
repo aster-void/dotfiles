@@ -14,7 +14,6 @@ in {
 
     # Development - GUI
     zed-editor
-    windsurf
     drawio
 
     # Terminals

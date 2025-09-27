@@ -4,8 +4,11 @@
     enable = true;
     xwayland.enable = true;
     # use Universal Wayland Session Manager
-    # withUWSM = true; # it still doesn't work
+    withUWSM = true;
   };
+
+  # Enable UWSM system-wide (configuration is handled by programs.hyprland.withUWSM)
+  programs.uwsm.enable = true;
 
   environment.systemPackages = with pkgs; [
     # walker

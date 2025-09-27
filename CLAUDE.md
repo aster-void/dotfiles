@@ -93,9 +93,6 @@ home-manager/
 ### Workflow Instructions
 - 機能実装をする前に仕様を整理して、ユーザーに確認を取って。
 - 作業が完了したらコミットして。
-- コミットする前に必ず動作を確認して。
-    - nixos の場合は `nixos-rebuild build --flake .`
-    - home manager の場合は `home-manager build --flake .`
 - 知識にないものがあったら、すべて Web 検索して。
 
 ### Development Best Practices  

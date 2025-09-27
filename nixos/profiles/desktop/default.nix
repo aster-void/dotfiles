@@ -3,8 +3,8 @@
     ./gui.nix
 
     # display manager
-    # ./display-managers/sddm.nix
-    ./display-managers/ly.nix
+    ./display-managers/sddm.nix
+    # ./display-managers/ly.nix
     # ./display-managers/gdm.nix
 
     # ./window-managers/gnome.nix
