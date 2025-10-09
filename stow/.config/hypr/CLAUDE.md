@@ -2,68 +2,30 @@
 
 ## Structure
 
-- `hyprland.conf` - Main configuration file
-- `hyprland/` - Modular configuration directory
-  - `bind.conf` - Keybindings
-  - `windowrules.conf` - Window and layer rules
-  - `exec.conf` - Autostart programs
-  - `tearing.conf` - Tearing configuration
-  - `hardware-dep.conf` - Hardware-specific settings
-  - `plugins.conf` - Plugin configurations
+- `hyprland.conf` - Main config
+- `hyprland/` - Modular configs (bind, windowrules, exec, tearing, hardware-dep, plugins)
 
-## Important Patterns
+## Design Philosophy
+
+**Minimal visual noise**: No gaps, borders, or rounding by default. Clean, distraction-free windows that maximize screen space.
+
+**Selective enhancement**: Apply blur and rounding only to specific overlay windows (eww, waybar) via window rules to create visual hierarchy without cluttering the workspace.
+
+**Auto-reload**: Config changes apply on save. No manual reload needed.
+
+## Key Patterns
 
 ### Bind Flags
 
-When binding keys, use appropriate flags for the behavior you need:
+- **`bindn`**: Non-consuming. Passes key to active window AND triggers dispatcher.
+  - Use for overlay controls that shouldn't interfere with apps (e.g., Escape closing power-menu while still working in fuzzel)
+- **`bind`**: Consumes key event
+- **`bindr`**: Triggers on release
 
-- **`bindn`** (non-consuming): Key events are passed to active window AND trigger the dispatcher
-  - Use case: Close overlay menus while allowing the key to work in other apps
-  - Example: `bindn = , escape, exec, eww close power-menu`
-  - This allows Escape to close power-menu AND still work in fuzzel/other apps
+### Blur Philosophy
 
-- **`bind`** (default): Consumes the key event, only triggers the dispatcher
-- **`bindr`** (on release): Triggers when key is released
+`ignore_opacity = false` ensures blur respects window opacity, creating consistent visual depth. Blur is applied selectively via layer rules to UI overlays, not content windows.
 
-### Layer Rules
+### Per-Window Rounding
 
-Layer rules apply to GTK Layer Shell windows (waybar, eww, etc.):
-
-```conf
-layerrule = blur, waybar
-layerrule = blur, eww
-```
-
-### Window Rules
-
-Window rules use `windowrulev2` for more precise matching:
-
-```conf
-windowrulev2 = opacity 0.85, class: kitty
-windowrulev2 = noblur, class: kitty, floating: 1, focus: 0
-```
-
-## Blur Configuration
-
-Current blur settings:
-- Size: 8
-- Passes: 3
-- `ignore_opacity = false` (blur respects opacity)
-- `new_optimizations = true`
-- `xray = false`
-
-## Decoration
-
-- `rounding = 16` - Must match CSS border-radius for proper rendering
-- If CSS uses `border-radius: 16px`, Hyprland rounding must be 16
-
-## Reloading
-
-**IMPORTANT: Hyprland automatically reloads configuration files when they are saved.**
-
-You do NOT need to manually run `hyprctl reload` when editing configuration files. The changes will be applied immediately upon file save.
-
-Manual reload is only needed in rare cases:
-```sh
-hyprctl reload  # Manual reload (rarely needed)
-```
+When applying rounding via `windowrulev2`, match CSS border-radius exactly to prevent rendering artifacts.

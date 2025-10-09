@@ -19,10 +19,10 @@ window#waybar.topbar {
   border: none;
   border-radius: 14px;
   color: rgba(15, 15, 15, 0.92);
-  transition: opacity 0.35s cubic-bezier(0.28, 0, 0.16, 1),
-    box-shadow 0.35s cubic-bezier(0.28, 0, 0.16, 1),
-    background 0.35s cubic-bezier(0.28, 0, 0.16, 1),
-    border 0.35s cubic-bezier(0.28, 0, 0.16, 1);
+  transition: opacity 0.55s cubic-bezier(0.28, 0, 0.16, 1),
+    box-shadow 0.55s cubic-bezier(0.28, 0, 0.16, 1),
+    background 0.55s cubic-bezier(0.28, 0, 0.16, 1),
+    border 0.55s cubic-bezier(0.28, 0, 0.16, 1);
 }
 
 /**
@@ -45,10 +45,10 @@ window#waybar.topbar {
 /* #window:hover, */
 #workspaces button:hover {
   background: linear-gradient(145deg,
-      rgba(255, 255, 255, 0.09) 0%,
-      rgba(255, 255, 255, 0.19) 48%,
-      rgba(255, 255, 255, 0.15) 52%,
-      rgba(255, 255, 255, 0.07) 100%);
+      rgba(200, 200, 200, 0.12) 0%,
+      rgba(200, 200, 200, 0.22) 48%,
+      rgba(200, 200, 200, 0.18) 52%,
+      rgba(200, 200, 200, 0.10) 100%);
   box-shadow:
     0 10px 32px -4px rgba(0, 0, 0, 0.09),
     0 4px 12px -2px rgba(0, 0, 0, 0.07),
@@ -61,17 +61,17 @@ window#waybar.topbar {
 
 #workspaces button.active {
   background: linear-gradient(145deg,
-      rgba(255, 255, 255, 0.20) 0%,
-      rgba(255, 255, 255, 0.34) 48%,
-      rgba(255, 255, 255, 0.30) 52%,
-      rgba(255, 255, 255, 0.18) 100%);
+      rgba(200, 200, 200, 0.10) 0%,
+      rgba(200, 200, 200, 0.18) 48%,
+      rgba(200, 200, 200, 0.15) 52%,
+      rgba(200, 200, 200, 0.08) 100%);
   box-shadow:
-    0 10px 32px -4px rgba(0, 0, 0, 0.18),
-    0 5px 14px -2px rgba(0, 0, 0, 0.14),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.58),
-    inset 0 -0.5px 0 rgba(0, 0, 0, 0.07),
-    inset 0 0 24px rgba(255, 255, 255, 0.16),
-    0 0 0 1.5px rgba(255, 255, 255, 0.28);
+    0 4px 16px -4px rgba(0, 0, 0, 0.06),
+    0 2px 6px -2px rgba(0, 0, 0, 0.04),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.02),
+    inset 0 0 12px rgba(255, 255, 255, 0.04),
+    0 0 0 0.5px rgba(255, 255, 255, 0.10);
 }
 
 /**
@@ -87,10 +87,10 @@ window#waybar.topbar {
   border-radius: 14px;
 
   background: linear-gradient(145deg,
-      rgba(255, 255, 255, 0.16) 0%,
-      rgba(255, 255, 255, 0.28) 48%,
-      rgba(255, 255, 255, 0.23) 52%,
-      rgba(255, 255, 255, 0.14) 100%);
+      rgba(128, 128, 128, 0.16) 0%,
+      rgba(128, 128, 128, 0.20) 48%,
+      rgba(128, 128, 128, 0.18) 52%,
+      rgba(128, 128, 128, 0.14) 100%);
   box-shadow:
     0 12px 40px -6px rgba(0, 0, 0, 0.08),
     0 5px 16px -3px rgba(0, 0, 0, 0.05),
@@ -208,10 +208,10 @@ window#waybar.topbar {
  * ------------------------------ */
 tooltip {
   background: linear-gradient(145deg,
-      rgba(255, 255, 255, 0.18) 0%,
-      rgba(255, 255, 255, 0.30) 48%,
-      rgba(255, 255, 255, 0.25) 52%,
-      rgba(255, 255, 255, 0.16) 100%);
+      rgba(128, 128, 128, 0.18) 0%,
+      rgba(128, 128, 128, 0.22) 48%,
+      rgba(128, 128, 128, 0.20) 52%,
+      rgba(128, 128, 128, 0.16) 100%);
   color: rgba(15, 15, 15, 0.92);
   border: 0.5px solid rgba(255, 255, 255, 0.36);
   border-radius: 12px;

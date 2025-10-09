@@ -31,6 +31,7 @@ EWW uses GTK CSS, which has different properties than standard CSS:
 
 - ❌ `text-align` is not supported
 - ❌ `justify-content` is not supported
+- ❌ `backdrop-filter` is not supported
 - ✅ Use `margin`, `padding`, `color`, `background-color`, `border`, etc.
 
 ### Widget Structure
@@ -55,3 +56,10 @@ The power menu provides buttons for:
 - Logout (`hyprctl dispatch exit`)
 - Lock (`hyprlock`)
 - Cancel (closes the menu)
+
+### Design Principles
+
+Background must be semi-transparent with gray tone to ensure visibility on both light and dark wallpapers:
+- Use gray color (`rgba(128, 128, 128, ...)` or similar) instead of white/black
+- Keep transparency low (0.08-0.12) to allow wallpaper to show through
+- This ensures the menu is visible on any background while maintaining aesthetic consistency

@@ -18,16 +18,26 @@
          :spacing 10
       (button :class "power-button shutdown"
               :onclick "systemctl poweroff"
-              "シャットダウン")
+              (box :spacing 10 :space-evenly false
+                (label :class "icon" :text "󰐥")
+                (label :text "シャットダウン")))
       (button :class "power-button reboot"
               :onclick "systemctl reboot"
-              "再起動")
+              (box :spacing 10 :space-evenly false
+                (label :class "icon" :text "󰜉")
+                (label :text "再起動")))
       (button :class "power-button logout"
               :onclick "hyprctl dispatch exit"
-              "ログアウト")
+              (box :spacing 10 :space-evenly false
+                (label :class "icon" :text "󰍃")
+                (label :text "ログアウト")))
       (button :class "power-button lock"
               :onclick "hyprlock"
-              "ロック")
+              (box :spacing 10 :space-evenly false
+                (label :class "icon" :text "󰌾")
+                (label :text "ロック")))
       (button :class "power-button cancel"
               :onclick "eww close power-menu"
-              "キャンセル"))))
+              (box :spacing 10 :space-evenly false
+                (label :class "icon" :text "󰜺")
+                (label :text "キャンセル"))))))

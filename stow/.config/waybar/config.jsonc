@@ -14,9 +14,8 @@
 	],
 	"modules-center": ["hyprland/window"],
 	"modules-right": [
-		"group/system",
-		"group/io",
-		"group/clock",
+		"group/tray",
+		"group/time",
 		"custom/power"
 	],
 	"group/player": {
@@ -27,23 +26,27 @@
 			"custom/player#next"
 			// "custom/player#main"
 		],
-		"children-class": "seg seg--player"
+		"children-class": "seg"
 	},
-	"group/system": {
+	"group/tray": {
 		"orientation": "horizontal",
-		// "modules": ["tray", "cpu", "memory", "temperature", "battery"],
-		"modules": ["tray", "battery"],
-		"children-class": "seg seg--system"
+		"modules": [
+			"tray",
+			"network",
+			"pulseaudio",
+			"bluetooth",
+			"backlight"
+		],
+		"children-class": "seg"
 	},
-	"group/io": {
+	"group/time": {
 		"orientation": "horizontal",
-		"modules": ["network", "pulseaudio", "bluetooth", "backlight"],
-		"children-class": "seg seg--io"
-	},
-	"group/clock": {
-		"orientation": "horizontal",
-		"modules": ["clock#date", "clock#clock"],
-		"children-class": "seg seg--clock"
+		"modules": [
+			"clock#date",
+			"clock#clock",
+			"battery"
+		],
+		"children-class": "seg"
 	},
 	"hyprland/workspaces": {
 		"disable-scroll": true,
