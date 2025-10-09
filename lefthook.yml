@@ -8,6 +8,8 @@ pre-commit:
     deadnix:
       glob: "*.nix"
       run: deadnix --fail .
+    gitleaks:
+      run: gitleaks git
     # statix:
     #   glob: "*.nix"
     #   run: statix check .
