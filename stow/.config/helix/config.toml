@@ -1,0 +1,68 @@
+theme = "catppuccin_mocha"
+# Dark:
+# - catppuccin_{frappe, macchiato, mocha}
+# - onedark
+# - dark_plus,
+# - everforest_dark, 
+# Light:
+# - bogster_light 
+#   vivid:
+#   - papercolor-light 
+#   - onelight
+#   - zed_onelight
+#   - catppuccin_latte
+# Transparent:
+# - base16_transparent
+
+[editor]
+line-number = "relative"
+middle-click-paste = false
+idle-timeout = 50          # show LSP hints as fast as possible
+scroll-lines = 5           # because it has become slow on touchpad
+# backup.kind = "none" # waiting for impl...
+
+# inline hints
+end-of-line-diagnostics = "hint"
+inline-diagnostics.cursor-line = "error"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+
+[editor.file-picker]
+hidden = false
+
+[editor.soft-wrap]
+enable = true
+
+[editor.auto-save]
+focus-lost = false
+after-delay.enable = false
+# after-delay.timeout = 1000
+
+[keys.normal]
+A-f = [":fmt"]
+A-w = [":w"]
+
+[keys.insert]
+"C-c" = ["completion"]
+
+[editor.indent-guides]
+render = true
+# character = "╎"
+character = "▏" # Some characters that work well: "╎", "▏", "┆", "┊", "⸽"
+# character = "┆"
+# character = "┊"
+# character = "⸽"
+skip-levels = 2
+
+[editor.whitespace]
+# render = "all"
+
+[editor.whitespace.characters]
+space = " "
+nbsp = "⍽"
+nnbsp = "␣"
+# newline = "⏎"
+# tab = "→"
+# tabpad = "·"

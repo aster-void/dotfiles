@@ -1,0 +1,231 @@
+@import url("macchiato.css");
+
+/* === 全体 === */
+window#waybar.topbar {
+  background: alpha(white, 0.5);
+  border: none;
+  font-family: "MesloLGM Nerd Font", "sans-serif";
+  font-weight: 900;
+  padding: 8px 12px;
+}
+
+* {
+  border-radius: 12px;
+}
+
+
+/* ------------------------------
+ * 共通 pill スタイル（グループ内モジュールを除外）
+ * ------------------------------ */
+#window,
+#mode {
+  padding: 1px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  border: 1px solid alpha(@overlay2, 0.75);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: @text;
+}
+
+.seg:hover,
+#tray:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#backlight:hover,
+#clock.date:hover,
+#clock.clock:hover,
+#custom-power:hover,
+#custom-player-prev:hover,
+#custom-player-play:hover,
+#custom-player-next:hover,
+#custom-player-main:hover,
+#window:hover,
+#mode:hover,
+#custom-launcher:hover {
+  background-color: alpha(@overlay1, 0.5);
+  border-color: alpha(@overlay2, 0.95);
+}
+
+/** pill 群 */
+
+/* player group pill */
+.modules-left>*:nth-last-child(1) {
+  border: 1px solid alpha(@sky, 0.85);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: @sky;
+}
+
+/* Player グループ内モジュール */
+.seg--player,
+#custom-player-prev,
+#custom-player-play,
+#custom-player-next,
+#custom-player-main {
+  background: transparent;
+  border: none;
+}
+
+
+/* system group pill */
+.modules-right>*:nth-child(1) {
+  padding: 1px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  border: 1px solid alpha(@sky, 0.85);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* System グループ内モジュール */
+.seg--system,
+#tray,
+#cpu,
+#memory,
+#temperature,
+#battery {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin: 0 2px;
+  padding: 0px 4px;
+  color: @teal;
+}
+
+
+/* io group pill */
+.modules-right>*:nth-child(2) {
+  padding: 1px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  border: 1px solid alpha(@green, 0.85);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* I/O グループ内モジュール */
+.seg--io,
+#network,
+#pulseaudio,
+#bluetooth,
+#backlight {
+  background: transparent;
+  border: none;
+  margin: 0 2px;
+  padding: 0px 4px;
+  color: @green;
+}
+
+/* clock group pill */
+.modules-right>*:nth-child(3) {
+  padding: 1px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  border: 1px solid alpha(@lavender, 0.85);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Clock グループ内モジュール */
+.seg--clock,
+#clock.date,
+#clock.clock {
+  background: transparent;
+  border: none;
+  margin: 0 0px;
+  padding: 0px 4px;
+  color: @lavender;
+}
+
+/* power group pill */
+.modules-right>*:nth-child(4) {
+  border: 1px solid alpha(@pink, 0.90);
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: @pink;
+}
+
+/* Power グループ内モジュール */
+#custom-power {
+  margin: 0 8px 0 6px;
+  padding: 0px 6px;
+}
+
+/* 独立モジュール */
+#custom-launcher {
+  padding: 1px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  border: 1px solid alpha(@blue, 0.85);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: @blue;
+}
+
+#window {
+  padding: 1px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  border: 1px solid alpha(@overlay2, 0.75);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: @text;
+}
+
+/* ------------------------------
+ * Workspaces
+ * ------------------------------ */
+#workspaces {
+  background: alpha(@surface0, 0.35);
+  border: 1px solid alpha(@surface2, 0.60);
+  border-radius: 12px;
+  padding: 2px 6px;
+  margin: 2px 8px 2px 6px;
+}
+
+#workspaces button {
+  padding: 0 4px;
+  margin-right: 3px;
+  min-width: 0;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: @text;
+}
+
+#workspaces button:hover {
+  background: alpha(@lavender, 0.20);
+  border-color: alpha(@lavender, 0.30);
+}
+
+#workspaces button.active {
+  background: alpha(@lavender, 0.32);
+  border-color: alpha(@lavender, 0.50);
+  color: @text;
+}
+
+/* ------------------------------
+ * バッテリ状態強調
+ * ------------------------------ */
+#battery.warning {
+  border-color: @yellow;
+  background-color: alpha(@yellow, 0.35);
+  color: @yellow;
+}
+
+#battery.critical {
+  border-color: @red;
+  background-color: alpha(@red, 0.35);
+  color: @red;
+}
+
+/* ------------------------------
+ * 微調整
+ * ------------------------------ */
+#pulseaudio {
+  min-width: 70px;
+}
+
+#clock,
+#clock.date {
+  min-width: 60px;
+}

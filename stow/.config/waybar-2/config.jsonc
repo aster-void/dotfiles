@@ -1,0 +1,240 @@
+{
+  "layer": "top",
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 30,
+  "margin": "0 0 0 0",
+  //"width": 1350, // Waybar width
+  // Choose the order of the modules idle_inhibitor
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "hyprland/mode",
+    "custom/cava-bar",
+    "custom/player#prev",
+    "custom/player#play",
+    "custom/player#next",
+    "custom/player#main"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "temperature",
+    "memory",
+    "clock#date",
+    "pulseaudio",
+    "battery",
+    "network",
+    "clock#clock",
+    "custom/power"
+  ],
+  // Modules configuration
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}",
+    "format-icons": {
+      "active": "●",
+      "default": "◯"
+    }
+  },
+  "custom/player#main": {
+    "exec": "while true; do echo '$(playerctl metadata title); sleep 0.2; done",
+    "on-click": "playerctl toggle"
+  },
+  "custom/player#prev": {
+    "format": "",
+    "on-click": "playerct previous"
+  },
+  "custom/player#play": {
+    "exec": "while true; do playerctl status; sleep 0.2; done",
+    "on-click": "playerctl play-pause"
+  },
+  "custom/player#next": {
+    "format": "",
+    "on-click": "playerctl next"
+  },
+  "custom/cava-bar": {
+    "exec": "sh ~/.config/waybar/modules/cava.sh",
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "reload waybar",
+    "layer": "below",
+    "output": "all"
+  },
+  "hyprland/window": {
+    "format": "{}"
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 5
+  },
+  "clock#clock": {
+    // %I: hour (12hr) %H: hour (24hr)
+    // %M: Minute %p: AM/PM
+    "format": "{:%I:%M %p}"
+  },
+  // date
+  "clock#date": {
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      // "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        // "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click": "shift_down",
+      "on-click-right": "shift_up",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    },
+    // %Y: Year %m: Month %d: Date
+    "format": "{:%b %d / %a}", //12 hour format
+    // "format": " {:%d %m %Y  %H:%M}", //24 hour format
+    // //"timezones": [ "Kolkata" ],
+    // //"max-length": 200
+    "interval": 1
+  },
+  // "clock": {
+  //     "format": "  {:%H:%M:%S}",
+  //     "format-alt": "  {:%A, %B %d, %Y (%R)}",
+  //     "tooltip-format": "<tt><small>{calendar}</small></tt>",
+  //     "calendar": {
+  //         "mode"          : "month",
+  //         "mode-mon-col"  : 3,
+  //         "weeks-pos"     : "right",
+  //         "on-scroll"     : 1,
+  //         "on-click-right": "mode",
+  //         "format": {
+  //             "months":     "<span color='#ffead3'><b>{}</b></span>",
+  //             "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+  //             "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+  //             "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+  //             "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+  //         }
+  //     },
+  //     "actions": {
+  //         "on-click-right": "mode",
+  //         "on-click-forward": "tz_up",
+  //         "on-click-backward": "tz_down",
+  //         "on-scroll-up": "shift_up",
+  //         "on-scroll-down": "shift_down"
+  //     },
+  //     "interval": 1
+  // },
+  "cpu": {
+    "format": " {usage: >3}%",
+    "on-click": "alacritty -e htop"
+  },
+  "memory": {
+    "format": " {: >3}%",
+    "on-click": "alacritty -e htop"
+  },
+  "temperature": {
+    // "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+    "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C ",
+    "format": "  {temperatureC}°C"
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{icon} {percent: >3}%",
+    "format-icons": [
+      "",
+      ""
+    ],
+    // "on-scroll-down": "brightnessctl -c backlight set 5%-",
+    // "on-scroll-down": "light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob",
+    // "on-scroll-up": "brightnessctl -c backlight set +5%"
+    // "on-scroll-up": "light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob"
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}   {capacity: >3}%",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+    //"format-icons": ["", "", "", "", "", "", "", "", "", ""]
+  },
+  "network": {
+    // "interface": "wlp2s0", // (Optional) To force the use of this interface
+    "format": "⚠  Disabled",
+    "format-wifi": "    {essid}",
+    // "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+    "format-ethernet": "  Wired",
+    "format-disconnected": "⚠  Disconnected",
+    // "on-click": "alacritty -e nmtui"
+    "on-click": "nm-connection-editor"
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "{icon}   {volume: >3}%",
+    "format-bluetooth": "{icon} {volume: >3}%",
+    "format-muted": " muted",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+    // "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
+    // "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
+  },
+  "custom/pacman": {
+    "format": " {}",
+    "interval": 7200, // every two hours
+    "exec": "i=$(checkupdates); echo \"$i\" |wc -l; echo \"$i\" |column -t |tr '\n' '\r'", // # of updates and tooltip details
+    "exec-if": "exit 0", // always run; consider advanced run conditions
+    "on-click": "alacritty -e sudo pacman -Syu", // update system
+    "signal": 8
+  },
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "nwgbar",
+    "tooltip": false
+  },
+  "custom/keyboard-layout": {
+    // "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+    // Interval set only as a fallback, as the value is updated by signal
+    "interval": 1,
+    "format": "  {}", // Icon: keyboard
+    // Signal sent by Sway key binding (~/.config/sway/key-bindings)
+    "signal": 1, // SIGHUP
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/keyhint.sh"
+  },
+  "custom/launcher": {
+    "format": " ",
+    "on-click": "exec nwg-drawer -c 7 -is 70 -spacing 23",
+    "tooltip": false
+  }
+}

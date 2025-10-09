@@ -1,0 +1,43 @@
+{
+  "hediet.vscode-drawio.resizeImages": null,
+  "explorer.confirmDelete": false,
+  "svelte.enable-ts-plugin": true,
+  "git.openRepositoryInParentFolders": "never",
+  "sherlock.userId": "670beefa-15d3-4a16-81ff-fbed42949714",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "git.autofetch": true,
+  "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "editor.formatOnSave": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // actions on save
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports.ts": "always",
+    "source.organizeImports.biome": "always",
+    "source.fixAll.biome": "always",
+    "source.fixAll.eslint": "always"
+  },
+
+  // python
+  "python.analysis.typeCheckingMode": "strict",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[typst]": {
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  },
+  "[typst-code]": {
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  },
+  "notebook.formatOnSave.enabled": true,
+  "python.languageServer": "Default",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.confirmSync": false,
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  }
+}

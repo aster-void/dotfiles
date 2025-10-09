@@ -1,0 +1,20 @@
+# scripts
+.*.sh
+
+# documents
+.*.md
+
+# git
+.git
+.gitignore
+
+# dev
+lefthook.yml
+.envrc
+.direnv
+.helix
+shell.nix
+.ignore
+/result
+
+assets

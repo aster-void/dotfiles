@@ -1,0 +1,13 @@
+.direnv
+# used to copy from other repos
+/references
+
+.config/vesktop
+.env
+
+.claude/settings.local.json
+globalStorage
+
+stow/.config/Windsurf
+
+/result
