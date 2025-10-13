@@ -4,5 +4,6 @@
     ./gtk.nix
     ./services.nix
     ./packages.nix
+    ./shells
   ];
 }
