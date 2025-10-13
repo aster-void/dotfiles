@@ -1,0 +1,17 @@
+{
+  "services": {
+    "useFahrenheit": false
+  },
+  "background": {
+    "enabled": true,
+    "desktopClock": {
+      "enabled": true
+    },
+    "visualiser": {
+      "enabled": true,
+      "autoHide": true,
+      "rounding": 1,
+      "spacing": 1
+    }
+  }
+}

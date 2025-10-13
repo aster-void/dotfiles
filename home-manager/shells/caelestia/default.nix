@@ -14,12 +14,6 @@ in {
       inputs.caelestia-cli.packages.${pkgs.system}.with-shell
     ];
 
-    home.file.".config/caelestia/shell.json".text = builtins.toJSON {
-      services = {
-        useFahrenheit = false;
-      };
-    };
-
     systemd.user.services.caelestia-shell = {
       Unit = {
         Description = "Caelestia Shell - Quickshell based desktop shell";
