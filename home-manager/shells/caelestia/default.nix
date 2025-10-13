@@ -6,6 +6,7 @@
   ...
 }: let
   cfg = config.my.shell.caelestia;
+  caelestia-cli = inputs.caelestia-cli.packages.${pkgs.system}.with-shell;
 in {
   config = lib.mkIf cfg.enable {
     home.packages = [
@@ -29,9 +30,12 @@ in {
       };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.bash}/bin/bash -c 'caelestia shell'";
+        ExecStart = "${lib.getExe caelestia-cli} shell";
         Restart = "on-failure";
         RestartSec = 3;
+        Environment = [
+          "XDG_DATA_DIRS=%h/.local/share:%h/.nix-profile/share:/etc/profiles/per-user/%u/share:/run/current-system/sw/share"
+        ];
       };
       Install = {
         WantedBy = ["graphical-session.target"];
