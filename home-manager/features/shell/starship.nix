@@ -1,12 +1,12 @@
 {
   # Two-line prompt: all modules on line 1, PWD on line 2
   # `\$all` excludes modules explicitly placed in `format` (like `directory`).
-  add_newline = true;
+  add_newline = false;
   # Line 1: CWD + git branch
   # Line 2: username@host {all modules}
   # Line 3: exit_status >
   format = ''
-    $directory$git_branch
+    $line_break$directory$git_branch
     $username$hostname$all
     $status$character
   '';
