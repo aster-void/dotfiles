@@ -161,14 +161,18 @@
 		"tooltip-format-connected": "Bluetooth: {status}\nConnected: {device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}",
 		"tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)",
-		"on-click": "blueman-manager"
+		"on-click": "blueman-manager",
+		"on-scroll-up": ":",
+		"on-scroll-down": ":",
 	},
 	"network": {
 		"format": "! Disabled",
 		"format-wifi": "  {essid}",
 		"format-ethernet": "  Wired",
 		"format-disconnected": "!  Disconnected",
-		"on-click": "nm-connection-editor"
+		"on-click": "nm-connection-editor",
+		"on-scroll-up": ":",
+		"on-scroll-down": ":",
 	},
 	"pulseaudio": {
 		"scroll-step": 1,

@@ -27,7 +27,7 @@
         ExecStart = "${pkgs.waybar}/bin/waybar";
         ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
         Restart = "always";
-        RestartSec = 8;
+        RestartSec = 3;
         TimeoutStopSec = 10;
         KillMode = "control-group";
       };
