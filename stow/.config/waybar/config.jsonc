@@ -42,9 +42,9 @@
 	"group/time": {
 		"orientation": "horizontal",
 		"modules": [
+			"battery",
 			"clock#date",
-			"clock#clock",
-			"battery"
+			"clock#clock"
 		],
 		"children-class": "seg"
 	},
@@ -139,9 +139,8 @@
 	"backlight": {
 		"format": "{icon} {percent: >3}%",
 		"format-icons": [""],
-		"on-scroll-up": "brightnessctl set +2%",
-		"on-scroll-down": "brightnessctl set 2%-",
-		"tooltip-format": "Brightness: {percent}%\nScroll to adjust"
+		"on-scroll-up": "brightnessctl set 1%+",
+		"on-scroll-down": "brightnessctl set 1%-",
 	},
 	"battery": {
 		"states": {
@@ -186,6 +185,9 @@
 			"default": ["", ""]
 		},
 		"on-click": "pavucontrol"
+		,
+		"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+		"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%"
 	},
 	"custom/power": {
 		"format": "⏻",
