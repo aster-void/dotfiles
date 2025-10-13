@@ -8,59 +8,56 @@
 }: let
   inherit (inputs) home-manager;
 
-  mkConfiguration = {profiles ? []}:
+  mkConfiguration = {
+    modules ? [],
+    config ? {},
+  }:
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = {
         inherit inputs my meta shared;
         inherit (meta) system;
       };
-      modules = profiles;
+      modules =
+        [
+          ./global
+          ./shells
+          ./extensions
+        ]
+        ++ modules ++ [{inherit config;}];
     };
 in {
   "aster@amberwood" = mkConfiguration {
-    profiles = [
-      ./profiles/base
-      ./profiles/desktop
-      ./profiles/dev
-      ./profiles/game
-    ];
+    config = {
+      my.shell.caelestia.enable = true;
+      my.extensions.gaming.enable = true;
+    };
   };
   "aster@amberwood-wsl" = mkConfiguration {
-    profiles = [
-      ./profiles/base
-      ./profiles/wsl
-      ./profiles/dev
-    ];
+    config = {
+      # WSL - no desktop shell
+    };
   };
   "aster@bogster" = mkConfiguration {
-    profiles = [
-      ./profiles/base
-      ./profiles/desktop
-      ./profiles/dev
-      ./profiles/game
-    ];
+    config = {
+      my.shell.caelestia.enable = true;
+      my.extensions.gaming.enable = true;
+    };
   };
   "aster@carbon" = mkConfiguration {
-    profiles = [
-      ./profiles/base
-      ./profiles/desktop
-      ./profiles/dev
-    ];
+    config = {
+      my.shell.caelestia.enable = true;
+    };
   };
   "aster@carbon-wsl" = mkConfiguration {
-    profiles = [
-      ./profiles/base
-      ./profiles/dev
-      ./profiles/wsl
-    ];
+    config = {
+      # WSL - no desktop shell
+    };
   };
   "aster@dusk" = mkConfiguration {
-    profiles = [
-      ./profiles/base
-      ./profiles/desktop
-      ./profiles/dev
-      ./profiles/game
-    ];
+    config = {
+      my.shell.caelestia.enable = true;
+      my.extensions.gaming.enable = true;
+    };
   };
 }

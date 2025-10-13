@@ -12,6 +12,7 @@
         After = ["default.target"];
       };
     };
+
     # Hyprpaper wallpaper daemon service
     services.hyprpaper = {
       Unit = {
@@ -30,6 +31,7 @@
       };
     };
 
+    # Hypridle idle daemon service
     services.hypridle-session = {
       Unit = {
         Description = "Hypridle idle daemon";

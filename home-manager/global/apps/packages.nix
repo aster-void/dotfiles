@@ -16,7 +16,6 @@
     ])
     ++ (with pkgs; [
       # Apps
-
       thunderbird # email client
 
       ## Browser

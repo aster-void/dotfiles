@@ -122,4 +122,9 @@ Home Manager profiles are composable directory imports defined in `home-manager/
 
 - Keep files short (10-50 lines ideal, max 100)
 - Split large modules into `default.nix` + feature files
-- Remove old files after migrating functionality
+- always use flat architecture + facade pattern
+  - top-level module imports all modules in the directory.
+  - import ./something/default.nix; default.nix imports each module in something/*.
+- for togglable nix options, use `options` and `config`. don't conditionally import.
+- on migration, ALWAYS make sure functionality is fully migrated before deleting files.
+- delete stale files after migration.

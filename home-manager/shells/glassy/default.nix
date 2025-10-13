@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.shell;
+  cfg = config.my.shell.glassy;
 in {
-  config = lib.mkIf (cfg.enable && cfg.type == "glassy") {
+  config = lib.mkIf cfg.enable {
     # Waybar systemd service
     systemd.user.services.waybar = {
       Unit = {

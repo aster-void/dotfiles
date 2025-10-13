@@ -5,9 +5,9 @@
   inputs,
   ...
 }: let
-  cfg = config.my.shell;
+  cfg = config.my.shell.caelestia;
 in {
-  config = lib.mkIf (cfg.enable && cfg.type == "caelestia-shell") {
+  config = lib.mkIf cfg.enable {
     home.packages = [
       inputs.caelestia-shell.packages.${pkgs.system}.with-cli
       inputs.caelestia-cli.packages.${pkgs.system}.with-shell
