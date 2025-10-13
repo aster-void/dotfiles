@@ -28,6 +28,9 @@
     edid-decode
     avahi
     dex
+    kdePackages.qttools
+    upower
+    upower-notify
 
     # Development
     postgresql
