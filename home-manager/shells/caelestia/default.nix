@@ -23,8 +23,9 @@ in {
       Unit = {
         Description = "Caelestia Shell - Quickshell based desktop shell";
         PartOf = ["graphical-session.target"];
-        After = ["graphical-session.target"];
+        After = ["graphical-session.target" "wayland-session@Hyprland.target"];
         Wants = ["graphical-session.target"];
+        Requisite = ["wayland-session@Hyprland.target"];
       };
       Service = {
         Type = "simple";
