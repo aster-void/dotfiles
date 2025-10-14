@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.shell.glassy;
+  cfg = config.my.shell.glue;
 in {
-  config = lib.mkIf cfg.enable {
+  config.systemd.user.services = lib.mkIf cfg.enable {
     # Waybar systemd service
-    systemd.user.services.waybar = {
+    waybar = {
       Unit = {
         Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
         Documentation = "https://github.com/Alexays/Waybar/wiki";
@@ -31,7 +31,7 @@ in {
     };
 
     # Waybar config file watcher service
-    systemd.user.services.waybar-watcher = {
+    waybar-watcher = {
       Unit = {
         Description = "Waybar Config File Watcher";
         After = ["waybar.service"];
@@ -56,7 +56,7 @@ in {
     };
 
     # Dunst notification daemon service
-    systemd.user.services.dunst-session = {
+    dunst-session = {
       Unit = {
         Description = "Dunst notification daemon";
         Documentation = "man:dunst(1)";
@@ -67,6 +67,43 @@ in {
         Type = "dbus";
         BusName = "org.freedesktop.Notifications";
         ExecStart = "${pkgs.dunst}/bin/dunst";
+        Restart = "on-failure";
+        RestartSec = 3;
+      };
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
+
+    # Hyprpaper wallpaper daemon service
+    hyprpaper = {
+      Unit = {
+        Description = "Hyprpaper wallpaper daemon";
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
+        Restart = "on-failure";
+        RestartSec = 3;
+      };
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+    };
+
+    # Hypridle idle daemon service
+    hypridle-session = {
+      Unit = {
+        Description = "Hypridle idle daemon";
+        Documentation = "man:hypridle(1)";
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.hypridle}/bin/hypridle";
         Restart = "on-failure";
         RestartSec = 3;
       };

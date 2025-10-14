@@ -4,7 +4,7 @@
     ./packages.nix
     ./dev.nix
     ./gui
-    ./hyprland
+    ./services
     ./xdg
     ./apps
     ./i18n

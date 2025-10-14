@@ -28,11 +28,13 @@
     };
 
   # caelestia glassy
-  shell = "caelestia";
+  shellConf = {
+    caelestia.enable = true;
+  };
 in {
   "aster@amberwood" = mkConfiguration {
     config = {
-      my.shell.${shell}.enable = true;
+      my.shell = shellConf;
       my.extensions.gaming.enable = true;
     };
   };
@@ -43,13 +45,13 @@ in {
   };
   "aster@bogster" = mkConfiguration {
     config = {
-      my.shell.${shell}.enable = true;
+      my.shell = shellConf;
       my.extensions.gaming.enable = true;
     };
   };
   "aster@carbon" = mkConfiguration {
     config = {
-      my.shell.${shell}.enable = true;
+      my.shell = shellConf;
     };
   };
   "aster@carbon-wsl" = mkConfiguration {
@@ -59,7 +61,7 @@ in {
   };
   "aster@dusk" = mkConfiguration {
     config = {
-      my.shell.${shell}.enable = true;
+      my.shell = shellConf;
       my.extensions.gaming.enable = true;
     };
   };

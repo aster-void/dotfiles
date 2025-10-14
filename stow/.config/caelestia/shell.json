@@ -39,5 +39,10 @@
             }
         ]
     },
-    "notifs.actionOnClick": true
+    "notifs.actionOnClick": true,
+    "paths": {
+        "mediaGif": "root:/assets/bongocat.gif",
+        "sessionGif": "root:/assets/kurukuru.gif",
+        "wallpaperDir": "~/decorations/images"
+    }
 }

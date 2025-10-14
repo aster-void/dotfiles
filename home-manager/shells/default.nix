@@ -1,11 +1,18 @@
 {lib, ...}: {
   imports = [
-    ./glassy
+    ./glue
     ./caelestia
   ];
 
   options.my.shell = {
-    glassy.enable = lib.mkEnableOption "glassy shell";
+    glue = {
+      enable = lib.mkEnableOption "glued shell";
+      type = lib.mkOption {
+        type = lib.types.enum [
+          "glassy"
+        ];
+      };
+    };
     caelestia.enable = lib.mkEnableOption "caelestia shell";
   };
 }
