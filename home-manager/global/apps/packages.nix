@@ -12,7 +12,6 @@
     ++ (with my.pkgs; [
       # == my tools ==
       setpaper
-      wpick
     ])
     ++ (with pkgs; [
       # Apps

@@ -1,9 +1,15 @@
-{pkgs}:
-pkgs.writeShellApplication {
+{
+  writeShellApplication,
+  yazi,
+  setpaper,
+  wallCommand,
+  lockCommand,
+}:
+writeShellApplication {
   name = "wpick";
   runtimeInputs = [
-    pkgs.yazi
-    (pkgs.callPackage ./setpaper {})
+    yazi
+    setpaper
   ];
 
   text = ''
@@ -30,15 +36,16 @@ pkgs.writeShellApplication {
     case "$1" in
       l|lock|-l|--lock)
         path=$(yazi --chooser-file=/dev/stdout)
-        setpaper --lock "$path"
+        ${lockCommand}
       ;;
       w|wall|-w|--wall)
         path=$(yazi --chooser-file=/dev/stdout)
-        setpaper --wall "$path"
+        ${wallCommand}
       ;;
       a|all|-a|--all)
         path=$(yazi --chooser-file=/dev/stdout)
-        setpaper --wall --lock "$path"
+        ${wallCommand}
+        ${lockCommand}
       ;;
       -*)
         echo "wpick: Unknown flag: $1"
