@@ -20,24 +20,24 @@
             "showMicrophone": true,
             "showNetwork": true,
             "showLockStatus": true
+        },
+        "workspaces": {
+            "activeIndicator": true,
+            "activeLabel": "",
+            "activeTrail": true,
+            "label": "",
+            "occupiedBg": true,
+            "occupiedLabel": "",
+            "perMonitorWorkspaces": true,
+            "showWindows": false,
+            "shown": 5,
+            "specialWorkspaceIcons": [
+                {
+                    "name": "steam",
+                    "icon": "sports_esports"
+                }
+            ]
         }
-    },
-    "workspaces": {
-        "activeIndicator": false,
-        "activeLabel": "-",
-        "activeTrail": false,
-        "label": "  ",
-        "occupiedBg": false,
-        "occupiedLabel": ">",
-        "perMonitorWorkspaces": false,
-        "showWindows": false,
-        "shown": 5,
-        "specialWorkspaceIcons": [
-            {
-                "name": "steam",
-                "icon": "sports_esports"
-            }
-        ]
     },
     "notifs.actionOnClick": true,
     "paths": {
