@@ -1,4 +1,8 @@
 {
+  imports = [
+    ./syncthing.nix
+  ];
+
   # Manual systemd services for Hyprland session management
   systemd.user = {
     # Declare graphical-session.target
