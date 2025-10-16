@@ -1,7 +1,3 @@
-{
-  callPackage,
-  # inputs,
-  ...
-}: {
-  sf-mono = callPackage ./sf-mono.nix {};
+{pkgs, ...}: {
+  sf-mono = pkgs.callPackage ./sf-mono.nix {};
 }

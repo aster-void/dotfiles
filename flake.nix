@@ -37,6 +37,10 @@
       url = "github:caelestia-dots/cli";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mcp-servers-nix = {
+      url = "github:natsukium/mcp-servers-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {nixpkgs, ...} @ inputs: let
@@ -53,11 +57,12 @@
     args = {
       inherit inputs meta nixpkgs;
       my = {
-        pkgs = pkgs.callPackage ./my/pkgs/default.nix {inherit inputs;};
+        pkgs = import ./my/pkgs/default.nix {inherit inputs pkgs;};
       };
       shared = pkgs.callPackage ./shared {};
     };
   in {
+    packages = import ./my/pkgs/default.nix {inherit inputs pkgs;};
     devShells.${system}.default = pkgs.mkShell {
       name = "dotfiles";
       packages = with pkgs; [

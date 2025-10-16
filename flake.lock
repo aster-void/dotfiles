@@ -359,6 +359,26 @@
         "type": "github"
       }
     },
+    "mcp-servers-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760576522,
+        "narHash": "sha256-HBH/SYEBORXyc9vjzLlowwNO9Sf7NyCQLOHvZdM1kJg=",
+        "owner": "natsukium",
+        "repo": "mcp-servers-nix",
+        "rev": "98c1f065fdc709f478496083c2382537f62a85b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "natsukium",
+        "repo": "mcp-servers-nix",
+        "type": "github"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1739444422,
@@ -486,6 +506,7 @@
         "comin": "comin",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
+        "mcp-servers-nix": "mcp-servers-nix",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs",
         "sddm-astronaut-theme": "sddm-astronaut-theme",

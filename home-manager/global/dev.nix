@@ -1,4 +1,5 @@
 {
+  my,
   pkgs,
   system,
   inputs,
@@ -93,5 +94,15 @@
       # General LSPs
       lsp-ai
       helix-gpt
-    ]);
+    ])
+    # mcp servers
+    ++ (with inputs.mcp-servers-nix.packages.${system}; [
+      mcp-server-filesystem
+      serena
+      context7-mcp
+    ])
+    ++ [
+      pkgs.mcp-nixos
+      my.pkgs.mcpServers.chrome-devtools-mcp
+    ];
 }

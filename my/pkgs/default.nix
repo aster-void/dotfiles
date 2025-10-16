@@ -1,13 +1,11 @@
 {
   inputs,
-  python312Packages,
-  callPackage,
+  pkgs,
   ...
 }: rec {
-  v-analyzer = callPackage ./v-analyzer {};
-  waydroid-ui = callPackage ./waydroid-ui.nix {};
-  setpaper = callPackage ./setpaper {};
-  wpick = callPackage ./wpick.nix {
+  waydroid-ui = pkgs.callPackage ./waydroid-ui.nix {};
+  setpaper = pkgs.callPackage ./setpaper {};
+  wpick = pkgs.callPackage ./wpick.nix {
     inherit setpaper;
     wallCommand = ''
       setpaper --wall "$path";
@@ -16,10 +14,11 @@
       setpaper --lock "$path"
     '';
   };
-  hyprshade = callPackage ./hyprshade.nix {
-    inherit (python312Packages) buildPythonPackage hatchling more-itertools click;
+  hyprshade = pkgs.callPackage ./hyprshade.nix {
+    inherit (pkgs.python312Packages) buildPythonPackage hatchling more-itertools click;
   };
 
-  sddmThemes = callPackage ./sddmThemes {inherit inputs;};
-  nerd-fonts = callPackage ./nerd-fonts {inherit inputs;};
+  sddmThemes = import ./sddmThemes {inherit inputs pkgs;};
+  nerd-fonts = import ./nerd-fonts {inherit inputs pkgs;};
+  mcpServers = import ./mcpServers {inherit inputs pkgs;};
 }
