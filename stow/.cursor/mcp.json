@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "nixos": {
+      "command": "mcp-nixos"
+    },
+    "serena": {
+      "command": "serena",
+      "args": ["start-mcp-server"]
+    },
+    "filesystem": {
+      "command": "mcp-server-filesystem",
+      "args": ["${workspaceFolder}"]
+    }
+  }
+}
