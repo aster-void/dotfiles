@@ -18,6 +18,8 @@
     inherit (pkgs.python312Packages) buildPythonPackage hatchling more-itertools click;
   };
 
+  fcitx5-hazkey = pkgs.callPackage ./fcitx5-hazkey.nix {};
+
   sddmThemes = import ./sddmThemes {inherit inputs pkgs;};
   nerd-fonts = import ./nerd-fonts {inherit inputs pkgs;};
   mcpServers = import ./mcpServers {inherit inputs pkgs;};
