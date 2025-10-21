@@ -1,5 +1,5 @@
 {
-  my,
+  pkgs,
   config,
   lib,
   ...
@@ -11,8 +11,8 @@
     cfg = config.my.shell.glue;
   in
     lib.mkIf cfg.enable {
-      home.packages = with my.pkgs; [
-        wpick
+      home.packages = with pkgs; [
+        my.wpick
       ];
     };
 }

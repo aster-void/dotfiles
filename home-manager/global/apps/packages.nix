@@ -9,11 +9,10 @@
     [
       inputs.zen-browser.packages.${system}.beta
     ]
-    ++ (with my.pkgs; [
-      # == my tools ==
-      setpaper
-    ])
     ++ (with pkgs; [
+      # == my tools ==
+      my.setpaper
+
       # Apps
       thunderbird # email client
 

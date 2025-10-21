@@ -4,6 +4,7 @@
   my,
   meta,
   shared,
+  overlays,
 }: let
   mkSystemConfig = {
     host,
@@ -16,6 +17,9 @@
       };
 
       modules = [
+        {
+          nixpkgs.overlays = overlays;
+        }
         inputs.agenix.nixosModules.default
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.comin.nixosModules.comin

@@ -48,26 +48,23 @@
     inherit (meta) system;
 
     myOverlay = import ./my/overlays/default.nix {inherit inputs system;};
+    overlays = [
+      myOverlay
+    ];
     pkgs = import nixpkgs {
-      inherit system;
+      inherit system overlays;
       config = {
         allowUnfree = true;
       };
-      overlays = [
-        myOverlay
-      ];
     };
 
-    myPkgs = import ./my/pkgs/default.nix {inherit inputs pkgs;};
     args = {
-      inherit inputs meta nixpkgs;
-      my = {
-        pkgs = myPkgs;
-      };
+      inherit inputs meta nixpkgs overlays;
       shared = pkgs.callPackage ./shared {};
     };
   in {
-    packages.${system} = myPkgs;
+    packages.${system} = import ./my/pkgs/default.nix {inherit inputs pkgs;};
+    inherit overlays;
     devShells.${system}.default = pkgs.mkShell {
       name = "dotfiles";
       packages = with pkgs; [

@@ -101,8 +101,8 @@
       serena
       context7-mcp
     ])
-    ++ [
-      pkgs.mcp-nixos
-      my.pkgs.mcpServers.chrome-devtools-mcp
-    ];
+    ++ (with pkgs; [
+      mcp-nixos
+      my.chrome-devtools-mcp
+    ]);
 }

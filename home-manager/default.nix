@@ -4,6 +4,7 @@
   meta,
   pkgs,
   shared,
+  overlays,
   ...
 }: let
   inherit (inputs) home-manager;
@@ -20,6 +21,9 @@
       };
       modules =
         [
+          {
+            nixpkgs.overlays = overlays;
+          }
           inputs.nix-repository.homeModules.chrome-mcp-backend
           ./global
           ./shells

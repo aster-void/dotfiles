@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  my,
   ...
 }: let
   cfg = config.my.shell.caelestia;
@@ -13,7 +12,7 @@ in {
     home.packages = [
       inputs.caelestia-shell.packages.${pkgs.system}.with-cli
       inputs.caelestia-cli.packages.${pkgs.system}.with-shell
-      (my.pkgs.wpick.override {
+      (pkgs.my.wpick.override {
         wallCommand = ''
           caelestia wallpaper --no-smart --file "$path";
         '';

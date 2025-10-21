@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: rec {
+{pkgs, ...}: rec {
   waydroid-ui = pkgs.callPackage ./waydroid-ui.nix {};
   setpaper = pkgs.callPackage ./setpaper {};
   wpick = pkgs.callPackage ./wpick.nix {
@@ -19,8 +15,4 @@
   };
 
   fcitx5-hazkey = pkgs.callPackage ./fcitx5-hazkey.nix {};
-
-  sddmThemes = import ./sddmThemes {inherit inputs pkgs;};
-  nerd-fonts = import ./nerd-fonts {inherit inputs pkgs;};
-  mcpServers = import ./mcpServers {inherit inputs pkgs;};
 }

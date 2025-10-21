@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  my,
   ...
 }: let
   cfg = config.my.profiles.desktop;
@@ -23,5 +22,5 @@ in {
     };
   };
 
-  environment.systemPackages = [my.pkgs.sddmThemes.sddm-astronaut-theme];
+  environment.systemPackages = [pkgs.my.sddm-astronaut-theme];
 }
