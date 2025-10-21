@@ -31,6 +31,7 @@
     kdePackages.qttools
     upower
     upower-notify
+    jq
 
     # Development
     postgresql
