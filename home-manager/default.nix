@@ -29,7 +29,9 @@
 
   # caelestia glassy
   shellConf = {
-    caelestia.enable = true;
+    glue.enable = true;
+    glue.type = "glassy";
+    # caelestia.enable = true;
   };
 in {
   "aster@amberwood" = mkConfiguration {
