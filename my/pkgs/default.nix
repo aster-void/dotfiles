@@ -10,9 +10,6 @@
       setpaper --lock "$path"
     '';
   };
-  hyprshade = pkgs.callPackage ./hyprshade.nix {
-    inherit (pkgs.python312Packages) buildPythonPackage hatchling more-itertools click;
-  };
 
   fcitx5-hazkey = pkgs.callPackage ./fcitx5-hazkey.nix {};
 }
