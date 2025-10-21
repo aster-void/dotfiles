@@ -25,9 +25,9 @@
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sddm-astronaut-theme = {
-      url = "github:Keyitdev/sddm-astronaut-theme";
-      flake = false;
+    nix-repository = {
+      url = "github:aster-void/nix-repository";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     caelestia-shell = {
       url = "github:caelestia-dots/shell";

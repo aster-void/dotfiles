@@ -20,6 +20,7 @@
       };
       modules =
         [
+          inputs.nix-repository.homeModules.chrome-mcp-backend
           ./global
           ./shells
           ./extensions

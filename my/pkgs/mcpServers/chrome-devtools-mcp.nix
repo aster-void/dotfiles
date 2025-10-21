@@ -8,6 +8,6 @@ in
     name = "chrome-devtools-mcp";
     runtimeInputs = [nodejs];
     text = ''
-      npx -y chrome-devtools-mcp@${version}
+      npx -y chrome-devtools-mcp@${version} "$@"
     '';
   }

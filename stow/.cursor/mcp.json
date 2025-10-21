@@ -13,6 +13,10 @@
     },
     "svelte": {
       "url": "https://mcp.svelte.dev/mcp"
+    },
+    "chrome-devtools": {
+      "command": "chrome-devtools-mcp",
+      "args": ["--browser-url", "http://localhost:9222"]
     }
   }
 }

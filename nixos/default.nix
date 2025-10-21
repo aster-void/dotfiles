@@ -17,6 +17,7 @@
 
       modules = [
         inputs.agenix.nixosModules.default
+        inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.comin.nixosModules.comin
         inputs.lanzaboote.nixosModules.lanzaboote
         ./configuration.nix

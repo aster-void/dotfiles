@@ -1,9 +1,4 @@
-{
-  inputs,
-  config,
-  ...
-}: {
-  imports = [inputs.nix-flatpak.nixosModules.nix-flatpak];
+{config, ...}: {
   assertions = [
     {
       assertion = config.xdg.portal.enable;
