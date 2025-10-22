@@ -425,16 +425,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1761100500,
-        "narHash": "sha256-Ly4Wzc39eLmaDsZV12ExhApVQ+yADgsCqHUmi0ZgaaY=",
+        "lastModified": 1761101998,
+        "narHash": "sha256-2jA/au7Tt2PuNAyVovsLPxjl827+VIHf+jjYXNwhqg0=",
         "owner": "aster-void",
         "repo": "nix-repository",
-        "rev": "d677089c7bccf6ffb83050ae87bdaea89d0a4259",
+        "rev": "674d25df584ba8f40d0ff423b2c95958a85100d0",
         "type": "github"
       },
       "original": {
         "owner": "aster-void",
-        "ref": "feat/nixos-module-chrome-devtools-mcp",
         "repo": "nix-repository",
         "type": "github"
       }

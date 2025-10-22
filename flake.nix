@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-repository = {
-      url = "github:aster-void/nix-repository?ref=feat/nixos-module-chrome-devtools-mcp";
+      url = "github:aster-void/nix-repository";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     caelestia-shell = {
