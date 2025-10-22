@@ -24,6 +24,7 @@
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.comin.nixosModules.comin
         inputs.lanzaboote.nixosModules.lanzaboote
+        inputs.nix-repository.nixosModules.chrome-devtools-mcp
         ./configuration.nix
         ./hosts/${host}
         ./hosts/${host}/hardware-configuration.nix

@@ -24,7 +24,6 @@
           {
             nixpkgs.overlays = overlays;
           }
-          inputs.nix-repository.homeModules.chrome-mcp-backend
           ./global
           ./shells
           ./extensions

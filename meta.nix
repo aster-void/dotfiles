@@ -4,8 +4,8 @@
   system = "x86_64-linux";
 
   git = {
-    user = "aster";
-    email = "137767097+aster-void@users.noreply.github.com";
+    user.name = "aster";
+    user.email = "137767097+aster-void@users.noreply.github.com";
   };
 
   home = {

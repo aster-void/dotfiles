@@ -1,4 +1,4 @@
-_: name: let
+name: let
   common = {
     ".." = "cd ../";
     "..." = "cd ../../";

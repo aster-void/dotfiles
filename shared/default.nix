@@ -1,6 +1,6 @@
-{callPackage}: {
+{
   config = {
-    git = callPackage ./config/git.nix {};
-    mkShellAliases = callPackage ./config/mkShellAliases.nix {};
+    git = import ./config/git.nix;
+    mkShellAliases = import ./config/mkShellAliases.nix;
   };
 }

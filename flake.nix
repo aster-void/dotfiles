@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-repository = {
-      url = "github:aster-void/nix-repository";
+      url = "github:aster-void/nix-repository?ref=feat/nixos-module-chrome-devtools-mcp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     caelestia-shell = {
@@ -60,7 +60,7 @@
 
     args = {
       inherit inputs meta nixpkgs overlays;
-      shared = pkgs.callPackage ./shared {};
+      shared = import ./shared;
     };
   in {
     packages.${system} = import ./my/pkgs/default.nix {inherit inputs pkgs;};

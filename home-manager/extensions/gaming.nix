@@ -10,7 +10,6 @@ in {
     home.packages = with pkgs; [
       # Minecraft
       prismlauncher
-      temurin-bin-24
       lunar-client
     ];
   };

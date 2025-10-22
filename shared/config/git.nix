@@ -1,8 +1,8 @@
-_: {
+{
   core.editor = "hx";
   init.defaultBranch = "main";
   pull.rebase = "true";
-  aliases = {
+  alias = {
     a = "add";
     aa = "add -A";
     c = "commit";

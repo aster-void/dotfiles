@@ -6,6 +6,7 @@
 }: let
   cfg = config.my.profiles;
 in {
+  programs.chrome-devtools-mcp.enable = true;
   environment.systemPackages = lib.optionals cfg.development.enable (with pkgs; [
     # Editors
     vim
