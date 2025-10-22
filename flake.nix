@@ -65,6 +65,7 @@
   in {
     packages.${system} = import ./my/pkgs/default.nix {inherit inputs pkgs;};
     inherit overlays;
+    nixosModules = import ./my/nixosModules;
     devShells.${system}.default = pkgs.mkShell {
       name = "dotfiles";
       packages = with pkgs; [

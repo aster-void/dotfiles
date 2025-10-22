@@ -1,0 +1,3 @@
+{
+  hazkey = import ./hazkey.nix;
+}

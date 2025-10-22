@@ -1,0 +1,3 @@
+{
+  programs.hazkey.enable = true;
+}

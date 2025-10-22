@@ -20,6 +20,7 @@
         {
           nixpkgs.overlays = overlays;
         }
+        inputs.self.nixosModules.hazkey
         inputs.agenix.nixosModules.default
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.comin.nixosModules.comin

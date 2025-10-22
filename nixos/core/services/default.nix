@@ -7,6 +7,7 @@
     ./comin.nix
     ./shell.nix
     ./flatpak.nix
+    ./git.nix
   ];
 
   services = {
