@@ -10,6 +10,4 @@
       setpaper --lock "$path"
     '';
   };
-
-  fcitx5-hazkey = pkgs.callPackage ./fcitx5-hazkey.nix {};
 }
