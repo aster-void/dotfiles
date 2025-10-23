@@ -100,5 +100,6 @@
     nix-index
     nixos-generators
     hydra-check
+    nh
   ];
 }
