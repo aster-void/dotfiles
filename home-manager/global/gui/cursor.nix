@@ -1,20 +1,26 @@
 {pkgs, ...}: let
-  cursors = pkgs.callPackage ../../store/cursors {};
-
+  # cursors = pkgs.callPackage ../../store/cursors {};
   # available:
   # - catppuccin.mochaMauve # and others
   # - material-cursor
   # - empty-butterfly-cursor-{ butter, cyan, green, magenta, orange, purple, red, white, yellow };
   # - rose-pine
   # - googledot-violet
-  name = "empty-butterfly-cursor-white";
-in {
-  home.pointerCursor = {
-    inherit name;
-    package = cursors.${name};
-    x11.enable = true;
-    gtk.enable = true;
-    hyprcursor.enable = true;
-    hyprcursor.size = 32;
+  # cursor = rec {
+  #   name = "empty-butterfly-cursor-white";
+  #   package = cursors.${name};
+  # };
+  cursor = {
+    name = "Bibata_Spirit";
+    package = pkgs.my.bibata-cursors-translucent;
   };
+in {
+  home.pointerCursor =
+    cursor
+    // {
+      x11.enable = true;
+      gtk.enable = true;
+      hyprcursor.enable = true;
+      hyprcursor.size = 48;
+    };
 }
