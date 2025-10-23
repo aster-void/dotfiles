@@ -10,22 +10,21 @@ This is a NixOS and Home Manager dotfiles repository. It manages system configur
 
 ```sh
 # Build NixOS system configuration (doesn't activate)
-sudo nixos-rebuild build --flake .#<hostname>
+nh os build .
 
 # Build Home Manager configuration (doesn't activate)
-home-manager build --flake .#aster@<hostname>
+nh home build .
 
 # Apply NixOS configuration
-sudo nixos-rebuild switch --flake .#<hostname>
+sudo nh os switch .
 
 # Apply Home Manager configuration
-home-manager switch --flake .#aster@<hostname>
-
-# Available hosts: amberwood, bogster, carbon, dusk
-# WSL variants: aster@amberwood-wsl, aster@carbon-wsl
+nh home switch .
 ```
 
 ### Code Quality Tools
+
+This is automatically executed by git, so you don't need to manually check.
 
 ```sh
 # Format Nix files (auto-runs on pre-commit)
@@ -36,18 +35,6 @@ deadnix --fail .
 
 # Lint Nix code (currently disabled in lefthook.yml)
 statix check .
-
-# Install git hooks
-lefthook install
-```
-
-### Development Environment
-
-```sh
-# Enter dev shell with all tools
-nix develop
-
-# The dev shell includes: alejandra, deadnix, statix, nil, lefthook, nwg-look, agenix
 ```
 
 ### Secrets Management
