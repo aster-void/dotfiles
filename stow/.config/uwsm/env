@@ -7,10 +7,6 @@ export GTK_THEME=Adwaita:dark
 # Qt Theme
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# XCursor theme
-export XCURSOR_THEME=Adwaita
-export XCURSOR_SIZE=24
-
 # XDG Desktop Portal
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
