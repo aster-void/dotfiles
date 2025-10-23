@@ -21,6 +21,14 @@
 
         USB_AUTOSUSPEND = 1; # autosuspend 自体は有効
         USB_BLACKLIST = "1e7d:2dcd 046d:c548"; # ROCCATマウス & Logitech Bolt Receiver を除外
+
+        # Screen brightness limits for battery saving
+        INTEL_GPU_MIN_FREQ_ON_BAT = 300;
+        INTEL_GPU_MAX_FREQ_ON_BAT = 600;
+        INTEL_GPU_BOOST_FREQ_ON_BAT = 600;
+
+        # Reduce screen brightness on battery
+        BRIGHTNESS_ON_BAT = 30; # 0-100, lower = more battery savings
       };
     };
 
