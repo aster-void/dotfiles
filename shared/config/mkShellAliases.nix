@@ -40,18 +40,16 @@ name: let
     l = "clear";
 
     flake = "nix flake";
-    hs = "home-manager switch";
-    hb = "home-manager build";
+    hs = "nh home switch";
+    hb = "nh home build";
     home = "home-manager";
     nixgc = "nix-collect-garbage";
-    rb = "nixos-rebuild";
-    rbs = "nixos-rebuild switch";
-    rbb = "nixos-rebuild boot";
-    rbbb = "nixos-rebuild boot && reboot";
-    rbt = "nixos-rebuild test";
+    rbs = "nh os switch";
+    rbb = "nh os boot";
+    rbbb = "nh os boot && reboot";
+    rbt = "nh os test";
     yz = "yazi";
 
-    zoom-us = "flatpak run us.zoom.Zoom";
     sd = "shutdown";
   };
 
