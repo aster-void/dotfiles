@@ -10,11 +10,6 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
-    claude-monitor = {
-      url = "github:aster-void/Claude-Code-Usage-Monitor?ref=add-nix-flake-distribution";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # NixOS-specific inputs
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";

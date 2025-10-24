@@ -6,17 +6,18 @@
   ...
 }: {
   home.packages =
-    [
-      inputs.claude-monitor.packages.${system}.default
-    ]
-    ++ (with pkgs; [
+    (with pkgs; [
       # Dev Tools
       claude-code
       crush
       codex
+      my.ccusage
+      my.ccusage-codex
+      my.ccusage-mcp
       postgresql
       litecli
       tokei
+
       ## dep graph
       cargo-depgraph
       graphviz

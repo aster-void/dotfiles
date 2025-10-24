@@ -29,7 +29,7 @@
           "nix-repository",
           "nixpkgs"
         ],
-        "systems": "systems_3"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1758687491,
@@ -137,28 +137,6 @@
         "type": "github"
       }
     },
-    "claude-monitor": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1755340282,
-        "narHash": "sha256-ish51g0RilZ/sMmSJZMB8n/SxL5/SGdqfAaXOPEmGBo=",
-        "owner": "aster-void",
-        "repo": "Claude-Code-Usage-Monitor",
-        "rev": "0317c97732f0f2cec2e816f11856f589ec8d878c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aster-void",
-        "ref": "add-nix-flake-distribution",
-        "repo": "Claude-Code-Usage-Monitor",
-        "type": "github"
-      }
-    },
     "comin": {
       "inputs": {
         "nixpkgs": [
@@ -250,24 +228,6 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -425,11 +385,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761207596,
-        "narHash": "sha256-p96e3qZVIk+UoEz3ARIrMvgSS6rd25y8S6panhFUE/E=",
+        "lastModified": 1761319579,
+        "narHash": "sha256-OfG8OUVS+ZPfQsQSYtQsMeX3/TYd6GJiA0+q7rUrdCY=",
         "owner": "aster-void",
         "repo": "nix-repository",
-        "rev": "04b4c09b75ec85fbf4e1804e50aa3a0edbf808e6",
+        "rev": "c2fbecb92871f6264f09374bff3d99ecf56b06ed",
         "type": "github"
       },
       "original": {
@@ -545,7 +505,6 @@
         "agenix": "agenix",
         "caelestia-cli": "caelestia-cli",
         "caelestia-shell": "caelestia-shell_2",
-        "claude-monitor": "claude-monitor",
         "comin": "comin",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
@@ -593,21 +552,6 @@
       }
     },
     "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
