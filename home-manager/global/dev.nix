@@ -17,7 +17,7 @@
       postgresql
       litecli
       tokei
-
+      act
       ## dep graph
       cargo-depgraph
       graphviz
