@@ -34,6 +34,9 @@
       rust-analyzer
       clippy
 
+      ## C / C++
+      llvmPackages.clang-tools
+
       ## Go
       gopls
       golangci-lint
