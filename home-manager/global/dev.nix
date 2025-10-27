@@ -60,6 +60,7 @@
       nil
       nixd
       statix
+      nix-search
 
       ## Scala
       metals
