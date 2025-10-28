@@ -10,3 +10,8 @@
 ## Frontend Development Rules
 
 - use Svelte 5 syntax.
+
+## Nix packaging script rules
+
+- don't use if branches. figure out the source structure. fail early than later.
+  - this includes EVERY branching method, such as `[[ ]] && ` or `|| true`
