@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-repository = {
-      url = "github:aster-void/nix-repository";
+      url = "github:aster-void/nix-repository?ref=packages/fcitx5-hazkey-git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     caelestia-shell = {

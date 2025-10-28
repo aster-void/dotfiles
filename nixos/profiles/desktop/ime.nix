@@ -1,3 +1,3 @@
 {
-  programs.hazkey.enable = true;
+  programs.hazkey-git.enable = true;
 }

@@ -2,7 +2,7 @@
   fcitx5-addons = with pkgs; [
     fcitx5-mozc
     fcitx5-mozc-ut
-    my.fcitx5-hazkey
+    my.fcitx5-hazkey-git
   ];
 in {
   i18n.inputMethod = {
