@@ -61,6 +61,7 @@
       nixd
       statix
       nix-search
+      diffoscope # useful for determining non-reproducibility
 
       ## Scala
       metals
