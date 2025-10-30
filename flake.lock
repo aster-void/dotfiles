@@ -385,16 +385,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1761641157,
-        "narHash": "sha256-f3HTRfZO7C6ILxRpo9+W3t07UM7bxkek5GWa8HgfZ3o=",
+        "lastModified": 1761802041,
+        "narHash": "sha256-fFNxAAXQ8RE2Q7W5Oso9GPuGBdA4FtasNgdRqae3tdc=",
         "owner": "aster-void",
         "repo": "nix-repository",
-        "rev": "d0f4574320e480f9b97887fae3e515a5785f2bcc",
+        "rev": "11eedd9601029c84458182e47b8f6e7118593b29",
         "type": "github"
       },
       "original": {
         "owner": "aster-void",
-        "ref": "packages/fcitx5-hazkey-git",
         "repo": "nix-repository",
         "type": "github"
       }
