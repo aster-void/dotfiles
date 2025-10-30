@@ -77,7 +77,7 @@
       solaar # logicool conf
 
       ## GPU
-      nvtopPackages.full
+      # nvtopPackages.full # broken
 
       # WM
       hyprpicker # color picker

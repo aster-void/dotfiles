@@ -11,7 +11,7 @@
       # Fallback fonts for compatibility
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       my.sf-mono-nerd-font
     ];
 
