@@ -40,7 +40,7 @@
     graphviz
     libnotify
     speedtest-cli
-    helix
+    my.helix-gj1118-bin
 
     # CLI/Terminal
     zellij
