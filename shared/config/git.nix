@@ -9,6 +9,7 @@
     sw = "switch";
     u = "push --set-upstream origin HEAD";
     lo = "log --oneline";
+    b = "branch";
     ba = "branch --all";
 
     # semantic commands
