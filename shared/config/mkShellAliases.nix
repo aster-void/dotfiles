@@ -37,7 +37,8 @@ name: let
     la = "ls -a";
     ls = "ez";
     ez = "eza --icons --group-directories-first";
-    l = "clear";
+    l = "ls";
+    c = "clear";
 
     flake = "nix flake";
     hs = "nh home switch";
