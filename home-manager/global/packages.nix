@@ -22,7 +22,7 @@
     killall
     gettext
     nmap # internet
-    helix
+    # helix # to be replaced by gj1118
     vim
 
     ## Drivers

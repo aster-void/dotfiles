@@ -66,3 +66,8 @@ nnbsp = "␣"
 # newline = "⏎"
 # tab = "→"
 # tabpad = "·"
+
+# gj1118 config
+[editor.cmdline]
+style = "popup"
+use-full-height = true
