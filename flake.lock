@@ -281,11 +281,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761770832,
-        "narHash": "sha256-IQIWG6kHxnUpx5KEb9r0BROL3/R6UQ/30aO2oHncBA8=",
+        "lastModified": 1761830454,
+        "narHash": "sha256-W/l4Bjrd8XQtNwDgFO6WvBmRUtRIDRadYYFQy9912dw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "124b99dbd1594dbebdd575ac7142752ee96a98a0",
+        "rev": "c6d4cb31d7cef3a6deb16a6734f100e3f3a55122",
         "type": "github"
       },
       "original": {
@@ -322,7 +322,9 @@
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": [
+          "rust-overlay"
+        ]
       },
       "locked": {
         "lastModified": 1737639419,
@@ -346,11 +348,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761786356,
-        "narHash": "sha256-xpIUeDIiDBi/3If4WNytegBlZ4wYeC910As+VFTikWc=",
+        "lastModified": 1761827711,
+        "narHash": "sha256-7jGxbyu8ayedeT8eM8KqaMXJ4t52h1jgmP3AG0zMcv8=",
         "owner": "natsukium",
         "repo": "mcp-servers-nix",
-        "rev": "95be3a99e7f32ed22b3b86f6d48bbc210f2090bd",
+        "rev": "f72cb6fd90a966bfe4dc7626ac789c1d71a40a94",
         "type": "github"
       },
       "original": {
@@ -383,11 +385,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761812836,
-        "narHash": "sha256-UYQmIWk9UoQUjU30wy5awU5WblanGQF54+GD8O2m/4Y=",
+        "lastModified": 1761839010,
+        "narHash": "sha256-X1XH7E8a0ye8ysAMdqrD/gmjeBcBVL7g3G/h+vWjFE4=",
         "owner": "aster-void",
         "repo": "nix-repository",
-        "rev": "8c06efcfc928caf41b4d0bc039db74634c9cb36f",
+        "rev": "bd0eba5c2f20f1ce467e3dea8d3a95ceae44b52b",
         "type": "github"
       },
       "original": {
@@ -526,22 +528,22 @@
         "nix-flatpak": "nix-flatpak",
         "nix-repository": "nix-repository",
         "nixpkgs": "nixpkgs_2",
+        "rust-overlay": "rust-overlay",
         "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
-          "lanzaboote",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1731897198,
-        "narHash": "sha256-Ou7vLETSKwmE/HRQz4cImXXJBr/k9gp4J4z/PF8LzTE=",
+        "lastModified": 1761791894,
+        "narHash": "sha256-myRIDh+PxaREz+z9LzbqBJF+SnTFJwkthKDX9zMyddY=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "0be641045af6d8666c11c2c40e45ffc9667839b5",
+        "rev": "59c45eb69d9222a4362673141e00ff77842cd219",
         "type": "github"
       },
       "original": {
