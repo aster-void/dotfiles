@@ -27,7 +27,11 @@
     # modified version of <https://zenn.dev/kawarimidoll/articles/94fe6d900ed4d6>
     sync = "fetch --prune --all";
     detach = "switch --detach";
-    behead = "!git fetch --prune --all --quiet && git switch -d $(git symbolic-ref refs/remotes/origin/HEAD)";
+    behead = "!bash -c '
+      set -euo pipefail
+      git fetch --prune --all
+      git switch -d $(git symbolic-ref refs/remotes/\${1:-origin}/HEAD)
+    ' _ ";
     name = ''!git switch --create ''$([[ -n "$1" ]] || echo "wip-$RANDOM")'';
     vacuum = "!git branch | grep -v --fixed-string '*' | xargs --no-run-if-empty git branch -d";
     restack = "!git refresh --quiet && git rebase $(git remote-head)";
