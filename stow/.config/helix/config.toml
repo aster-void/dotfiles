@@ -71,3 +71,8 @@ nnbsp = "␣"
 [editor.cmdline]
 style = "popup"
 use-full-height = true
+
+[editor.auto-reload]
+focus-gained = true
+periodic.enable = true
+periodic.interval = 2000
