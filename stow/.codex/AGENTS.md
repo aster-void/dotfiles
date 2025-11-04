@@ -6,6 +6,7 @@
 - Always prefer simple and minimal code. K.I.S.S
 - On deduplication, migrate all stale code.
 - You don't need to make things complicated. simple problems are simple to solve. It's not there to show off your abilities to overcomplicate the solution.
+- Do NEVER format files manually; use formatter comamnd if needed.
 
 ## Frontend Development Rules
 
