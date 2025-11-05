@@ -6,11 +6,12 @@
   fonts = {
     packages = with pkgs; [
       # primary fonts
-      koruri
+      # koruri
       nerd-fonts.meslo-lg
       # Fallback fonts for compatibility
       noto-fonts
       noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
       noto-fonts-color-emoji
       my.sf-mono-nerd-font
     ];
