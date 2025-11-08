@@ -8,6 +8,7 @@
     ./shell.nix
     ./flatpak.nix
     ./git.nix
+    ./wine.nix
   ];
 
   services = {

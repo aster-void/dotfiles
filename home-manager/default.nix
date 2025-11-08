@@ -24,6 +24,7 @@
           {
             nixpkgs.overlays = overlays;
           }
+          inputs.nix-flatpak.homeManagerModules.nix-flatpak
           ./global
           ./shells
           ./extensions
