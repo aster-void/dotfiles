@@ -2,6 +2,7 @@
   core.editor = "hx";
   init.defaultBranch = "main";
   pull.rebase = "true";
+  diff.external = "difft diff";
   alias = {
     aa = "add -A";
     c = "commit";
