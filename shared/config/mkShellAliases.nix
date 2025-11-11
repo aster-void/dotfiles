@@ -22,9 +22,11 @@ name: let
     gp = "git push";
     gu = "git push --set-upstream origin HEAD";
     gl = "git pull";
-    nuke = "git checkout -f HEAD && git clean -xdf";
-
+    gsv = "git diff --cached";
+    gd = "git diff";
     lg = "lazygit";
+    zz = "ghq list | fzf | xargs -I{} cd $(ghq root)/{}";
+
     dush = "du -sh";
 
     fetch = "nitch"; # to not change my mustle memory
@@ -52,9 +54,6 @@ name: let
     yz = "yazi";
 
     sd = "shutdown";
-
-    gsv = "git diff --cached";
-    gd = "git diff";
   };
 
   bash = {
