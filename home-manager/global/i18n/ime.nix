@@ -2,9 +2,10 @@
   fcitx5-addons = with pkgs; [
     fcitx5-mozc
     fcitx5-mozc-ut
-    my.fcitx5-hazkey-git
+    my.fcitx5-hazkey
   ];
 in {
+  programs.hazkey.enable = true;
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";

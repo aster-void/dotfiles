@@ -386,12 +386,13 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1762092198,
-        "narHash": "sha256-QawPPQNlClj0LdhsUTtw4R89V024uuGEGW8Tp0Byp18=",
-        "owner": "aster-void",
-        "repo": "nix-repository",
-        "rev": "a93336fabb3f9f105547deee1a330b0802f3f56c",
-        "type": "github"
+        "lastModified": 1762846765,
+        "narHash": "sha256-m4ZXNQN651t6BWoS0mPQj97yKWO4I3tF++/JciUEXL0=",
+        "ref": "refs/heads/packages/fcitx5-hazkey/v0.2.0",
+        "rev": "a27504b308b864c98700997da9ead38f0852eb93",
+        "revCount": 81,
+        "type": "git",
+        "url": "file:///home/aster/workspace/github.com/aster-void/nix-repository"
       },
       "original": {
         "owner": "aster-void",

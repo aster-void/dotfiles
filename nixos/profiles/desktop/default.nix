@@ -1,7 +1,6 @@
 {
   imports = [
     ./gui.nix
-    ./ime.nix
 
     # display manager
     ./display-managers/sddm.nix
