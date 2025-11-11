@@ -140,4 +140,7 @@
     format = "[ $profile( \($region\))]($style) ";
     style = "yellow";
   };
+
+  jobs = {
+  };
 }

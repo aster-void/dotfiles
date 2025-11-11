@@ -52,14 +52,15 @@ name: let
     yz = "yazi";
 
     sd = "shutdown";
+
+    gsv = "git diff --cached";
+    gd = "git diff";
   };
 
   bash = {
     cg = "cd $(git root)";
     sizeof = "du -sh";
     dush = "du -sh";
-    gsv = "git status -v | diff-so-fancy | less --tabs=4 -RF";
-    gd = "git diff --color-words | diff-so-fancy | less --tabs=4 -RF";
     nixman = "cd /etc/nixos/; sudo -s;";
   };
 

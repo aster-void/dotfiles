@@ -18,7 +18,6 @@
       litecli
       tokei
       act
-      difftastic # syntax-aware git diff
       ## dep graph
       cargo-depgraph
       graphviz

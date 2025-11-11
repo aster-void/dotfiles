@@ -37,6 +37,7 @@ in {
       shellAliases = mkShellAliases "fish";
       interactiveShellInit = ''
         set -g fish_greeting
+        set -g __starship_fish_use_job_groups "false"
       '';
     };
   };

@@ -81,7 +81,7 @@
     git
     lazygit
     tig
-    diff-so-fancy
+    difftastic
     gitleaks
     gh
 
