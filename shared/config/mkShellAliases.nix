@@ -25,7 +25,7 @@ name: let
     gsv = "git diff --cached";
     gd = "git diff";
     lg = "lazygit";
-    zz = "ghq list | fzf | xargs -I{} cd $(ghq root)/{}";
+    zz = "cd $(ghq root)/$(ghq list | fzf)";
 
     dush = "du -sh";
 
