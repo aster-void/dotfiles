@@ -37,4 +37,7 @@
     vacuum = "!git branch | grep -v --fixed-string '*' | xargs --no-run-if-empty git branch -d";
     restack = "!git refresh --quiet && git rebase $(git remote-head)";
   };
+  ghq = {
+    root = "~/workspace";
+  };
 }

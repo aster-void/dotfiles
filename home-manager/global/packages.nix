@@ -84,6 +84,7 @@
     difftastic
     gitleaks
     gh
+    ghq
 
     ## Other CLI Apps
     ncdu # tui disk usage
