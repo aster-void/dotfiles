@@ -110,5 +110,6 @@
     ++ (with pkgs; [
       mcp-nixos
       my.chrome-devtools-mcp
+      my.kiri
     ]);
 }
