@@ -9,7 +9,7 @@
   };
 
   home = {
-    dotfilesDir = ".dotfiles"; # path to the dotfiles from $HOME (gets appended after ${home.homeDir}/)
+    dotfilesDir = "workspace/github.com/aster-void/dotfiles"; # path to the dotfiles from $HOME (gets appended after ${home.homeDir}/)
   };
   publicKeys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILRFghJcSqpsjAF3VVwTYdNF6yU73pNjMpDfNPtMh9ju"
