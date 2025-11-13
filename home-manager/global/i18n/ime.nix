@@ -5,7 +5,7 @@
     my.fcitx5-hazkey
   ];
 in {
-  programs.hazkey.enable = true;
+  services.hazkey.enable = true;
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
