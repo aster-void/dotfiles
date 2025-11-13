@@ -17,7 +17,7 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
-    # lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.inputs.rust-overlay.follows = "rust-overlay";
     comin.url = "github:nlewo/comin";
     comin.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +25,7 @@
     # HM-specific inputs
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.inputs.home-manager.follows = "home-manager";
     caelestia-shell.url = "github:caelestia-dots/shell";
     caelestia-shell .inputs.nixpkgs.follows = "nixpkgs";
     caelestia-cli.url = "github:caelestia-dots/cli";
