@@ -48,7 +48,7 @@
     fish
     zsh
     nushell
-    bash-completion
+    # bash-completion
     zsh-completions
     zsh-syntax-highlighting
     starship
