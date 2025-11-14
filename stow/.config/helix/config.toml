@@ -19,6 +19,7 @@ line-number = "relative"
 middle-click-paste = false
 idle-timeout = 50          # show LSP hints as fast as possible
 scroll-lines = 5           # because it has become slow on touchpad
+rounded-corners = true     # gj1118
 # backup.kind = "none" # waiting for impl...
 
 # inline hints
@@ -76,3 +77,18 @@ use-full-height = true
 focus-gained = true
 periodic.enable = true
 periodic.interval = 2000
+
+
+# Ocean Wave
+[editor.gradient-borders]
+enable = true
+thickness = 2
+direction = "vertical"
+start-color = "#00CED1" # Dark Turquoise
+end-color = "#4169E1"   # Royal Blue
+animation-speed = 4
+
+[editor.inline-blame]
+show = "cursor-line"
+format = "{author} • {time-ago} • {title}"
+auto-fetch = true
