@@ -40,7 +40,7 @@
       ## Note taking
       appflowy # notion alternative
       obsidian # note taking app
-      my.lotion-bin # notion
+      # my.lotion-bin # notion
 
       ## System
       mission-center # resource monitor
