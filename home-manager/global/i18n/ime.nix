@@ -6,6 +6,7 @@
   ];
 in {
   services.hazkey.enable = true;
+  services.hazkey.package = pkgs.my.fcitx5-hazkey.override {llama = pkgs.my.fcitx5-hazkey.llama-vulkan;};
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
