@@ -16,11 +16,15 @@
       my.sf-mono-nerd-font
     ];
 
+    # MEMO
+    # Windows Default -> Yu
+    # macOS Default -> Hiragino
     fontconfig = {
       defaultFonts = {
-        sansSerif = ["Koruri"];
-        serif = ["Koruri"];
-        monospace = ["MesloLGMNerdFont" "Jetbrains Mono" "Noto Sans Mono CJK JP"];
+        sansSerif = ["Noto Sans CJK JP"];
+        serif = ["Noto Serif CJK JP"];
+        # Jetbrains Mono, Noto Sans Mono CJK JP
+        monospace = ["MesloLGMNerdFont"];
       };
     };
   };
