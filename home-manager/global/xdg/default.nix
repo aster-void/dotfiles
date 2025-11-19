@@ -2,6 +2,7 @@
   imports = [
     ./mime.nix
     ./desktop-entries.nix
+    ./env-vars.nix
   ];
 
   # Enable XDG Base Directory Specification support
