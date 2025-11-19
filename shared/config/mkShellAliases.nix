@@ -52,6 +52,7 @@ name: let
     rbbb = "nh os boot && reboot";
     rbt = "nh os test";
     yz = "yazi";
+    zel = "zellij";
 
     sd = "shutdown";
   };

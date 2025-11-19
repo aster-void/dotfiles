@@ -62,6 +62,7 @@
       packages = with pkgs; [
         # automation
         lefthook
+        gitleaks
 
         # nix
         alejandra
