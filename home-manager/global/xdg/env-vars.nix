@@ -1,8 +1,8 @@
-{config, ...}: {
+{
   home.sessionVariables = {
-    XDG_PICTURES_DIR = "${config.home.homeDirectory}/Pictures";
+    XDG_PICTURES_DIR = "Pictures";
 
     # Hyprshot
-    HYPRSHOT_DIR = "${config.home.homeDirectory}/Pictures/Screenshot";
+    HYPRSHOT_DIR = "Pictures/Screenshot";
   };
 }

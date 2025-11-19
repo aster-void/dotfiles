@@ -1,15 +1,6 @@
-{
-  hyprshot,
-  writeShellApplication,
-}:
-writeShellApplication {
-  name = "hyprshot";
-  runtimeInputs = [hyprshot];
-
-  text = ''
-    echo '[WORKAROUND] disabling animation temporarily'
-    hyprctl keyword animations:enabled false
-    trap 'hyprctl reload config-only; echo "[WORKAROUND] re-enabled animation"' EXIT
-    hyprshot "$@"
+{hyprshot}:
+hyprshot.overrideAttrs (_old: {
+  patchPhase = ''
+    sed -i 's/\bslurp\b/ slurp -c "#ffffff00" /g' hyprshot
   '';
-}
+})
