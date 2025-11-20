@@ -1,6 +1,6 @@
 {
   imports = [
+    ./gpu
     ./logitech.nix
-    ./nvidia.nix
   ];
 }

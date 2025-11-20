@@ -11,8 +11,14 @@
   services.xserver.videoDrivers = ["modesetting" "intel" "nvidia"];
   hardware.graphics = {
     enable = true;
-    extraPackages = [
-      pkgs.nvidia-vaapi-driver
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      vulkan-loader
+      vulkan-validation-layers
+    ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      vulkan-loader
+      vulkan-validation-layers
     ];
   };
   nixpkgs.config.nvidia.acceptLicense = true;
