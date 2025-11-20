@@ -1,0 +1,10 @@
+# direnv
+.direnv/
+.envrc.local
+
+# nix
+result
+result-*
+
+# JS
+node_modules
