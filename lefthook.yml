@@ -10,6 +10,6 @@ pre-commit:
       run: deadnix --fail .
     gitleaks:
       run: gitleaks git
-    # statix:
-    #   glob: "*.nix"
-    #   run: statix check .
+    statix:
+      glob: "*.nix"
+      run: statix check .
