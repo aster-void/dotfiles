@@ -36,4 +36,9 @@
       workstation = true;
     };
   };
+
+  systemd.services.avahi-daemon = {
+    after = ["network-online.target"];
+    wants = ["network-online.target"];
+  };
 }
