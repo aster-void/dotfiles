@@ -24,12 +24,6 @@
       fsType = "ext4";
     };
 
-    "/nix/store" = {
-      device = "/nix/store";
-      fsType = "none";
-      options = ["bind"];
-    };
-
     "/boot" = {
       device = "/dev/disk/by-uuid/678C-3408";
       fsType = "vfat";
