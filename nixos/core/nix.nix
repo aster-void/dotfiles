@@ -3,7 +3,7 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
       accept-flake-config = true;
-      auto-optimise-store = true;
+      auto-optimise-store = false;
 
       trusted-users = ["root" "aster"];
       trusted-substituters = [
@@ -11,6 +11,9 @@
         "https://helix.cachix.org/"
       ];
     };
+
+    # GC時にstoreを最適化
+    optimise.automatic = true;
 
     gc = {
       automatic = true;
