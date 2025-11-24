@@ -15,6 +15,9 @@ in {
     };
   };
   services = lib.mkIf cfg.enable {
+    # speechd
+    speechd.enable = true;
+
     # displayManager.autoLogin.user = meta.username;
     displayManager.defaultSession = "hyprland-uwsm";
     xserver.enable = true;

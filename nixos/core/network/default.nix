@@ -24,7 +24,17 @@
     networkmanager.enable = true;
   };
 
-  services.resolved.enable = true;
+  services.resolved = {
+    enable = true;
+    dnssec = "false"; # ルーターのDNSSEC非対応問題を回避
+    fallbackDns = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "9.9.9.9"
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
+  };
 
   services.avahi = {
     enable = true;
