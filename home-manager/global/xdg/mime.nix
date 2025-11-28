@@ -18,6 +18,7 @@
       "application/x-extension-xhtml" = browser;
       "application/x-extension-xht" = browser;
       "application/xhtml+xml" = browser;
+      "application/pdf" = browser;
       "x-scheme-handler/ftp" = browser;
       "x-scheme-handler/http" = browser;
       "x-scheme-handler/https" = browser;
