@@ -38,7 +38,7 @@ jobs:
       - uses: cachix/install-nix-action@v27
         with:
           nix_path: "nixpkgs=flake:nixpkgs"
-      - run: nix run nixpkgs#home-manager -- build --flake .#${{ matrix.target }}
+      - run: nix run nixpkgs#home-manager -- dry-build --flake .#${{ matrix.target }}
   build-nixos:
     runs-on: ubuntu-latest
     needs: update
@@ -51,7 +51,7 @@ jobs:
       - uses: cachix/install-nix-action@v27
         with:
           nix_path: "nixpkgs=flake:nixpkgs"
-      - run: nix run nixpkgs#nixos-rebuild -- build --flake .#${{ matrix.host }}
+      - run: nix run nixpkgs#nixos-rebuild -- dry-build --flake .#${{ matrix.host }}
       - uses: EndBug/add-and-commit@v9
         with:
           message: "(bot)schedule: update flake"
