@@ -1,3 +1,3 @@
 {
-  my.apps.games.enable = true;
+  my.profiles.games.enable = true;
 }
