@@ -7,7 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-repository.url = "github:aster-void/nix-repository";
     nix-repository.inputs.nixpkgs.follows = "nixpkgs";
-    nix-hazkey.url = "github:aster-void/nix-hazkey?ref=work";
+    nix-hazkey.url = "github:aster-void/nix-hazkey";
     nix-hazkey.inputs.nixpkgs.follows = "nixpkgs";
 
     # patch / workaround inputs
