@@ -25,7 +25,7 @@
             nixpkgs.overlays = overlays;
           }
           inputs.nix-flatpak.homeManagerModules.nix-flatpak
-          inputs.nix-repository.homeModules.hazkey
+          inputs.nix-hazkey.homeModules.hazkey
           ./global
           ./shells
           ./extensions
