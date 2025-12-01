@@ -57,6 +57,22 @@
     inherit inputs overlays;
     packages.${system} = import ./my/pkgs/default.nix {inherit inputs pkgs;};
     nixosModules = import ./my/nixosModules;
+
+    templates = {
+      default = {
+        path = ./templates/default;
+        description = "Simple flake with a devshell";
+      };
+      prisma = {
+        path = ./templates/prisma;
+        description = "Prisma project template with nix-prisma-utils";
+      };
+      rust-overlay = {
+        path = ./templates/rust-overlay;
+        description = "Rust project";
+      };
+    };
+
     devShells.${system}.default = pkgs.mkShell {
       name = "dotfiles";
       packages = with pkgs; [
