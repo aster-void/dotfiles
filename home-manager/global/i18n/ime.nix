@@ -7,6 +7,9 @@
 in {
   services.hazkey.enable = true;
   services.hazkey.libllama.package = pkgs.my.libllama-vulkan;
+  home.packages = [
+    pkgs.my.hazkey-settings
+  ];
 
   i18n.inputMethod = {
     enable = true;
