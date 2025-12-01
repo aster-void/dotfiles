@@ -48,11 +48,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1763632433,
-        "narHash": "sha256-5hyfP+jTvc+X7QICmGpSrxQ8fyjWw4JzS/6YPvJKAAU=",
+        "lastModified": 1763646022,
+        "narHash": "sha256-EnUWj7gF92qojqUwUBxu/sip0hXRvM9ORyz0xvdNFlw=",
         "owner": "aster-void",
         "repo": "nix-prisma-utils",
-        "rev": "53fc349e1ad4300e1d2afa8225646306edd1d076",
+        "rev": "6fa91a481a0f12e4018d96f8c2c2e5af49d97342",
         "type": "github"
       },
       "original": {
