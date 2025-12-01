@@ -91,4 +91,4 @@ animation-speed = 4
 [editor.inline-blame]
 show = "cursor-line"
 format = "{author} • {time-ago} • {title}"
-auto-fetch = true
+# auto-fetch = true
