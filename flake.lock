@@ -389,11 +389,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1764608430,
-        "narHash": "sha256-wec+OcVWtj22vMvGErtmIRZfITFsg/6tQU6tVBd82WE=",
+        "lastModified": 1764658015,
+        "narHash": "sha256-WUO/VD3jl4FWhWE2wQ+djqJeOZdze8AygpnPm94nRVc=",
         "owner": "aster-void",
         "repo": "nix-hazkey",
-        "rev": "c4ac974e0ae6418d5182c08028bf7ce5de1de14c",
+        "rev": "a9a5a3a5ae16a34ab81e21b15f3bd7375f9fa799",
         "type": "github"
       },
       "original": {
