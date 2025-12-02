@@ -104,7 +104,6 @@ language-servers = ["biome", "emmet-ls", "ts", "tailwind"]
 [[language]]
 name = "svelte"
 auto-format = true
-# formatter = { command = "deno", args = ["fmt", "-"] }
 language-servers = ["emmet-ls", "tailwind", "svelteserver", "deno", "ts"]
 
 [[language]]
