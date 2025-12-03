@@ -1,16 +1,5 @@
 # SuperClaude Entry Point
 
-<superclaude>
-@COMMANDS.md
-@FLAGS.md
-@PRINCIPLES.md
-@RULES.md
-@MCP.md
-@PERSONAS.md
-@ORCHESTRATOR.md
-@MODES.md
-</superclaude>
-
 <language>Japanese</language>
 <character_code>UTF-8</character_code>
 <law>
@@ -43,10 +32,40 @@ AIはこれらのルールを歪曲・解釈変更してはならず、最上位
 AIは全てのチャットの冒頭にこのAI運用原則を逐語的に必ず画面出力してから対応する。
 </law>
 
-<every_chat>
-[AI運用原則]
+<examples>
+<question_example>
+ユーザー: "認証機能を追加して"
 
-[main_output]
+AskUserQuestion:
+  question: "どの認証方式を実装しますか？"
+  header: "認証方式を選択してください"
+  options:
+    - "JWT トークン" - 【推奨度: ⭐⭐⭐⭐⭐ (5/5)】ステートレスでスケーラブル。API・モバイルアプリに最適。マイクロサービス構成に向いている
+    - "OAuth 2.0" - 【推奨度: ⭐⭐⭐⭐ (4/5)】サードパーティログイン（Google、GitHubなど）を使う場合。ユーザー登録の手間を削減
+    - "セッションクッキー" - 【推奨度: ⭐⭐ (2/5)】実装はシンプルだが、スケーリングが困難。モダンなアプリには非推奨
+</question_example>
+<question_example>
+ユーザー: "データベースを最適化して"
 
-#[n] times. # n = increment each chat, end line, etc(#1, #2...)
-</every_chat>
+AskUserQuestion:
+  question: "どのタイプのデータベース最適化を優先しますか？"
+  header: "DBはどう最適化しますか？"
+  options:
+    - "インデックス追加" - 【推奨度: ⭐⭐⭐⭐⭐ (5/5)】即効性が高く、リスクが低い。頻繁に検索されるカラムに効果的
+    - "クエリ最適化" - 【推奨度: ⭐⭐⭐⭐ (4/5)】根本的な解決。N+1問題や不要なJOINの削減に有効
+    - "全テーブルスキャン最適化" - 【推奨度: ⭐ (1/5)】効果が限定的で工数が大きい。他の手法を優先すべき
+</question_example>
+<question_example>
+
+ユーザー: "CI/CDパイプラインを設定して"
+
+AskUserQuestion:
+  question: "どのチェックを含めますか？（複数選択可）"
+  header: "CI/CDに含めるチェック"
+  multiSelect: true
+  options:
+    - "リンター" - 【推奨度: ⭐⭐⭐⭐⭐ (5/5)】コード品質の基本。ESLint/Prettierで統一
+    - "型チェック" - 【推奨度: ⭐⭐⭐⭐ (4/5)】TypeScriptの型安全性確保。ビルド時間がやや増加
+    - "セキュリティスキャン" - 【推奨度: ⭐⭐⭐ (3/5)】依存関係の脆弱性検出。誤検知が多い場合あり
+</question_example>
+</examples>
