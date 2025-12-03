@@ -65,7 +65,7 @@ space = " "
 nbsp = "⍽"
 nnbsp = "␣"
 # newline = "⏎"
-# tab = "→"
+tab = "→"
 # tabpad = "·"
 
 # gj1118 config
