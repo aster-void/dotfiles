@@ -107,6 +107,8 @@ in {
     # == Multimedia ==
     ffmpeg # audio/video converter
     imagemagick # image manipulation
+    timg # terminal image viewer
+    asciinema # terminal recorder
 
     # == Terminal ==
     kitty.terminfo # kitty terminal info

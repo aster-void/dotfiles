@@ -23,7 +23,6 @@ in {
     feh # simple image viewer
     kdePackages.gwenview # image viewer (KDE)
     nemo # file manager
-    timg # terminal image viewer
     dragon-drop # drag & drop utility
 
     # == Browsers ==
@@ -83,7 +82,6 @@ in {
     pavucontrol # PulseAudio volume control
     pulseaudio # audio server utilities
     brightnessctl # brightness control
-    asciinema # terminal recorder
     solaar # Logitech device manager
 
     # == Hyprland/Wayland tools ==
