@@ -6,7 +6,7 @@
         name = "origin";
         url = "https://github.com/aster-void/dotfiles.git";
         branches.main.name = "main";
-        poller.period = 5;
+        poller.period = config.my.base.comin.pollerPeriod;
       }
     ];
   };

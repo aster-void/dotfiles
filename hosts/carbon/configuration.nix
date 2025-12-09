@@ -7,4 +7,6 @@
     ./system/wifi-ap.nix
     ./services
   ];
+
+  my.base.comin.pollerPeriod = 15;
 }
