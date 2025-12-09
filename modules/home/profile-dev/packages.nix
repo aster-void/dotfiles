@@ -8,260 +8,255 @@
 in {
   home.packages = with pkgs; [
     # == Core utilities ==
-    coreutils # GNU core utilities (ls, cat, etc.)
-    bash # Bourne Again Shell
-    gnused # GNU stream editor
-    gnumake # GNU Make build tool
-    tree # directory listing as tree
-    lsof # list open files
-    file # determine file type
+    coreutils
+    bash
+    gnused
+    gnumake
+    tree
+    lsof
+    file
     psmisc # killall, pstree, fuser
-    gettext # i18n utilities (envsubst, etc.)
-    appimage-run # run AppImage applications
-    stow # symlink farm manager
-    most # pager with horizontal scrolling
-    platinum-searcher # code search tool (pt)
-    xsel # clipboard manipulation
-    killall # kill processes by name
+    gettext # envsubst, etc.
+    appimage-run
+    stow
+    most
+    xsel
+    killall
 
     # == File search & navigation ==
-    ripgrep # fast grep (rg)
-    fd # fast find alternative
-    eza # modern ls replacement
-    bat # cat with syntax highlighting
-    fzf # fuzzy finder
-    yazi # terminal file manager
+    ripgrep
+    fd
+    eza
+    bat
+    fzf
+    yazi
 
     # == System monitoring ==
-    btop # resource monitor (htop alternative)
-    procs # modern ps replacement
-    ncdu # disk usage analyzer (TUI)
-    nitch # minimal system info
-    bandwhich # bandwidth monitor per process
-    inotify-tools # filesystem event monitoring
-    cpufetch # CPU info display
-    fastfetch # system info display (neofetch alternative)
+    btop
+    procs
+    ncdu
+    nitch
+    bandwhich
+    inotify-tools
+    cpufetch
+    fastfetch
 
     # == Hardware info ==
-    duf # disk usage (df alternative)
-    hwinfo # detailed hardware info
-    lshw # list hardware
-    inxi # human-readable system info
-    hw-probe # hardware probe collector
-    usbutils # lsusb and friends
+    duf
+    hwinfo
+    lshw
+    inxi
+    hw-probe
+    usbutils # lsusb
 
     # == Debug & tracing ==
-    strace # system call tracer
-    ltrace # library call tracer
-    gdb # GNU debugger
+    strace
+    ltrace
+    gdb
 
-    # == Development efficiency ==
-    watchexec # execute commands on file changes
-    hyperfine # command benchmarking
+    # == Development ==
+    watchexec
+    hyperfine
 
     # == Containers ==
-    podman # daemonless container engine
+    podman
 
-    # == Network tools ==
-    curl # data transfer tool
-    openssl # TLS/SSL toolkit
-    mtr # traceroute + ping
-    iperf3 # network bandwidth testing
-    nmap # network scanner
-    tcpdump # packet analyzer
-    wireshark-cli # tshark packet analyzer
-    socat # multipurpose relay
-    netcat-openbsd # networking swiss army knife
+    # == Network ==
+    curl
+    openssl
+    mtr
+    iperf3
+    nmap
+    tcpdump
+    wireshark-cli # tshark
+    socat
+    netcat-openbsd
     bind.dnsutils # dig, nslookup
-    traceroute # trace packet route
-    iputils # ping, etc.
-    iproute2 # ip command
-    nettools # ifconfig, netstat (legacy)
-    mosh # mobile shell (roaming SSH)
-    whois # domain lookup
-    xh # friendly HTTP client (httpie alternative)
-    wget # classic downloader
-    avahi # mDNS/DNS-SD tools
-    speedtest-cli # internet speed test
-    cloudflared # Cloudflare tunnel client
+    traceroute
+    iputils
+    iproute2
+    nettools # ifconfig, netstat
+    mosh
+    whois
+    xh
+    wget
+    avahi
+    speedtest-cli
+    cloudflared
 
-    # == Archive tools ==
-    rsync # file synchronization
-    zip # zip archiver
-    unzip # zip extractor
-    gnutar # GNU tar
+    # == Archive ==
+    rsync
+    zip
+    unzip
+    gnutar
 
-    # == Security & encryption ==
-    age # modern encryption tool
+    # == Encryption ==
+    age
 
     # == Data processing ==
-    jq # JSON processor
-    yq-go # YAML processor
-    sd # sed alternative
-    jless # JSON viewer (TUI)
+    jq
+    yq-go
+    sd
+    jless
     moreutils # sponge, parallel, etc.
-    nushell # structured data shell
-    postgresql # psql client
-    litecli # SQLite client with autocomplete
+    nushell
+    postgresql # psql
+    litecli
 
     # == Multimedia ==
-    ffmpeg # audio/video converter
-    imagemagick # image manipulation
-    timg # terminal image viewer
-    asciinema # terminal recorder
+    ffmpeg
+    imagemagick
+    timg
+    asciinema
 
     # == Terminal ==
-    kitty.terminfo # kitty terminal info
-
-    # == Terminal multiplexers ==
-    zellij # modern terminal multiplexer
-    tmux # classic terminal multiplexer
+    kitty.terminfo
+    zellij
+    tmux
 
     # == Shells ==
-    fish # friendly interactive shell
-    zsh # Z shell
-    zsh-completions # additional zsh completions
-    zsh-syntax-highlighting # zsh syntax highlighting
+    fish
+    zsh
+    zsh-completions
+    zsh-syntax-highlighting
 
     # == Shell prompt ==
-    starship # cross-shell prompt
-    blesh # bash line editor
+    starship
 
     # == Editors ==
-    helix # modal editor
-    vim # classic modal editor
+    helix
+    vim
 
-    # == Git & version control ==
-    git # distributed VCS
-    ghq # repository manager
-    lazygit # git TUI
-    difftastic # structural diff
-    tig # git TUI viewer
-    gitleaks # secret scanner
-    tokei # code statistics
-    act # run GitHub Actions locally
-    wrkflw # GitHub workflow CLI
+    # == Git ==
+    git
+    ghq
+    lazygit
+    difftastic
+    tig
+    gitleaks
+    tokei
+    act
+    wrkflw
 
     # == Dependency graph ==
-    cargo-depgraph # Rust dependency graph
-    graphviz # graph visualization (dot)
+    cargo-depgraph
+    graphviz
 
     # == Language servers & formatters ==
     ## OCaml
-    ocamlPackages.ocaml-lsp # OCaml LSP
-    ocamlformat # OCaml formatter
+    ocamlPackages.ocaml-lsp
+    ocamlformat
     ## Crystal
-    crystalline # Crystal LSP
+    crystalline
     ## C#
-    csharp-ls # C# LSP
-    omnisharp-roslyn # C# LSP (Roslyn-based)
-    csharpier # C# formatter
+    csharp-ls
+    omnisharp-roslyn
+    csharpier
     ## F#
-    fsautocomplete # F# LSP
-    fantomas # F# formatter
+    fsautocomplete
+    fantomas
     ## Go
-    gopls # Go LSP
-    golangci-lint # Go linter
-    golangci-lint-langserver # Go linter LSP
+    gopls
+    golangci-lint
+    golangci-lint-langserver
     ## Shell
-    bash-language-server # Bash LSP
-    fish-lsp # Fish LSP
+    bash-language-server
+    fish-lsp
     ## Rust
-    rust-analyzer # Rust LSP
-    rustfmt # Rust formatter
-    clippy # Rust linter
+    rust-analyzer
+    rustfmt
+    clippy
     ## C/C++
     llvmPackages.clang-tools # clangd, clang-format
     ## Python
-    pyright # Python LSP
+    pyright
     ## YAML / TOML
-    yaml-language-server # YAML LSP
-    taplo # TOML LSP & formatter
+    yaml-language-server
+    taplo
     ## Docker
-    dockerfile-language-server # Dockerfile LSP
-    docker-compose-language-service # docker-compose LSP
+    dockerfile-language-server
+    docker-compose-language-service
     ## Lua
-    lua-language-server # Lua LSP
-    ## Web (JS/TS/HTML/CSS/JSON)
-    typescript-language-server # TypeScript LSP
-    javascript-typescript-langserver # JS/TS LSP (alternative)
-    biome # JS/TS linter & formatter
-    prettier # code formatter
+    lua-language-server
+    ## Web
+    typescript-language-server
+    javascript-typescript-langserver
+    biome
+    prettier
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint LSPs
-    astro-language-server # Astro LSP
-    emmet-ls # Emmet LSP
-    superhtml # HTML LSP
-    svelte-language-server # Svelte LSP
-    tailwindcss-language-server # Tailwind CSS LSP
+    astro-language-server
+    emmet-ls
+    superhtml
+    svelte-language-server
+    tailwindcss-language-server
     ## Markdown
-    markdown-oxide # Markdown LSP (wiki-style)
-    marksman # Markdown LSP
+    markdown-oxide
+    marksman
     ## Nix
-    nil # Nix LSP
-    nixd # Nix LSP (alternative)
-    alejandra # Nix formatter
-    nixfmt-rfc-style # Nix formatter (RFC style)
-    statix # Nix linter
-    diffoscope # reproducibility diff tool
+    nil
+    nixd
+    alejandra
+    nixfmt-rfc-style
+    statix
+    diffoscope
     ## Typst
-    tinymist # Typst LSP
-    typstyle # Typst formatter
+    tinymist
+    typstyle
     ## Elixir
-    elixir # Elixir language (includes mix)
+    elixir
     ## SQL
-    postgres-language-server # PostgreSQL LSP
+    postgres-language-server
     ## Scala
-    metals # Scala LSP
+    metals
     ## GLSL
-    glsl_analyzer # GLSL LSP
+    glsl_analyzer
     ## JSON
-    fixjson # JSON fixer
+    fixjson
     ## Hyprlang
-    hyprls # Hyprland config LSP
+    hyprls
 
-    # == General LSPs ==
-    lsp-ai # AI-powered LSP
-    llm-ls # LLM-powered LSP
-    helix-gpt # GPT integration for Helix
+    # == AI LSPs ==
+    lsp-ai
+    llm-ls
+    helix-gpt
 
-    # == Nix CLI tools ==
-    nh # Nix helper CLI
-    nix-prefetch-scripts # fetch sources for Nix
-    nix-search-cli # search nixpkgs
-    nix-index # nix-locate command
-    nixos-generators # generate NixOS images
-    hydra-check # check Hydra build status
+    # == Nix tools ==
+    nh
+    nix-prefetch-scripts
+    nix-search-cli
+    nix-index # nix-locate
+    nixos-generators
+    hydra-check
 
     # == Development environments ==
-    devenv # development environments
-    devbox # portable dev environments
-    crush # data processing tool
+    devenv
+    devbox
 
     # == AI assistants ==
-    claude-code # Claude CLI
-    codex # OpenAI Codex CLI
-    nix-repository.claude-flow # Claude orchestration
-    nix-repository.ruv-swarm # multi-agent swarm
+    claude-code
+    codex
+    crush # coding agent
+    nix-repository.claude-flow # orchestrator
+    nix-repository.ruv-swarm
 
     # == MCP tools ==
-    nix-repository.mcptools # MCP CLI (mcp, mcpt)
+    nix-repository.mcptools # mcp, mcpx
 
     # == MCP servers ==
-    mcp-nixos # NixOS MCP server
-    nix-repository.mcp-language-server # generic MCP language server
-    nix-repository.chrome-devtools-mcp # Chrome DevTools MCP
-    nix-repository.climcp # CLI MCP
-    nix-repository.kiri # code context extraction
-    nix-repository.osgrep # OS-aware grep
-    nix-repository.ccusage # Claude usage tracker
-    nix-repository.ccusage-codex # Codex usage tracker
-    nix-repository.ccusage-mcp # MCP usage tracker
-    inputs.mcp-servers-nix.packages.${system}.mcp-server-filesystem # filesystem access MCP
-    inputs.mcp-servers-nix.packages.${system}.serena # AI assistant MCP
-    inputs.mcp-servers-nix.packages.${system}.context7-mcp # context management MCP
+    mcp-nixos
+    nix-repository.mcp-language-server
+    nix-repository.chrome-devtools-mcp
+    nix-repository.kiri # semantic grep
+    nix-repository.osgrep # semantic grep
+    nix-repository.ccusage
+    nix-repository.ccusage-codex
+    nix-repository.ccusage-mcp
+    inputs.mcp-servers-nix.packages.${system}.mcp-server-filesystem
+    inputs.mcp-servers-nix.packages.${system}.serena
+    inputs.mcp-servers-nix.packages.${system}.context7-mcp
 
     # == Repository management ==
-    nix-repository.gwq # ghq wrapper
-    nix-repository.zz # directory jumper
+    nix-repository.gwq # git worktree manager
+    nix-repository.zz # ghq + fzf + zellij wrapper
   ];
 }

@@ -7,70 +7,15 @@
   cfg = config.my.profiles.desktop;
 in {
   environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-    # Browsers
-    firefox
-    chromium
-    brave
-
-    # Development - GUI
-    zed-editor
-    drawio
-
-    # Terminals
-    alacritty
-    wezterm
+    # Terminal (fallback)
     kitty
-    ghostty
 
-    # System management
-    blueberry
-    dunst
+    # System
     bluez
     bluez-tools
-    pavucontrol
     pulseaudio
     brightnessctl
-    asciinema
-    solaar
     nvtopPackages.full
-
-    # Window manager utilities
-    hyprpicker
-    blobdrop
-    hyprshot
-    gpu-screen-recorder
-    wf-recorder
-    variety
-    hyprpaper
-    waybar
-    polybar
-    nwg-launchers
-    fuzzel
-    rofi
-
-    # Media viewers
-    feh
-    kdePackages.gwenview
-    vlc
-    playerctl
-
-    # Communication
-    slack
-    discord
-    vesktop
-    legcord
-    jitsi
-
-    # Productivity
-    notion-app-enhanced
-    appflowy
-    obsidian
-
-    # Image editing
-    nomacs
-    gthumb
-    gimp
-    localsend
 
     # GUI libraries
     libsForQt5.qt5.qtwayland
@@ -79,8 +24,5 @@ in {
     gtk3
     gtk4
     xwayland
-
-    # utils
-    dragon-drop
   ]);
 }
