@@ -63,7 +63,6 @@ CLAUDE.md は短く保ち、重要な情報のみを記述する。
 `{scope}: {message}`
 scope: コミットの影響のある範囲。 `packages/{package}`, `modules/{module}`, `treewide`, `meta` など
 message: コミットの簡潔で明確な説明
-そのほか、 `git add` には `.` や `-A` を用いず、全てのファイルを明示的に指定する。 (ファイルが大量に変更されている場合を除く)
 </skill>
 </skills>
 <tools>
