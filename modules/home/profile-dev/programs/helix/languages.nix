@@ -5,6 +5,7 @@
   formatters = {
     alejandra = ["alejandra" "-" "--quiet"];
     biome = ext: ["biome" "format" "--stdin-file-path=a.${ext}"];
+    fixjson = ["fixjson"];
     prettier = parser: ["prettier" "--parser" parser];
     mix = ext: ["mix" "format" "--stdin-filename" "a.${ext}" "-"];
     typstyle = ["typstyle"];
@@ -106,8 +107,8 @@
     elixir.formatter = formatters.mix "elixir";
     heex.formatter = formatters.mix "heex";
 
-    json.formatter = formatters.biome "json";
-    jsonc.formatter = formatters.biome "jsonc";
+    json.formatter = formatters.fixjson;
+    jsonc.formatter = formatters.fixjson;
   };
 
   language-servers = {
