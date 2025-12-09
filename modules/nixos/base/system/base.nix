@@ -19,6 +19,7 @@
     ncdu
     macchina
     nushell
+    bc
     inputs.nix-mc.packages.${pkgs.system}.nix-mc-cli
 
     # terminal compatibility
@@ -61,6 +62,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
+
+  # Memory management - zram swap with aggressive swapping
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
+  boot.kernel.sysctl."vm.swappiness" = 180;
 
   # Locale settings
   # Language: English, Other formats (currency, time, etc.): Japanese
