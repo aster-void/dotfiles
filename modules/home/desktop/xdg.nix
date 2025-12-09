@@ -1,14 +1,12 @@
 {
   pkgs,
   config,
-  inputs,
   ...
 }: let
   vscodePackage =
     if config.programs.vscode.enable
     then config.programs.vscode.package
     else pkgs.vscode;
-  configDir = "${inputs.self}/config/desktop";
 in {
   # Enable XDG Base Directory Specification support
   # This automatically sets XDG_CONFIG_HOME, XDG_DATA_HOME, XDG_STATE_HOME, XDG_CACHE_HOME
@@ -71,24 +69,5 @@ in {
       exec = "code --enable-wayland-ime %U";
       icon = "${vscodePackage}/share/pixmaps/vscode.png";
     };
-  };
-
-  # Static dotfiles from config/desktop/
-  # These are managed via xdg.configFile instead of home-manager options
-  xdg.configFile = {
-    "kitty".source = "${configDir}/kitty";
-    "alacritty".source = "${configDir}/alacritty";
-    "ghostty".source = "${configDir}/ghostty";
-    "waybar".source = "${configDir}/waybar";
-    "lazygit".source = "${configDir}/lazygit";
-    "yazi".source = "${configDir}/yazi";
-    "cava".source = "${configDir}/cava";
-    "dunst".source = "${configDir}/dunst";
-    "eww".source = "${configDir}/eww";
-    "fcitx5".source = "${configDir}/fcitx5";
-    "caelestia".source = "${configDir}/caelestia";
-    "uwsm".source = "${configDir}/uwsm";
-    "vesktop".source = "${configDir}/vesktop";
-    "zed".source = "${configDir}/zed";
   };
 }

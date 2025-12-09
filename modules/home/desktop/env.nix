@@ -3,10 +3,7 @@
     # Default applications
     EDITOR = "hx";
     BROWSER = "zen-beta";
-    TERMINAL = "alacritty";
-
-    # Wayland
-    NIXOS_OZONE_WL = 1;
+    TERMINAL = "kitty";
 
     # XDG directories
     XDG_PICTURES_DIR = "Pictures";
@@ -14,4 +11,36 @@
     # Hyprshot
     HYPRSHOT_DIR = "Pictures/Screenshot";
   };
+
+  # UWSM environment variables (for graphical sessions)
+  xdg.configFile."uwsm/env".text = ''
+    # UWSM Global Environment Variables
+    # Variables common to all graphical sessions managed by uwsm
+
+    # GTK Theme
+    export GTK_THEME=Adwaita:dark
+
+    # Qt Theme
+    export QT_QPA_PLATFORMTHEME=qt5ct
+
+    # XDG Desktop Portal
+    export XDG_CURRENT_DESKTOP=Hyprland
+    export XDG_SESSION_TYPE=wayland
+    export XDG_SESSION_DESKTOP=Hyprland
+
+    # Wayland specific
+    export WAYLAND_DISPLAY=wayland-1
+    export QT_QPA_PLATFORM=wayland
+    export GDK_BACKEND=wayland
+    export NIXOS_OZONE_WL=1
+
+    # Firefox Wayland
+    export MOZ_ENABLE_WAYLAND=1
+
+    # Java GUI fix for Wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
+
+    # Electron apps on Wayland
+    export ELECTRON_OZONE_PLATFORM_HINT=wayland
+  '';
 }

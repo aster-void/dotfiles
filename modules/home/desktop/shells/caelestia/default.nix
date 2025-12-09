@@ -40,5 +40,70 @@ in {
         WantedBy = ["graphical-session.target"];
       };
     };
+
+    # Caelestia configuration files
+    xdg.configFile = {
+      "caelestia/cli.json".text = builtins.toJSON {
+        theme = {
+          enableTerm = false;
+          enableHypr = false;
+          enableDiscord = false;
+          enableSpicetify = false;
+          enableFuzzel = false;
+          enableBtop = false;
+          enableGtk = false;
+          enableQt = false;
+        };
+      };
+
+      "caelestia/shell.json".text = builtins.toJSON {
+        services = {
+          useFahrenheit = false;
+        };
+        background = {
+          enabled = true;
+          desktopClock = {
+            enabled = true;
+          };
+        };
+        bar = {
+          clock = {
+            showIcon = false;
+          };
+          status = {
+            showAudio = true;
+            showBattery = true;
+            showBluetooth = true;
+            showKbLayout = false;
+            showMicrophone = true;
+            showNetwork = true;
+            showLockStatus = true;
+          };
+          workspaces = {
+            activeIndicator = true;
+            activeLabel = "";
+            activeTrail = true;
+            label = "";
+            occupiedBg = true;
+            occupiedLabel = "";
+            perMonitorWorkspaces = true;
+            showWindows = false;
+            shown = 5;
+            specialWorkspaceIcons = [
+              {
+                name = "steam";
+                icon = "sports_esports";
+              }
+            ];
+          };
+        };
+        "notifs.actionOnClick" = true;
+        paths = {
+          mediaGif = "root:/assets/bongocat.gif";
+          sessionGif = "root:/assets/kurukuru.gif";
+          wallpaperDir = "~/decorations/images";
+        };
+      };
+    };
   };
 }
