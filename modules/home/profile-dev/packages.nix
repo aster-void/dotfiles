@@ -131,7 +131,6 @@ in {
 
     # == Git & version control ==
     git # distributed VCS
-    gh # GitHub CLI
     ghq # repository manager
     lazygit # git TUI
     difftastic # structural diff
