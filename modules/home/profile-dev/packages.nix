@@ -241,6 +241,9 @@ in {
     claude-code # Claude CLI
     codex # OpenAI Codex CLI
 
+    # == MCP tools ==
+    nix-repository.mcptools # MCP CLI (mcp, mcpt)
+
     # == MCP servers ==
     mcp-nixos # NixOS MCP server
     nix-repository.mcp-language-server # generic MCP language server
