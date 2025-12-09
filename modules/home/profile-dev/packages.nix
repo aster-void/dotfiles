@@ -249,6 +249,9 @@ in {
     nix-repository.ccusage # Claude usage tracker
     nix-repository.ccusage-codex # Codex usage tracker
     nix-repository.ccusage-mcp # MCP usage tracker
+    inputs.mcp-servers-nix.packages.${system}.mcp-server-filesystem # filesystem access MCP
+    inputs.mcp-servers-nix.packages.${system}.serena # AI assistant MCP
+    inputs.mcp-servers-nix.packages.${system}.context7-mcp # context management MCP
 
     # == Repository management ==
     nix-repository.gwq # ghq wrapper
