@@ -69,6 +69,9 @@
 
     nix-hazkey.url = "github:aster-void/nix-hazkey";
     nix-hazkey.inputs.nixpkgs.follows = "nixpkgs";
+
+    claude-desktop.url = "github:k3d3/claude-desktop-linux-flake";
+    claude-desktop.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:

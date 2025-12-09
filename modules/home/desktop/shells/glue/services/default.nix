@@ -7,29 +7,6 @@
   cfg = config.my.shell.glue;
 in {
   config.systemd.user.services = lib.mkIf cfg.enable {
-    # Waybar systemd service
-    waybar = {
-      Unit = {
-        Description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
-        Documentation = "https://github.com/Alexays/Waybar/wiki";
-        PartOf = ["graphical-session.target"];
-        After = ["graphical-session.target"];
-        Wants = ["graphical-session.target"];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.waybar}/bin/waybar";
-        ExecReload = "${pkgs.coreutils}/bin/kill -SIGUSR2 $MAINPID";
-        Restart = "always";
-        RestartSec = 3;
-        TimeoutStopSec = 10;
-        KillMode = "control-group";
-      };
-      Install = {
-        WantedBy = ["graphical-session.target"];
-      };
-    };
-
     # Waybar config file watcher service
     waybar-watcher = {
       Unit = {

@@ -123,6 +123,7 @@ in {
       devenv
       devbox
       claude-code
+      inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
       crush
       codex
       postgresql
