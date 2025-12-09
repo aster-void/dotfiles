@@ -1,6 +1,47 @@
-{...}: {
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
+  inherit (pkgs.stdenv) system;
+  inherit (lib) getExe;
+  nix-repository = inputs.nix-repository.packages.${system};
+
+  mcpConfig = inputs.mcp-servers-nix.lib.mkConfig pkgs {
+    programs = {
+      context7.enable = true;
+      serena = {
+        enable = true;
+        enableWebDashboard = false;
+      };
+      nixos.enable = true;
+    };
+    settings.servers = {
+      claude-flow = {
+        command = getExe nix-repository.claude-flow;
+        args = ["mcp" "start"];
+      };
+      ruv-swarm = {
+        command = getExe nix-repository.ruv-swarm;
+        args = ["mcp" "start" "--protocol=stdio"];
+      };
+    };
+  };
+
+  claude = getExe pkgs.claude-code;
+  jq = getExe pkgs.jq;
+in {
   programs.claude-code = {
     enable = true;
     memory.source = ./claude.md;
   };
+
+  home.activation.registerClaudeMcpServers = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    for name in $(${jq} -r '.mcpServers | keys[]' ${mcpConfig}); do
+      config=$(${jq} -c ".mcpServers[\"$name\"]" ${mcpConfig})
+      $DRY_RUN_CMD ${claude} mcp remove --scope user "$name" 2>/dev/null || true
+      $DRY_RUN_CMD ${claude} mcp add-json --scope user "$name" "$config"
+    done
+  '';
 }
