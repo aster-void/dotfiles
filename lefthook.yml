@@ -9,3 +9,8 @@ pre-push:
   commands:
     dry-build:
       run: nh os build . --hostname dusk --no-nom --quiet -- --quiet
+
+post-push:
+  commands:
+    comin-fetch:
+      run: comin fetch

@@ -6,6 +6,4 @@
     ./system
     ./services
   ];
-
-  my.base.comin.pollerPeriod = 15;
 }

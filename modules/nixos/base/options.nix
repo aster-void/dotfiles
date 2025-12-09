@@ -1,7 +1,7 @@
 {lib, ...}: {
   options.my.base.comin.pollerPeriod = lib.mkOption {
     type = lib.types.int;
-    default = 60;
+    default = 300;
     description = "Comin poller period in seconds";
   };
 }
