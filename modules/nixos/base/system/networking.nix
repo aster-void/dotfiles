@@ -5,7 +5,20 @@
 }: {
   # Basic networking setup
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
   networking.hostName = config.meta.hostname;
+
+  # Fast DNS resolution with Cloudflare and Google
+  services.resolved = {
+    enable = true;
+    dnssec = "false";
+    domains = ["~."];
+    fallbackDns = ["1.1.1.1" "8.8.8.8"];
+    extraConfig = ''
+      DNS=1.1.1.1#cloudflare-dns.com 8.8.8.8#dns.google
+      DNSOverTLS=opportunistic
+    '';
+  };
 
   # Cloudflare WARP VPN setup
   # services.cloudflare-warp.enable = true;
