@@ -18,17 +18,4 @@
       user.email = "137767097+aster-void@users.noreply.github.com";
     };
   };
-
-  # Comin GitOps deployment - required for all hosts
-  services.comin = {
-    enable = true;
-    remotes = [
-      {
-        name = "origin";
-        url = "https://github.com/aster-void/home-server-config.git";
-        branches.main.name = "main";
-        poller.period = 5;
-      }
-    ];
-  };
 }
