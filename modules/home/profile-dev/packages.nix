@@ -240,6 +240,8 @@ in {
     # == AI assistants ==
     claude-code # Claude CLI
     codex # OpenAI Codex CLI
+    nix-repository.claude-flow # Claude orchestration
+    nix-repository.ruv-swarm # multi-agent swarm
 
     # == MCP tools ==
     nix-repository.mcptools # MCP CLI (mcp, mcpt)
