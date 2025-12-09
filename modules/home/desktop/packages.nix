@@ -1,229 +1,133 @@
 {
   pkgs,
+  flake,
   inputs,
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
-  myPkgs = inputs.nix-repository.packages.${system};
 in {
   home.packages = with pkgs;
     [
-      # Core
-      ## core utils
-      coreutils
-      lsof
-      tree
-      gnumake
-      stow
-      most # view with less functions
-      platinum-searcher # find but better
-      wget
+      # == Desktop utilities ==
+      dex # generate .desktop entries from AppImages
+      libnotify # send desktop notifications (notify-send)
+      edid-decode # decode EDID from monitors
 
-      ## core utils rebuilt
-      fzf
-      bat
-      eza # ls
-      ripgrep
+      # == System tray apps ==
+      volumeicon # volume control in systray
+      networkmanagerapplet # NetworkManager GUI in systray
 
-      ## extra utils
-      xsel # copy & paste
-      killall
-      gettext
-      nmap # internet
-      # helix # to be replaced by gj1118
-      vim
+      # == File managers & viewers ==
+      baobab # disk usage analyzer (GNOME)
+      fsearch # fast file search (GTK)
+      filezilla # FTP/SFTP client
+      feh # simple image viewer
+      kdePackages.gwenview # image viewer (KDE)
+      nemo # file manager
+      timg # terminal image viewer
+      dragon-drop # drag & drop utility
 
-      ## Drivers
-      edid-decode # decode video transfer protocols?
-      avahi # internet
+      # == Browsers ==
+      inputs.zen-browser.packages.${system}.beta # Zen browser
+      firefox # Mozilla Firefox
+      chromium # open-source Chrome
+      brave # privacy-focused browser
 
-      ## network
-      curl
-      wget
-      openssl
-      cloudflared
+      # == Communication ==
+      thunderbird # email client
+      slack # team messaging
+      discord # gaming/community chat
+      vesktop # Discord client (Vencord)
+      legcord # Discord client (lightweight)
+      jitsi # video conferencing
 
-      ## Others
-      dex # generate desktop entries
+      # == Media ==
+      amberol # music player (GNOME)
+      vlc # media player
+      playerctl # media player control
+      kooha # screen recorder (GNOME)
+      nomacs # image viewer/editor
+      gthumb # image viewer/organizer
+      gimp # image editor
+      inkscape # vector graphics editor
+      pinta # simple image editor
 
-      # sys info
-      libnotify
-      speedtest-cli
-      usbutils
+      # == Productivity ==
+      appflowy # Notion alternative
+      obsidian # note-taking (Markdown)
+      libreoffice # office suite
+      drawio # diagram editor
 
-      # CLI / term
-      ## Tmux
-      zellij
-      tmux
-      ## Shell
-      bash
-      fish
-      zsh
-      nushell
-      # bash-completion
-      zsh-completions
-      zsh-syntax-highlighting
+      # == System utilities ==
+      mission-center # resource monitor (GNOME)
+      authenticator # 2FA app
+      localsend # local file sharing
+      arandr # display configuration
 
-      ## shell prompt
-      starship
-      blesh
+      # == Code editors ==
+      zed-editor # Zed editor
+      windsurf # AI code editor
+      code-cursor # Cursor AI editor
+      cursor-cli # Cursor CLI
 
-      ## system info
-      btop
-      cpufetch
-      fastfetch
-      nitch
+      # == Terminals ==
+      alacritty # GPU-accelerated terminal
+      kitty # feature-rich terminal
+      ghostty # fast terminal
 
-      ## hardware info
-      baobab # harddisk usage visualizer
-      duf # cli harddisk usage visualizer
-      hwinfo # hw info in a long, long stream of characters
-      lshw # this looks similar to hwinfo because I can't read either
-      inxi # human readable hwinfo
-      hw-probe # collect hardware info and send
+      # == Bluetooth ==
+      blueberry # Bluetooth manager (GUI)
+      bluez # Bluetooth protocol stack
+      bluez-tools # Bluetooth CLI tools
 
-      # CLI Apps
-      ## git
-      git
-      lazygit
-      tig
-      difftastic
-      gitleaks
-      gh
-      ghq
+      # == Audio/Video control ==
+      pavucontrol # PulseAudio volume control
+      pulseaudio # audio server utilities
+      brightnessctl # brightness control
+      asciinema # terminal recorder
+      solaar # Logitech device manager
 
-      ## Other CLI Apps
-      ncdu # tui disk usage
+      # == Hyprland/Wayland tools ==
+      hyprpicker # color picker
+      blobdrop # drag & drop from terminal
+      hyprshot # screenshot tool
+      gpu-screen-recorder # GPU-based screen recorder
+      wf-recorder # Wayland screen recorder
+      variety # wallpaper manager
+      hyprpaper # Wayland wallpaper daemon
 
-      # utils
-      ## file
-      yazi # cli file manager
-      zip
-      unzip # unzips files
-      ffmpeg # convert any music/video files
-      inotify-tools
-      fsearch # a file searcher
+      # == Status bars ==
+      waybar # Wayland status bar
+      polybar # X11/Wayland status bar
+      eww # ElKowars Wacky Widgets
+      cava # audio visualizer
 
-      ## image
-      imagemagick # image editor
+      # == Launchers ==
+      nwg-launchers # Wayland launchers
+      fuzzel # Wayland app launcher
+      rofi # app launcher
 
-      ## others
-      volumeicon # edit volume from sys tray
-      appimage-run
+      # == Notification ==
+      dunst # notification daemon
 
-      filezilla # a free ftp client + server
-      networkmanagerapplet # network manager in systray
+      # == Qt/GTK libraries ==
+      libsForQt5.qt5.qtwayland # Qt5 Wayland support
+      qt6.qtwayland # Qt6 Wayland support
+      qt6Packages.qtstyleplugin-kvantum # Qt theme engine
+      gtk3 # GTK3 library
+      gtk4 # GTK4 library
+      xwayland # X11 compatibility for Wayland
 
-      # nix
-      nix-index
-      nixos-generators # convert the config into other formats
-      hydra-check
+      # == AI desktop apps ==
+      inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs # Claude desktop app
 
-      # Dev Tools
-      devenv
-      devbox
-      claude-code
-      inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
-      crush
-      codex
-      postgresql
-      litecli
-      tokei
-      act
-      ## dep graph
-      cargo-depgraph
-      graphviz
-
-      # editors
-      code-cursor
-      cursor-cli
-
-      # LSPs
-      ## Rust
-      rustfmt
-      rust-analyzer
-      clippy
-
-      ## C / C++
-      llvmPackages.clang-tools
-
-      ## Go
-      gopls
-      golangci-lint
-      golangci-lint-langserver
-
-      ## TS/JS/CSS/HTML/ESLint/Svelte
-      biome
-      typescript-language-server
-      emmet-ls
-      tailwindcss-language-server
-      svelte-language-server
-      vscode-langservers-extracted # HTML/CSS/JSON/ESLint all in one
-      astro-language-server
-
-      ## F#
-      fsautocomplete
-
-      ## Nix
-      alejandra
-      nixfmt-rfc-style # some repos require this as the formatter
-      nil
-      nixd
-      statix
-      diffoscope # useful for determining non-reproducibility
-
-      ## Scala
-      metals
-
-      ## Bash
-      bash-language-server
-
-      ## GLSL
-      glsl_analyzer
-
-      # Markup
-      ## Markdown
-      marksman
-      markdown-oxide
-
-      ## TOML
-      taplo
-
-      ## Dockerfile, docker compose
-      dockerfile-language-server
-      docker-compose-language-service
-
-      ## YAML
-      yaml-language-server
-
-      ## Hyprlang
-      hyprls
-
-      ## Typst
-      tinymist
-      typstyle
-
-      ## JSON
-      fixjson
-
-      # General LSPs
-      lsp-ai
-      llm-ls
-      helix-gpt
-
-      # mcp servers
-      mcp-nixos
-    ]
-    ++ [
-      myPkgs.ccusage
-      myPkgs.ccusage-codex
-      myPkgs.ccusage-mcp
-      myPkgs.chrome-devtools-mcp
-      myPkgs.kiri
+      # == Custom packages ==
+      flake.packages.${system}.setpaper # wallpaper setter
     ]
     ++ (with inputs.mcp-servers-nix.packages.${system}; [
-      mcp-server-filesystem
-      serena
-      context7-mcp
+      # == MCP servers (desktop-specific) ==
+      mcp-server-filesystem # filesystem access MCP
+      serena # AI assistant MCP
+      context7-mcp # context management MCP
     ]);
 }
