@@ -111,7 +111,6 @@ in {
 
     # == Terminal ==
     kitty.terminfo
-    zellij
     tmux
 
     # == Shells ==
