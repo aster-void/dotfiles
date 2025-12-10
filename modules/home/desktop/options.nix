@@ -1,17 +1,16 @@
 {lib, ...}: {
   options.my = {
-    shell = {
-      glue = {
-        enable = lib.mkEnableOption "glued shell";
-        type = lib.mkOption {
-          type = lib.types.enum ["glassy"];
-        };
-      };
-      caelestia.enable = lib.mkEnableOption "caelestia shell";
-    };
-
     desktop = {
       gaming.enable = lib.mkEnableOption "gaming extension";
+      shells = {
+        glue = {
+          enable = lib.mkEnableOption "glued shell";
+          type = lib.mkOption {
+            type = lib.types.enum ["glassy"];
+          };
+        };
+        caelestia.enable = lib.mkEnableOption "caelestia shell";
+      };
     };
 
     hyprland = {

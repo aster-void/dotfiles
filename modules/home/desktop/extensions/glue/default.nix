@@ -9,7 +9,7 @@
     ./services
   ];
   config = let
-    cfg = config.my.shell.glue;
+    cfg = config.my.desktop.shells.glue;
     inherit (pkgs.stdenv.hostPlatform) system;
   in
     lib.mkIf cfg.enable {

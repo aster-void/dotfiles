@@ -4,11 +4,11 @@
     flake.homeModules.desktop
   ];
 
-  my.shell = {
-    glue.enable = true;
-    glue.type = "glassy";
+  my.desktop = {
+    gaming.enable = true;
+    shells.glue.enable = true;
+    shells.glue.type = "glassy";
   };
-  my.desktop.gaming.enable = true;
   my.hyprland = {
     primaryMonitor = "DP-1";
     sensitivity = "0.3";

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.shell.glue;
+  cfg = config.my.desktop.shells.glue;
 in {
   config.systemd.user.services = lib.mkIf cfg.enable {
     # Waybar config file watcher service

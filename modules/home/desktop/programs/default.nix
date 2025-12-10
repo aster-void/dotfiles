@@ -4,6 +4,10 @@
     ./cava.nix
     ./eww
     ./ghostty.nix
+    ./hyprland
+    ./hypridle.nix
+    ./hyprlock.nix
+    ./hyprpaper.nix
     ./kitty.nix
     ./lazygit.nix
     ./vesktop

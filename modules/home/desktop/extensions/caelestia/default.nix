@@ -7,7 +7,7 @@
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
-  cfg = config.my.shell.caelestia;
+  cfg = config.my.desktop.shells.caelestia;
   caelestia-cli = inputs.caelestia-cli.packages.${system}.with-shell;
 in {
   config = lib.mkIf cfg.enable {

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Note: CLAUDE.md is a symlink to this file.
+Note: CLAUDE.md is symlinked to this file.
 
 ## 概要
 
@@ -22,11 +22,13 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 **モジュール構造**
 (`modules/{home|nixos}/{module}/`):
 - `default.nix` - サブモジュールを imports
+- `options.nix` - モジュールの `options`
 - `programs/` - プログラム設定
 - `services/` - 外向きサービス
 - `system/` - 内向きサービス・ハードウェア
 - `extensions/` - `my.{module}.{extension}.enable` で有効化
 - `packages.nix` - パッケージインストールのみ
+- `xdg.nix` `env.nix` ... - 名前の通り: システムにもサービスにもプログラムにも属さない
 
 ## コミット
 
@@ -48,3 +50,4 @@ nix-search <query> # パッケージ検索
 ## Tips
 
 - **NixOS システムを直接変更しない**: `~/.claude.json` などを直接編集せず、このリポジトリ内の Nix 設定を変更する。プログラム名でファイル名検索すると見つかる。
+- 基本的にファイル名 = そのファイルの定義事項と考えてよい。コンテキストを消費するので、むやみやたらにファイルの中身を読まない。

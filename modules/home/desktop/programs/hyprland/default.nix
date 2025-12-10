@@ -5,9 +5,6 @@ in {
     ./binds.nix
     ./windowrules.nix
     ./exec.nix
-    ./hyprlock.nix
-    ./hyprpaper.nix
-    ./hypridle.nix
   ];
 
   config = {
