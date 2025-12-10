@@ -11,7 +11,6 @@
   mcpConfig = inputs.mcp-servers-nix.lib.mkConfig pkgs {
     programs = {
       context7.enable = true;
-      nixos.enable = true;
     };
     settings.servers = {
       claude-flow = {

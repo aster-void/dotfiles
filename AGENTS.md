@@ -1,169 +1,44 @@
 # AGENTS.md
 
-This file provides guidance to AI coding agents (including Claude Code) when working with code in this repository.
-
-Note: CLAUDE.md is a symlink to this file (AGENTS.md).
+Note: CLAUDE.md is a symlink to this file.
 
 ## 概要
 
 NixOS ベースの統合システム構成（サーバー + デスクトップ）。Blueprint フレームワークで管理。
 
-**主要コンポーネント:**
-- **NixOS**: Linux ディストリビューション（宣言的システム構成）
-- **home-manager**: ユーザー環境管理
-- **blueprint**: flake 構造の自動化フレームワーク
-- **agenix**: シークレット管理（age 暗号化）
-- **nix-repository**: inputs から利用可能。カスタム Nix リポジトリ
-
 ## ディレクトリ構造
 
-```
-.
-├── flake.nix / flake.lock          # Flake エントリーポイント
-├── config/                         # 静的設定ファイル（JSON等）
-├── hosts/
-│   ├── carbon/                     # ホームサーバー
-│   │   ├── configuration.nix
-│   │   ├── services/               # 外向きサービス（cloudflared, minecraft等）
-│   │   ├── system/                 # 内向きサービス（power, wifi-ap等）
-│   │   └── users/                  # ユーザー固有のhome-manager設定
-│   ├── dusk/                       # デスクトップ（開発用）
-│   ├── amberwood/                  # デスクトップ（開発用）
-│   └── bogster/                    # デスクトップ（開発用）
-├── modules/
-│   ├── nixos/                      # NixOS システムモジュール
-│   │   ├── base/                   # 全ホスト共通のベース設定
-│   │   ├── desktop/                # デスクトップ環境（Hyprland, 音声, GPU等）
-│   │   │   ├── extensions/         # オプショナルな機能
-│   │   │   ├── hardware/           # ハードウェア固有設定
-│   │   │   ├── services/           # デスクトップサービス
-│   │   │   └── system/             # システム設定
-│   │   └── profile-dev/            # 開発者プロファイル
-│   └── home/                       # home-manager モジュール
-│       ├── desktop/                # デスクトップユーザー環境
-│       │   ├── extensions/         # オプショナルな機能
-│       │   ├── hyprland/           # Hyprland 設定
-│       │   ├── programs/           # GUI アプリ設定
-│       │   ├── services/           # ユーザーサービス
-│       │   ├── shells/             # デスクトップシェル（caelestia等）
-│       │   ├── store/              # ストア関連
-│       │   └── system/             # システム連携
-│       └── profile-dev/            # 開発ツール（git, helix, fish等）
-├── packages/                       # カスタムパッケージ
-├── overlays/                       # nixpkgs オーバーレイ
-└── secrets/                        # agenix 暗号化された秘密情報
-```
-
-## Nix 言語基礎 (重要部分のみ抜粋)
-
-attrset の name が `-` を含んでいても "" は不要。動的な name の場合は、部分的に必要。
-
-```nix
-{name}: {
-  foo-bar-baz = 1;
-  ${name} = 2; # 不要
-  "${name}system" = 3; # 必要
-}
-```
-
-その他演算子
-
-```nix
-{a, b, pkgs, baz}: {
-  if-a-then-b = a -> b; # false if a && !b. true otherwise.
-  containes-foo = pkgs ? foo; # true if attrset `pkgs` contains `foo`, i.e. `pkgs.foo` evaluates.
-  foo-bar-or-baz = pkgs.foo.bar or baz; # try to evaluate `pkgs.foo.bar`. if there is a "attribute not found" error in the chain, fall back to baz. (don't use "in case". use only if it depends on the consumer's environment.)
-}
-```
+- `hosts/{hostname}/` - ホスト固有設定（configuration.nix, services/, users/）
+- `modules/nixos/` - NixOS システムモジュール（base/, desktop/, profile-dev/）
+- `modules/home/` - home-manager モジュール（desktop/, profile-dev/）
+- `packages/` - カスタムパッケージ
+- `config/` - 静的設定ファイル（JSON等）
+- `secrets/` - agenix 暗号化シークレット
 
 ## ルール
 
-**ファイル配置**:
-- 複数ホスト共有 → `modules/nixos/` または `modules/home/`
-- 特定ホスト専用 → `hosts/{hostname}/`
-- 2回以上重複 → `modules/` へ抽出
-- ユーザー環境・ツール → `modules/home/`
-- 静的設定ファイル（JSON等） → `config/`
+**ファイル配置**: 複数ホスト共有 → `modules/`、特定ホスト専用 → `hosts/{hostname}/`
 
-**modules/ 構造**:
-- `modules/nixos/` - NixOS システムモジュール
-  - `base/` - 全ホスト共通設定（必須）
-  - `base/system/` - システム基盤（users, networking, nix 等）
-  - `desktop/` - デスクトップ環境（WM, サービス等）
-  - `desktop/hardware/` - GPU, オーディオ等のハードウェア設定
-  - `profile-{name}/` - プロファイル別設定
-- `modules/home/` - home-manager モジュール
-  - `desktop/` - デスクトップユーザー環境
-  - `desktop/hyprland/` - Hyprland WM 設定
-  - `desktop/shells/` - デスクトップシェル（caelestia 等）
-  - `profile-{name}/` - プロファイル別設定
-  - `profile-{name}/programs/` - プログラム固有設定
-
-**各モジュール構造**:
-各エントリは任意 (optional)。
-- `modules/{home|nixos}/{module}/`
-  - `default.nix` - 各サブモジュールを `imports`
-  - `options.nix` - モジュールの options. `my.{module}` で設定する。 `enable` オプションはない (デフォルトで有効)
-  - `programs/` - 各プログラム・アプリなど
-  - `services/` - 外向きサービス (web サーバー, sshd など)
-  - `system/` - 内向き systemd service、hardware 設定など。概念または具体的なプログラムの名前をつける。
-  - `extensions/` - `options.nix` で設定可能なプログラム。 `my.{module}.{extension}.enable` で有効化。
-  - `{category}/default.nix` - `{category}/*.nix` を `imports`
-  - `env.nix` - 環境変数
-  - `xdg.nix` - XDG 設定
-  - `users.nix` - normal user 設定
-  - `packages.nix` - パッケージインストールのみ
-
-**hosts/{hostname}/ 構造**:
-- `configuration.nix` - ホストのエントリーポイント
-- `hardware-configuration.nix` - ハードウェア固有設定
-- `services/` - 外向きサービス（サーバーホストのみ）
-- `system/` - ホスト固有のシステム設定
-- `users/` - home-manager設定 (blueprint により自動で読み込まれる)
-- `PORTS.md` - ポートマップ（サーバーホストのみ）
-
-その他のルール:
-- `import` で Nix 式を直接持ってくるより、モジュールを配置し、ユーザー側で `imports` で取得する方を優先する。
-- このように、一つのプログラムに関する設定は一箇所にまとめる (DRY)。配置場所は誰がどのタイミングで使うかで判断する。
-
+**モジュール構造** (`modules/{home|nixos}/{module}/`):
+- `default.nix` - サブモジュールを imports
+- `programs/` - プログラム設定
+- `services/` - 外向きサービス
+- `system/` - 内向きサービス・ハードウェア
+- `extensions/` - `my.{module}.{extension}.enable` で有効化
+- `packages.nix` - パッケージインストールのみ
 
 ## コミット
 
-形式: `{scope}: {説明}` （例: `hosts/carbon: add dokploy service` `meta: slim down AGENTS.md`）
-- scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `config` / `packages` / `overlays` / `secrets` / `treewide` / `meta`
+形式: `{scope}: {説明}`
+scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewide` / `meta`
 
 ## コマンド
 
 ```sh
-# ビルド確認
-./scripts/nixos-build.sh [hostname?]
-```
-
-## Available Tools
-
-### Nix Search CLI
-
-Search for nix packages in the https://search.nixos.org index
-
-```sh
-# ... like the web interface
-nix-search python linter
-nix-search --search "python linter"
-# ... by package name
-nix-search --name python
-nix-search --name 'emacsPackages.*'
-# ... by version
-nix-search --version 1.20
-nix-search --version '1.*'
-# ... by installed programs
-nix-search --program python
-nix-search --program "py*"
-# ... with ElasticSearch QueryString syntax
-nix-search --query-string="package_programs:(crystal OR irb)"
-nix-search --query-string='package_description:(MIT Scheme)'
+./scripts/nixos-build.sh [hostname?]  # ビルド確認
+nix-search <query>                    # パッケージ検索
 ```
 
 ## Tips
 
-- **NixOS システムを直接変更しない**: `~/.claude.json` などの設定ファイルを直接編集せず、必ず Nix の設定ファイル（このリポジトリ内）を変更する。ユーザーが「グローバル」と言った場合も、このリポジトリ内の該当ファイルを編集する
-- **AGENTS.md を最新に保つ**: システム構成やコマンドを変更した場合、このファイルも更新する
+- **NixOS システムを直接変更しない**: `~/.claude.json` などを直接編集せず、このリポジトリ内の Nix 設定を変更する。プログラム名でファイル名検索すると見つかる。
