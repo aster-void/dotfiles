@@ -19,7 +19,8 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 
 **ファイル配置**: 複数ホスト共有 → `modules/`、特定ホスト専用 → `hosts/{hostname}/`
 
-**モジュール構造** (`modules/{home|nixos}/{module}/`):
+**モジュール構造**
+(`modules/{home|nixos}/{module}/`):
 - `default.nix` - サブモジュールを imports
 - `programs/` - プログラム設定
 - `services/` - 外向きサービス
@@ -32,11 +33,16 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 形式: `{scope}: {説明}`
 scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewide` / `meta`
 
-## コマンド
+## スクリプト
 
 ```sh
-./scripts/nixos-build.sh [hostname?]  # ビルド確認
-nix-search <query>                    # パッケージ検索
+./scripts/nixos-build.sh [hostname?]  # ビルド確認 (反映はしない)
+```
+
+## ツール
+
+```sh
+nix-search <query> # パッケージ検索
 ```
 
 ## Tips
