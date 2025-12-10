@@ -152,4 +152,4 @@ nix-search --query-string='package_description:(MIT Scheme)'
 
 ## Tips
 
-- You don't need to specify CWD manually. it's always here, in the root repo. use `.` rather than `/home/:user/path.../home-server-config`
+- **NixOS システムを直接変更しない**: `~/.claude.json` などの設定ファイルを直接編集せず、必ず Nix の設定ファイル（このリポジトリ内）を変更する。ユーザーが「グローバル」と言った場合も、このリポジトリ内の該当ファイルを編集する

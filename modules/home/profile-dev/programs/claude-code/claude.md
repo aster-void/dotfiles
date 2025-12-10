@@ -85,3 +85,6 @@ BashOutput を連続で3回以上呼び出さない。長時間実行中のコ�
 `pkgs.hello` > `if pkgs ? hello then pkgs.hello else null`
 </preference>
 </preferences>
+<tips>
+- CWD を手動で指定しない。常にリポジトリルートにいるので、フルパスではなく `.` を使う
+</tips>

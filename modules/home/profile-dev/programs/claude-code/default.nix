@@ -11,10 +11,6 @@
   mcpConfig = inputs.mcp-servers-nix.lib.mkConfig pkgs {
     programs = {
       context7.enable = true;
-      serena = {
-        enable = true;
-        enableWebDashboard = false;
-      };
       nixos.enable = true;
     };
     settings.servers = {
