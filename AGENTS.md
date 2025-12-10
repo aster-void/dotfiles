@@ -20,8 +20,7 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 ```
 .
 ├── flake.nix / flake.lock          # Flake エントリーポイント
-├── config/                         # 静的設定ファイル（dotfiles）
-│   └── desktop/                    # デスクトップアプリの設定ファイル
+├── config/                         # 静的設定ファイル（JSON等）
 ├── hosts/
 │   ├── carbon/                     # ホームサーバー
 │   │   ├── configuration.nix
@@ -35,9 +34,20 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 │   ├── nixos/                      # NixOS システムモジュール
 │   │   ├── base/                   # 全ホスト共通のベース設定
 │   │   ├── desktop/                # デスクトップ環境（Hyprland, 音声, GPU等）
+│   │   │   ├── extensions/         # オプショナルな機能
+│   │   │   ├── hardware/           # ハードウェア固有設定
+│   │   │   ├── services/           # デスクトップサービス
+│   │   │   └── system/             # システム設定
 │   │   └── profile-dev/            # 開発者プロファイル
 │   └── home/                       # home-manager モジュール
-│       ├── desktop/                # デスクトップユーザー環境（シェル, GUI, hyprland等）
+│       ├── desktop/                # デスクトップユーザー環境
+│       │   ├── extensions/         # オプショナルな機能
+│       │   ├── hyprland/           # Hyprland 設定
+│       │   ├── programs/           # GUI アプリ設定
+│       │   ├── services/           # ユーザーサービス
+│       │   ├── shells/             # デスクトップシェル（caelestia等）
+│       │   ├── store/              # ストア関連
+│       │   └── system/             # システム連携
 │       └── profile-dev/            # 開発ツール（git, helix, fish等）
 ├── packages/                       # カスタムパッケージ
 ├── overlays/                       # nixpkgs オーバーレイ
@@ -73,16 +83,19 @@ attrset の name が `-` を含んでいても "" は不要。動的な name の
 - 特定ホスト専用 → `hosts/{hostname}/`
 - 2回以上重複 → `modules/` へ抽出
 - ユーザー環境・ツール → `modules/home/`
-- デスクトップアプリの静的設定 → `config/desktop/`
+- 静的設定ファイル（JSON等） → `config/`
 
 **modules/ 構造**:
 - `modules/nixos/` - NixOS システムモジュール
   - `base/` - 全ホスト共通設定（必須）
   - `base/system/` - システム基盤（users, networking, nix 等）
-  - `desktop/` - デスクトップ環境（WM, ハードウェア, サービス等）
+  - `desktop/` - デスクトップ環境（WM, サービス等）
+  - `desktop/hardware/` - GPU, オーディオ等のハードウェア設定
   - `profile-{name}/` - プロファイル別設定
 - `modules/home/` - home-manager モジュール
-  - `desktop/` - デスクトップユーザー環境（hyprland, GUI アプリ等）
+  - `desktop/` - デスクトップユーザー環境
+  - `desktop/hyprland/` - Hyprland WM 設定
+  - `desktop/shells/` - デスクトップシェル（caelestia 等）
   - `profile-{name}/` - プロファイル別設定
   - `profile-{name}/programs/` - プログラム固有設定
 
