@@ -5,11 +5,10 @@
 | Port  | Protocol | Service              | Bind Address | Exposure        | Source File                      |
 |-------|----------|----------------------|--------------|-----------------|----------------------------------|
 | 22    | TCP      | SSH                  | *            | cloudflared     | (system default)                 |
-| 3000  | TCP      | Dokploy              | localhost    | cloudflared     | services/dokploy.nix             |
-| 3005  | TCP      | Habit (via Dokploy)  | localhost    | cloudflared     | services/cloudflared.nix         |
-| 3400  | TCP      | Claude Code Viewer   | localhost    | local only      | services/claude-code-viewer.nix  |
-| 8384  | TCP      | Syncthing GUI        | localhost    | cloudflared     | services/syncthing.nix           |
-| 11434 | TCP      | llama-cpp            | localhost    | local only      | services/llama-cpp.nix           |
+| 7000  | TCP      | Dokploy              | localhost    | cloudflared     | services/dokploy.nix             |
+| 7002  | TCP      | Claude Code Viewer   | localhost    | local only      | services/claude-code-viewer.nix  |
+| 7003  | TCP      | Syncthing GUI        | localhost    | cloudflared     | services/syncthing.nix           |
+| 7004  | TCP      | llama-cpp            | localhost    | local only      | services/llama-cpp.nix           |
 
 ## Minecraft
 
@@ -35,6 +34,5 @@
 | Domain                    | Backend               |
 |---------------------------|-----------------------|
 | carbon.aster-void.dev     | ssh://localhost:22    |
-| dokploy.aster-void.dev    | http://localhost:3000 |
-| habit.aster-void.dev      | http://localhost:3005 |
-| syncthing.aster-void.dev  | http://localhost:8384 |
+| dokploy.aster-void.dev    | http://localhost:7000 |
+| syncthing.aster-void.dev  | http://localhost:7003 |

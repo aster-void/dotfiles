@@ -25,7 +25,7 @@ in {
 
     settings = {
       gui = {
-        address = "localhost:8384";
+        address = "localhost:7003";
         user = "aster";
       };
 

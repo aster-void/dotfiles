@@ -3,6 +3,6 @@
     enable = true;
     user = "aster";
     host = "localhost";
-    port = 3400;
+    port = 7002;
   };
 }

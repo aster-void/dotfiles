@@ -5,6 +5,7 @@
 
   services.dokploy = {
     enable = true;
+    port = "7000:3000";
 
     # Use private IP (default - recommended for security)
     swarm.advertiseAddress = "private";

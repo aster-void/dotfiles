@@ -16,7 +16,7 @@ in {
     enable = true;
     package = llamaVulkan;
     host = "localhost";
-    port = 11434;
+    port = 7004;
     model = "${model}";
     openFirewall = false;
     extraFlags = [

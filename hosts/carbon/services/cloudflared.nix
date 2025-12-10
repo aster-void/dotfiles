@@ -49,10 +49,9 @@ in {
         default = "http_status:404";
         ingress = {
           "carbon.aster-void.dev" = "ssh://localhost:22";
-          "dokploy.aster-void.dev" = "http://localhost:3000";
-          "habit.aster-void.dev" = "http://localhost:3005";
+          "dokploy.aster-void.dev" = "http://localhost:7000";
           "syncthing.aster-void.dev" = {
-            service = "http://localhost:8384";
+            service = "http://localhost:7003";
             originRequest.httpHostHeader = "localhost";
           };
         };
