@@ -123,7 +123,6 @@ in {
     starship
 
     # == Editors ==
-    helix
     vim
 
     # == Git ==

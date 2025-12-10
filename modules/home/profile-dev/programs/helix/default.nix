@@ -1,10 +1,18 @@
-{...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (pkgs.stdenv) system;
+  nix-repository = inputs.nix-repository.packages.${system};
+in {
   imports = [
     ./languages.nix
   ];
 
   programs.helix = {
     enable = true;
+    package = nix-repository.helix-gj1118;
     defaultEditor = false;
     settings = {
       theme = "catppuccin_mocha";
