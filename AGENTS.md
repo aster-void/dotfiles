@@ -135,8 +135,11 @@ attrset の name が `-` を含んでいても "" は不要。動的な name の
 ## コマンド
 
 ```sh
-# Don't pipe it. it will hide the exit code.
-nh os build . --hostname carbon --no-nom --quiet -- --quiet
+# NixOS ビルド (hostname 省略時は現在のホスト)
+./scripts/nixos-build.sh [hostname]
+
+# home-manager ビルド (hostname 省略時は現在のホスト)
+./scripts/home-build.sh [hostname]
 ```
 
 ## Available Tools
@@ -166,3 +169,4 @@ nix-search --query-string='package_description:(MIT Scheme)'
 ## Tips
 
 - **NixOS システムを直接変更しない**: `~/.claude.json` などの設定ファイルを直接編集せず、必ず Nix の設定ファイル（このリポジトリ内）を変更する。ユーザーが「グローバル」と言った場合も、このリポジトリ内の該当ファイルを編集する
+- **AGENTS.md を最新に保つ**: システム構成やコマンドを変更した場合、このファイルも更新する
