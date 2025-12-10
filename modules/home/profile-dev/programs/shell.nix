@@ -11,6 +11,7 @@
 
       g = "git";
       glog = "git log --oneline";
+      gtr = "git gtr";
       gb = "git branch";
       gba = "git branch -a";
       gco = "git checkout";

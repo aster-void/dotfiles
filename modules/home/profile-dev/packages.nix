@@ -256,6 +256,7 @@ in {
 
     # == Repository management ==
     nix-repository.gwq # git worktree manager
+    nix-repository.git-gtr # git worktree runner (auto hooks, editor integration)
     nix-repository.zz # ghq + fzf + zellij wrapper
   ];
 }
