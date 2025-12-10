@@ -135,11 +135,8 @@ attrset の name が `-` を含んでいても "" は不要。動的な name の
 ## コマンド
 
 ```sh
-# NixOS ビルド確認
+# ビルド確認
 ./scripts/nixos-build.sh [hostname?]
-
-# home-manager ビルド確認
-./scripts/home-build.sh [hostname?]
 ```
 
 ## Available Tools

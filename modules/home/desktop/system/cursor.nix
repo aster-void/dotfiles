@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
-  # Use bibata-cursors-translucent from nix-repository
   cursor = {
     name = "Bibata_Spirit";
     package = inputs.nix-repository.packages.${system}.bibata-cursors-translucent;
