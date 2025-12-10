@@ -33,9 +33,14 @@ in {
   };
 
   home.activation.registerClaudeMcpServers = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    # Remove all user-level MCPs first to clean up stale entries
+    for name in $(${claude} mcp list 2>/dev/null | grep -E '^\w' | cut -d: -f1); do
+      $DRY_RUN_CMD ${claude} mcp remove --scope user "$name" 2>/dev/null || true
+    done
+
+    # Add configured MCPs
     for name in $(${jq} -r '.mcpServers | keys[]' ${mcpConfig}); do
       config=$(${jq} -c ".mcpServers[\"$name\"]" ${mcpConfig})
-      $DRY_RUN_CMD ${claude} mcp remove --scope user "$name" 2>/dev/null || true
       $DRY_RUN_CMD ${claude} mcp add-json --scope user "$name" "$config"
     done
   '';
