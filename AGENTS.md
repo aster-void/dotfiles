@@ -107,6 +107,7 @@ attrset の name が `-` を含んでいても "" は不要。動的な name の
 - `services/` - 外向きサービス（サーバーホストのみ）
 - `system/` - ホスト固有のシステム設定
 - `users/` - home-manager設定 (blueprint により自動で読み込まれる)
+- `PORTS.md` - ポートマップ（サーバーホストのみ）
 
 その他のルール:
 - `import` で Nix 式を直接持ってくるより、モジュールを配置し、ユーザー側で `imports` で取得する方を優先する。

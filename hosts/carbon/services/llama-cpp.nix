@@ -15,7 +15,7 @@ in {
   services.llama-cpp = {
     enable = true;
     package = llamaVulkan;
-    host = "127.0.0.1";
+    host = "localhost";
     port = 11434;
     model = "${model}";
     openFirewall = false;
