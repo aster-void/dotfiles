@@ -4,24 +4,23 @@
   inputs,
   ...
 }: let
-  inherit (pkgs.stdenv) system;
   inherit (lib) getExe;
-  nix-repository = inputs.nix-repository.packages.${system};
+  # nix-repository = inputs.nix-repository.packages.${pkgs.stdenv.system};
 
   mcpConfig = inputs.mcp-servers-nix.lib.mkConfig pkgs {
     programs = {
       context7.enable = true;
     };
-    settings.servers = {
-      claude-flow = {
-        command = getExe nix-repository.claude-flow;
-        args = ["mcp" "start"];
-      };
-      ruv-swarm = {
-        command = getExe nix-repository.ruv-swarm;
-        args = ["mcp" "start" "--protocol=stdio"];
-      };
-    };
+    # settings.servers = {
+    #   claude-flow = {
+    #     command = getExe nix-repository.claude-flow;
+    #     args = ["mcp" "start"];
+    #   };
+    #   ruv-swarm = {
+    #     command = getExe nix-repository.ruv-swarm;
+    #     args = ["mcp" "start" "--protocol=stdio"];
+    #   };
+    # };
   };
 
   claude = getExe pkgs.claude-code;
