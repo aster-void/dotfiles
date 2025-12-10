@@ -18,6 +18,7 @@
           ' _
         '';
         b = "branch";
+        cm = "commit -m";
         co = "checkout";
         sw = "switch";
         detach = "switch --detach";
