@@ -13,7 +13,7 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 - **home-manager**: ユーザー環境管理
 - **blueprint**: flake 構造の自動化フレームワーク
 - **agenix**: シークレット管理（age 暗号化）
-- **nix-repository**: カスタム Nix リポジトリ（inputs から利用可能）
+- **nix-repository**: inputs から利用可能。カスタム Nix リポジトリ
 
 ## ディレクトリ構造
 
@@ -135,11 +135,11 @@ attrset の name が `-` を含んでいても "" は不要。動的な name の
 ## コマンド
 
 ```sh
-# NixOS ビルド (hostname 省略時は現在のホスト)
-./scripts/nixos-build.sh [hostname]
+# NixOS ビルド確認
+./scripts/nixos-build.sh [hostname?]
 
-# home-manager ビルド (hostname 省略時は現在のホスト)
-./scripts/home-build.sh [hostname]
+# home-manager ビルド確認
+./scripts/home-build.sh [hostname?]
 ```
 
 ## Available Tools
