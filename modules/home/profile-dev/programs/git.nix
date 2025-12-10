@@ -38,6 +38,7 @@
     };
     ignores = [
       ".claude/settings.local.json"
+      ".serena"
     ];
   };
 }
