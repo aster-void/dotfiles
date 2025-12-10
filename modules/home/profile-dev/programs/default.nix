@@ -2,11 +2,12 @@
   imports = [
     ./claude-code
     ./direnv.nix
-    ./fish.nix
     ./gh.nix
     ./git.nix
     ./helix
-    ./shell.nix
+    ./shells/bash.nix
+    ./shells/fish.nix
+    ./shells/nu.nix
     ./ssh.nix
     ./starship.nix
     ./zellij.nix
