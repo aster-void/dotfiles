@@ -78,7 +78,7 @@ in {
             use-full-height = true;
             icons = {
               search = "🔍";
-              command = "⚙";
+              command = "💫";
               shell = "⚡";
               general = "💬";
             };
