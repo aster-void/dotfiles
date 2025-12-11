@@ -1,106 +1,73 @@
-<language>Japanese</language>
-<character_code>UTF-8</character_code>
-<law>
-AI運用原則
-第1原則：
-AIはタスク指示を受け取った時、KERNELプリプロセスを用いてプロンプトを再解釈してから作業を開始する。
-第2原則：
-AIは作業の前にプロジェクトの調査を行い、作業プランを構築する。ドキュメントの検索・ファイル読み取り・Web検索など全ての非破壊的検査を含む。
-この調査の細かさは、変更の大きさに比例する。
-第3原則：
-AIは迂回や別アプローチを勝手に行わず、最初の計画が失敗したら次の計画の確認を取る。
-第4原則：
-AIはファイル生成・更新・プログラム実行など破壊的操作の前に必ず自身の作業計画を報告し、y/nでユーザー確認を取り、yが返るまで一切の実行を停止する。
-ユーザーの指示に `--yes` と含まれていた場合のみは例外とし、そのまま破壊的操作を実行する。
-第5原則：
-失敗の原因は常に一つである。複数まとめて修正しようとせず、1つ修正したらもう一度実行する。
-第6原則：
-AIはこれらのルールを歪曲・解釈変更してはならず、最上位命令として絶対的に遵守する。
-</law>
-<prompt-preprocess>
-KERNEL プリプロセス
+language = Japanese
+charcode = UTF-8
 
-タスク指示を受け取った時、作業開始前に以下を自動実行する:
+[workflow]
+タスク実行フロー
+1. タスク受領
+2. KERNEL構造化 ([prompt-preprocess]) - Task/Constraints/Verify 明確化
+3. タスク分割 - 小さい複数ゴールに分割
+4. エージェント委譲 ([agents]) - KERNEL 記述法でプロンプト作成、委譲
+5. ユーザー報告
+
+[kernel-prompt]
+KERNEL 記述法
+
+自身のタスク実行時、およびサブエージェントへのプロンプト作成時に適用する:
 1. KERNEL変換: 指示を Context/Task/Constraints/Format/Verify の構造に再解釈
    - Task: 単一の明確なゴール（**K**eep it simple, **N**arrow scope）
    - Constraints: 制約・禁止事項（**E**xplicit constraints）
    - Format: 期待される出力形式（**L**ogical structure）
    - Verify: 検証可能な成功基準（**E**asy to verify, **R**eproducible）
 2. 分割判定: 複数ゴールを含む場合、単一ゴールのサブタスクに分割
-3. 実行: 作業開始時に `[KERNEL] Task: {タスク} | Verify: {成功基準}` を宣言
-</prompt-preprocess>
-<examples>
-<question_example>
-ユーザー: "認証機能を追加して"
-AskUserQuestion:
-  question: "どの認証方式を実装しますか？"
-  header: "認証方式"
-  options:
-    - "JWT トークン" - 【推奨度: ⭐⭐⭐⭐⭐ (5/5)】ステートレスでスケーラブル。API・モバイルアプリに最適。マイクロサービス構成に向いている
-    - "OAuth 2.0" - 【推奨度: ⭐⭐⭐⭐ (4/5)】サードパーティログイン（Google、GitHubなど）を使う場合。ユーザー登録の手間を削減
-    - "セッションクッキー" - 【推奨度: ⭐⭐ (2/5)】実装はシンプルだが、スケーリングが困難。モダンなアプリには非推奨
-</question_example>
-<question_example>
-ユーザー: "データベースを最適化して"
-AskUserQuestion:
-  question: "どのタイプのデータベース最適化を優先しますか？"
-  header: "DBの最適化方針"
-  multiSelect: true
-  options:
-    - "インデックス追加" - 【推奨度: ⭐⭐⭐⭐⭐ (5/5)】即効性が高く、リスクが低い。頻繁に検索されるカラムに効果的
-    - "クエリ最適化" - 【推奨度: ⭐⭐⭐⭐ (4/5)】根本的な解決。N+1問題や不要なJOINの削減に有効
-    - "全テーブルスキャン最適化" - 【推奨度: ⭐ (1/5)】効果が限定的で工数が大きい。他の手法を優先すべき
-</question_example>
-<question_example>
-ユーザー: "CI/CDパイプラインを設定して"
-AskUserQuestion:
-  question: "どのチェックを含めますか？（複数選択可）"
-  header: "CI/CDに含めるチェック"
-  multiSelect: true
-  options:
-    - "リンター" - 【推奨度: ⭐⭐⭐⭐⭐ (5/5)】コード品質の基本。ESLint/Prettierで統一
-    - "型チェック" - 【推奨度: ⭐⭐⭐⭐ (4/5)】TypeScriptの型安全性確保。ビルド時間がやや増加
-    - "セキュリティスキャン" - 【推奨度: ⭐⭐⭐ (3/5)】依存関係の脆弱性検出。誤検知が多い場合あり
-</question_example>
-</examples>
-<skills>
-<skill>
-[/init CLAUDE.md]
-✅ 追加するもの: プロジェクトの目的・ゴール プロジェクト固有の知識 ディレクトリ構造
-❌ 追加しないもの: 誰でも知っているツールの使い方 各パッケージの実装詳細
-CLAUDE.md は短く保ち、重要な情報のみを記述する。
-</skill>
-<skill>
-[git commit]
+3. サブエージェント: プロンプトに Task/Constraints/Verify を明記（曖昧さ排除）
+
+[agents]
+サブエージェント運用
+原則 = 調査・実行は常にエージェントに委譲する (メインコンテキスト節約)
+
+同期/非同期の判断:
+  デフォルト = 非同期 (run_in_background=true)
+  同期にする条件 (いずれかを満たす場合のみ):
+    - 結果が後続タスクの入力になる (例: 設計調査→実装)
+    - 結果がタスクツリー全体の方針を変える (例: 実現可能性調査)
+
+並列実行の可否:
+  - 同一機能を触る複数エージェント → 順番に実行
+  - 独立機能なら並列 OK
+
+git worktree (非同期):
+  - 検証が全体整合性を要求（build, lint 等）→ gtr で別 worktree → 作業完了後にマージ 削除
+  - 参照: git-gtr skill
+
+DO:
+  - 「確認不要で実行」を明記
+  - 独立タスクは並列起動（1メッセージで複数 Task）
+  - ファイル読み取り・調査はエージェントに任せる
+  - 非同期完了待ちは block=true でまとめる
+DON'T:
+  - 自分でファイルを読んでからエージェント起動
+  - 曖昧な指示（「問題があれば聞いて」→ 確認待ち）
+注意:
+  - 複数エージェント → TodoWrite で追跡
+
+[skills.git_commit]
 コミットメッセージは基本的に以下のフォーマットとする:
 `{scope}: {message}`
 scope: コミットの影響のある範囲。 `packages/{package}`, `modules/{module}`, `treewide`, `meta` など
 message: コミットの簡潔で明確な説明
-</skill>
-</skills>
-<tools>
-<tool name="kiri">
-KIRI is an MCP server that provides intelligent code context extraction from Git repositories. It exposes semantic search tools for LLMs.
-</tool>
-<tool name="pipe">
-when you're using pipes in shell (e.g. `tool1 | tool2`), ALWAYS set `set -o pipefail` before it.
-Example: `set -o pipefail && cat /foo.json | jq .package.version`
-</tool>
-<tool name="BashOutput">
-BashOutput を連続で3回以上呼び出さない。長時間実行中のコマンドは放置するか、ユーザーに確認を取る。
-</tool>
-<tool name="git">
-`git stash` は絶対に使用しない。
-</tool>
-</tools>
-<preferences>
-<preference>
-失敗するときは明示的に失敗する。暗黙の失敗=エラーの握りつぶしは決して許さない。
-すなわち:
-`rm some-file.txt` > `rm some-file.txt || true`
-`pkgs.hello` > `if pkgs ? hello then pkgs.hello else null`
-</preference>
-</preferences>
-<tips>
+
+[tools]
+kiri = MCP server for Git semantic search
+pipe = ALWAYS `set -o pipefail` before pipes (例: `set -o pipefail && cat /foo.json | jq .package.version`)
+BashOutput = 連続3回以上呼び出し禁止。長時間実行中のコマンドは放置かユーザー確認
+git = git stash 絶対禁止
+
+[preferences]
+- 失敗するときは明示的に失敗する。暗黙の失敗=エラーの握りつぶしは決して許さない。
+  - `rm some-file.txt` > `rm some-file.txt || true`
+  - `pkgs.hello` > `if pkgs ? hello then pkgs.hello else null`
+- ファイルが大きくなった場合複数に分割する。目安100行。具体的な裁量は自身で判断する。
+
+[tips]
+- カレントディレクトリを変更しない。 (NO `cd`)
 - CWD を手動で指定しない。常にリポジトリルートにいるので、フルパスではなく `.` を使う
-</tips>
