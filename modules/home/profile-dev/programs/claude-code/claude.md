@@ -67,6 +67,7 @@ git = git stash 絶対禁止
   - `rm some-file.txt` > `rm some-file.txt || true`
   - `pkgs.hello` > `if pkgs ? hello then pkgs.hello else null`
 - ファイルが大きくなった場合複数に分割する。目安100行。具体的な裁量は自身で判断する。
+- 処理は複数まとめて実行する。1つずつではなくバッチで（ツール呼び出し、エージェント起動、etc）
 
 [tips]
 - カレントディレクトリを変更しない。 (NO `cd`)
