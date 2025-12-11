@@ -35,8 +35,6 @@
       flake = false;
     };
 
-    nix-dokploy.url = "github:el-kurto/nix-dokploy";
-
     nix-repository.url = "github:aster-void/nix-repository";
     nix-repository.inputs = {
       nixpkgs.follows = "nixpkgs";

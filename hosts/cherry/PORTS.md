@@ -1,11 +1,10 @@
-# Carbon Port Map
+# Cherry Port Map
 
 ## Services
 
 | Port  | Protocol | Service              | Bind Address | Exposure        | Source File                      |
 |-------|----------|----------------------|--------------|-----------------|----------------------------------|
 | 22    | TCP      | SSH                  | *            | cloudflared     | (system default)                 |
-| 7000  | TCP      | Dokploy              | localhost    | cloudflared     | services/dokploy.nix             |
 | 7002  | TCP      | Claude Code Viewer   | localhost    | local only      | services/claude-code-viewer.nix  |
 | 7003  | TCP      | Syncthing GUI        | localhost    | cloudflared     | services/syncthing.nix           |
 | 7004  | TCP      | llama-cpp            | localhost    | local only      | services/llama-cpp.nix           |
@@ -33,6 +32,5 @@
 
 | Domain                    | Backend               |
 |---------------------------|-----------------------|
-| carbon.aster-void.dev     | ssh://localhost:22    |
-| dokploy.aster-void.dev    | http://localhost:7000 |
+| cherry.aster-void.dev     | ssh://localhost:22    |
 | syncthing.aster-void.dev  | http://localhost:7003 |

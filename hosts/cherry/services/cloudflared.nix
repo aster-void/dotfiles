@@ -29,8 +29,7 @@ in {
   };
 
   # Override DynamicUser to use static cloudflared user for agenix secrets
-  # Note: tunnel name "carbon" is kept for Cloudflare compatibility
-  systemd.services."cloudflared-tunnel-carbon" = {
+  systemd.services."cloudflared-tunnel-cherry" = {
     serviceConfig = {
       DynamicUser = lib.mkForce false;
       User = "cloudflared";
@@ -44,15 +43,12 @@ in {
     # See [Cert.pem](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-useful-terms/#certpem) for information about the file, and [Tunnel permissions](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/local-management/tunnel-permissions/) for a comparison between the account certificate and the tunnel credentials file.
     certificateFile = secrets.cloudflared-cert-pem.path;
 
-    # Note: tunnel name "carbon" and domain names are kept for Cloudflare compatibility
     tunnels = {
-      carbon = {
+      cherry = {
         credentialsFile = secrets.cloudflared-cherry.path;
         default = "http_status:404";
         ingress = {
-          "carbon.aster-void.dev" = "ssh://localhost:22";
           "cherry.aster-void.dev" = "ssh://localhost:22";
-          "dokploy.aster-void.dev" = "http://localhost:7000";
           "syncthing.aster-void.dev" = {
             service = "http://localhost:7003";
             originRequest.httpHostHeader = "localhost";
