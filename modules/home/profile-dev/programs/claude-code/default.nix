@@ -30,6 +30,7 @@ in {
     enable = true;
     package = pkgs.edge.claude-code;
     memory.source = ./claude.md;
+    skillsDir = ./skills;
   };
 
   home.activation.registerClaudeMcpServers = lib.hm.dag.entryAfter ["writeBoundary"] ''
