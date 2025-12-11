@@ -33,14 +33,17 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 **flake.lib.collectFiles**
 ディレクトリ内のファイルを自動収集する関数。
 - `default.nix` があるディレクトリ → `default.nix` のみ返す（再帰しない）
-- `default.nix` がないディレクトリ → 全 `.nix` ファイルを再帰的に収集
+- `default.nix` がないディレクトリ → 全ファイルを再帰的に収集
 
 使用例:
 ```nix
 imports = flake.lib.collectFiles ./programs ++ flake.lib.collectFiles ./services;
 ```
 
-注意: 選択式のモジュール（display-managers, window-managers など）は `default.nix` で明示的に管理する
+**default.nix が必要なケース:**
+1. **選択式モジュール** - display-managers, window-managers など、複数の選択肢から1つを選ぶ場合
+2. **メイン設定ファイル** - helix/default.nix, hyprland/default.nix など、プログラムのメイン設定 + サブファイル import
+3. **データファイル除外** - shells/default.nix は common-aliases.nix（モジュールではなくデータ）を除外するために存在
 
 ## コミット
 
