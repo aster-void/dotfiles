@@ -27,7 +27,9 @@ KERNEL 記述法
 
 <agents>
 サブエージェント運用
-原則 = 調査・実行は常にエージェントに委譲する (メインコンテキスト節約)
+原則:
+- 調査・実行は全てサブエージェントに委譲する (メインコンテキスト節約)
+- サブエージェントのプロンプトには常に `[subagent]` と含める
 
 <sync-async>
 デフォルト = 非同期 (run_in_background=true)
@@ -80,6 +82,7 @@ git = git stash 絶対禁止
 </tools>
 
 <preferences>
+- 全ての実装は簡潔に。冗長なコード・ドキュメント・コメントは書かない。機能/非機能要件は最小限にとどめる。
 - 失敗するときは明示的に失敗する。暗黙の失敗=エラーの握りつぶしは決して許さない。
   - `rm some-file.txt` > `rm some-file.txt || true`
   - `pkgs.hello` > `if pkgs ? hello then pkgs.hello else null`
