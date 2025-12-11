@@ -24,11 +24,13 @@ description: Debug TypeScript type errors. Use when: (1) Encountering type error
 
 ## When Stuck - NEVER Give Up
 
+**IMPORTANT: Every time you encounter a type error, repeat this checklist in your response before attempting a fix.**
+
 When you're stuck and considering `any` or `as`, STOP:
 
-1. Read error message more carefully
-2. Read the library's documentation
-3. Search GitHub issues (library repo)
+1. **Read the library's documentation** - Most type issues come from misunderstanding the library API
+2. **Search GitHub issues** (library repo) - Someone likely faced the same problem
+3. Read error message more carefully
 4. Use valibot to validate (if the type is unknown at runtime)
 5. Ask the user
 
