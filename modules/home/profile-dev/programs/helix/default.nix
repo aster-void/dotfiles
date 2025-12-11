@@ -35,7 +35,13 @@ in {
             enable = true;
           };
           true-color = true;
-          rulers = [80 100];
+          auto-reload = {
+            focus-gained = true;
+            periodic = {
+              enable = true;
+              interval = 5000;
+            };
+          };
           indent-guides = {
             render = true;
             character = "▏";
