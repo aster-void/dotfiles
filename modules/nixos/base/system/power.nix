@@ -43,9 +43,10 @@ in {
   services.tlp = {
     enable = true;
     settings = {
-      # CPU governor: schedutil adjusts dynamically based on load
-      CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
-      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+      # CPU governor: powersave with intel_pstate still allows dynamic scaling
+      # (schedutil is not available with intel_pstate in active mode)
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
       # Energy performance preference
       CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
