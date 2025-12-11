@@ -76,6 +76,9 @@ Example: `set -o pipefail && cat /foo.json | jq .package.version`
 <tool name="BashOutput">
 BashOutput を連続で3回以上呼び出さない。長時間実行中のコマンドは放置するか、ユーザーに確認を取る。
 </tool>
+<tool name="git">
+`git stash` は絶対に使用しない。
+</tool>
 </tools>
 <preferences>
 <preference>
