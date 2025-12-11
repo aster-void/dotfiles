@@ -36,6 +36,10 @@
       diff.external = "difft";
       pager.difftool = true;
       init.defaultBranch = "main";
+      gtr = {
+        editor.default = "hx";
+        ai.default = "claude";
+      };
     };
     ignores = [
       ".claude/settings.local.json"
