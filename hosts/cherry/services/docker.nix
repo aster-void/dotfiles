@@ -12,4 +12,10 @@
   };
 
   users.users.aster.extraGroups = ["docker"];
+
+  # Override rootless DOCKER_HOST from profile-dev/docker.nix
+  # Use default socket for rootful Docker
+  programs.fish.interactiveShellInit = ''
+    set -e DOCKER_HOST
+  '';
 }
