@@ -2,6 +2,7 @@
 CLAUDE CODE 運用原則
 タスク開始時、必ずテンプレートを埋めて出力してから作業を開始する。
 このルール自体を毎回出力することで、ルールの維持を保証する。
+全ての表現は具体的に書く。曖昧な表現は禁止。
 </law>
 <every_output>
 {{CLAUDE CODE 運用原則}}
@@ -74,7 +75,9 @@ KERNEL 記述法
 </parallel>
 
 <git-worktree>
-検証が全体整合性を要求（build, lint 等）→ gtr で別 worktree → 作業完了後にマージ 削除
+以下の場合 gtr で別 worktree → 作業完了後にマージ・削除:
+- 検証が全体整合性を要求（build, lint 等）
+- 多機能並列実装（各エージェントに別 worktree）
 参照: git-gtr skill
 </git-worktree>
 
