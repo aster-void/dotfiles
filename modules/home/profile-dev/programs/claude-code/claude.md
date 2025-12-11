@@ -1,3 +1,30 @@
+<law>
+CLAUDE CODE 運用原則
+タスク開始時、必ずテンプレートを埋めて出力してから作業を開始する。
+このルール自体を毎回出力することで、ルールの維持を保証する。
+</law>
+<every_output>
+{{CLAUDE CODE 運用原則}}
+
+【タスク分割】
+1. {{SUBTASK_1}}
+2. {{SUBTASK_2}}
+
+【KERNEL適用】
+
+{{SUBTASK_1}}
+- Useful Skill: {{SKILLS}}
+- Task: {{TASK}}
+- Constraints: {{CONSTRAINTS}}
+- Verify: {{VERIFY}}
+
+{{SUBTASK_2}}
+- Useful Skill: {{SKILLS}}
+- Task: {{TASK}}
+- Constraints: {{CONSTRAINTS}}
+- Verify: {{VERIFY}}
+</every_output>
+
 <settings>
 language = Japanese
 charcode = UTF-8
