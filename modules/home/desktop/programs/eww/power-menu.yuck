@@ -27,7 +27,7 @@
                 (label :class "icon" :text "󰜉")
                 (label :text "再起動")))
       (button :class "power-button screen-off"
-              :onclick "eww close power-menu && sleep 1 && hyprctl dispatch dpms off"
+              :onclick "eww close power-menu; hyprlock & hyprctl dispatch dpms off"
               (box :spacing 10 :space-evenly false
                 (label :class "icon" :text "󰛧")
                 (label :text "画面オフ")))
