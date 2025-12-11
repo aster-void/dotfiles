@@ -30,6 +30,18 @@ NixOS ベースの統合システム構成（サーバー + デスクトップ�
 - `packages.nix` - パッケージインストールのみ
 - `xdg.nix` `env.nix` ... - 名前の通り: システムにもサービスにもプログラムにも属さない
 
+**flake.lib.collectFiles**
+ディレクトリ内のファイルを自動収集する関数。
+- `default.nix` があるディレクトリ → `default.nix` のみ返す（再帰しない）
+- `default.nix` がないディレクトリ → 全 `.nix` ファイルを再帰的に収集
+
+使用例:
+```nix
+imports = flake.lib.collectFiles ./programs ++ flake.lib.collectFiles ./services;
+```
+
+注意: 選択式のモジュール（display-managers, window-managers など）は `default.nix` で明示的に管理する
+
 ## コミット
 
 形式: `{scope}: {説明}`
