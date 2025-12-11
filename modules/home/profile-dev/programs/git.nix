@@ -44,6 +44,8 @@
     ignores = [
       ".claude/settings.local.json"
       ".serena"
+      ".osgrep"
+      ".kiri"
     ];
   };
 }
