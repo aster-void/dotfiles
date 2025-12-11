@@ -58,7 +58,7 @@ in {
       label = [
         # Date
         {
-          monitor = "0";
+          monitor = "";
           text = ''cmd[update:1000] echo "<span fgalpha='75%'>$(date +"%D")</span>"'';
           color = fontColor;
           font_size = 60;
@@ -73,7 +73,7 @@ in {
         }
         # Time
         {
-          monitor = "0";
+          monitor = "";
           text = "$TIME12";
           color = fontColor;
           font_size = 110;
@@ -88,7 +88,7 @@ in {
         }
         # CPU info
         {
-          monitor = "0";
+          monitor = "";
           text = ''cmd[update:5000] echo "$(echo "$(cat /sys/class/thermal/thermal_zone2/temp)/1000" | bc)°C :CPU Temp<br/>$(top -bn1 | grep "Cpu(s)" | \sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | \awk '{print 100 - $1"%"}') :CPU Load"'';
           color = fontColor;
           font_size = smallFontSize;
