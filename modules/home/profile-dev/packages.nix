@@ -231,7 +231,7 @@ in {
     devbox
 
     # == AI assistants ==
-    claude-code
+    # claude-code is installed via programs/claude-code using edgepkgs
     codex
     crush # coding agent
     nix-repository.claude-flow # orchestrator

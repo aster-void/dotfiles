@@ -23,11 +23,12 @@
     # };
   };
 
-  claude = getExe pkgs.claude-code;
+  claude = getExe pkgs.edge.claude-code;
   jq = getExe pkgs.jq;
 in {
   programs.claude-code = {
     enable = true;
+    package = pkgs.edge.claude-code;
     memory.source = ./claude.md;
   };
 

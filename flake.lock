@@ -234,6 +234,26 @@
         "type": "github"
       }
     },
+    "edgepkgs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765339312,
+        "narHash": "sha256-95sDevi4g/WZ/UNFl3tsSe9DkvcgLHbYfhfhqSK0hJY=",
+        "owner": "natsukium",
+        "repo": "edgepkgs",
+        "rev": "ba0ecd2917019700986da8f4c32c32942b91d699",
+        "type": "github"
+      },
+      "original": {
+        "owner": "natsukium",
+        "repo": "edgepkgs",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -836,6 +856,7 @@
         "caelestia-shell": "caelestia-shell_2",
         "claude-desktop": "claude-desktop",
         "comin": "comin",
+        "edgepkgs": "edgepkgs",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
         "mc-astronaut-mods": "mc-astronaut-mods",

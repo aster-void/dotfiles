@@ -67,6 +67,9 @@
     mcp-servers-nix.url = "github:natsukium/mcp-servers-nix";
     mcp-servers-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    edgepkgs.url = "github:natsukium/edgepkgs";
+    edgepkgs.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-hazkey.url = "github:aster-void/nix-hazkey";
     nix-hazkey.inputs.nixpkgs.follows = "nixpkgs";
 
