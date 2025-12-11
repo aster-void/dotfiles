@@ -1,25 +1,30 @@
+# Carbon-specific power settings (laptop with battery)
 {...}: {
-  # Disable conflicting power management service
-  services.power-profiles-daemon.enable = false;
+  # Battery charge thresholds (ThinkPad specific)
+  services.tlp.settings = {
+    START_CHARGE_THRESH_BAT0 = 40;
+    STOP_CHARGE_THRESH_BAT0 = 60;
+    START_CHARGE_THRESH_BAT1 = 40;
+    STOP_CHARGE_THRESH_BAT1 = 60;
 
-  # Battery charge limiting to prevent overcharging
-  services.tlp = {
-    enable = true;
-    settings = {
-      # Battery charge thresholds (percentage)
-      START_CHARGE_THRESH_BAT0 = 40; # Start charging at here
-      STOP_CHARGE_THRESH_BAT0 = 60; # Stop charging at here
+    # CPU performance limits on battery
+    CPU_MIN_PERF_ON_AC = 0;
+    CPU_MAX_PERF_ON_AC = 100;
+    CPU_MIN_PERF_ON_BAT = 0;
+    CPU_MAX_PERF_ON_BAT = 50;
 
-      # Alternative for multiple batteries
-      START_CHARGE_THRESH_BAT1 = 40;
-      STOP_CHARGE_THRESH_BAT1 = 60;
+    # USB device exclusions (peripherals that shouldn't autosuspend)
+    USB_BLACKLIST = "1e7d:2dcd 046d:c548"; # ROCCAT mouse & Logitech Bolt Receiver
 
-      # Power saving settings
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-    };
+    # Intel GPU frequency limits on battery
+    INTEL_GPU_MIN_FREQ_ON_BAT = 300;
+    INTEL_GPU_MAX_FREQ_ON_BAT = 600;
+    INTEL_GPU_BOOST_FREQ_ON_BAT = 600;
+
+    # Screen brightness on battery
+    BRIGHTNESS_ON_BAT = 30;
   };
 
-  # Ensure power management is enabled
-  powerManagement.enable = true;
+  # upower for battery status monitoring
+  services.upower.enable = true;
 }
