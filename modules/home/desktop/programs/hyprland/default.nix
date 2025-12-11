@@ -31,6 +31,8 @@ in {
           disable_hyprland_logo = true;
           force_default_wallpaper = 2;
           focus_on_activate = true;
+          mouse_move_enables_dpms = true;
+          key_press_enables_dpms = true;
         };
 
         input = {
