@@ -10,6 +10,7 @@
     lefthook
     alejandra
     bun
+    python3
   ];
 
   enterShell = ''

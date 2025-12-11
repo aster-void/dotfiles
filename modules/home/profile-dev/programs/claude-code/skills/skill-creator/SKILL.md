@@ -259,6 +259,8 @@ At this point, it is time to actually create the skill.
 
 Skip this step only if the skill being developed already exists, and iteration or packaging is needed. In this case, continue to the next step.
 
+**Note for this repository:** Skills should be created in `modules/home/profile-dev/programs/claude-code/skills/`. When using `init_skill.py`, specify this path with the `--path` option.
+
 When creating a new skill from scratch, always run the `init_skill.py` script. The script conveniently generates a new template skill directory that automatically includes everything a skill requires, making the skill creation process much more efficient and reliable.
 
 Usage:
