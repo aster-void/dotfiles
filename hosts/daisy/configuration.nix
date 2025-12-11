@@ -1,4 +1,6 @@
 {flake, ...}: {
+  networking.hostName = "daisy";
+
   imports = [
     flake.nixosModules.base
     flake.nixosModules.profile-dev
