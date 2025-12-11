@@ -8,4 +8,5 @@ in {
   "secrets/wifi/carbon-wifi.age".publicKeys = publicKeys;
   "secrets/context7-api-key.age".publicKeys = publicKeys;
   "secrets/nix.conf.age".publicKeys = publicKeys;
+  "secrets/tailscale-authkey.age".publicKeys = publicKeys;
 }
