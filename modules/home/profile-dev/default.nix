@@ -1,8 +1,14 @@
 {
   lib,
   flake,
+  inputs,
   ...
 }: {
+  nixpkgs.overlays = [
+    (_final: _prev: {inherit inputs;})
+    inputs.edgepkgs.overlays.default
+  ];
+
   imports =
     [
       ./packages.nix

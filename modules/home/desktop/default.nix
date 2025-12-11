@@ -3,6 +3,15 @@
   flake,
   ...
 }: {
+  nixpkgs.overlays = [
+    (_final: _prev: {inherit inputs;})
+    (final: prev: {
+      hyprshot = prev.callPackage ../../../overlays/hyprshot-fix/package.nix {
+        hyprshot = prev.hyprshot;
+      };
+    })
+  ];
+
   imports =
     [
       inputs.nix-flatpak.homeManagerModules.nix-flatpak

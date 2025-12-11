@@ -1,6 +1,6 @@
 {...}: {
-  # nixpkgs.config is set at NixOS level (modules/nixos/base/system/base.nix)
-  # to avoid conflict with home-manager.useGlobalPkgs
+  # useGlobalPkgs = false; nixpkgs.overlays is set per HM module
+  nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
