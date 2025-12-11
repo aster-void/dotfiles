@@ -5,9 +5,10 @@
   flake,
   ...
 }: {
-  imports = [
-    ./services
-  ];
+  imports =
+    flake.lib.collectFiles ./services
+    ++ flake.lib.collectFiles ./programs;
+
   config = let
     cfg = config.my.desktop.shells.glue;
     inherit (pkgs.stdenv.hostPlatform) system;

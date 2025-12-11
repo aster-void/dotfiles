@@ -1,8 +1,13 @@
-{lib, ...}: {
-  imports = [
-    ./packages.nix
-    ./programs
-  ];
+{
+  lib,
+  flake,
+  ...
+}: {
+  imports =
+    [
+      ./packages.nix
+    ]
+    ++ flake.lib.collectFiles ./programs;
 
   home = {
     stateVersion = lib.mkDefault "26.05";

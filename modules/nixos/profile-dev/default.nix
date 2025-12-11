@@ -1,8 +1,8 @@
 {inputs, ...}: {
   imports = [
-    ./users.nix
-    ./env.nix
     ./docker.nix
+    ./env.nix
+    ./users.nix
   ];
 
   nixpkgs.overlays = [inputs.edgepkgs.overlays.default];
