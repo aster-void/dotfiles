@@ -77,8 +77,8 @@
     claude-desktop.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs:
-    inputs.blueprint {
+  outputs = inputs: let
+    blueprintOutputs = inputs.blueprint {
       inherit inputs;
       systems = [
         "x86_64-linux"
@@ -98,6 +98,27 @@
           };
         })
       ];
+    };
+
+    # Hostname migration aliases for backward compatibility with comin.
+    # When old hostnames are used, they resolve to the new hostname configurations.
+    # This allows comin to automatically switch machines to new hostnames.
+    hostnameAliases = {
+      amberwood = "azalea";
+      bogster = "bluebell";
+      carbon = "cherry";
+      dusk = "daisy";
+    };
+
+    # Create nixosConfigurations aliases for old hostnames
+    nixosConfigAliases =
+      builtins.mapAttrs
+      (_old: new: blueprintOutputs.nixosConfigurations.${new})
+      hostnameAliases;
+  in
+    blueprintOutputs
+    // {
+      nixosConfigurations = blueprintOutputs.nixosConfigurations // nixosConfigAliases;
     };
 
   nixConfig = {

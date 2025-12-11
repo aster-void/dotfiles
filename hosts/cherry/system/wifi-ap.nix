@@ -1,8 +1,8 @@
 {config, ...}: let
-  wifiSecret = config.age.secrets."carbon-wifi-pass";
+  wifiSecret = config.age.secrets."cherry-wifi-pass";
 in {
-  age.secrets."carbon-wifi-pass" = {
-    file = ../../../secrets/wifi/carbon-wifi.age;
+  age.secrets."cherry-wifi-pass" = {
+    file = ../../../secrets/wifi/cherry-wifi.age;
     owner = "root";
     group = "root";
     mode = "0400";
@@ -27,7 +27,7 @@ in {
       channel = 36;
       countryCode = "JP";
       networks.wlp2s0 = {
-        ssid = "carbon-wifi";
+        ssid = "cherry-wifi";
         authentication = {
           mode = "wpa3-sae-transition";
           # WPA3 password (for WPA3-capable devices)

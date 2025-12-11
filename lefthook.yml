@@ -8,7 +8,7 @@ pre-commit:
 pre-push:
   commands:
     dry-build:
-      run: nh os build . --hostname dusk --no-nom --quiet -- --quiet
+      run: nh os build . --hostname daisy --no-nom --quiet -- --quiet
 
 post-push:
   commands:
