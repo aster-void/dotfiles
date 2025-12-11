@@ -55,9 +55,9 @@ in {
       USB_AUTOSUSPEND = 1;
 
       # Battery charge thresholds
-      START_CHARGE_THRESH_BAT0 = 40;
+      START_CHARGE_THRESH_BAT0 = 60;
       STOP_CHARGE_THRESH_BAT0 = 80;
-      START_CHARGE_THRESH_BAT1 = 40;
+      START_CHARGE_THRESH_BAT1 = 60;
       STOP_CHARGE_THRESH_BAT1 = 80;
 
       # CPU performance limits on battery
