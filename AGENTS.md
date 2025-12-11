@@ -65,4 +65,5 @@ nix-search <query> # パッケージ検索
 ## Tips
 
 - **NixOS システム・"global" 設定を直接変更しない**: `~/.config/` や `~/.claude.json` などを直接編集せず、このリポジトリ内の該当ファイルを編集する。プログラム名でファイル名検索すると見つかる。
+- **claude.md** = `modules/home/profile-dev/programs/claude-code/claude.md`（グローバル CLAUDE.md のソース）
 - 基本的にファイル名 = そのファイルの定義事項と考えてよい。コンテキストを消費するので、むやみやたらにファイルの中身を読まない。
