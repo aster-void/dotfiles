@@ -48,7 +48,8 @@ KERNEL 記述法
    - Constraints: 制約・禁止事項（**E**xplicit constraints）
    - Format: 期待される出力形式（**L**ogical structure）
    - Verify: 検証可能な成功基準（**E**asy to verify, **R**eproducible）
-2. 分割判定: 複数ゴールを含む場合、単一ゴールのサブタスクに分割
+     - 具体的なコマンドで書く（例: `npm test && bun check` ）
+2. 分割判定: 単一ゴールに見えても必ず分割する（調査 → [機能A実装+検証 | 機能B実装+検証] → 統合検証）
 3. サブエージェント: プロンプトに Task/Constraints/Verify を明記（曖昧さ排除）
 </kernel-prompt>
 
