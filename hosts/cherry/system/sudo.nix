@@ -1,8 +1,4 @@
 {
-  imports = [
-    ./wifi-ap.nix
-  ];
-
   security.sudo.extraRules = [
     {
       users = ["aster"];
