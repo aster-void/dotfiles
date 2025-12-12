@@ -1,0 +1,37 @@
+name: Update flake inputs
+
+on:
+  schedule:
+    - cron: "0 0 * * 0" # weekly (all inputs)
+    - cron: "0 0 * * *" # daily (edgepkgs)
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Update target"
+        type: choice
+        options:
+          - all
+          - edgepkgs
+
+jobs:
+  update-all:
+    if: github.event.schedule == '0 0 * * 0' || (github.event_name == 'workflow_dispatch' && inputs.target == 'all')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - run: nix flake update
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "flake: update inputs"
+
+  update-edgepkgs:
+    if: github.event.schedule == '0 0 * * *' || (github.event_name == 'workflow_dispatch' && inputs.target == 'edgepkgs')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - run: nix flake update edgepkgs
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "flake: update input edgepkgs"
