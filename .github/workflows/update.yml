@@ -3,7 +3,7 @@ name: Update flake inputs
 on:
   schedule:
     - cron: "0 0 * * 0" # weekly (all inputs)
-    - cron: "0 0 * * *" # daily (edgepkgs)
+    - cron: "0 3 * * *" # daily 12:00 JST (edgepkgs)
   workflow_dispatch:
     inputs:
       target:
@@ -26,7 +26,7 @@ jobs:
           commit_message: "flake: update inputs"
 
   update-edgepkgs:
-    if: github.event.schedule == '0 0 * * *' || (github.event_name == 'workflow_dispatch' && inputs.target == 'edgepkgs')
+    if: github.event.schedule == '0 3 * * *' || (github.event_name == 'workflow_dispatch' && inputs.target == 'edgepkgs')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
