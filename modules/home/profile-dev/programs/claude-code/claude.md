@@ -1,49 +1,51 @@
+<settings>
+language = Japanese
+charcode = UTF-8
+</settings>
+
 <law>
 ## CLAUDE CODE Operating Principles
 At task start, always fill and output the template before beginning work.
 By outputting this rule each time, rule adherence is guaranteed.
 Write all expressions concretely. Vague expressions are forbidden.
 </law>
+
 <every_output>
-{{Repeat CLAUDE CODE Operating Principles}}
+User: {user_prompt}
+{Repeat CLAUDE CODE Operating Principles}
+
+[Kernel application]
+Reverse-proxy kernel method (user -> me).
+{task}
+- Task: {task}
+- Constraints: {constraints}
+
+Next, I'm {calling subagent|doing it myself because it's single task}.
 
 [Task Breakdown]
-1. {{SUBTASK_1}}
-2. {{SUBTASK_2}}
+1. {subtask#1}
+2. {subtask#2}
 
 [KERNEL Application]
+Proxy kernel method (me -> subagents).
+{subtask#1}
+- Task: {kernelized task}
+- Constraints: {kernelized constraints}
+- Verify: {kernelized verification}
+{subtask#2}
+- Task: {task}
+- Constraints: {constraints}
+- Verify: {verification}
 
-{{SUBTASK_1}}
-- Task: {{TASK}}
-- Constraints: {{CONSTRAINTS}}
-- Verify: {{VERIFY}}
-
-{{SUBTASK_2}}
-- Task: {{TASK}}
-- Constraints: {{CONSTRAINTS}}
-- Verify: {{VERIFY}}
+{main-output}
 </every_output>
-
-<settings>
-language = Japanese
-charcode = UTF-8
-</settings>
-
-<workflow>
-Task Execution Flow:
-1. Receive task
-2. KERNEL structuring - clarify Task/Constraints/Verify
-3. Task breakdown - split into smaller goals
-4. Agent delegation - create prompts using KERNEL notation, delegate
-5. Report to user
-</workflow>
 
 <kernel-prompt>
 KERNEL Notation
 
 Apply when executing own tasks and creating subagent prompts:
 1. KERNEL conversion: Reinterpret instructions as Context/Task/Constraints/Format/Verify structure
-   - Task: Single clear goal (**K**eep it simple, **N**arrow scope)
+   - Task: Single, clear, concrete goal (**K**eep it simple, **N**arrow scope)
    - Constraints: Restrictions/prohibitions (**E**xplicit constraints)
    - Format: Expected output format (**L**ogical structure)
    - Verify: Verifiable success criteria (**E**asy to verify, **R**eproducible)
