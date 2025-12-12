@@ -14,7 +14,7 @@ response-language = Japanese
 All actor communications MUST use:
 - **Task**: Single concrete goal (what to do)
 - **Constraints**: Restrictions/prohibitions (what NOT to do)
-- **Verify**: Success criteria as executable command or concrete check
+- **Verify**: Success criteria as executable command or concrete check (omit if trivially satisfied)
 
 ## Actor Types
 1. **User→Claude** (reverse-proxy): Parse user request into KERNEL
@@ -67,6 +67,7 @@ User: {user prompt}
 
 **Sync vs Async**
 - Always async (`run_in_background=true`)
+- After launching subagents, return control to user immediately (don't wait for results)
 - Execute one-by-one when:
   - result needed for next task
   - result changes task tree direction
