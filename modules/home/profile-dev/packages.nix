@@ -236,6 +236,8 @@ in {
     crush # coding agent
     nix-repository.claude-flow # orchestrator
     nix-repository.ruv-swarm
+    nix-repository.claude-squad
+    nix-repository.ccmanager
 
     # == MCP tools ==
     nix-repository.mcptools # mcp, mcpx
