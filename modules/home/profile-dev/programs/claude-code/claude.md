@@ -1,101 +1,88 @@
 <settings>
-language = Japanese
-charcode = UTF-8
+response-language = Japanese
 </settings>
 
 <law>
 ## CLAUDE CODE Operating Principles
-At task start, always fill and output the template before beginning work.
-By outputting this rule each time, rule adherence is guaranteed.
-Write all expressions concretely. Vague expressions are forbidden.
+1. At task start, output KERNEL-parsed request before work
+2. All expressions concrete. Vague = forbidden.
+3. Every actor communication uses KERNEL format
 </law>
 
-<every_output>
-User: {user_prompt}
-{Repeat CLAUDE CODE Operating Principles}
+<kernel>
+## KERNEL Format
+All actor communications MUST use:
+- **Task**: Single concrete goal (what to do)
+- **Constraints**: Restrictions/prohibitions (what NOT to do)
+- **Verify**: Success criteria as executable command or concrete check
 
-[Kernel application]
-Reverse-proxy kernel method (user -> me).
-{task}
-- Task: {task}
-- Constraints: {constraints}
+## Actor Types
+1. **User→Claude** (reverse-proxy): Parse user request into KERNEL
+2. **Claude→Self** (self-exec): KERNEL for own execution
+3. **Claude→Subagent** (proxy): KERNEL in subagent prompt
+</kernel>
 
-Next, I'm {calling subagent|doing it myself because it's single task}.
+<workflow>
+## Response Template
 
-[Task Breakdown]
-1. {subtask#1}
-2. {subtask#2}
+```
+User: {user prompt}
 
-[KERNEL Application]
-Proxy kernel method (me -> subagents).
-{subtask#1}
-- Task: {kernelized task}
-- Constraints: {kernelized constraints}
-- Verify: {kernelized verification}
-{subtask#2}
-- Task: {task}
-- Constraints: {constraints}
-- Verify: {verification}
+[KERNEL: User→Claude]
+- Task: {concrete goal extracted from user request}
+- Constraints: {restrictions inferred or stated}
+- Verify: {how to confirm success | not possible}
 
-{main-output}
-</every_output>
+[Decision] {single task → self-exec | multi-task or parallel task → breakdown + subagents}
 
-<kernel-prompt>
-KERNEL Notation
+[Breakdown] (if multi-task)
+1. {subtask}
+2. {subtask}
 
-Apply when executing own tasks and creating subagent prompts:
-1. KERNEL conversion: Reinterpret instructions as Context/Task/Constraints/Format/Verify structure
-   - Task: Single, clear, concrete goal (**K**eep it simple, **N**arrow scope)
-   - Constraints: Restrictions/prohibitions (**E**xplicit constraints)
-   - Format: Expected output format (**L**ogical structure)
-   - Verify: Verifiable success criteria (**E**asy to verify, **R**eproducible)
-     - Write as concrete commands (e.g., `npm test && bun check`)
-2. Breakdown judgment: Always split even if it seems like a single goal (research → [feature A impl+verify | feature B impl+verify] → integration verify)
-3. Subagents: Specify Task/Constraints/Verify in prompts (eliminate ambiguity)
-</kernel-prompt>
+[KERNEL: Claude→{Self|Subagent}] (per subtask)
+- Task: {subtask goal}
+- Constraints: {subtask restrictions}
+- Verify: {subtask success check}
+
+{execution}
+
+[Verification]
+- {verify command/check}: {result}
+```
+
+## Rules
+- Single task: self-exec with KERNEL
+- Multi-task: breakdown → parallel subagents where independent
+- Always run Verify after execution
+- Subagent prompts: include `[subagent]` marker + full KERNEL
+</workflow>
 
 <agents>
-Subagent Operation
-Principles:
-- Delegate all research/execution to subagents (save main context)
-- Always include `[subagent]` in subagent prompts
-- Do nothing while waiting for results (no reading output, guessing, anticipating)
+## Subagent Operation
 
-<sync-async>
-Default = async (run_in_background=true)
-Conditions for sync (only if any are met):
-  - Result is input for subsequent task (e.g., design research → implementation)
-  - Result changes direction of entire task tree (e.g., feasibility research)
-</sync-async>
+**Principles**
+- Delegate research/execution to subagents (save main context)
+- Prompt format: `[subagent] {KERNEL block}`
+- Do nothing while waiting (no guessing, no anticipating)
 
-<parallel>
-Parallel execution:
-  - Multiple agents touching same feature → run sequentially
-  - Independent features → parallel OK
-</parallel>
+**Sync vs Async**
+- Always async (`run_in_background=true`)
+- Execute one-by-one when:
+  - result needed for next task
+  - result changes task tree direction
+otherwise, run in parallel.
 
-<git-worktree>
-Use gtr for separate worktree → merge/delete after completion when:
-- Verification requires overall consistency (build, lint, etc.)
-- Multi-feature parallel implementation (separate worktree per agent)
-Reference: git-gtr skill
-</git-worktree>
+**Parallelism**
+- Same feature → sequential
+- Independent features → parallel (multiple Task calls in one message)
 
-<do>
-  - Explicitly state "execute without confirmation"
-  - Launch independent tasks in parallel (multiple Tasks in one message)
-  - Delegate file reading/research to agents
-  - Use block=true to wait for async completions together
-</do>
+**Git Worktree** (via `gtr` skill)
+Use when: verification needs consistency (build/lint) or multi-feature parallel
 
-<dont>
-  - Read files yourself before launching agents
-  - Vague instructions ("ask if there are problems" → waiting for confirmation)
-</dont>
+**Do**: explicit "execute without confirmation", batch launches, delegate reads
+**Don't**: read files before launching, vague instructions ("ask if problems")
 
-<notes>
-Multiple agents → track with TodoWrite
-</notes>
+**Tracking**: Multiple agents → TodoWrite
 </agents>
 
 <skills>
