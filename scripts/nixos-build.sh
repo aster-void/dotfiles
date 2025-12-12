@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-hostname="${1:-$(hostname)}"
+show_error=false
+hostname="$(hostname)"
+
+for arg in "$@"; do
+  case "$arg" in
+    --show-error) show_error=true ;;
+    *) hostname="$arg" ;;
+  esac
+done
 
 git add -A -N
-nh os build . --hostname "$hostname" --no-nom --quiet -- --quiet
+
+if [[ "$show_error" == true ]]; then
+  nixos-rebuild build --flake ".#$hostname" --show-trace
+else
+  nh os build . --hostname "$hostname" --no-nom --quiet -- --quiet
+fi

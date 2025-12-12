@@ -28,7 +28,6 @@ in {
       };
       Service = {
         Type = "simple";
-        ExecStartPre = "${lib.getExe' pkgs.coreutils "sleep"} 3";
         ExecStart = "${lib.getExe caelestia-cli} shell";
         Restart = "on-failure";
         RestartSec = 3;

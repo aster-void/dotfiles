@@ -53,8 +53,8 @@ scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewid
 ## Scripts
 
 ```sh
-./scripts/nixos-build.sh [hostname?]  # NixOS build check
-./scripts/home-build.sh               # home-manager build check
+./scripts/nixos-build.sh [hostname?] [--show-error]  # NixOS build check
+./scripts/home-build.sh [--show-error]               # home-manager build check
 ```
 
 ## Tools
