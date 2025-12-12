@@ -11,18 +11,26 @@
 in {
   services = lib.mkIf cfg.enable {
     xserver.enable = true;
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      # Force KDE's sddm package for Qt6/Wayland compatibility
-      package = lib.mkForce pkgs.kdePackages.sddm;
-      theme = "sddm-astronaut-theme";
-      extraPackages = with pkgs; [
-        kdePackages.qtmultimedia
-        kdePackages.qtsvg
-        kdePackages.qtdeclarative
-        kdePackages.qtvirtualkeyboard
-      ];
+    displayManager = {
+      defaultSession = "hyprland-uwsm";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        # Force KDE's sddm package for Qt6/Wayland compatibility
+        package = lib.mkForce pkgs.kdePackages.sddm;
+        theme = "sddm-astronaut-theme";
+        extraPackages = with pkgs; [
+          kdePackages.qtmultimedia
+          kdePackages.qtsvg
+          kdePackages.qtdeclarative
+          kdePackages.qtvirtualkeyboard
+        ];
+        settings = {
+          General = {
+            ScreenTimeout = 300;
+          };
+        };
+      };
     };
   };
 
