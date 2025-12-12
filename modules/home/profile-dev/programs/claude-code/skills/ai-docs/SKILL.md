@@ -79,18 +79,18 @@ DON'T: "Tests should pass"
 ```markdown
 # Project Name
 
-## 概要
+## Overview
 [1-2 sentence project purpose]
 
-## ディレクトリ構造
+## Directory Structure
 - `src/` - Application code
 - `config/` - Configuration files
 
-## ルール
+## Rules
 - **File placement**: [rules]
 - **Commits**: [format]
 
-## 開発フロー
+## Development Workflow
 ```sh
 npm run build  # Build
 npm test       # Test

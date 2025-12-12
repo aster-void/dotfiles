@@ -2,69 +2,69 @@
 
 Note: CLAUDE.md is symlinked to this file.
 
-## 概要
+## Overview
 
-NixOS ベースの統合システム構成（サーバー + デスクトップ）。Blueprint フレームワークで管理。
+NixOS-based unified system configuration (server + desktop). Managed with Blueprint framework.
 
-## ディレクトリ構造
+## Directory Structure
 
-- `hosts/{hostname}/` - ホスト固有設定（configuration.nix, services/, users/）
-- `modules/nixos/` - NixOS システムモジュール（base/, desktop/, profile-dev/）
-- `modules/home/` - home-manager モジュール（desktop/, profile-dev/）
-- `packages/` - カスタムパッケージ
-- `config/` - 静的設定ファイル（JSON等）
-- `secrets/` - agenix 暗号化シークレット
+- `hosts/{hostname}/` - Host-specific config (configuration.nix, services/, users/)
+- `modules/nixos/` - NixOS system modules (base/, desktop/, profile-dev/)
+- `modules/home/` - home-manager modules (desktop/, profile-dev/)
+- `packages/` - Custom packages
+- `config/` - Static config files (JSON, etc.)
+- `secrets/` - agenix encrypted secrets
 
-## ルール
+## Rules
 
-**ファイル配置**: 複数ホスト共有 → `modules/`、特定ホスト専用 → `hosts/{hostname}/`
+**File Placement**: Shared across hosts → `modules/`, host-specific → `hosts/{hostname}/`
 
-**モジュール構造**
+**Module Structure**
 (`modules/{home|nixos}/{module}/`):
-- `default.nix` - サブモジュールを imports
-- `options.nix` - モジュールの `options`
-- `programs/` - プログラム設定
-- `services/` - 外向きサービス
-- `system/` - 内向きサービス・ハードウェア
-- `extensions/` - `my.{module}.{extension}.enable` で有効化
-- `packages.nix` - パッケージインストールのみ
-- `xdg.nix` `env.nix` ... - 名前の通り: システムにもサービスにもプログラムにも属さない
+- `default.nix` - imports submodules
+- `options.nix` - module `options`
+- `programs/` - program configs
+- `services/` - external-facing services
+- `system/` - internal services, hardware
+- `extensions/` - enabled via `my.{module}.{extension}.enable`
+- `packages.nix` - package installation only
+- `xdg.nix` `env.nix` ... - as named: not system, service, or program specific
 
 **flake.lib.collectFiles**
-ディレクトリ内のファイルを自動収集する関数。
-- `default.nix` があるディレクトリ → `default.nix` のみ返す（再帰しない）
-- `default.nix` がないディレクトリ → 全ファイルを再帰的に収集
+Function to auto-collect files in a directory.
+- Directory with `default.nix` → returns only `default.nix` (no recursion)
+- Directory without `default.nix` → recursively collects all files
 
-使用例:
+Example:
 ```nix
 imports = flake.lib.collectFiles ./programs ++ flake.lib.collectFiles ./services;
 ```
 
-**default.nix が必要なケース:**
-1. **選択式モジュール** - display-managers, window-managers など、複数の選択肢から1つを選ぶ場合
-2. **メイン設定ファイル** - helix/default.nix, hyprland/default.nix など、プログラムのメイン設定 + サブファイル import
-3. **データファイル除外** - shells/default.nix は common-aliases.nix（モジュールではなくデータ）を除外するために存在
+**When default.nix is needed:**
+1. **Selection modules** - display-managers, window-managers, etc. where one option is chosen from multiple
+2. **Main config file** - helix/default.nix, hyprland/default.nix, etc. for main config + subfile imports
+3. **Data file exclusion** - shells/default.nix exists to exclude common-aliases.nix (data, not a module)
 
-## コミット
+## Commits
 
-形式: `{scope}: {説明}`
+Format: `{scope}: {description}`
 scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewide` / `meta`
 
-## スクリプト
+## Scripts
 
 ```sh
-./scripts/nixos-build.sh [hostname?]  # NixOS ビルド確認
-./scripts/home-build.sh               # home-manager ビルド確認
+./scripts/nixos-build.sh [hostname?]  # NixOS build check
+./scripts/home-build.sh               # home-manager build check
 ```
 
-## ツール
+## Tools
 
 ```sh
-nix-search <query> # パッケージ検索
+nix-search <query> # Package search
 ```
 
 ## Tips
 
-- **NixOS システム・"global" 設定を直接変更しない**: `~/.config/` や `~/.claude.json` などを直接編集せず、このリポジトリ内の該当ファイルを編集する。プログラム名でファイル名検索すると見つかる。
-- **claude.md** = `modules/home/profile-dev/programs/claude-code/claude.md`（グローバル CLAUDE.md のソース）
-- 基本的にファイル名 = そのファイルの定義事項と考えてよい。コンテキストを消費するので、むやみやたらにファイルの中身を読まない。
+- **Don't modify NixOS system/"global" config directly**: Don't edit `~/.config/` or `~/.claude.json` directly. Edit the corresponding file in this repo. Search by program name to find it.
+- **claude.md** = `modules/home/profile-dev/programs/claude-code/claude.md` (source for global CLAUDE.md)
+- Assume filename = what the file defines. Don't read files unnecessarily to save context.
