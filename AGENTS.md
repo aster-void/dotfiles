@@ -68,3 +68,5 @@ nix-search <query> # Package search
 - **Don't modify NixOS system/"global" config directly**: Don't edit `~/.config/` or `~/.claude.json` directly. Edit the corresponding file in this repo. Search by program name to find it.
 - **claude.md** = `modules/home/profile-dev/programs/claude-code/claude.md` (source for global CLAUDE.md)
 - Assume filename = what the file defines. Don't read files unnecessarily to save context.
+- **Finding config for X**: `grep -r "filename"` (e.g., `grep -r zellij` to find zellij config)
+- **Simple changes**: Don't over-research. Read the file, make the change, done.
