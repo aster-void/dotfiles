@@ -2,7 +2,7 @@
   programs.zellij = {
     enable = true;
     settings = {
-      copy_on_select = false;
+      copy_on_select = true;
       session_serialization = false;
       show_startup_tips = false;
     };
