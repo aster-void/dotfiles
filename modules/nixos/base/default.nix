@@ -14,4 +14,8 @@
 
   home-manager.backupFileExtension = "backup";
   home-manager.useGlobalPkgs = false;
+  home-manager.extraSpecialArgs = {inherit inputs flake;};
+  home-manager.sharedModules = [
+    {nixpkgs.config.allowUnfree = true;}
+  ];
 }
