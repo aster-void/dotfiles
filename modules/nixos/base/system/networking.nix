@@ -12,6 +12,7 @@
     extraConfig = ''
       DNS=1.1.1.1#cloudflare-dns.com 8.8.8.8#dns.google
       DNSOverTLS=opportunistic
+      MulticastDNS=no
     '';
   };
 
