@@ -10,6 +10,11 @@ pre-push:
     dry-build:
       run: nh os build . --hostname daisy --no-nom --quiet -- --quiet
 
+post-commit:
+  commands:
+    push:
+      run: git push &
+
 post-push:
   commands:
     comin-fetch:
