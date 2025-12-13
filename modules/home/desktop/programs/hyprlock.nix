@@ -1,105 +1,110 @@
-{config, ...}: let
-  primaryFont = "Speculum";
-  smallFont = "Tinos Nerd Font";
-  smallFontSize = 14;
-  fontColor = "rgba(235, 215, 225, 1.0)";
-  shadowColor = "rgb(160, 160, 160)";
+{
+  config,
+  lib,
+  ...
+}: let
+  # Brutalist Design System
+  font = "JetBrainsMono Nerd Font";
+
+  # Monochrome palette
+  white = "rgba(255, 255, 255, 1)";
+  white80 = "rgba(255, 255, 255, 0.8)";
+  white60 = "rgba(255, 255, 255, 0.6)";
+  white40 = "rgba(255, 255, 255, 0.4)";
+  white30 = "rgba(255, 255, 255, 0.3)";
+  red = "rgba(255, 60, 60, 1)";
 in {
   programs.hyprlock = {
     enable = true;
     settings = {
       general = {
         ignore_empty_input = true;
-        no_fade_in = true;
+        no_fade_in = true; # Brutalist: no smooth transitions
         no_fade_out = true;
         hide_cursor = true;
         grace = 0;
         disable_loading_bar = true;
       };
 
+      # Raw background - no blur, no effects
       background = [
         {
           monitor = "";
           path = "${config.xdg.configHome}/lock";
-          blur_passes = 3;
-          blur_size = 3;
-          noise = 0.05;
-          contrast = 1;
-          brightness = 0.8;
-          vibrancy = 0.2;
-          vibrancy_darkness = 0.2;
-        }
-      ];
-
-      input-field = [
-        {
-          outline_thickness = 2;
-          dots_size = 0.2;
-          dots_spacing = 0.5;
-          dots_center = true;
-          dots_text_format = "<b>*</b>";
-          outer_color = "rgba(0, 0, 0, 0)";
-          inner_color = "rgba(225, 215, 244, 0.2)";
-          font_color = "rgba(205, 214, 244, 1)";
-          font_family = "JetBrainsMono Nerd Font Mono";
-          font_size = 30;
-          fade_on_empty = false;
-          rounding = 0;
-          check_color = "rgba(204, 136, 34, 1)";
-          placeholder_text = ''<b><span foreground="##cdd6f4">...</span></b>'';
-          fail_text = "<b><span>x</span></b>";
-          hide_input = true;
-          position = "0, -120";
-          halign = "center";
-          valign = "center";
+          blur_passes = 0;
+          blur_size = 0;
+          noise = 0;
+          contrast = 1.0;
+          brightness = 0.15; # Crush to near-black
+          vibrancy = 0;
         }
       ];
 
       label = [
-        # Date
+        # TIME - Massive, bottom-left
         {
           monitor = "";
-          text = ''cmd[update:1000] echo "<span fgalpha='75%'>$(date +"%D")</span>"'';
-          color = fontColor;
-          font_size = 60;
-          font_family = primaryFont;
-          shadow_passes = 2;
-          shadow_size = 2;
-          shadow_color = shadowColor;
-          position = "355, -35";
-          text_align = "right";
-          halign = "center";
-          valign = "center";
+          text = ''cmd[update:1000] date +%H:%M'';
+          color = white;
+          font_size = 280;
+          font_family = "${font} Bold";
+          position = "-60, -80";
+          halign = "left";
+          valign = "bottom";
         }
-        # Time
+        # DATE - Top-right
         {
           monitor = "";
-          text = "$TIME12";
-          color = fontColor;
-          font_size = 110;
-          font_family = primaryFont;
-          shadow_passes = 2;
-          shadow_size = 2;
-          shadow_color = shadowColor;
-          position = "0, 70";
-          text_align = "center";
-          halign = "center";
-          valign = "center";
-        }
-        # CPU info
-        {
-          monitor = "";
-          text = ''cmd[update:5000] echo "$(echo "$(cat /sys/class/thermal/thermal_zone2/temp)/1000" | bc)°C :CPU Temp<br/>$(top -bn1 | grep "Cpu(s)" | \sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | \awk '{print 100 - $1"%"}') :CPU Load"'';
-          color = fontColor;
-          font_size = smallFontSize;
-          font_family = smallFont;
-          shadow_passes = 2;
-          shadow_size = 2;
-          shadow_color = shadowColor;
-          position = "-1120, -120";
-          text_align = "right";
+          text = ''cmd[update:43200000] date +"%Y.%m.%d"'';
+          color = white60;
+          font_size = 32;
+          font_family = font;
+          position = "-60, -60";
           halign = "right";
-          valign = "center";
+          valign = "top";
+        }
+        # WEEKDAY - Top-right
+        {
+          monitor = "";
+          text = ''cmd[update:43200000] date +%A | tr '[:lower:]' '[:upper:]' '';
+          color = white30;
+          font_size = 24;
+          font_family = font;
+          position = "-60, -110";
+          halign = "right";
+          valign = "top";
+        }
+      ];
+
+      # Input field - Monochrome minimal
+      input-field = [
+        {
+          monitor = "";
+          size = "300, 50";
+          outline_thickness = 2;
+          dots_size = 0.25;
+          dots_spacing = 0.3;
+          dots_center = true;
+
+          outer_color = white40;
+          inner_color = "rgba(0, 0, 0, 0)";
+          font_color = white;
+          check_color = white;
+          fail_color = red;
+          capslock_color = red;
+
+          font_family = font;
+
+          fade_on_empty = false;
+          rounding = 0;
+
+          placeholder_text = "";
+          hide_input = true;
+          fail_text = "<i>$FAIL</i>";
+
+          position = "-60, 60";
+          halign = "right";
+          valign = "bottom";
         }
       ];
     };
