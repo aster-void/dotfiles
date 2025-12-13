@@ -1,132 +1,125 @@
 ---
 name: ai-docs
-description: Write effective documentation for AI assistants. Use when creating/updating CLAUDE.md, writing comments for AI, or documenting architecture decisions.
+description: ALWAYS use this skill when writing AI documentation. Covers CLAUDE.md, AGENTS.md, system prompts, AI-targeted comments, and architecture docs for AI consumption.
 ---
 
-# AI Documentation
+# AI Documentation Skill
 
-Documentation for AI assistants differs fundamentally from human documentation.
+## Research-Backed Principles (2024-2025)
 
-## Core Principles
+### What Works
 
-**AI reads code directly** - explain WHY, not WHAT
-**Short wins** - context window is shared with code
-**Explicit rules** - AI follows exact constraints better than vague principles
-**No tutorials** - AI already knows common tools
+| Technique | Why | Source |
+|-----------|-----|--------|
+| **XML tags** | Claude trained on XML; improves parsing & structure | Anthropic docs |
+| **Templates with `{placeholders}`** | More reliable than prose instructions | Prompt engineering research |
+| **Concise + sufficient context** | >3000 tokens degrades reasoning | LLM length studies |
+| **Few-shot examples (1-3)** | Biggest gain is 0→1 example; diminishing returns after | Few-shot research |
+| **Positive framing** | "Do X" reduces ambiguity vs "Don't do X" | PromptHub studies |
+| **Explicit output format** | JSON/list/structure specification improves accuracy | Multiple studies |
+| **Task decomposition** | One prompt = one task | Overload research |
 
-## What to Include
+### What Doesn't Work
 
-✅ **Project-specific conventions**
-- Commit message format, file naming rules
-- Custom patterns unique to this codebase
+| Anti-Pattern | Problem | Research Finding |
+|--------------|---------|------------------|
+| **Vague prompts** | Forces AI to guess → generic output | Universal finding |
+| **Overloaded prompts** | Multiple tasks = quality degradation | Task complexity studies |
+| **Heavy persona prompting** | <10% variance explained for accuracy tasks | ACL 2024: Persona Effect |
+| **Long verbose prompts** | Recency bias; vaguer responses | Length impact studies |
+| **Negative instruction lists** | "Don't do X" underperforms "Do Y" | PromptHub research |
+| **Contradicting instructions** | Common in long system prompts | Best practices guides |
 
-✅ **Non-obvious decisions**
-- "We chose X over Y because..."
-- "This weird pattern exists due to Z constraint"
+### Claude-Specific
 
-✅ **Constraints and gotchas**
-- "Never use git stash" / "Always set -o pipefail with pipes"
-- "config/ is auto-generated, edit source/"
-- "DB migrations run automatically, don't run manually"
+- Claude weighs **user messages > system prompts** (unlike GPT)
+- XML tags like `<instructions>`, `<example>`, `<thinking>` are optimal
+- Nest tags for hierarchy: `<outer><inner></inner></outer>`
+- Be consistent with tag names; reference them in instructions
 
-✅ **Domain knowledge**
-- Business rules not visible in code
-- External system integrations
+## Document Template
 
-✅ **Directory structure** (non-standard layouts only)
-
-## What NOT to Include
-
-❌ Generic best practices (AI knows)
-❌ Tool documentation (AI can search)
-❌ Code explanations (AI reads code)
-❌ Implementation details (visible in code)
-
-## Format Guidelines
-
-**Structure over prose**
-```
-DO:   "- Never use X
-       - Always use Y when Z"
-DON'T: "It's important to note that X should generally be avoided in most cases..."
-```
-
-**Front-load important info**
-Put critical rules at the top. Less important context goes below.
-
-**Be explicit**
-```
-DO:   "Run `npm test` before commit"
-DON'T: "Tests should pass"
-```
-
-## Creating CLAUDE.md
-
-**Target length**: 50-150 lines. Split into skills if longer.
-
-**Workflow**:
-1. Explore project root - understand structure
-2. Check package.json, README.md, .github/, build scripts
-3. Answer these questions:
-   - What's the project's purpose?
-   - Any unique directory structure?
-   - Any custom rules/conventions?
-   - Critical constraints developers must know?
-4. Write concisely using template below
-5. Place CLAUDE.md in project root
-
-**Template structure**:
 ```markdown
-# Project Name
+<settings>
+key = value
+</settings>
 
-## Overview
-[1-2 sentence project purpose]
+<rules>
+1. [Rule]: [concrete example]
+   - `good example` not `bad example`
+</rules>
 
-## Directory Structure
-- `src/` - Application code
-- `config/` - Configuration files
+<workflow>
+Template with {fill_in_placeholders}:
+- [Decision] {condition} → {action}
+</workflow>
 
-## Rules
-- **File placement**: [rules]
-- **Commits**: [format]
+<tools>
+tool-name = constraint or usage tip
+</tools>
 
-## Development Workflow
-```sh
-npm run build  # Build
-npm test       # Test
+<tips>
+- [Actionable tip with example]
+</tips>
 ```
 
-## Tips
-- [Project-specific gotchas]
+## Writing Rules
+
+### Structure Over Prose
+```
+BAD:  "You should try to keep your commit messages clear and descriptive"
+GOOD: Commit: `{scope}: {description}` (e.g., `modules/git: add hooks`)
 ```
 
-**Decision criteria**:
-1. Visible in code? → Don't document
-2. In official docs? → Don't document
-3. Project-specific rule/knowledge? → Document
-4. Critical implicit knowledge? → Document
-
-## Inline Comments
-
-```typescript
-// Use WebSocket here (not polling) - HTTP/2 push not supported by proxy
-const ws = new WebSocket(url);
+### Positive Over Negative
 ```
-Comment the WHY (constraint/decision), not the WHAT (obvious from code).
+BAD:  "Don't use cd commands"
+GOOD: "Stay at repo root. Use relative/absolute paths."
+```
 
-## Anti-Patterns
+### Concrete Over Abstract
+```
+BAD:  "Keep files reasonably sized"
+GOOD: "Target ~100 lines/file. Split when exceeding."
+```
 
-🚫 "Here's how to use Git" - AI knows Git
-🚫 Restating code in prose - wastes context
-🚫 Vague guidelines - "try to keep functions small"
-🚫 Excessive detail - every parameter documented
-🚫 Too long CLAUDE.md - compresses context window
+### Decision Markers
+```
+[Decision] simple task → execute | complex task → break down first
+[Decision] {condition} → {action A} | {otherwise} → {action B}
+```
 
-## Quick Checklist
+## Content Guidelines
 
-Before writing docs for AI:
-1. Is this visible in code? → Don't document
-2. Is this common knowledge? → Don't document
-3. Is this project-specific? → Document
-4. Is this a constraint/gotcha? → Document
-5. Can I make it shorter? → Do it
+**Include** (project-specific, non-obvious):
+- Conventions: commit format, file naming, directory rules
+- Constraints: "never X", "always Y before Z"
+- Decision templates with conditions
+- Tool-specific gotchas
+
+**Exclude** (AI already knows or can find):
+- Generic best practices
+- Tool documentation
+- Code explanations (AI reads code)
+- Tutorials
+
+## Length Guidelines
+
+| Document | Target | If Exceeded |
+|----------|--------|-------------|
+| CLAUDE.md | 50-150 lines | Split into skills |
+| Skills | 50-100 lines | Split into sub-skills |
+| Inline comments | 1 line | Rare exceptions for complex WHY |
+
+Reasoning: >3000 tokens measurably degrades LLM reasoning quality.
+
+## Checklist
+
+Before finalizing AI documentation:
+1. Using XML tags for structure?
+2. Templates have `{placeholder}` syntax?
+3. All instructions positive framing?
+4. Decision points marked with `[Decision]`?
+5. Concrete examples for every rule?
+6. Under length limit?
+7. No redundant info AI can infer?
