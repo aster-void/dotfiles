@@ -13,7 +13,8 @@ pre-push:
 post-commit:
   commands:
     push:
-      run: git push &
+      run: git push
+      background: true
 
 post-push:
   commands:
