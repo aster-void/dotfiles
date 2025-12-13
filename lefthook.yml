@@ -13,7 +13,7 @@ pre-push:
 post-commit:
   commands:
     push:
-      run: setsid ./scripts/auto-push.sh >/dev/null 2>&1 &
+      run: (./scripts/auto-push.sh &)
 
 post-push:
   commands:
