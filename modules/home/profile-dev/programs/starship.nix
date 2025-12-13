@@ -91,7 +91,7 @@
       };
 
       bun = {
-        symbol = " ";
+        symbol = " ";
         style = "bold pink";
       };
 
