@@ -13,8 +13,7 @@ pre-push:
 post-commit:
   commands:
     push:
-      run: git push
-      background: true
+      run: nohup git push >/dev/null 2>&1 &
 
 post-push:
   commands:
