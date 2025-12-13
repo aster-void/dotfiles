@@ -2,6 +2,7 @@
   common = import ./common-aliases.nix;
   nuSpecific = {
     cg = "cd (git root)";
+    rbbb = "nh os boot; reboot";
   };
 in {
   programs.nushell = {
