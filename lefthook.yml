@@ -13,7 +13,7 @@ pre-push:
 post-commit:
   commands:
     push:
-      run: nohup git push >/dev/null 2>&1 &
+      run: setsid git push &
 
 post-push:
   commands:
