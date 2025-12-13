@@ -13,7 +13,7 @@ pre-push:
 post-commit:
   commands:
     push:
-      run: setsid git push &
+      run: setsid sh -c 'flock -n /tmp/dotfiles-push.lock git push --no-verify' &
 
 post-push:
   commands:
