@@ -23,7 +23,7 @@ in {
         # Monitor configuration
         monitor =
           if cfg.primaryMonitor != ""
-          then ["${cfg.primaryMonitor},preferred,0x0,${cfg.scale}" ",preferred,auto,1"]
+          then ["${cfg.primaryMonitor},preferred,0x0,${cfg.scale}" ",preferred,auto,1,mirror,${cfg.primaryMonitor}"]
           else [",preferred,auto,1"];
 
         misc = {
