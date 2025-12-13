@@ -12,6 +12,8 @@
       pcieAspmOnBat = "default";
       wifiPwrOnBat = "off";
       runtimePmOnBat = "on";
+      batteryStart = 60;
+      batteryStop = 80;
     };
     balanced = {
       cpuMaxPerfOnBat = 40;
@@ -20,6 +22,8 @@
       pcieAspmOnBat = "powersupersave";
       wifiPwrOnBat = "on";
       runtimePmOnBat = "auto";
+      batteryStart = 60;
+      batteryStop = 80;
     };
     survival = {
       cpuMaxPerfOnBat = 20;
@@ -28,6 +32,19 @@
       pcieAspmOnBat = "powersupersave";
       wifiPwrOnBat = "on";
       runtimePmOnBat = "auto";
+      batteryStart = 60;
+      batteryStop = 80;
+    };
+    # Always connected to power, maximize battery protection
+    stationary = {
+      cpuMaxPerfOnBat = 40;
+      gpuMaxFreqOnBat = 500;
+      brightnessOnBat = 25;
+      pcieAspmOnBat = "default";
+      wifiPwrOnBat = "off";
+      runtimePmOnBat = "on";
+      batteryStart = 40;
+      batteryStop = 50;
     };
   };
 
@@ -55,11 +72,11 @@ in {
       # USB autosuspend (saves power on idle USB devices)
       USB_AUTOSUSPEND = 1;
 
-      # Battery charge thresholds
-      START_CHARGE_THRESH_BAT0 = 60;
-      STOP_CHARGE_THRESH_BAT0 = 80;
-      START_CHARGE_THRESH_BAT1 = 60;
-      STOP_CHARGE_THRESH_BAT1 = 80;
+      # Battery charge thresholds (profile-dependent)
+      START_CHARGE_THRESH_BAT0 = cfg.batteryStart;
+      STOP_CHARGE_THRESH_BAT0 = cfg.batteryStop;
+      START_CHARGE_THRESH_BAT1 = cfg.batteryStart;
+      STOP_CHARGE_THRESH_BAT1 = cfg.batteryStop;
 
       # CPU performance limits on battery
       CPU_MIN_PERF_ON_AC = 0;
