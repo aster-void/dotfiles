@@ -96,6 +96,7 @@ message: Concise, clear commit description
 
 <tools>
 kiri = MCP server for Git semantic search
+ck = grep replacement with semantic search. `ck "fn.*impl" .` (regex), `ck --sem "error handling" .` (semantic), `ck --hybrid "auth" .` (combined)
 pipe = ALWAYS `set -o pipefail` before pipes (e.g., `set -o pipefail && cat /foo.json | jq .package.version`)
 BashOutput = Max 3 consecutive calls. Long-running commands: leave or ask user
 git = git stash absolutely forbidden
