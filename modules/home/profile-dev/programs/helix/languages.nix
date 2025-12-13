@@ -6,7 +6,7 @@
     alejandra = ["alejandra" "-" "--quiet"];
     biome = ext: ["biome" "format" "--stdin-file-path=a.${ext}"];
     fixjson = ["fixjson"];
-    prettier = parser: ["prettier" "--parser" parser];
+    prettier = parser: ["bun" "prettier" "--parser" parser];
     mix = ext: ["mix" "format" "--stdin-filename" "a.${ext}" "-"];
     typstyle = ["typstyle"];
   };
@@ -49,10 +49,15 @@
     };
 
     css = {
+      formatter = formatters.prettier "css";
       language-servers = [
         "vscode-css-language-server"
         "tailwind"
       ];
+    };
+
+    javascript = {
+      formatter = formatters.prettier "babel";
     };
 
     typescript = {
