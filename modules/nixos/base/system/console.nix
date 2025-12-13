@@ -1,5 +1,4 @@
 {
-  # Console screen blanking (timeout) for TTY/console
-  # Blanks the screen after 5 minutes of inactivity
+  console.useXkbConfig = true;
   boot.kernelParams = ["consoleblank=300"];
 }

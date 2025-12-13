@@ -1,5 +1,10 @@
-{config, ...}: let
+{
+  config,
+  osConfig,
+  ...
+}: let
   cfg = config.my.hyprland;
+  xkb = osConfig.services.xserver.xkb;
 in {
   imports = [
     ./binds.nix
@@ -36,9 +41,9 @@ in {
         };
 
         input = {
-          kb_layout = "us";
-          kb_variant = "workman";
-          kb_options = "caps:escape";
+          kb_layout = xkb.layout;
+          kb_variant = xkb.variant;
+          kb_options = xkb.options;
           repeat_rate = 40;
           repeat_delay = 250;
           follow_mouse = 1;
