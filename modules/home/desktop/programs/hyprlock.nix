@@ -46,7 +46,7 @@ in {
           monitor = "";
           text = ''cmd[update:1000] date +%H:%M'';
           color = white;
-          font_size = 360;
+          font_size = 280;
           font_family = "${font} Bold";
           position = "-60, -80";
           halign = "left";
