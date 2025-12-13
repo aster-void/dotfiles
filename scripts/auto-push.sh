@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-cd "$(dirname -- "$0")/.." || exit 1
-exec flock -n /tmp/dotfiles-push.lock git push
+REPO_DIR="$(cd "$(dirname -- "$0")/.." && pwd)"
+exec systemd-run --user --no-block --working-directory="$REPO_DIR" \
+  flock -n /tmp/dotfiles-push.lock git push

@@ -13,7 +13,7 @@ pre-push:
 post-commit:
   commands:
     push:
-      run: systemd-run --user --no-block ./scripts/auto-push.sh
+      run: ./scripts/auto-push.sh
 
 post-push:
   commands:
