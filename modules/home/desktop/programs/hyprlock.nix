@@ -48,7 +48,7 @@ in {
           color = white;
           font_size = 280;
           font_family = "${font} Bold";
-          position = "-60, -80";
+          position = "60, -80";
           halign = "left";
           valign = "bottom";
         }
