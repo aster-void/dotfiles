@@ -6,7 +6,7 @@ description: Build Svelte 5 apps with async svelte and remote functions. Always 
 # Architecture
 
 <layers>
-Anywhere → DAL (.remote.ts) → DB ($lib/server/*)
+Anywhere → DAL ($lib/data/**/*.remote.ts) → DB ($lib/server/database/*)
 - Callers: .svelte, .svelte.ts, +page.ts, +page.server.ts, utilities, etc.
 - DAL (Data Access Layer): Authorization + data fetching. Uses `query`/`form`/`command`
 - DB Layer: Raw database access. Server-only (`$lib/server/`)
