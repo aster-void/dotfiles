@@ -3,16 +3,19 @@
 ## Ownership Authorization
 
 ```ts
-// posts.remote.ts
-async function requireOwnership(postId: string) {
+// $lib/server/auth.ts
+export async function requirePostOwner(postId: string) {
   const user = await requireUser();
   const post = await db.posts.findById(postId);
   if (post?.author_id !== user.id) error(403, "Forbidden");
   return { user, post };
 }
 
+// posts.remote.ts
+import { requirePostOwner } from "$lib/server/auth";
+
 export const deletePost = command(v.string(), async (id) => {
-  await requireOwnership(id);
+  await requirePostOwner(id);
   await db.posts.delete(id);
 });
 ```
