@@ -12,6 +12,59 @@ Anywhere → DAL ($lib/data/**/*.remote.ts) → DB ($lib/server/database/*)
 - DB Layer: Raw database access. Server-only (`$lib/server/`)
 </layers>
 
+## src/lib Structure
+
+### Basic (Innocent)
+```
+$lib/
+├── utils/           # Pure utility functions (no app logic)
+├── components/      # Shared UI components
+├── data/            # DAL - *.remote.ts files - authorization happens here
+├── server/          # Server-only code (or use *.server.ts)
+│   └── database/    # DB access layer
+└── types/           # Shared types
+```
+
+### Route-Colocated
+```
+routes/
+├── blog/
+│   ├── +page.svelte
+│   ├── +page.ts
+│   ├── BlogList.svelte      # route-specific component
+│   └── blog-rules.ts        # route-specific logic
+lib/
+├── components/              # shared components only
+├── utils/
+├── data/
+└── server/database/
+```
+
+### DDD (Domain-Driven)
+For large apps with clear domain boundaries.
+```
+$lib/
+├── features/        # or "domain/"
+│   ├── auth/
+│   │   ├── components/
+│   │   ├── data.remote.ts
+│   │   ├── database.server.ts  # DB access
+│   │   └── types.ts
+│   └── blog/
+│       ├── components/
+│       ├── data.remote.ts
+│       ├── database.server.ts
+│       └── types.ts
+└── shared/          # Cross-cutting concerns
+    ├── utils/       # App-irrelevant utilities
+    └── components/
+```
+
+### Conventions
+- `*.server.ts` - Server-only (alternative to `$lib/server/`)
+- `*.remote.ts` - DAL files with authorization
+- Server code assumes authorized context (via DAL)
+
 <rules>
 1. Authorization at DAL: Every `.remote.ts` validates authorization before DB calls ("everyone" is also an authorization)
 2. DB layer is authorization-unaware: Pure data operations, no `getRequestEvent()`
