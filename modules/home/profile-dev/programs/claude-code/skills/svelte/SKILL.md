@@ -6,8 +6,8 @@ description: Build Svelte 5 apps with async svelte and remote functions. Always 
 # Architecture
 
 <layers>
-Components (.svelte) → DAL (.remote.ts) → DB ($lib/server/*)
-- Components: UI only. Import from `.remote.ts`
+Anywhere → DAL (.remote.ts) → DB ($lib/server/*)
+- Callers: .svelte, .svelte.ts, +page.ts, +page.server.ts, utilities, etc.
 - DAL (Data Access Layer): Authorization + data fetching. Uses `query`/`form`/`command`
 - DB Layer: Raw database access. Server-only (`$lib/server/`)
 </layers>
@@ -15,7 +15,7 @@ Components (.svelte) → DAL (.remote.ts) → DB ($lib/server/*)
 <rules>
 1. Authorization at DAL: Every `.remote.ts` validates authorization before DB calls ("everyone" is also an authorization)
 2. DB layer is authorization-unaware: Pure data operations, no `getRequestEvent()`
-3. Components never import `$lib/server/*` directly
+3. Never import `$lib/server/*` directly except from DAL
 </rules>
 
 # DAL Examples
