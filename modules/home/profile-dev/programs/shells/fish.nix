@@ -15,6 +15,17 @@ in {
       set -g fish_greeting
       set -g __starship_fish_use_job_groups "false"
 
+      function cat
+        for f in $argv
+          switch (file --brief --mime-type $f)
+            case 'image/*'
+              chafa $f
+            case '*'
+              bat $f
+          end
+        end
+      end
+
       # Auto-fetch and pull on cd into git repo
       function __git_auto_pull --on-variable PWD
         test -d .git; or return

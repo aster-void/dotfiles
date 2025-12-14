@@ -106,6 +106,7 @@ in {
     # == Multimedia ==
     ffmpeg
     imagemagick
+    chafa
     timg
     asciinema
 
