@@ -16,7 +16,22 @@ in {
       set -g __starship_fish_use_job_groups "false"
 
       function cat
+        if test (count $argv) -eq 0; or test "$argv[1]" = "-"
+          command cat
+          return
+        end
+        for arg in $argv
+          switch $arg
+            case -h --help
+              echo "usage: cat [file...]"; echo "  images: chafa, others: bat, stdin: cat"; return
+            case '-*'
+              echo "cat: unknown flag: $arg" >&2; return 1
+          end
+        end
         for f in $argv
+          if not test -e $f
+            echo "cat: $f: No such file" >&2; continue
+          end
           switch (file --brief --mime-type $f)
             case 'image/*'
               chafa $f
