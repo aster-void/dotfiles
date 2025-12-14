@@ -1,16 +1,16 @@
 ---
-name: typescript-debugger
-description: Debug TypeScript type errors. Use when: (1) Encountering type errors, (2) Refactoring with multiple type errors, (3) Unsure about any/as/as const/type predicates usage. Focuses on dangerous features Claude frequently misuses.
+name: typescript
+description: Write type-safe TypeScript. Use when writing or reviewing TypeScript code. Covers type safety best practices, avoiding dangerous features (any/as), and proper narrowing techniques.
 ---
 
-# TypeScript Debugger
+# TypeScript
 
 ## Checklist
 
 1. **No `any`** - Use `unknown` and validate with valibot
 2. **No `as`** - Fix types at source
 4. **No `!`** - Explicit checks instead
-5. **NO `value is T`** - Use valibot instead
+5. **NO `value is T`** - Use a validator library like valibot instead
 7. **Discriminated unions** - Add `type` field to narrow
 
 ## Good Practices
@@ -20,7 +20,8 @@ description: Debug TypeScript type errors. Use when: (1) Encountering type error
 3. Builtin narrowing - `typeof`, `Array.isArray`, `in`, `instanceof` are always safe
 4. `T extends SomeType` if T is required to have some trait
 5. `foo?.bar` - Use `?.` for safe property access
-6. When refactoring - Fix ONE type error at a time (type inference changes)
+6. Tagged unions - `type User = { role: "admin"; permissions: string[] } | { role: "guest"; expiresAt: Date }` then narrow with `if (user.role === "admin")`
+7. When refactoring - Fix ONE type error at a time (type inference changes)
 
 ## When Stuck - NEVER Give Up
 
