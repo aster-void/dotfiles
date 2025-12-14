@@ -143,7 +143,7 @@ export const getPosts = prerender(async () => {
 
 ## References
 
-- [Advanced Patterns](./references/advanced-patterns.md) - batching, optimistic UI, auth, custom enhance, validation hooks
+- [Advanced Patterns](./references/advanced-patterns.md) - ownership authorization, batching, optimistic UI, custom enhance, validation
 
 ## Documentation Sites (FULL svelte docs)
 
