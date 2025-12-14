@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S nix-shell 
+#! nix-shell -p home-manager
 set -euo pipefail
 
 git add -A -N
