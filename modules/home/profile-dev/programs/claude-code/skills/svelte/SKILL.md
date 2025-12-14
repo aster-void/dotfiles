@@ -3,7 +3,55 @@ name: svelte-modern
 description: Build Svelte 5 apps with async svelte and remote functions. Always use this when writing svelte code.
 ---
 
-# Svelte Remote Functions
+# Architecture
+
+<layers>
+Components (.svelte) → DAL (.remote.ts) → DB ($lib/server/*)
+- Components: UI only. Import from `.remote.ts`
+- DAL (Data Access Layer): Authorization + data fetching. Uses `query`/`form`/`command`
+- DB Layer: Raw database access. Server-only (`$lib/server/`)
+</layers>
+
+<rules>
+1. Authorization at DAL: Every `.remote.ts` validates authorization before DB calls ("everyone" is also an authorization)
+2. DB layer is authorization-unaware: Pure data operations, no `getRequestEvent()`
+3. Components never import `$lib/server/*` directly
+</rules>
+
+# DAL Examples
+
+```ts
+// $lib/server/auth.ts (helper, not DAL)
+export async function getUserFromCookies(cookies: Cookies) {
+  const session = cookies.get("session_id");
+  if (!session) return null;
+  return await db.users.findBySession(session);
+}
+async function requireUser() {
+  const { cookies } = getRequestEvent();
+  const user = await getUserFromCookies(cookies);
+  if (!user) error(401, "Unauthorized");
+  return user;
+}
+
+// $lib/data/blog.remote.ts (DAL - auth boundary)
+import { getRequestEvent, query, error } from "$app/server";
+import { requireUser } from "$lib/server/auth";
+import * as db from "$lib/server/database";
+
+// Public: everyone-authorization
+export const listPosts = query(async () => {
+  return db.posts.listPublished();
+});
+
+// Protected: requires user-level authorization
+export const getMyDrafts = query(async () => {
+  const user = await requireUser();
+  return db.posts.findDraftsByAuthor(user.id);
+});
+```
+
+# Remote Functions
 
 Experimental (v2.27+). Create in `.remote.ts` files.
 
@@ -81,22 +129,6 @@ export const getPosts = prerender(async () => {
   <input {...createPost.fields.title.as("text")} />
   <button>Submit</button>
 </form>
-```
-
-## Auth via getRequestEvent
-
-```ts
-import { getRequestEvent, query } from "$app/server";
-
-const getUser = query(async () => {
-  const { cookies } = getRequestEvent();
-  return await findUser(cookies.get("session_id"));
-});
-
-export const getProfile = query(async () => {
-  const user = await getUser();
-  return { name: user.name, avatar: user.avatar };
-});
 ```
 
 ## Form Field Types
