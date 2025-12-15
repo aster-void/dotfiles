@@ -64,3 +64,14 @@ Example: `modules/git: add commit hooks`
 <tips>
 - Target ~100 lines/file. Split when exceeding.
 </tips>
+
+<when-stuck>
+**When stuck, STOP and follow this checklist:**
+
+1. **Read the library's documentation** - Most issues come from misunderstanding the API
+2. **Search GitHub issues** (library repo) - Someone likely faced the same problem
+3. **Read error message more carefully** - Often contains the solution
+4. **Ask the user** - They may have context you don't
+
+**NEVER give up by using workarounds or hacks.**
+</when-stuck>
