@@ -1,21 +1,15 @@
 /**
- * Apple Liquid Glass - Enhanced Edition
- * ターゲット: macOS/iOS 26 Liquid Glass with refined details
- *
- * 構造:
- * #waybar > ? > .modules-* > ? > pill (group) > module
- * #waybar > ? > .modules-* > ? > standalone module
- */
+ターゲット: Apple Liquid Glass (macOS/iOS 26 style)
+構造:
+#waybar > ? > .modules-* > ? > pill (group) > module
+#waybar > ? > .modules-* > ? > standalone module
+*/
 
 @import url("macchiato.css");
 
-/* ==============================
- * Base Styles
- * ============================== */
-
 window#waybar.topbar {
   background: transparent;
-  font-family: "SF Pro Display", "MesloLGM Nerd Font", sans-serif;
+  font-family: "SF Pro Display", "MesloLGM Nerd Font", "sans-serif";
   font-weight: 500;
   font-size: 13px;
 }
@@ -24,61 +18,16 @@ window#waybar.topbar {
   background: transparent;
   border: none;
   border-radius: 14px;
-  color: rgba(30, 32, 48, 0.95);
-  transition:
-    all 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: rgba(15, 15, 15, 0.92);
+  transition: opacity 0.55s cubic-bezier(0.28, 0, 0.16, 1),
+    box-shadow 0.55s cubic-bezier(0.28, 0, 0.16, 1),
+    background 0.55s cubic-bezier(0.28, 0, 0.16, 1),
+    border 0.55s cubic-bezier(0.28, 0, 0.16, 1);
 }
 
-/* ==============================
- * Apple Liquid Glass Pill - Base
- * Refined glass with sharper specular highlight
- * ============================== */
-
-#player,
-.modules-right > * > *,
-#custom-launcher,
-#custom-power,
-#window > *,
-#workspaces {
-  /* Enhanced border with subtle gradient feel */
-  border: 0.5px solid rgba(255, 255, 255, 0.42);
-  border-top: 0.5px solid rgba(255, 255, 255, 0.58);
-  border-radius: 14px;
-
-  /* Refined glass gradient with more depth */
-  background: linear-gradient(
-    168deg,
-    rgba(255, 255, 255, 0.28) 0%,
-    rgba(200, 200, 200, 0.18) 25%,
-    rgba(160, 160, 160, 0.16) 50%,
-    rgba(140, 140, 140, 0.14) 75%,
-    rgba(120, 120, 120, 0.12) 100%
-  );
-
-  /* Multi-layer shadow for depth */
-  box-shadow:
-    /* Outer ambient shadow */
-    0 8px 32px -4px rgba(0, 0, 0, 0.12),
-    0 4px 12px -2px rgba(0, 0, 0, 0.08),
-    /* Specular top highlight */
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    /* Bottom edge definition */
-    inset 0 -0.5px 0 rgba(0, 0, 0, 0.04),
-    /* Inner glow for depth */
-    inset 0 0 20px rgba(255, 255, 255, 0.10),
-    /* Subtle outer glow */
-    0 0 0 0.5px rgba(255, 255, 255, 0.12);
-
-  margin: 4px 0;
-  padding: 0 10px;
-}
-
-/* ==============================
- * Hover States - Enhanced Glass
- * Elevated effect with subtle scale
- * ============================== */
-
+/**
+ * Apple Liquid Glass ホバー効果 (macOS/iOS 26)
+ */
 #tray *:hover,
 #cpu:hover,
 #memory:hover,
@@ -93,137 +42,83 @@ window#waybar.topbar {
 #player *:hover,
 #custom-launcher:hover,
 #custom-power:hover,
+/* #window:hover, */
 #workspaces button:hover {
-  background: linear-gradient(
-    168deg,
-    rgba(255, 255, 255, 0.36) 0%,
-    rgba(230, 230, 230, 0.26) 30%,
-    rgba(200, 200, 200, 0.22) 60%,
-    rgba(180, 180, 180, 0.18) 100%
-  );
-
+  background: linear-gradient(145deg,
+      rgba(200, 200, 200, 0.12) 0%,
+      rgba(200, 200, 200, 0.22) 48%,
+      rgba(200, 200, 200, 0.18) 52%,
+      rgba(200, 200, 200, 0.10) 100%);
   box-shadow:
-    0 12px 40px -4px rgba(0, 0, 0, 0.14),
-    0 6px 16px -2px rgba(0, 0, 0, 0.10),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.65),
-    inset 0 -0.5px 0 rgba(0, 0, 0, 0.05),
-    inset 0 0 24px rgba(255, 255, 255, 0.14);
-
-  transform: translateY(-0.5px);
+    0 10px 32px -4px rgba(0, 0, 0, 0.09),
+    0 4px 12px -2px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.03),
+    inset 0 0 20px rgba(255, 255, 255, 0.06);
 }
 
-/* ==============================
- * Workspace Buttons
- * ============================== */
-
-#workspaces button {
-  min-width: 0;
-  border-radius: 10px;
-  padding: 0 10px;
-  margin: 2px 2px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  color: rgba(30, 32, 48, 0.65);
-}
+/** active (but not interactive) liquid glass */
 
 #workspaces button.active {
-  color: @mauve;
-  font-weight: 700;
-
-  background: linear-gradient(
-    168deg,
-    rgba(198, 160, 246, 0.22) 0%,
-    rgba(198, 160, 246, 0.16) 50%,
-    rgba(198, 160, 246, 0.12) 100%
-  );
-
+  background: linear-gradient(145deg,
+      rgba(200, 200, 200, 0.10) 0%,
+      rgba(200, 200, 200, 0.18) 48%,
+      rgba(200, 200, 200, 0.15) 52%,
+      rgba(200, 200, 200, 0.08) 100%);
   box-shadow:
-    0 4px 16px -4px rgba(198, 160, 246, 0.25),
-    0 2px 8px -2px rgba(198, 160, 246, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -0.5px 0 rgba(198, 160, 246, 0.1),
-    inset 0 0 16px rgba(198, 160, 246, 0.08),
-    0 0 0 0.5px rgba(198, 160, 246, 0.25);
+    0 4px 16px -4px rgba(0, 0, 0, 0.06),
+    0 2px 6px -2px rgba(0, 0, 0, 0.04),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.20),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.02),
+    inset 0 0 12px rgba(255, 255, 255, 0.04),
+    0 0 0 0.5px rgba(255, 255, 255, 0.10);
 }
 
-#workspaces button.urgent {
-  color: @red;
-  animation: pulse-urgent 1.5s ease-in-out infinite;
+/**
+ * Apple Liquid Glass Pill デザイン (macOS/iOS 26)
+ */
+#player,
+.modules-right>*>*,
+#custom-launcher,
+#custom-power,
+#window>*,
+#workspaces {
+  border: 0.5px solid rgba(255, 255, 255, 0.34);
+  border-radius: 14px;
 
-  background: linear-gradient(
-    168deg,
-    rgba(237, 135, 150, 0.24) 0%,
-    rgba(237, 135, 150, 0.16) 100%
-  );
+  background: linear-gradient(145deg,
+      rgba(128, 128, 128, 0.16) 0%,
+      rgba(128, 128, 128, 0.20) 48%,
+      rgba(128, 128, 128, 0.18) 52%,
+      rgba(128, 128, 128, 0.14) 100%);
+  box-shadow:
+    0 12px 40px -6px rgba(0, 0, 0, 0.08),
+    0 5px 16px -3px rgba(0, 0, 0, 0.05),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.40),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.025),
+    inset 0 0 24px rgba(255, 255, 255, 0.075);
+
+  margin: 4px 0;
+  padding: 0 8px;
+  transition: all 0.35s cubic-bezier(0.28, 0, 0.16, 1);
 }
 
-@keyframes pulse-urgent {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+/* 個別スタイル */
+
+#player * {
+  margin: 2px 0;
+  padding: 0 6px;
+  min-width: 22px;
 }
 
-/* ==============================
- * Icon Accent Colors
- * Improved scannability
- * ============================== */
-
-/* System Icons */
-#custom-launcher {
-  color: @blue;
-  font-size: 14px;
-  min-width: 18px;
-}
-
+#custom-launcher,
 #custom-power {
-  color: @red;
-  font-size: 13px;
-  min-width: 18px;
+  min-width: 16px;
 }
 
-/* Status Icons */
-#network {
-  color: @sapphire;
+#window {
+  margin: 4px 5px;
 }
-
-#bluetooth {
-  color: @blue;
-}
-
-#pulseaudio {
-  color: @lavender;
-  min-width: 72px;
-}
-
-#backlight {
-  color: @yellow;
-}
-
-#battery {
-  color: @green;
-}
-
-/* Time Icons */
-#clock.date {
-  color: @peach;
-}
-
-#clock.clock {
-  color: @mauve;
-}
-
-/* Player Controls */
-#custom-player-prev,
-#custom-player-next {
-  color: @overlay1;
-}
-
-#custom-player-play {
-  color: @pink;
-}
-
-/* ==============================
- * Module Base Styles
- * ============================== */
 
 #cpu,
 #memory,
@@ -235,185 +130,98 @@ window#waybar.topbar {
 #backlight,
 #clock.date,
 #clock.clock {
-  padding: 0 8px;
-  margin: 4px 1px;
-  border-radius: 10px;
-  font-feature-settings: "tnum";
+  color: rgba(15, 15, 15, 0.92);
+  padding: 0 6px;
+  margin: 4px 0;
+  border-radius: 14px;
 }
 
-/* Separator dots between modules in a group */
-.modules-right > * > *:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 12px;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.08) 50%,
-    transparent 100%
-  );
-}
-
-#clock,
-#clock.date {
-  min-width: 68px;
-  margin: 4px 2px;
-  font-weight: 550;
-}
-
-#clock.clock {
-  min-width: 80px;
-  letter-spacing: 0.2px;
-}
-
-/* ==============================
- * Window Title
- * ============================== */
-
-#window {
-  margin: 4px 8px;
-}
-
-#window > * {
-  font-weight: 500;
-  color: rgba(30, 32, 48, 0.75);
-  letter-spacing: 0.2px;
-}
-
-/* ==============================
- * Player Module
- * ============================== */
-
-#player * {
-  margin: 2px 1px;
-  padding: 0 8px;
-  min-width: 24px;
-  border-radius: 8px;
-}
-
-/* ==============================
- * System Tray
- * ============================== */
-
-.modules-right > * > #tray {
+.modules-right>*>#tray {
   padding: 2px 8px;
 }
 
-#tray > * {
-  margin: 6px 0;
+#tray>* {
+  margin: 8px 0;
 }
 
 #tray * {
   border-radius: 8px;
   font-size: 12px;
-  padding: 2px 6px;
+  padding: 0px 4px;
 }
 
-/* ==============================
- * Battery States
- * ============================== */
 
+/* ------------------------------
+ * 微調整
+ * ------------------------------ */
 #battery.warning {
-  color: @yellow;
-
-  border: 0.5px solid rgba(238, 212, 159, 0.45);
-  border-top: 0.5px solid rgba(238, 212, 159, 0.55);
-
-  background: linear-gradient(
-    168deg,
-    rgba(238, 212, 159, 0.28) 0%,
-    rgba(238, 212, 159, 0.20) 50%,
-    rgba(238, 212, 159, 0.14) 100%
-  );
-
+  border: 0.5px solid rgba(238, 212, 159, 0.5);
+  background: linear-gradient(145deg,
+      rgba(238, 212, 159, 0.18) 0%,
+      rgba(238, 212, 159, 0.30) 48%,
+      rgba(238, 212, 159, 0.26) 52%,
+      rgba(238, 212, 159, 0.16) 100%);
   box-shadow:
-    0 6px 24px -4px rgba(238, 212, 159, 0.20),
-    0 3px 10px -2px rgba(238, 212, 159, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 12px 40px -6px rgba(238, 212, 159, 0.12),
+    0 5px 16px -3px rgba(238, 212, 159, 0.08),
+    inset 0 1px 0 rgba(238, 212, 159, 0.40),
     inset 0 -0.5px 0 rgba(0, 0, 0, 0.03),
-    inset 0 0 16px rgba(238, 212, 159, 0.12);
+    inset 0 0 24px rgba(238, 212, 159, 0.10);
+  color: @yellow;
 }
 
 #battery.critical {
+  border: 0.5px solid rgba(237, 135, 150, 0.6);
+  background: linear-gradient(145deg,
+      rgba(237, 135, 150, 0.20) 0%,
+      rgba(237, 135, 150, 0.34) 48%,
+      rgba(237, 135, 150, 0.30) 52%,
+      rgba(237, 135, 150, 0.18) 100%);
+  box-shadow:
+    0 12px 40px -6px rgba(237, 135, 150, 0.16),
+    0 5px 16px -3px rgba(237, 135, 150, 0.12),
+    inset 0 1px 0 rgba(237, 135, 150, 0.45),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.04),
+    inset 0 0 24px rgba(237, 135, 150, 0.12);
   color: @red;
-  animation: pulse-critical 1s ease-in-out infinite;
-
-  border: 0.5px solid rgba(237, 135, 150, 0.50);
-  border-top: 0.5px solid rgba(237, 135, 150, 0.60);
-
-  background: linear-gradient(
-    168deg,
-    rgba(237, 135, 150, 0.30) 0%,
-    rgba(237, 135, 150, 0.22) 50%,
-    rgba(237, 135, 150, 0.16) 100%
-  );
-
-  box-shadow:
-    0 6px 24px -4px rgba(237, 135, 150, 0.24),
-    0 3px 10px -2px rgba(237, 135, 150, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.40),
-    inset 0 -0.5px 0 rgba(0, 0, 0, 0.04),
-    inset 0 0 16px rgba(237, 135, 150, 0.14);
 }
 
-@keyframes pulse-critical {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(0.98); }
+#workspaces button {
+  min-width: 0;
+  border-radius: 10px;
+  padding: 0 8px;
+  margin: 2px 0;
 }
 
-#battery.charging {
-  color: @teal;
+#pulseaudio {
+  min-width: 72px;
 }
 
-#battery.full {
-  color: @green;
+#clock,
+#clock.date {
+  min-width: 62px;
+  margin: 5px 0px;
 }
 
-/* ==============================
- * Tooltip - Enhanced Glass
- * ============================== */
-
+/* ------------------------------
+ * Apple Liquid Glass Tooltip (macOS/iOS 26)
+ * ------------------------------ */
 tooltip {
-  background: linear-gradient(
-    168deg,
-    rgba(255, 255, 255, 0.32) 0%,
-    rgba(200, 200, 200, 0.22) 50%,
-    rgba(160, 160, 160, 0.18) 100%
-  );
-
-  color: rgba(30, 32, 48, 0.95);
-  border: 0.5px solid rgba(255, 255, 255, 0.45);
-  border-top: 0.5px solid rgba(255, 255, 255, 0.60);
+  background: linear-gradient(145deg,
+      rgba(128, 128, 128, 0.18) 0%,
+      rgba(128, 128, 128, 0.22) 48%,
+      rgba(128, 128, 128, 0.20) 52%,
+      rgba(128, 128, 128, 0.16) 100%);
+  color: rgba(15, 15, 15, 0.92);
+  border: 0.5px solid rgba(255, 255, 255, 0.36);
   border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
   font-weight: 500;
-
   box-shadow:
-    0 16px 48px -6px rgba(0, 0, 0, 0.16),
-    0 8px 24px -4px rgba(0, 0, 0, 0.10),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -0.5px 0 rgba(0, 0, 0, 0.04),
-    inset 0 0 28px rgba(255, 255, 255, 0.12);
-}
-
-tooltip label {
-  color: rgba(30, 32, 48, 0.90);
-}
-
-/* ==============================
- * Custom Cava Bar
- * ============================== */
-
-#custom-cava-bar {
-  color: @mauve;
-  opacity: 0.6;
-  font-family: "MesloLGM Nerd Font", monospace;
-  font-size: 11px;
-  letter-spacing: -1px;
-  margin-left: 8px;
+    0 14px 42px -4px rgba(0, 0, 0, 0.10),
+    0 6px 18px -2px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.03),
+    inset 0 0 28px rgba(255, 255, 255, 0.08);
 }
