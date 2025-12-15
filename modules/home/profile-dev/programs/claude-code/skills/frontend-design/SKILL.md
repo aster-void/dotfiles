@@ -26,7 +26,9 @@ Implement code that is: production-grade, visually striking, cohesive aesthetic,
 - **Spatial Composition**: Unexpected layouts. Asymmetry, overlap, diagonal flow, grid-breaking, generous negative space OR controlled density.
 - **Backgrounds**: Create atmosphere. Gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, grain overlays.
 
-**NEVER**: Generic fonts (Inter, Roboto, Arial, system fonts), cliched colors (purple gradients on white), predictable layouts, cookie-cutter design.
+**NEVER**: Generic fonts (Inter, Roboto, Arial, system fonts), cliched colors (purple gradients on white), predictable layouts, cookie-cutter design, inline SVGs.
+
+**Icons**: NEVER inline SVGs. Use separate `.svg` files or icon libraries (Lucide, Iconify, Heroicons, Phosphor). Inline SVGs bloat code and are unmaintainable.
 
 Vary designs: light/dark themes, different fonts/aesthetics. NEVER converge on common choices (Space Grotesk, etc).
 
