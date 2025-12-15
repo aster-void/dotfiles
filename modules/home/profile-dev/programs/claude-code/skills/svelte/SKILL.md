@@ -11,6 +11,12 @@ description: Build Svelte 5 apps with async svelte and remote functions. Always 
 5. [DB layer]: Authorization-unaware, no `getRequestEvent()`
 </rules>
 
+<tips>
+- class arrays (built-in clsx): `class={["btn", active && "active", size]}`
+- `{@const x = derived}` - template内ローカル定数
+- `$bindable()` - 双方向バインディング用props: `let { value = $bindable() } = $props()`
+</tips>
+
 <layers>
 Anywhere → DAL (`$lib/data/*.remote.ts`) → DB (`$lib/server/database/*`)
 
@@ -55,9 +61,12 @@ export const deletePost = command(v.string(), async (id) => {
 
 ```ts
 await addLike(id);
+// or let svelte update other queries after this:
+// This is not necessary if `addLike` command runs `await getLikes().refresh()` server-side as above
+await addLike(id).updates(getLikes());
 ```
 
-optimistic updates:
+with optimistic updates:
 
 ```ts
 await addLike(id)
