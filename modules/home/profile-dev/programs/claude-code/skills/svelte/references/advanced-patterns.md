@@ -30,12 +30,6 @@ export const getWeather = query.batch(v.string(), async (cities) => {
 });
 ```
 
-## Optimistic UI
-
-```ts
-await addLike(id).updates(getLikes(id).withOverride((n) => n + 1));
-```
-
 ## Isolated Form Instances (List Items)
 
 ```svelte
@@ -48,7 +42,7 @@ await addLike(id).updates(getLikes(id).withOverride((n) => n + 1));
 {/each}
 ```
 
-## Form Custom Enhance
+## Optimistic form (custom submission)
 
 ```svelte
 <form
