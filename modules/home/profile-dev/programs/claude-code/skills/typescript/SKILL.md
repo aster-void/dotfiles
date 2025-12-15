@@ -22,6 +22,7 @@ description: Write type-safe TypeScript. Use when writing or reviewing TypeScrip
 5. `foo?.bar` - Use `?.` for safe property access
 6. Tagged unions - `type User = { role: "admin"; permissions: string[] } | { role: "guest"; expiresAt: Date }` then narrow with `if (user.role === "admin")`
 7. When refactoring - Fix ONE type error at a time (type inference changes)
+8. Const string unions - `type Status = "pending" | "active" | "done"` instead of enums
 
 ## When Stuck - NEVER Give Up
 
