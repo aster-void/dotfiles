@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
+  nix-repository = inputs.nix-repository.packages.${system};
 in {
   home.packages = with pkgs; [
     # == Desktop utilities ==
@@ -23,6 +24,7 @@ in {
     feh
     kdePackages.gwenview
     nemo
+    nix-repository.nohrs
     dragon-drop
 
     # == Browsers ==
