@@ -99,4 +99,5 @@ Field Types:
 
 - [Architecture](./references/architecture.md) - structures, auth helpers
 - [Advanced Patterns](./references/advanced-patterns.md) - batching, optimistic UI, advanced form
+- [File Uploads](./references/file-uploads.md) - form/command file upload patterns
 - [Svelte Docs](https://svelte.dev/llms-medium.txt) - full documentation
