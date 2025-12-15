@@ -11,10 +11,18 @@ description: Build Svelte 5 apps with async svelte and remote functions. Always 
 5. [DB layer]: Authorization-unaware, no `getRequestEvent()`
 </rules>
 
+## Type-safe Context
+
+```ts
+export const [useFoo, setupFoo] = createContext<Foo>();
+```
+
 <tips>
 - class arrays (built-in clsx): `class={["btn", active && "active", size]}`
 - `{@const x = derived}` - template内ローカル定数
 - `$bindable()` - 双方向バインディング用props: `let { value = $bindable() } = $props()`
+- top-level `await` - `{#snippet pending}` 不要。省略可
+- context は `await` より前に呼ぶ必要あり
 </tips>
 
 <layers>

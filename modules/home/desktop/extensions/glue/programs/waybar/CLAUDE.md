@@ -14,6 +14,9 @@
 - `white-space`, `text-overflow` - text control
 - `-webkit-*` - prefixes unsupported
 - `!important` - unsupported
+- `letter-spacing` - text spacing unsupported
+- `font-feature-settings` - OpenType features unsupported
+- `font-weight: 550` - only standard values (400, 500, 600, 700) or names (normal, bold)
 
 ## Waybar-Compatible Alternatives
 
