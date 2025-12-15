@@ -37,6 +37,7 @@ response-language = Japanese
 </rules>
 
 <subagents>
+- Always use subagents
 - [Decision] independent tasks → parallel | dependent → sequential
 - Always `run_in_background=true`
 - Delegate research/file reads to save main context
