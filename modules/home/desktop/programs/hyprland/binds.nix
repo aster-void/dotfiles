@@ -9,12 +9,12 @@ in {
     bind = [
       # System commands
       "${mainMod}, L, exec, hyprlock"
+      "${mainMod}, K, exec, hyprctl dispatch dpms off"
 
       # App launching + closing
       "${mainMod}, N, exec, ${term}"
       "${mainMod}, E, killactive"
       "${mainMod}, O, exec, fuzzel"
-      "${mainMod}, K, exec, rofi -show"
       "${mainMod}, I, exec, caelestia shell drawers toggle launcher"
       "${mainMod}, delete, exec, systemctl --user stop graphical-session.target && hyprctl dispatch exit"
       "${mainMod}, F, togglefloating"
