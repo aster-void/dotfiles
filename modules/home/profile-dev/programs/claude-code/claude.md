@@ -2,116 +2,63 @@
 response-language = Japanese
 </settings>
 
-<law>
-## CLAUDE CODE Operating Principles
-1. At task start, output KERNEL-parsed request before work
-2. All expressions concrete. Vague = forbidden.
-3. Every actor communication uses KERNEL format
-</law>
-
 <kernel>
-## KERNEL Format
-All actor communications MUST use:
-- **Task**: Single concrete goal (what to do)
-- **Constraints**: Restrictions/prohibitions (what NOT to do)
-- **Verify**: Success criteria as executable command or concrete check (omit if trivially satisfied)
-
-## Actor Types
-1. **User→Claude** (reverse-proxy): Parse user request into KERNEL
-2. **Claude→Self** (self-exec): KERNEL for own execution
-3. **Claude→Subagent** (proxy): KERNEL in subagent prompt
+- Task: {parsed concrete goal}
+- Constraints: {invariants that must keep passing} (e.g., `bun run build`, `bun run lint`)
+- Verify: {test code + command} | "none" if unverifiable
+  ```ts
+  // path/to/test.ts
+  test("description", () => { ... })
+  ```
+  `bun test path/to/test.ts`
+  - invalid: "read the file", "check the output", `curl`
 </kernel>
 
-<workflow>
-## Response Template
+<every_output>
+1. Output [KERNEL] block (with inline test code in Verify)
+2. [Decision] execute | break down
+3. [If Verify = "none": implement and done]
+4. Write Verify test to file
+5. Implement until test passes
+6. Run Verify command
+</every_output>
 
-```
-User: {user prompt}
+<rules>
+1. [Modularized]: Split files as soon as it does too many things for one file.
 
-[KERNEL: User→Claude]
-- Task: {concrete goal extracted from user request}
-- Constraints: {restrictions inferred or stated}
-- Verify: {how to confirm success | not possible}
+2. [Explicit]: No fallbacks unless requested.
+   - `rm file.txt` not `rm file.txt || true`
+   - `pkgs.hello` not `pkgs.hello or null`
 
-[Decision] {single task → self-exec | multi-task or parallel task → breakdown + subagents}
+3. [Concrete]: All expressions specific and verifiable.
+   - "Add login button to header" not "improve the UI"
 
-[Breakdown] (if multi-task)
-1. {subtask}
-2. {subtask}
+4. [Batch]: Group operations. Multiple tool calls in one message.
+</rules>
 
-[KERNEL: Claude→{Self|Subagent}] (per subtask)
-- Task: {subtask goal}
-- Constraints: {subtask restrictions}
-- Verify: {subtask success check}
-
-{execution}
-
-[Verification]
-- {verify command/check}: {result}
-```
-
-## Rules
-- Single task: self-exec with KERNEL
-- Multi-task: breakdown → parallel subagents where independent
-- Always run Verify after execution
-- Subagent prompts: include `[subagent]` marker + full KERNEL
-</workflow>
-
-<agents>
-## Subagent Operation
-
-**Principles**
-- Delegate research/execution to subagents (save main context)
-- Prompt format: `[subagent] {KERNEL block}`
-- Do nothing while waiting (no guessing, no anticipating)
-
-**Sync vs Async**
-- Always async (`run_in_background=true`)
-- After launching subagents, return control to user immediately (don't wait for results)
-- Execute one-by-one when:
-  - result needed for next task
-  - result changes task tree direction
-otherwise, run in parallel.
-
-**Parallelism**
-- Same feature → sequential
-- Independent features → parallel (multiple Task calls in one message)
-
-**Git Worktree** (via `gtr` skill)
-Use when: verification needs consistency (build/lint) or multi-feature parallel
-
-**Do**: explicit "execute without confirmation", batch launches, delegate reads
-**Don't**: read files before launching, vague instructions ("ask if problems")
-
-**Tracking**: Multiple agents → TodoWrite
-</agents>
-
-<skills>
-<git-commit>
-Commit message format: `{scope}: {message}`
-scope: Commit's impact scope. `packages/{package}`, `modules/{module}`, `treewide`, `meta`, etc.
-message: Concise, clear commit description
-</git-commit>
-</skills>
+<subagents>
+- [Decision] independent tasks → parallel | dependent → sequential
+- Always `run_in_background=true`
+- Delegate research/file reads to save main context
+- Explicit instructions: "execute without confirmation"
+</subagents>
 
 <tools>
-kiri = MCP server for Git semantic search
-ck = grep replacement with semantic search. `ck "fn.*impl" .` (regex), `ck --sem "error handling" .` (semantic), `ck --hybrid "auth" .` (combined)
-pipe = ALWAYS `set -o pipefail` before pipes (e.g., `set -o pipefail && cat /foo.json | jq .package.version`)
-BashOutput = Max 3 consecutive calls. Long-running commands: leave or ask user
-git = git stash absolutely forbidden
+kiri = Git semantic search MCP
+ck = Grep alternative. use this instead of grep. `ck "pattern" .` (regex) | `ck --sem "query" .` (semantic) | `ck --hybrid "query" .`
+pipe = `set -o pipefail && cmd1 | cmd2`
+git-stash = forbidden
+git-worktree = Use `gtr` skill for parallel features or consistent verification
 </tools>
 
-<preferences>
-- All implementations minimal. No verbose code/docs/comments. Keep functional/non-functional requirements minimal.
-- Fail explicitly. Never swallow errors silently.
-  - `rm some-file.txt` > `rm some-file.txt || true`
-  - `pkgs.hello` > `if pkgs ? hello then pkgs.hello else null`
-- Split files when large. Target ~100 lines. Use own judgment.
-- Batch operations. Not one by one (tool calls, agent launches, etc.)
-</preferences>
+<commits>
+Format: `{scope}: {description}`
+Scope: `flake` | `hosts/{name}` | `modules/{name}` | `packages` | `treewide` | `meta`
+Example: `modules/git: add commit hooks`
+</commits>
 
 <tips>
-- Don't change current directory. (NO `cd`)
-- Don't manually specify CWD. Always at repo root, use `.` not full paths
+- Target ~100 lines/file. Split when exceeding.
+- Max 3 consecutive Bash calls. Ask user for long-running commands.
+- Multiple agents → track with TodoWrite
 </tips>
