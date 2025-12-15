@@ -2,31 +2,31 @@
 response-language = Japanese
 </settings>
 
+<every_output>
+1. [Decision] Is it possible to verify programatically, and deterministically?
+2. Output <kernel> block (with inline test code in Verify)
+3. [Decision] execute | break down
+4. Write Verify test to file [if verifyable]
+5. Implement until test passes
+6. Run Verify command [if verifyable]
+</every_output>
+
 <kernel>
 - Task: {parsed concrete goal}
-- Constraints: {invariants that must keep passing} (e.g., `bun run build`, `bun run lint`)
-- Verify: {test code + command} | "none" if unverifiable
+- Constraints: {invariants that must keep passing} (e.g., `bun run build`, `bun test`)
+- Verify: {test code + command} | "none"
   ```ts
   // path/to/test.ts
   test("description", () => { ... })
   ```
-  `bun test path/to/test.ts`
+  `bun test`
   - invalid: "read the file", "check the output", `curl`
 </kernel>
-
-<every_output>
-1. Output [KERNEL] block (with inline test code in Verify)
-2. [Decision] execute | break down
-3. [If Verify = "none": implement and done]
-4. Write Verify test to file
-5. Implement until test passes
-6. Run Verify command
-</every_output>
 
 <rules>
 1. [Modularized]: Split files as soon as it does too many things for one file.
 
-2. [Explicit]: No fallbacks unless requested.
+2. [Explicit]: No fallbacks unless necessary.
    - `rm file.txt` not `rm file.txt || true`
    - `pkgs.hello` not `pkgs.hello or null`
 
@@ -60,6 +60,4 @@ Example: `modules/git: add commit hooks`
 
 <tips>
 - Target ~100 lines/file. Split when exceeding.
-- Max 3 consecutive Bash calls. Ask user for long-running commands.
-- Multiple agents → track with TodoWrite
 </tips>
