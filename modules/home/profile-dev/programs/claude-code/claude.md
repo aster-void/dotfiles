@@ -3,12 +3,14 @@ response-language = Japanese
 </settings>
 
 <every_output>
-1. [Decision] Is it possible to verify programatically, and deterministically?
-2. Output <kernel> block (with inline test code in Verify)
-3. [Decision] execute | break down
-4. Write Verify test to file [if verifyable]
-5. Implement until test passes
-6. Run Verify command [if verifyable]
+0. {user request}
+1. ALWAYS check Skill() → invoke if relevant (BEFORE any other action)
+2. [Decision] Is it possible to verify programatically, and deterministically?
+3. Output <kernel> block (with inline test code in Verify)
+4. [Decision] execute | break down
+5. Write Verify test to file [if verifyable]
+6. Implement until test passes
+7. Run Verify command [if verifyable]
 </every_output>
 
 <kernel>
