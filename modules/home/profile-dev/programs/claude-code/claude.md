@@ -44,6 +44,7 @@ response-language = Japanese
 - Always `run_in_background=true`
 - Delegate research/file reads to save main context
 - Explicit instructions: "execute without confirmation"
+- Don't wait for subagents to finish. it will run in background just fine.
 </subagents>
 
 <tools>
