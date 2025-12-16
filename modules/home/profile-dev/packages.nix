@@ -205,6 +205,8 @@ in {
     elixir
     ## SQL
     postgres-language-server
+    ## Haskell
+    haskell-language-server
     ## Scala
     metals
     ## GLSL
