@@ -23,6 +23,19 @@ export const [useFoo, setupFoo] = createContext<Foo>();
 - `$bindable()` - 双方向バインディング用props: `let { value = $bindable() } = $props()`
 - top-level `await` - `{#snippet pending}` 不要。省略可
 - context は `await` より前に呼ぶ必要あり
+- `<slot />` は非推奨。`{#snippet}` と `{@render}` を使う:
+  ```svelte
+  <!-- 親: propsとしてsnippetを渡す -->
+  <Card>
+    {#snippet header()}<h1>Title</h1>{/snippet}
+    {#snippet children()}Content here{/snippet}
+  </Card>
+
+  <!-- 子: propsで受け取って@renderで描画 -->
+  <script>let { header, children } = $props()</script>
+  {@render header()}
+  {@render children()}
+  ```
 </tips>
 
 <layers>
