@@ -142,6 +142,8 @@ in {
     graphviz
 
     # == Language servers & formatters ==
+    ## Haskell
+    ormolu
     ## OCaml
     ocamlPackages.ocaml-lsp
     ocamlformat

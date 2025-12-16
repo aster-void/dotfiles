@@ -6,6 +6,7 @@
     alejandra = ["alejandra" "-" "--quiet"];
     biome = ext: ["biome" "format" "--stdin-file-path=a.${ext}"];
     fixjson = ["fixjson"];
+    ormolu = ["ormolu"];
     prettier = parser: ["bun" "prettier" "--parser" parser];
     mix = ext: ["mix" "format" "--stdin-filename" "a.${ext}" "-"];
     typstyle = ["typstyle"];
@@ -108,6 +109,7 @@
       ];
     };
 
+    haskell.formatter = formatters.ormolu;
     typst.formatter = formatters.typstyle;
     elixir.formatter = formatters.mix "elixir";
     heex.formatter = formatters.mix "heex";
