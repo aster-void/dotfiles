@@ -1,5 +1,13 @@
-{
+{config, ...}: {
+  age.secrets.nix-conf = {
+    file = ../../../../secrets/nix.conf.age;
+    mode = "400";
+  };
+
   nix.channel.enable = false;
+  nix.extraOptions = ''
+    !include ${config.age.secrets.nix-conf.path}
+  '';
   nix.settings = {
     trusted-users = ["root" "@wheel"];
     substituters = [
