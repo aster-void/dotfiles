@@ -23,6 +23,7 @@ Implement code that is: production-grade, visually striking, cohesive aesthetic,
 - **Typography**: Distinctive fonts only. No Arial/Inter/Roboto. Pair bold display font with refined body font.
 - **Color**: Commit to cohesive aesthetic. CSS variables for consistency. Dominant colors + sharp accents.
 - **Motion**: CSS animations for HTML. Motion library for React. Focus on high-impact moments: orchestrated page loads with staggered reveals, scroll-triggering, surprising hover states.
+- **Hover States**: May change color, shadow, transform, opacity. NEVER change size (padding, margin, font-weight) on hover — causes layout shift.
 - **Spatial Composition**: Unexpected layouts. Asymmetry, overlap, diagonal flow, grid-breaking, generous negative space OR controlled density.
 - **Backgrounds**: Create atmosphere. Gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, custom cursors, grain overlays.
 
