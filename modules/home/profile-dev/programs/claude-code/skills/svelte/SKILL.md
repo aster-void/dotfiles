@@ -116,6 +116,41 @@ Field Types:
 .as("file") .as("checkbox") .as("radio", "value") .as("textarea") .as("select")
 ```
 
+## Ecosystem
+
+See context7 for library docs.
+
+### Components & Styling
+
+- bits-ui - headless components
+- melt-ui - headless components (svelte 5 support is experimental, prefer bits-ui for now)
+- Skeleton UI - styled components
+- shadcn-svelte - copy-paste components like shadcn/ui in React
+- svelte-sonner - toast notifications, built into shadcn-svelte
+- PaneForge - write resizable panes declaratively
+- Threlte - declarative ThreeJS for svelte
+- Svelte Flow - node-based editor
+
+### Icons
+
+- lucide-svelte - icons
+- @iconify/svelte - 200k+ icons from multiple sets
+- svelte-radix - Radix icons
+- svelte-heroes-v2 - hero-icons for svelte
+
+### Async & Data loading
+
+- Remote Functions & Async Svelte - builtin to svelte and kit, very good
+- @tanstack/svelte-query - async state management
+
+### Utility
+
+- runed - svelte utility collection
+- svelte-nuqs - URL query state sync
+- svelte-persisted-store - localStorage-backed stores
+- @testing-library/svelte - component testing
+
+
 ## References
 
 - [Architecture](./references/architecture.md) - structures, auth helpers
