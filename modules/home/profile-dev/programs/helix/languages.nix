@@ -6,7 +6,7 @@
     alejandra = ["alejandra" "-" "--quiet"];
     biome = ext: ["biome" "format" "--stdin-file-path=a.${ext}"];
     fixjson = ["fixjson"];
-    ormolu = ["ormolu"];
+    ormolu = ["ormolu" "--stdin-input-file" ".hs"];
     prettier = parser: ["bun" "prettier" "--parser" parser];
     mix = ext: ["mix" "format" "--stdin-filename" "a.${ext}" "-"];
     typstyle = ["typstyle"];
