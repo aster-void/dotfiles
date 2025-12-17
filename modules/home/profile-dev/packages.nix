@@ -99,9 +99,6 @@ in {
     sd
     jless
     moreutils # sponge, parallel, etc.
-    nushell
-    postgresql # psql
-    litecli
 
     # == Multimedia ==
     ffmpeg
@@ -113,12 +110,6 @@ in {
     # == Terminal ==
     kitty.terminfo
     tmux
-
-    # == Shells ==
-    fish
-    zsh
-    zsh-completions
-    zsh-syntax-highlighting
 
     # == Shell prompt ==
     starship
@@ -137,23 +128,21 @@ in {
     act
     wrkflw
 
-    # == Dependency graph ==
-    cargo-depgraph
-    graphviz
-
-    # == Language servers & formatters ==
+    # == Languages ==
     ## Haskell
+    haskell-language-server
     ormolu
     ## OCaml
     ocamlPackages.ocaml-lsp
     ocamlformat
     ## Crystal
     crystalline
-    ## C#
+    ## C# (.NET)
+    dotnet-sdk
     csharp-ls
     omnisharp-roslyn
     csharpier
-    ## F#
+    ## F# (.NET - shares dotnet-sdk with C#)
     fsautocomplete
     fantomas
     ## Go
@@ -161,27 +150,49 @@ in {
     golangci-lint
     golangci-lint-langserver
     ## Shell
-    bash-language-server
-    fish-lsp
     shellcheck
     shfmt
     ## Rust
     rust-analyzer
     rustfmt
     clippy
+    cargo-depgraph
     ## C/C++
     llvmPackages.clang-tools # clangd, clang-format
     ## Python
     pyright
-    ## YAML / TOML
-    yaml-language-server
-    taplo
-    ## Docker
-    dockerfile-language-server
-    docker-compose-language-service
+    ## Elixir
+    elixir
+    ## Scala (JVM)
+    scala
+    sbt
+    metals
+    ## Kotlin (JVM)
+    kotlin
+    kotlin-language-server
+    ## Julia
+    julia
+    # LSP: install via Pkg.add("LanguageServer") in Julia
+    ## R
+    R
+    rPackages.languageserver
+    ## Gleam (Erlang/BEAM - LSP built-in: gleam lsp)
+    gleam
+    erlang
+    rebar3
+    ## Roc (broken in nixpkgs - tests fail)
+    # roc
+    ## Shell (Bash/Fish/Zsh/Nushell)
+    fish
+    zsh
+    zsh-completions
+    zsh-syntax-highlighting
+    nushell
+    bash-language-server
+    fish-lsp
     ## Lua
     lua-language-server
-    ## Web
+    ## Web (JS/TS/HTML/CSS)
     typescript-language-server
     javascript-typescript-langserver
     biome
@@ -192,9 +203,6 @@ in {
     superhtml
     svelte-language-server
     tailwindcss-language-server
-    ## Markdown
-    markdown-oxide
-    marksman
     ## Nix
     nil
     nixd
@@ -205,20 +213,27 @@ in {
     ## Typst
     tinymist
     typstyle
-    ## Elixir
-    elixir
+    ## Markdown
+    markdown-oxide
+    marksman
+    ## YAML / TOML
+    yaml-language-server
+    taplo
+    ## Docker
+    dockerfile-language-server
+    docker-compose-language-service
     ## SQL
+    postgresql # psql
+    litecli
     postgres-language-server
-    ## Haskell
-    haskell-language-server
-    ## Scala
-    metals
     ## GLSL
     glsl_analyzer
     ## JSON
     fixjson
     ## Hyprlang
     hyprls
+    ## Misc
+    graphviz
 
     # == AI LSPs ==
     lsp-ai

@@ -11,6 +11,7 @@
     mix = ext: ["mix" "format" "--stdin-filename" "a.${ext}" "-"];
     typstyle = ["typstyle"];
     shfmt = ["shfmt"];
+    roc = ["roc" "format" "--stdin" "--stdout"];
   };
 
   languages = {
@@ -119,6 +120,21 @@
     jsonc.formatter = formatters.fixjson;
 
     bash.formatter = formatters.shfmt;
+
+    # Roc (no tree-sitter in Helix yet, but LSP + formatter work)
+    roc = {
+      scope = "source.roc";
+      file-types = ["roc"];
+      roots = ["main.roc"];
+      language-servers = ["roc-ls"];
+      formatter = formatters.roc;
+      auto-pairs = {
+        "(" = ")";
+        "{" = "}";
+        "[" = "]";
+        "\"" = "\"";
+      };
+    };
   };
 
   language-servers = {
@@ -165,6 +181,9 @@
       "vscode-html-language-server"
       "--stdio"
     ];
+
+    # Roc
+    roc-ls.command = ["roc" "lsp"];
 
     # AI language servers
     lsp-ai = {
