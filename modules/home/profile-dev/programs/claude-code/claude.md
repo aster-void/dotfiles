@@ -49,7 +49,10 @@ response-language = Japanese
 
 <tools>
 kiri = Git semantic search MCP
-ck = Grep alternative. use this instead of grep. `ck "pattern" .` (regex) | `ck --sem "query" .` (semantic) | `ck --hybrid "query" .`
+ck = Grep alternative (use instead of grep/rg)
+  Modes: `ck "pattern" .` (regex) | `ck --sem "query" .` (semantic) | `ck --lex "query"` (BM25) | `ck --hybrid "query" .`
+  Options: -i (ignore-case) -w (word) -F (fixed-string) -C/-A/-B (context) -l (files-only) --topk N --threshold SCORE --scores
+  Note: --type unsupported (use --exclude or .ckignore)
 pipe = `set -o pipefail && cmd1 | cmd2`
 git-stash = forbidden
 git-worktree = Use `gtr` skill for parallel features or consistent verification
