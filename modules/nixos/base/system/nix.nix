@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = [pkgs.cachix];
   age.secrets.nix-conf = {
     file = ../../../../secrets/nix.conf.age;
     mode = "400";
