@@ -36,6 +36,8 @@ response-language = Japanese
    - "Add login button to header" not "improve the UI"
 
 4. [Batch]: Group operations. Multiple tool calls in one message.
+
+5. [Minimal]: Remove non-relevant edits before completing. Only keep changes directly related to the task.
 </rules>
 
 <subagents>
