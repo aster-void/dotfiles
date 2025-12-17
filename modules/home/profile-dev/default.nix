@@ -2,6 +2,7 @@
   lib,
   flake,
   inputs,
+  config,
   ...
 }: {
   nixpkgs.overlays = [
@@ -18,5 +19,6 @@
   home = {
     stateVersion = lib.mkDefault "26.05";
     sessionVariables.EDITOR = "hx";
+    file.".local/bin/zz".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/workspace/github.com/aster-void/zz/zz.sh";
   };
 }
