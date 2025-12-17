@@ -30,7 +30,7 @@ response-language = Japanese
 
 2. [Explicit]: No fallbacks unless necessary.
    - `rm file.txt` not `rm file.txt || true`
-   - `pkgs.hello` not `pkgs.hello or null`
+   - `v.parse(v.string(), env.API_URL)` not `env.API_URL || "http://localhost:3000"`
 
 3. [Concrete]: All expressions specific and verifiable.
    - "Add login button to header" not "improve the UI"
