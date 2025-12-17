@@ -161,6 +161,8 @@ in {
     llvmPackages.clang-tools # clangd, clang-format
     ## Python
     pyright
+    ty
+    ruff
     ## Elixir
     elixir
     ## Scala (JVM)

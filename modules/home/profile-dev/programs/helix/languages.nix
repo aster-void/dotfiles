@@ -116,6 +116,11 @@
     elixir.formatter = formatters.mix "elixir";
     heex.formatter = formatters.mix "heex";
 
+    python = {
+      language-servers = ["ty"];
+      formatter = ["ruff" "format" "-"];
+    };
+
     json.formatter = formatters.fixjson;
     jsonc.formatter = formatters.fixjson;
 
@@ -181,6 +186,9 @@
       "vscode-html-language-server"
       "--stdio"
     ];
+
+    # Python
+    ty.command = ["ty" "server"];
 
     # Roc
     roc-ls.command = ["roc" "lsp"];
