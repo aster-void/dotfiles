@@ -9,7 +9,7 @@ in {
     bind = [
       # System commands
       "${mainMod}, L, exec, hyprlock"
-      "${mainMod}, K, exec, hyprlock & hyprctl dispatch dpms off"
+      "${mainMod}, K, exec, hyprlock & sleep .5 && hyprctl dispatch dpms off"
 
       # App launching + closing
       "${mainMod}, N, exec, ${term}"
