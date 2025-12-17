@@ -10,6 +10,7 @@
     prettier = parser: ["bun" "prettier" "--parser" parser];
     mix = ext: ["mix" "format" "--stdin-filename" "a.${ext}" "-"];
     typstyle = ["typstyle"];
+    shfmt = ["shfmt"];
   };
 
   languages = {
@@ -116,6 +117,8 @@
 
     json.formatter = formatters.fixjson;
     jsonc.formatter = formatters.fixjson;
+
+    bash.formatter = formatters.shfmt;
   };
 
   language-servers = {

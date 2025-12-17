@@ -163,6 +163,8 @@ in {
     ## Shell
     bash-language-server
     fish-lsp
+    shellcheck
+    shfmt
     ## Rust
     rust-analyzer
     rustfmt
