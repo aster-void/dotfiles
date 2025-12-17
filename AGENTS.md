@@ -69,3 +69,4 @@ nix-search <query> # Package search
 - Assume filename = what the file defines. Don't read files unnecessarily to save context.
 - **Finding config for X**: `grep -r "filename"` (e.g., `grep -r zellij` to find zellij config)
 - **Simple changes**: Don't over-research. Read the file, make the change, done.
+- **git**: No `-C` flag needed. Working directory is repo root.
