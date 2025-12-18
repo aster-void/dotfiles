@@ -1,5 +1,6 @@
 {inputs, ...}: {
   imports = [
+    ./options.nix
     ./docker.nix
     ./env.nix
     ./users.nix
