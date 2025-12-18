@@ -5,6 +5,7 @@
     enableFishIntegration = true;
     settings = {
       theme = "Catppuccin Frappe";
+      font-family = "MesloLGM Nerd Font";
       font-size = 12;
       confirm-close-surface = false;
       mouse-scroll-multiplier = 20;
