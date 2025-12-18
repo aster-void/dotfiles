@@ -1,7 +1,7 @@
 {lib, ...}: {
   virtualisation.docker = {
     enable = lib.mkDefault true;
-    enableOnBoot = false;
+    enableOnBoot = lib.mkDefault false;
     rootless = {
       enable = lib.mkDefault true;
       setSocketVariable = lib.mkDefault true;
