@@ -17,7 +17,7 @@ in {
       "opacity 0.7, class:windsurf, focus:0"
 
       # Tearing for games
-      "immediate, class:^myfavouritegame$"
+      "immediate, class:starrail.exe"
     ];
 
     layerrule = [
