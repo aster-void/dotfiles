@@ -53,6 +53,14 @@ in {
 }
 ```
 
+or, flat:
+
+```nix
+{
+  programs.git.enable = true;
+}
+```
+
 ## Best Practices
 
 1. **Use `lib.mkIf`** - Not raw `if` for conditional config
@@ -64,10 +72,9 @@ in {
 ## Anti-Patterns
 
 1. **`import <nixpkgs>`** - Use flake inputs instead
-2. **`builtins.fetchGit` without rev** - Always pin commits
-3. **Hardcoded paths** - Use `${pkg}` interpolation
-4. **`rec { }`** - Prefer `let ... in` for recursion
-5. **`assert` for user errors** - Use `lib.assertMsg` with message
+2. **Hardcoded paths** - Use `${pkg}` interpolation
+3. **`rec { }`** - Prefer `let ... in` or recursive `finalAttrs` pattern
+4. **`assert` for user errors** - Use `lib.assertMsg` with message
 
 ## Debugging
 
