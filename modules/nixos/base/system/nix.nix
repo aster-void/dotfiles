@@ -15,6 +15,16 @@
   '';
   nix.settings = {
     trusted-users = ["root" "@wheel"];
+
+    # 並列ビルド
+    max-jobs = "auto";
+    cores = 0;
+
+    # キャッシュ効率化
+    keep-outputs = true;
+    keep-derivations = true;
+    auto-optimise-store = true;
+
     substituters = [
       "https://playit-nixos-module.cachix.org"
       "https://nix-repository--aster-void.cachix.org"
