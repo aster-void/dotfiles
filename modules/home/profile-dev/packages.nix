@@ -184,11 +184,11 @@ in {
     rebar3
     ## Roc (broken in nixpkgs - tests fail)
     # roc
-    ## Shell (Bash/Fish/Zsh/Nushell)
+    ## Shell (Bash/Fish/Nushell)
     fish
-    zsh
-    zsh-completions
-    zsh-syntax-highlighting
+    # zsh
+    # zsh-completions
+    # zsh-syntax-highlighting
     nushell
     bash-language-server
     fish-lsp
