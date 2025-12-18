@@ -24,4 +24,6 @@ in {
   programs.fish.interactiveShellInit = lib.mkIf rootless ''
     set -gx DOCKER_HOST "unix://$XDG_RUNTIME_DIR/docker.sock"
   '';
+
+  users.users.aster.extraGroups = lib.mkIf cfg.rootful ["docker"];
 }

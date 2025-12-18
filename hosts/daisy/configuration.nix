@@ -6,6 +6,7 @@
     flake.nixosModules.profile-dev
     flake.nixosModules.desktop
     ./hardware-configuration.nix
+    ./services/docker.nix
   ];
 
   my.profiles.desktop.enable = true;

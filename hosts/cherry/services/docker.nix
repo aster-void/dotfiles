@@ -9,6 +9,4 @@
       fixed-cidr-v6 = "fd8e:5f6a:1029::/48";
     };
   };
-
-  users.users.aster.extraGroups = ["docker"];
 }
