@@ -21,13 +21,10 @@
     nushell
     bc
     inputs.nix-mc.packages.${pkgs.system}.nix-mc-cli
-
-    # terminal compatibility
-    ghostty.terminfo
   ];
 
-  # Enable comprehensive terminal support
-  # environment.enableAllTerminfo = true; # cannot currently build
+  # Enable comprehensive terminal support for SSH sessions
+  environment.enableAllTerminfo = true;
 
   # Enable systemd for service management
   systemd.enableEmergencyMode = false;
