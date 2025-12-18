@@ -7,7 +7,7 @@
   my.desktop = {
     gaming.enable = true;
     shells.glue.enable = true;
-    shells.glue.type = "glassy";
+    shells.glue.type = "glass";
   };
   my.hyprland = {
     primaryMonitor = "eDP-1";

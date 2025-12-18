@@ -6,7 +6,9 @@
         glue = {
           enable = lib.mkEnableOption "glued shell";
           type = lib.mkOption {
-            type = lib.types.enum ["glassy"];
+            type = lib.types.enum ["glass" "neon" "brutal" "funky" "vapor" "editorial" "noir" "soft"];
+            default = "glass";
+            description = "Visual profile for waybar";
           };
         };
         caelestia.enable = lib.mkEnableOption "caelestia shell";
