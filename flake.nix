@@ -3,15 +3,21 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    systems.url = "github:nix-systems/x86_64-linux";
 
     blueprint.url = "github:numtide/blueprint";
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
+    blueprint.inputs.systems.follows = "systems";
 
     comin.url = "github:nlewo/comin";
     comin.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.systems.follows = "systems";
+
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
+    playit-nixos-module.inputs.nixpkgs.follows = "nixpkgs";
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -26,6 +32,7 @@
     nix-minecraft.url = "github:aster-void/nix-minecraft?ref=wip/minecraftctl";
     nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
     nix-mc.url = "github:aster-void/nix-mc";
+    nix-mc.inputs.nixpkgs.follows = "nixpkgs";
     mc-astronaut-server = {
       url = "github:aster-void/mc-astronaut-server";
       flake = false;
