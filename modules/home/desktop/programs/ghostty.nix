@@ -5,9 +5,11 @@
     enableFishIntegration = true;
     settings = {
       theme = "Catppuccin Frappe";
-      font-family = "MesloLGM Nerd Font";
-      font-family-cjk = "Noto Sans Mono CJK JP";
-      font-size = 12;
+      font-family = [
+        "MesloLGM Nerd Font"
+        "Noto Sans Mono CJK JP"
+      ];
+      font-size = 14;
       confirm-close-surface = false;
       mouse-scroll-multiplier = 20;
       cursor-style = "block";
