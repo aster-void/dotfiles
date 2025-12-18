@@ -74,6 +74,17 @@ in {
           halign = "right";
           valign = "top";
         }
+        # BATTERY - Top-right
+        {
+          monitor = "";
+          text = ''cmd[update:10000] cat /sys/class/power_supply/BAT0/capacity 2>/dev/null | xargs -I{} echo "{}%"'';
+          color = white40;
+          font_size = 20;
+          font_family = font;
+          position = "-60, -150";
+          halign = "right";
+          valign = "top";
+        }
       ];
 
       # Input field - Monochrome minimal
