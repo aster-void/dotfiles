@@ -6,6 +6,7 @@
     settings = {
       theme = "Catppuccin Frappe";
       font-family = "MesloLGM Nerd Font";
+      font-family-cjk = "Noto Sans Mono CJK JP";
       font-size = 12;
       confirm-close-surface = false;
       mouse-scroll-multiplier = 20;
