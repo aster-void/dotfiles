@@ -23,7 +23,7 @@
     inputs.nix-mc.packages.${pkgs.system}.nix-mc-cli
 
     # terminal compatibility
-    kitty.terminfo
+    ghostty.terminfo
   ];
 
   # Enable comprehensive terminal support

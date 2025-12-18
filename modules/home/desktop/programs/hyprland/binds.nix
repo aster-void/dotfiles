@@ -1,5 +1,5 @@
 _: let
-  term = "kitty";
+  term = "ghostty";
   mainMod = "SUPER";
 in {
   wayland.windowManager.hyprland.settings = {

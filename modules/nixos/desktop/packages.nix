@@ -8,7 +8,7 @@
 in {
   environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
     # Terminal (fallback)
-    kitty
+    ghostty
 
     # System
     bluez

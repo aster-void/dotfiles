@@ -2,11 +2,14 @@
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty;
-    enableBashIntegration = true;
+    enableFishIntegration = true;
     settings = {
-      theme = "xcodedarkhc";
+      theme = "Catppuccin Frappe";
+      font-size = 12;
+      confirm-close-surface = false;
+      mouse-scroll-multiplier = 20;
+      cursor-style = "block";
       gtk-titlebar = false;
-      mouse-scroll-multiplier = 2;
       linux-cgroup = "always";
       linux-cgroup-hard-fail = true;
       resize-overlay = "never";

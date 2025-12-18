@@ -108,7 +108,7 @@ in {
     asciinema
 
     # == Terminal ==
-    kitty.terminfo
+    ghostty
     tmux
 
     # == Shell prompt ==

@@ -3,7 +3,7 @@
     # Default applications
     EDITOR = "hx";
     BROWSER = "zen-beta";
-    TERMINAL = "kitty";
+    TERMINAL = "ghostty";
 
     # XDG directories
     XDG_PICTURES_DIR = "Pictures";

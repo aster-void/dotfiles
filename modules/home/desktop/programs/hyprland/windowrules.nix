@@ -1,5 +1,5 @@
-_: let
-  term = "kitty";
+let
+  term = "com.mitchellh.ghostty";
 in {
   wayland.windowManager.hyprland.settings = {
     windowrulev2 = [
