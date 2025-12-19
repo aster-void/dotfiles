@@ -53,7 +53,7 @@ scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewid
 ## Scripts
 
 ```sh
-./scripts/nixos-build.sh [hostname?] [--show-error]  # NixOS build check
+./scripts/nixos-build.sh [hostname?] [--dry]  # NixOS build check
 ```
 
 **When to run build**: Only run when config structure changes (new modules, imports, options). Skip for simple changes like adding packages or modifying program settings.

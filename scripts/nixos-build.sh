@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-show_error=false
+dry_run=false
 hostname="$(hostname)"
 
 for arg in "$@"; do
-  case "$arg" in
-    --show-error) show_error=true ;;
-    *) hostname="$arg" ;;
-  esac
+	case "$arg" in
+	--dry) dry_run=true ;;
+	*) hostname="$arg" ;;
+	esac
 done
 
 git add -A -N
 
-if [[ "$show_error" == true ]]; then
-  nixos-rebuild build --flake ".#$hostname" --show-trace
+if [[ "$dry_run" == true ]]; then
+	nixos-rebuild build --flake ".#$hostname" --dry-run
 else
-  nh os build . --hostname "$hostname" --no-nom --quiet -- --quiet
+	nixos-rebuild build --flake ".#$hostname"
 fi
