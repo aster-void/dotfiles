@@ -4,11 +4,10 @@ description: Build Svelte 5 apps with async svelte and remote functions. Always 
 ---
 
 <rules>
-1. [Reactivity]: `$derived` not `$effect` — $effect is escape hatch for external systems (DOM APIs, timers)
-2. [Query refresh]: After mutation, call `relatedQuery.refresh()` to invalidate
-3. [Single-flight]: Same query + same args = one request (auto-deduplicated)
-4. [Auth at DAL]: Every `.remote.ts` validates auth before DB calls
-5. [DB layer]: Authorization-unaware, no `getRequestEvent()`
+1. [Reactivity]: `$derived` over `$effect` — $effect is escape hatch for external systems (DOM APIs, timers)
+2. [Single-flight]: Same query + same args = one request (auto-deduplicated)
+3. [Auth at DAL]: Every `.remote.ts` validates auth before DB calls
+4. [DB layer]: Authorization-unaware, no `getRequestEvent()`
 </rules>
 
 ## Type-safe Context
@@ -24,18 +23,18 @@ export const [useFoo, setupFoo] = createContext<Foo>();
 - top-level `await` - `{#snippet pending}` 不要。省略可
 - context は `await` より前に呼ぶ必要あり
 - `<slot />` は非推奨。`{#snippet}` と `{@render}` を使う:
-  ```svelte
-  <!-- 親: propsとしてsnippetを渡す -->
-  <Card>
-    {#snippet header()}<h1>Title</h1>{/snippet}
-    {#snippet children()}Content here{/snippet}
-  </Card>
+```svelte
+<!-- 親: propsとしてsnippetを渡す -->
+<Card>
+  {#snippet header()}<h1>Title</h1>{/snippet}
+  {#snippet children()}Content here{/snippet}
+</Card>
 
-  <!-- 子: propsで受け取って@renderで描画 -->
-  <script>let { header, children } = $props()</script>
-  {@render header()}
-  {@render children()}
-  ```
+<!-- 子: propsで受け取って@renderで描画 -->
+<script>let { header, children } = $props()</script>
+{@render header()}
+{@render children()}
+```
 </tips>
 
 <layers>
@@ -138,10 +137,12 @@ See context7 for library docs.
 - svelte-radix - Radix icons
 - svelte-heroes-v2 - hero-icons for svelte
 
-### Async & Data loading
+### State & Async
 
 - Remote Functions & Async Svelte - builtin to svelte and kit, very good
 - @tanstack/svelte-query - async state management
+- xstate + @xstate/svelte - statecharts, actor model FSM
+- robot3 - lightweight (1kb) functional FSM
 
 ### Utility
 
@@ -156,4 +157,6 @@ See context7 for library docs.
 - [Architecture](./references/architecture.md) - structures, auth helpers
 - [Advanced Patterns](./references/advanced-patterns.md) - batching, optimistic UI, advanced form
 - [File Uploads](./references/file-uploads.md) - form/command file upload patterns
+- [XState](./references/xstate.md) - full-featured statecharts, actors, parallel states
+- [Robot3](./references/robot3.md) - lightweight (1kb) functional FSM
 - [Svelte Docs](https://svelte.dev/llms-medium.txt) - full documentation
