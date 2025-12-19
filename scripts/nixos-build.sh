@@ -14,7 +14,7 @@ done
 git add -A -N
 
 if [[ "$dry_run" == true ]]; then
-	nixos-rebuild build --flake ".#$hostname" --dry-run
+	nixos-rebuild dry-build --flake ".#$hostname"
 else
 	nixos-rebuild build --flake ".#$hostname"
 fi
