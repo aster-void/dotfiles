@@ -8,7 +8,7 @@ pre-commit:
 pre-push:
   commands:
     dry-build:
-      run: nh os build . --hostname daisy --no-nom --quiet -- --quiet
+      run: nixos-rebuild dry-build --flake ".#daisy"
 
 post-commit:
   commands:
