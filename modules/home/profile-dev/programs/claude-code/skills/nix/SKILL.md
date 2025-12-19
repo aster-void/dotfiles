@@ -34,6 +34,10 @@ nixos-rebuild switch      # Apply NixOS config
 home-manager switch       # Apply home-manager config
 ```
 
+## Workflow
+
+- **Always `git add` new files** - Flakes only see git-tracked files
+
 ## MCP Servers
 
 - **context7**: Use `mcp__context7__resolve-library-id` with "nix" or "nixos" to fetch docs
