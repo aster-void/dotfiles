@@ -76,7 +76,7 @@ in {
     iputils
     iproute2
     nettools # ifconfig, netstat
-    mosh
+    eternal-terminal
     whois
     xh
     wget
