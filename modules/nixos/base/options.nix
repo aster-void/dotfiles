@@ -6,8 +6,8 @@
   };
 
   options.my.base.power.profile = lib.mkOption {
-    type = lib.types.enum ["boost" "balanced" "survival" "stationary"];
-    default = "balanced";
-    description = "Power management profile: boost (max performance), balanced (default), survival (max battery saving), stationary (always on AC, max battery protection)";
+    type = lib.types.enum ["workstation" "stationary"];
+    default = "workstation";
+    description = "Power management profile: workstation (mobile use), stationary (always on AC)";
   };
 }
