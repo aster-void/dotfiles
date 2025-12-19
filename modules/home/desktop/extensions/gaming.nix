@@ -11,6 +11,9 @@ in {
       # Minecraft
       prismlauncher
       lunar-client
+
+      # Game managers
+      lutris
     ];
 
     services.flatpak = {
