@@ -61,7 +61,7 @@ scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewid
 ## Tools
 
 ```sh
-nix-search <query> # Package search
+nix-search <query>  # Package search (nix-search-cli)
 ```
 
 ## Tips

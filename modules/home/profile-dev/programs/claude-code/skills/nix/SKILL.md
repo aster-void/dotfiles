@@ -18,8 +18,11 @@ description: Write Nix code and manage NixOS/home-manager configurations. Use wh
 ## CLI Tools
 
 ```sh
-nix-search <query>        # Package search (custom alias)
-nix search nixpkgs <pkg>  # Official package search
+nix-search <query>           # Package search (nix-search-cli, fast)
+nix-search --name <name>     #   by package name (supports glob: 'emacsPackages.*')
+nix-search --program <prog>  #   by installed program
+nix-search --details <query> #   show details (description, programs, etc.)
+nix-search --flakes <query>  #   search flakes instead of nixpkgs
 nix flake show            # Show flake outputs
 nix flake check           # Validate flake
 nix repl                  # Interactive REPL
