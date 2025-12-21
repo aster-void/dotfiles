@@ -10,7 +10,7 @@
     shells.glue.type = "glass";
   };
   my.hyprland = {
-    primaryMonitor = "eDP-1";
+    primaryMonitor = "HDMI-A-1";
     sensitivity = "0.3";
     touchpadScrollFactor = "0.15";
   };
