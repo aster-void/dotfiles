@@ -270,7 +270,7 @@ in {
     mcp-nixos
     nix-repository.mcp-language-server
     nix-repository.chrome-devtools-mcp
-    nix-repository.kiri # semantic grep
+    # nix-repository.kiri # semantic grep
     nix-repository.osgrep # semantic grep
     nix-repository.ck-search # semantic grep
     nix-repository.ccusage
