@@ -9,7 +9,7 @@
 
         # Geometry
         width = 350;
-        height = 100;
+        height = 0; # 0 = unlimited
         origin = "top-right";
         offset = "15x45";
 
