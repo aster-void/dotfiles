@@ -12,6 +12,7 @@
     typstyle = ["typstyle"];
     shfmt = ["shfmt"];
     roc = ["roc" "format" "--stdin" "--stdout"];
+    ocamlformat = ["ocamlformat" "--enable-outside-detected-project" "--impl" "-"];
   };
 
   languages = {
@@ -126,6 +127,11 @@
 
     bash.formatter = formatters.shfmt;
 
+    ocaml = {
+      formatter = formatters.ocamlformat;
+      language-servers = ["ocamllsp"];
+    };
+
     # Roc (no tree-sitter in Helix yet, but LSP + formatter work)
     roc = {
       scope = "source.roc";
@@ -192,6 +198,9 @@
 
     # Roc
     roc-ls.command = ["roc" "lsp"];
+
+    # OCaml
+    ocamllsp.command = ["ocamllsp"];
 
     # AI language servers
     lsp-ai = {
