@@ -13,6 +13,12 @@ in {
     libnotify # notify-send
     edid-decode
 
+    # == GPU diagnostics ==
+    vulkan-tools # vulkaninfo
+    mesa-demos # glxinfo, eglinfo
+    libva-utils # vainfo
+    vdpauinfo
+
     # == System tray ==
     volumeicon
     networkmanagerapplet
