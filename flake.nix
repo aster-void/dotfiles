@@ -29,19 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-minecraft.url = "github:aster-void/nix-minecraft?ref=wip/minecraftctl";
-    nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
-    nix-mc.url = "github:aster-void/nix-mc";
-    nix-mc.inputs.nixpkgs.follows = "nixpkgs";
-    mc-astronaut-server = {
-      url = "github:aster-void/mc-astronaut-server";
-      flake = false;
-    };
-    mc-astronaut-mods = {
-      url = "github:aster-void/mc-astronaut-mods/server";
-      flake = false;
-    };
-
     nix-repository.url = "github:aster-void/nix-repository";
     nix-repository.inputs = {
       nixpkgs.follows = "nixpkgs";
