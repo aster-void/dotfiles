@@ -20,7 +20,7 @@
     macchina
     nushell
     bc
-    inputs.nix-mc.packages.${pkgs.system}.nix-mc-cli
+    inputs.nix-mc.packages.${pkgs.stdenv.hostPlatform.system}.nix-mc-cli
   ];
 
   # Enable comprehensive terminal support for SSH sessions
