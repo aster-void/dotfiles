@@ -39,6 +39,8 @@ response-language = Japanese
 4. [Batch]: Group operations. Multiple tool calls in one message.
 
 5. [Minimal]: Remove non-relevant edits before completing. Only keep changes directly related to the task.
+
+6. [Security]: Never read `.env` files. Use `.env.sample` or `.env.example` instead.
 </rules>
 
 <subagents>
