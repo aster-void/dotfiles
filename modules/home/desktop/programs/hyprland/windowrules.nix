@@ -16,8 +16,8 @@ in {
       "opacity 0.85, class:windsurf"
       "opacity 0.7, class:windsurf, focus:0"
 
-      # Tearing for games
-      "immediate, class:starrail.exe"
+      # Tearing for games (disabled due to screen tearing issues)
+      # "immediate, class:starrail.exe"
     ];
 
     layerrule = [
