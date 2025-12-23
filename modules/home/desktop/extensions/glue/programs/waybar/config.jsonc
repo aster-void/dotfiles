@@ -12,7 +12,9 @@
 		"group/player",
 		"custom/cava-bar"
 	],
-	"modules-center": ["hyprland/window"],
+	"modules-center": [
+		"hyprland/window"
+	],
 	"modules-right": [
 		"group/tray",
 		"group/time",
@@ -24,7 +26,6 @@
 			"custom/player#prev",
 			"custom/player#play",
 			"custom/player#next"
-			// "custom/player#main"
 		],
 		"children-class": "seg"
 	},
@@ -34,6 +35,7 @@
 			"tray",
 			"network",
 			"pulseaudio",
+			"pulseaudio#source",
 			"bluetooth",
 			"backlight"
 		],
@@ -138,9 +140,11 @@
 	},
 	"backlight": {
 		"format": "{icon} {percent: >3}%",
-		"format-icons": [""],
+		"format-icons": [
+			""
+		],
 		"on-scroll-up": "brightnessctl set 1%+",
-		"on-scroll-down": "brightnessctl set 1%-",
+		"on-scroll-down": "brightnessctl set 1%-"
 	},
 	"battery": {
 		"states": {
@@ -148,7 +152,13 @@
 			"critical": 15
 		},
 		"format": "{icon} {capacity: >3}%",
-		"format-icons": ["", "", "", "", ""]
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
 	},
 	"bluetooth": {
 		"format": " {status}",
@@ -163,7 +173,7 @@
 		"tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)",
 		"on-click": "blueman-manager",
 		"on-scroll-up": ":",
-		"on-scroll-down": ":",
+		"on-scroll-down": ":"
 	},
 	"network": {
 		"format": "! Disabled",
@@ -172,7 +182,7 @@
 		"format-disconnected": "!  Disconnected",
 		"on-click": "nm-connection-editor",
 		"on-scroll-up": ":",
-		"on-scroll-down": ":",
+		"on-scroll-down": ":"
 	},
 	"pulseaudio": {
 		"scroll-step": 1,
@@ -186,12 +196,22 @@
 			"phone": "",
 			"portable": "",
 			"car": "",
-			"default": ["", ""]
+			"default": [
+				"",
+				""
+			]
 		},
-		"on-click": "pavucontrol"
-		,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
 		"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%"
+	},
+	"pulseaudio#source": {
+		"format": "{format_source}",
+		"format-source": " {source_volume: >3}%",
+		"format-source-muted": " muted",
+		"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+		"on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
+		"on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%"
 	},
 	"custom/power": {
 		"format": "⏻",
