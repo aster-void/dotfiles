@@ -63,6 +63,16 @@ in {
                 echo "Monitor event: $1"
                 ${updateHyprEnv}
                 sleep 1
+
+                # Toggle scale to refresh GTK's scale cache (fixes ghostty crash)
+                for mon in $(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[].name'); do
+                  hyprctl keyword monitor "$mon,preferred,auto,1.01" >/dev/null 2>&1 || true
+                done
+                sleep 0.3
+                for mon in $(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[].name'); do
+                  hyprctl keyword monitor "$mon,preferred,auto,1" >/dev/null 2>&1 || true
+                done
+
                 systemctl --user reset-failed waybar || true
                 systemctl --user restart waybar || true
                 ;;
