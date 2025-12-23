@@ -95,7 +95,8 @@ in {
     wf-recorder
     variety
     hyprpaper
-    wdisplays
+    wdisplays # instant apply (no persistence)
+    nwg-displays # persistent config
 
     # == Status bars ==
     waybar

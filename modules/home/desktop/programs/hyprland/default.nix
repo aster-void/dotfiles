@@ -23,6 +23,12 @@ in {
   config = {
     home.packages = [toggle-mirror];
 
+    # Ensure monitors.conf exists for nwg-displays
+    home.activation.ensureMonitorsConf = config.lib.dag.entryAfter ["writeBoundary"] ''
+      mkdir -p ~/.config/hypr
+      touch ~/.config/hypr/monitors.conf
+    '';
+
     xdg.portal.config.common.default = "*";
 
     wayland.windowManager.hyprland = {
@@ -36,7 +42,10 @@ in {
       xwayland.enable = true;
 
       settings = {
-        # Monitor configuration
+        # Source nwg-displays config
+        source = ["~/.config/hypr/monitors.conf"];
+
+        # Fallback monitor configuration
         monitor =
           if cfg.primaryMonitor != ""
           then
