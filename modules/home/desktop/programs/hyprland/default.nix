@@ -1,10 +1,18 @@
 {
   config,
   osConfig,
+  pkgs,
   ...
 }: let
   cfg = config.my.hyprland;
   xkb = osConfig.services.xserver.xkb;
+
+  toggle-mirror = pkgs.writeShellScriptBin "toggle-mirror" (
+    builtins.replaceStrings
+    ["@primary@"]
+    [cfg.primaryMonitor]
+    (builtins.readFile ./toggle-mirror.sh)
+  );
 in {
   imports = [
     ./binds.nix
@@ -13,6 +21,14 @@ in {
   ];
 
   config = {
+    home.packages = [toggle-mirror];
+
+    # Ensure monitors.conf exists for nwg-displays
+    home.activation.ensureMonitorsConf = config.lib.dag.entryAfter ["writeBoundary"] ''
+      mkdir -p ~/.config/hypr
+      touch ~/.config/hypr/monitors.conf
+    '';
+
     xdg.portal.config.common.default = "*";
 
     wayland.windowManager.hyprland = {
@@ -25,10 +41,16 @@ in {
       xwayland.enable = true;
 
       settings = {
-        # Monitor configuration
+        # Source nwg-displays config (if exists)
+        source = ["~/.config/hypr/monitors.conf"];
+
+        # Fallback monitor configuration (overridden by monitors.conf)
         monitor =
           if cfg.primaryMonitor != ""
-          then ["${cfg.primaryMonitor},preferred,0x0,${cfg.scale}" ",preferred,auto,1,mirror,${cfg.primaryMonitor}"]
+          then
+            if cfg.mirrorSecondary
+            then ["${cfg.primaryMonitor},preferred,0x0,${cfg.scale}" ",preferred,auto,1,mirror,${cfg.primaryMonitor}"]
+            else ["${cfg.primaryMonitor},preferred,0x0,${cfg.scale}" ",preferred,auto,1"]
           else [",preferred,auto,1"];
 
         misc = {

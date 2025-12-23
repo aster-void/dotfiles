@@ -36,6 +36,11 @@
         default = "1.0";
         description = "Touchpad scroll factor";
       };
+      mirrorSecondary = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "Mirror secondary monitors to primary";
+      };
     };
   };
 }
