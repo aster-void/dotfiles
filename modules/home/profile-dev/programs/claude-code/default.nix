@@ -31,6 +31,7 @@ in {
     package = pkgs.edge.claude-code;
     memory.source = ./claude.md;
     skillsDir = ./skills;
+    commandsDir = ./commands;
     settings = {
       env.CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "1";
       permissions.deny = ["Read(**/.env)"];
