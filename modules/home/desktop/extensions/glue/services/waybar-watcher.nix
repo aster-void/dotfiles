@@ -59,10 +59,11 @@ in {
 
           handle_event() {
             case "$1" in
-              monitoradded*|monitorremoved*)
+              monitoraddedv2*|monitorremovedv2*)
                 echo "Monitor event: $1"
                 ${updateHyprEnv}
-                sleep 0.5
+                sleep 1
+                systemctl --user reset-failed waybar || true
                 systemctl --user restart waybar || true
                 ;;
             esac

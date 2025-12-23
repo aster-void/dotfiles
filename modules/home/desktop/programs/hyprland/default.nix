@@ -23,17 +23,12 @@ in {
   config = {
     home.packages = [toggle-mirror];
 
-    # Ensure monitors.conf exists for nwg-displays
-    home.activation.ensureMonitorsConf = config.lib.dag.entryAfter ["writeBoundary"] ''
-      mkdir -p ~/.config/hypr
-      touch ~/.config/hypr/monitors.conf
-    '';
-
     xdg.portal.config.common.default = "*";
 
     wayland.windowManager.hyprland = {
       enable = true;
       package = null; # Use NixOS module's package
+      plugins = [pkgs.hyprlandPlugins.hyprsplit];
       systemd = {
         enable = true;
         enableXdgAutostart = true;
@@ -41,10 +36,7 @@ in {
       xwayland.enable = true;
 
       settings = {
-        # Source nwg-displays config (if exists)
-        source = ["~/.config/hypr/monitors.conf"];
-
-        # Fallback monitor configuration (overridden by monitors.conf)
+        # Monitor configuration
         monitor =
           if cfg.primaryMonitor != ""
           then

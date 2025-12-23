@@ -95,7 +95,7 @@ in {
     wf-recorder
     variety
     hyprpaper
-    nwg-displays
+    wdisplays
 
     # == Status bars ==
     waybar
