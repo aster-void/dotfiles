@@ -25,10 +25,10 @@ window#waybar.topbar {
  * Pill containers - neon border glow
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 0;
   border: 1px solid rgba(0, 255, 255, 0.25);
@@ -127,7 +127,7 @@ window#waybar.topbar {
   margin: 4px 8px;
 }
 
-#window>* {
+#window > * {
   color: rgba(0, 255, 255, 0.5);
   padding: 0 16px;
 }
@@ -147,7 +147,7 @@ window#waybar.topbar {
   border-radius: 0;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 8px;
 }
 

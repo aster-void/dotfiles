@@ -26,10 +26,10 @@ window#waybar.topbar {
  * Containers - exposed box structure
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 0;
   border: 2px solid #ffffff;
@@ -126,7 +126,7 @@ window#waybar.topbar {
   margin: 3px 8px;
 }
 
-#window>* {
+#window > * {
   color: #888888;
   padding: 0 12px;
   border: 1px solid #333333;
@@ -148,7 +148,7 @@ window#waybar.topbar {
   border-right: 1px solid #333333;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 6px;
   border-right: 1px solid #333333;
 }

@@ -9,9 +9,9 @@ description: Write type-safe TypeScript. Use when writing or reviewing TypeScrip
 
 1. **No `any`** - Use `unknown` and validate with valibot
 2. **No `as`** - Fix types at source
-4. **No `!`** - Explicit checks instead
-5. **NO `value is T`** - Use a validator library like valibot instead
-7. **Discriminated unions** - Add `type` field to narrow
+3. **No `!`** - Explicit checks instead
+4. **NO `value is T`** - Use a validator library like valibot instead
+5. **Discriminated unions** - Add `type` field to narrow
 
 ## Good Practices
 

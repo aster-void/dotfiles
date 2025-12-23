@@ -5,36 +5,32 @@ Lightweight (1kb) functional FSM. Simpler API than XState.
 ## Basic Usage
 
 ```ts
-import { createMachine, state, transition } from 'robot3';
+import { createMachine, state, transition } from "robot3";
 
 const toggleMachine = createMachine({
-  inactive: state(
-    transition('toggle', 'active')
-  ),
-  active: state(
-    transition('toggle', 'inactive')
-  )
+  inactive: state(transition("toggle", "active")),
+  active: state(transition("toggle", "inactive")),
 });
 ```
 
 ## Async Actions
 
 ```ts
-import { createMachine, state, transition, invoke, reduce } from 'robot3';
+import { createMachine, state, transition, invoke, reduce } from "robot3";
 
 const fetchMachine = createMachine({
-  idle: state(
-    transition('fetch', 'loading')
-  ),
+  idle: state(transition("fetch", "loading")),
   loading: invoke(
-    () => fetch('/api/data').then(r => r.json()),
-    transition('done', 'success', reduce((ctx, ev) => ({ ...ctx, data: ev.data }))),
-    transition('error', 'error')
+    () => fetch("/api/data").then((r) => r.json()),
+    transition(
+      "done",
+      "success",
+      reduce((ctx, ev) => ({ ...ctx, data: ev.data })),
+    ),
+    transition("error", "error"),
   ),
   success: state(),
-  error: state(
-    transition('retry', 'loading')
-  )
+  error: state(transition("retry", "loading")),
 });
 ```
 
@@ -42,21 +38,29 @@ const fetchMachine = createMachine({
 
 ```ts
 // $lib/useMachine.svelte.ts
-import { interpret } from 'robot3';
+import { interpret } from "robot3";
 
 export function useMachine<T>(machine: T, initialContext = {}) {
   let current = $state(machine.current);
   let context = $state(initialContext);
 
-  const service = interpret(machine, (service) => {
-    current = service.machine.current;
-    context = service.context;
-  }, initialContext);
+  const service = interpret(
+    machine,
+    (service) => {
+      current = service.machine.current;
+      context = service.context;
+    },
+    initialContext,
+  );
 
   return {
-    get current() { return current },
-    get context() { return context },
-    send: service.send
+    get current() {
+      return current;
+    },
+    get context() {
+      return context;
+    },
+    send: service.send,
   };
 }
 ```

@@ -14,12 +14,15 @@ Use semantic DaisyUI classes over raw Tailwind utilities. DaisyUI provides 65 co
 <input class="input input-bordered" />
 
 <!-- NOT raw Tailwind -->
-<button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">This is bad design</button>
+<button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+  This is bad design
+</button>
 ```
 
 **Customization priority**: DaisyUI variants → Tailwind utilities → CSS `@apply`
 
 **Theme application**:
+
 ```html
 <html data-theme="dark">
   <div data-theme="light"><!-- nested themes supported --></div>
@@ -29,13 +32,17 @@ Use semantic DaisyUI classes over raw Tailwind utilities. DaisyUI provides 65 co
 ## Theme Customization
 
 **Config** (CSS file):
+
 ```css
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  themes:
+    light --default,
+    dark --prefersdark;
 }
 ```
 
 **Custom theme**:
+
 ```css
 @plugin "daisyui/theme" {
   name: "mytheme";
@@ -61,15 +68,15 @@ Use semantic DaisyUI classes over raw Tailwind utilities. DaisyUI provides 65 co
 
 ## Components (65)
 
-| Category | Components |
-|----------|------------|
-| **Actions** | btn, dropdown, modal, swap, theme-controller |
-| **Data Display** | accordion, avatar, badge, card, carousel, chat, collapse, countdown, diff, kbd, list, stat, status, table, timeline |
-| **Navigation** | breadcrumbs, dock, link, menu, navbar, pagination, steps, tabs |
-| **Feedback** | alert, loading, progress, radial-progress, skeleton, toast, tooltip |
-| **Input** | calendar, checkbox, fieldset, file-input, filter, label, radio, range, rating, select, input, textarea, toggle, validator |
-| **Layout** | divider, drawer, footer, hero, indicator, join, mask, stack |
-| **Mockup** | browser, code, phone, window |
+| Category         | Components                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Actions**      | btn, dropdown, modal, swap, theme-controller                                                                              |
+| **Data Display** | accordion, avatar, badge, card, carousel, chat, collapse, countdown, diff, kbd, list, stat, status, table, timeline       |
+| **Navigation**   | breadcrumbs, dock, link, menu, navbar, pagination, steps, tabs                                                            |
+| **Feedback**     | alert, loading, progress, radial-progress, skeleton, toast, tooltip                                                       |
+| **Input**        | calendar, checkbox, fieldset, file-input, filter, label, radio, range, rating, select, input, textarea, toggle, validator |
+| **Layout**       | divider, drawer, footer, hero, indicator, join, mask, stack                                                               |
+| **Mockup**       | browser, code, phone, window                                                                                              |
 
 ## Built-in Themes (35)
 

@@ -26,10 +26,10 @@ window#waybar.topbar {
  * Containers - shadow boxes
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 0;
   background: rgba(255, 255, 255, 0.02);
@@ -123,7 +123,7 @@ window#waybar.topbar {
   margin: 4px 8px;
 }
 
-#window>* {
+#window > * {
   color: #505050;
   padding: 0 16px;
   font-style: italic;
@@ -149,7 +149,7 @@ window#waybar.topbar {
   color: #b0b0b0;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 8px;
 }
 

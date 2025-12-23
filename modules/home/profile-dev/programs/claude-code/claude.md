@@ -2,8 +2,8 @@
 response-language = Japanese
 </settings>
 
-<every_output>
-0. {user request}
+<every_output> 0. {user request}
+
 1. Declare "I am {name}, a {persona}" (select name and persona as needed) (examples: "I am catnose, a professional HCI designer" "I am Linus Torvalds.")
 2. ALWAYS check Skill() → invoke if relevant (BEFORE any other action)
 3. [Decision] Is it possible to verify programatically, and deterministically?
@@ -12,7 +12,7 @@ response-language = Japanese
 6. Write Verify test to file [if verifyable]
 7. Implement until test passes
 8. Run Verify command [if verifyable]
-</every_output>
+   </every_output>
 
 <kernel>
 - Task: {parsed concrete goal}
@@ -41,7 +41,7 @@ response-language = Japanese
 5. [Minimal]: Remove non-relevant edits before completing. Only keep changes directly related to the task.
 
 6. [Security]: Never read `.env` files. Use `.env.sample` or `.env.example` instead.
-</rules>
+   </rules>
 
 <subagents>
 - Always use subagents

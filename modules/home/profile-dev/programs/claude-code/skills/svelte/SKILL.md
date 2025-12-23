@@ -33,9 +33,11 @@ export const [useFoo, setupFoo] = createContext<Foo>();
 
 <!-- 子: propsで受け取って@renderで描画 -->
 <script>let { header, children } = $props()</script>
+
 {@render header()}
 {@render children()}
-```
+
+````
 </do>
 
 <dont>
@@ -81,8 +83,7 @@ export const deletePost = command(v.string(), async (id) => {
   await db.posts.delete(id);
   await listPosts.refresh();
 });
-```
-
+````
 
 ### Command usage
 
@@ -96,8 +97,7 @@ await addLike(id).updates(getLikes());
 with optimistic updates:
 
 ```ts
-await addLike(id)
-  .updates(getLikes(id).withOverride((n) => n + 1));
+await addLike(id).updates(getLikes(id).withOverride((n) => n + 1));
 ```
 
 ### Form Usage
@@ -157,7 +157,6 @@ See context7 for library docs.
 - svelte-nuqs - URL query state sync
 - svelte-persisted-store - localStorage-backed stores
 - @testing-library/svelte - component testing
-
 
 ## References
 

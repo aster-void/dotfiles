@@ -20,6 +20,7 @@ Side effects: {possible side effects you have created, if any}
 ```
 
 On failure:
+
 ```
 ✗ failure - {short task name}
 Blocker: {specific issue}
@@ -27,10 +28,12 @@ Attempted: {what was tried}
 ```
 
 On unclear instruction or requires more information:
+
 ```
 ? question - {short task name}
 Question: {specific question}
 ```
+
 </output>
 
 <rules>

@@ -21,6 +21,7 @@ NixOS-based unified system configuration (server + desktop). Managed with Bluepr
 
 **Module Structure**
 (`modules/{home|nixos}/{module}/`):
+
 - `default.nix` - imports submodules
 - `options.nix` - module `options`
 - `programs/` - program configs
@@ -32,15 +33,18 @@ NixOS-based unified system configuration (server + desktop). Managed with Bluepr
 
 **flake.lib.collectFiles**
 Function to auto-collect files in a directory.
+
 - Directory with `default.nix` → returns only `default.nix` (no recursion)
 - Directory without `default.nix` → recursively collects all files
 
 Example:
+
 ```nix
 imports = flake.lib.collectFiles ./programs ++ flake.lib.collectFiles ./services;
 ```
 
 **When default.nix is needed:**
+
 1. **Selection modules** - display-managers, window-managers, etc. where one option is chosen from multiple
 2. **Main config file** - helix/default.nix, hyprland/default.nix, etc. for main config + subfile imports
 3. **Data file exclusion** - shells/default.nix exists to exclude common-aliases.nix (data, not a module)

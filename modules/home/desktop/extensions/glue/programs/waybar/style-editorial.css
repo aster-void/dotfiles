@@ -26,10 +26,10 @@ window#waybar.topbar {
  * Containers - subtle underline emphasis
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 0;
   background: transparent;
@@ -111,7 +111,7 @@ window#waybar.topbar {
   margin: 4px 16px;
 }
 
-#window>* {
+#window > * {
   color: #666666;
   padding: 0 20px;
   font-style: italic;
@@ -147,7 +147,7 @@ window#waybar.topbar {
   font-weight: 600;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 8px;
   border-right: 1px solid #d4d2cd;
 }

@@ -6,25 +6,28 @@
 
 ```ts
 // data.remote.ts
-import { form } from '$app/server';
-import * as v from 'valibot';
-import { writeFile } from 'fs/promises';
-import { extname } from 'path';
+import { form } from "$app/server";
+import * as v from "valibot";
+import { writeFile } from "fs/promises";
+import { extname } from "path";
 
 export const uploadAvatar = form(
   v.object({
     username: v.pipe(v.string(), v.nonEmpty()),
     avatar: v.pipe(
-      v.file('画像を選択してください'),
-      v.mimeType(['image/jpeg', 'image/png', 'image/webp'], 'JPEG/PNG/WebPのみ'),
-      v.maxSize(1024 * 1024 * 10, '10MB以下')
+      v.file("画像を選択してください"),
+      v.mimeType(
+        ["image/jpeg", "image/png", "image/webp"],
+        "JPEG/PNG/WebPのみ",
+      ),
+      v.maxSize(1024 * 1024 * 10, "10MB以下"),
     ),
   }),
   async ({ username, avatar }) => {
     const filename = `uploads/${crypto.randomUUID()}${extname(avatar.name)}`;
     await writeFile(filename, Buffer.from(await avatar.arrayBuffer()));
     return { success: true, path: filename };
-  }
+  },
 );
 ```
 
@@ -49,8 +52,8 @@ export const uploadGallery = form(
   v.object({
     images: v.pipe(
       v.array(v.file()),
-      v.minLength(1, '最低1枚'),
-      v.maxLength(10, '最大10枚')
+      v.minLength(1, "最低1枚"),
+      v.maxLength(10, "最大10枚"),
     ),
   }),
   async ({ images }) => {
@@ -59,10 +62,10 @@ export const uploadGallery = form(
         const path = `gallery/${crypto.randomUUID()}${extname(img.name)}`;
         await writeFile(path, Buffer.from(await img.arrayBuffer()));
         return path;
-      })
+      }),
     );
     return { paths };
-  }
+  },
 );
 ```
 
@@ -122,7 +125,7 @@ export const uploadFile = form(
     const path = `uploads/${crypto.randomUUID()}${extname(file.name)}`;
     await writeFile(path, Buffer.from(await file.arrayBuffer()));
     return { path };
-  }
+  },
 );
 ```
 
@@ -203,13 +206,13 @@ export const uploadFile = form(
 
 ## Valibot File Schema Reference
 
-| Validator | Example |
-|-----------|---------|
-| `v.file()` | `v.file('Required')` |
-| `v.blob()` | `v.blob('Invalid blob')` |
-| `v.mimeType()` | `v.mimeType(['image/png', 'image/jpeg'])` |
-| `v.maxSize()` | `v.maxSize(1024 * 1024 * 5)` (5MB) |
-| `v.array(v.file())` | Multiple files |
+| Validator           | Example                                   |
+| ------------------- | ----------------------------------------- |
+| `v.file()`          | `v.file('Required')`                      |
+| `v.blob()`          | `v.blob('Invalid blob')`                  |
+| `v.mimeType()`      | `v.mimeType(['image/png', 'image/jpeg'])` |
+| `v.maxSize()`       | `v.maxSize(1024 * 1024 * 5)` (5MB)        |
+| `v.array(v.file())` | Multiple files                            |
 
 ## Best Practices
 

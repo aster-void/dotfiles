@@ -11,12 +11,13 @@ description: Design user experiences with usability focus. Use when planning use
 4. [Proximity]: related items close, unrelated items separated
 
 ## Interaction
+
 5. [Scannable]: F-pattern layout, primary info top-left
 6. [Progressive]: essentials first → details on demand
 7. [Constrained]: dropdown over free text, radio over checkbox swarm
 8. [Recoverable]: undo for destructive, soft-delete over hard-delete
 9. [Semantic]: `<button>` not `<div onclick>`, `<label>` for all inputs
-</principles>
+   </principles>
 
 <patterns>
 ## Navigation
@@ -26,6 +27,7 @@ description: Design user experiences with usability focus. Use when planning use
 - mobile primary actions → bottom nav (thumb zone)
 
 ## Forms
+
 - layout: single column, labels top-aligned
 - groups: visual separation between related fields
 - defaults: pre-fill from context
@@ -33,17 +35,19 @@ description: Design user experiences with usability focus. Use when planning use
 - submit: loading state + disable button
 
 ## Feedback
+
 - <100ms → immediate state change
-- >1s → skeleton/progress bar
+- > 1s → skeleton/progress bar
 - success → inline confirmation at action source
 - error → inline at source
 - empty → guide next action: "Add your first {item}"
 
 ## Destructive
+
 - [Decision] reversible → Ctrl+Z undo | irreversible → confirm modal
 - confirm modal: show affected items, require explicit action
 - critical (delete account) → type-to-confirm
-</patterns>
+  </patterns>
 
 <labels>
 - buttons: verb + object (`Save draft` not `OK`)

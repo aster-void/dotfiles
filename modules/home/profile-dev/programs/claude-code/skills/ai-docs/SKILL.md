@@ -7,16 +7,16 @@ description: ALWAYS use this skill when writing AI documentation. Covers CLAUDE.
 
 ## Core Principles
 
-| Do | Don't |
-|----|-------|
-| XML tags (`<rules>`, `<workflow>`) | Prose paragraphs |
-| Templates: `{placeholder}` | Vague instructions |
-| Positive: "Do X" | Negative: "Don't Y" (unless prohibiting) |
-| One task per prompt | Overloaded prompts |
-| Observable output | Internal instructions ("mentally X") |
-| Concrete examples | Abstract rules |
-| <3000 tokens | Long verbose docs |
-| TDD: tests first | Implementation first |
+| Do                                 | Don't                                    |
+| ---------------------------------- | ---------------------------------------- |
+| XML tags (`<rules>`, `<workflow>`) | Prose paragraphs                         |
+| Templates: `{placeholder}`         | Vague instructions                       |
+| Positive: "Do X"                   | Negative: "Don't Y" (unless prohibiting) |
+| One task per prompt                | Overloaded prompts                       |
+| Observable output                  | Internal instructions ("mentally X")     |
+| Concrete examples                  | Abstract rules                           |
+| <3000 tokens                       | Long verbose docs                        |
+| TDD: tests first                   | Implementation first                     |
 
 ## Document Template
 
@@ -73,10 +73,10 @@ Anti-pattern: "Create appropriate module structure based on your judgment"
 **Include:** conventions, constraints, decision templates, tool gotchas
 **Exclude:** generic best practices, tool docs, code explanations
 
-| Doc | Lines |
-|-----|-------|
+| Doc       | Lines  |
+| --------- | ------ |
 | CLAUDE.md | 50-150 |
-| Skills | 50-100 |
+| Skills    | 50-100 |
 
 ## Checklist
 

@@ -26,10 +26,10 @@ window#waybar.topbar {
  * Containers - soft pills
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.6);
@@ -122,7 +122,7 @@ window#waybar.topbar {
   margin: 4px 8px;
 }
 
-#window>* {
+#window > * {
   color: #9d8b9d;
   padding: 0 18px;
   background: rgba(180, 170, 190, 0.08);
@@ -174,7 +174,7 @@ window#waybar.topbar {
   color: #bc8da4;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 10px;
 }
 

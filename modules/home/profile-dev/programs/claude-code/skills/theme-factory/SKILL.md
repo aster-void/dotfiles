@@ -32,6 +32,7 @@ Provides professional font and color themes for artifacts. Each theme includes c
 ## Custom Themes
 
 If existing themes don't fit, generate a new theme with:
+
 - Descriptive name reflecting color/font combinations
 - Colors and fonts based on user requirements
 - Show for review before applying

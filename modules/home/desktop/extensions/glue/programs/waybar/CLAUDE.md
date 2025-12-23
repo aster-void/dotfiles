@@ -21,16 +21,19 @@
 ## Waybar-Compatible Alternatives
 
 ### Height Control
+
 - **`margin`** - visual height adjustment (`margin: 12px 8px`)
 - **`padding`** - internal spacing (`padding: 0px 8px`)
 - **`font-size`** - affects element height
 - **`min-width`** - only width controllable
 
 ### Text Control
+
 - Set `max-length: 50` in **config.jsonc**
 - CSS text control not possible
 
 ### Safe Animations
+
 - **`opacity`** - transparency changes
 - **`box-shadow`** - shadow/glow effects
 - **`background`** - color/gradient
@@ -39,20 +42,22 @@
 ## Common Problems and Solutions
 
 ### Wrong
+
 ```css
 #element {
-  max-height: 16px;      /* Error! */
-  overflow: hidden;      /* Error! */
+  max-height: 16px; /* Error! */
+  overflow: hidden; /* Error! */
   transform: scale(1.1); /* Error! */
 }
 ```
 
 ### Correct
+
 ```css
 #element {
-  margin: 8px;           /* height adjustment */
-  padding: 4px 8px;      /* internal spacing */
-  box-shadow: 0 0 10px;  /* visual effect */
+  margin: 8px; /* height adjustment */
+  padding: 4px 8px; /* internal spacing */
+  box-shadow: 0 0 10px; /* visual effect */
 }
 ```
 

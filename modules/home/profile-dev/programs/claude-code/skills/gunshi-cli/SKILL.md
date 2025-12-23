@@ -8,25 +8,30 @@ description: Build TypeScript CLIs with gunshi. Use when creating command-line t
 ## Core API Pattern
 
 ```typescript
-import { cli, define } from 'gunshi'
+import { cli, define } from "gunshi";
 
 const command = define({
-  name: 'greet',
-  description: 'A greeting command',
+  name: "greet",
+  description: "A greeting command",
   args: {
-    name: { type: 'string', short: 'n', description: 'Name to greet', required: true },
-    times: { type: 'number', short: 't', default: 1 }
+    name: {
+      type: "string",
+      short: "n",
+      description: "Name to greet",
+      required: true,
+    },
+    times: { type: "number", short: "t", default: 1 },
   },
-  run: ctx => {
-    const { name, times } = ctx.values
+  run: (ctx) => {
+    const { name, times } = ctx.values;
     // ctx.positionals for positional args
-  }
-})
+  },
+});
 
 await cli(process.argv.slice(2), command, {
-  name: 'my-app',
-  version: '1.0.0'
-})
+  name: "my-app",
+  version: "1.0.0",
+});
 ```
 
 ## Argument Types & Properties
@@ -100,6 +105,7 @@ args: {
 ```
 
 **All ArgSchema Properties:**
+
 - `type`: `'string' | 'number' | 'boolean' | 'enum' | 'positional' | 'custom'`
 - `short`: Single-character alias (e.g., `'n'` for `-n`)
 - `description`: Help text
@@ -115,57 +121,60 @@ args: {
 ## Type Safety Patterns
 
 **Basic inference (recommended):**
+
 ```typescript
 const cmd = define({
-  args: { name: { type: 'string' } },
-  run: ctx => {
+  args: { name: { type: "string" } },
+  run: (ctx) => {
     // ctx.values.name is automatically typed as string | undefined
-  }
-})
+  },
+});
 ```
 
 **With pre-defined args (use `as const`):**
+
 ```typescript
 const args = {
-  name: { type: 'string' },
-  count: { type: 'number', default: 1 }
-} as const
+  name: { type: "string" },
+  count: { type: "number", default: 1 },
+} as const;
 
-const cmd = define({ args, run: ctx => {} })
+const cmd = define({ args, run: (ctx) => {} });
 ```
 
 **With plugin extensions (v0.27 currying pattern):**
+
 ```typescript
-import { defineWithTypes } from 'gunshi'
+import { defineWithTypes } from "gunshi";
 
 type MyExtensions = {
-  logger: LoggerExtension
-}
+  logger: LoggerExtension;
+};
 
 // Use currying: defineWithTypes<T>()({ ... })
 const cmd = defineWithTypes<{ extensions: MyExtensions }>()({
-  name: 'build',
-  args: { target: { type: 'string' } },
-  run: ctx => {
-    ctx.extensions.logger?.log(`Building ${ctx.values.target}`)
-  }
-})
+  name: "build",
+  args: { target: { type: "string" } },
+  run: (ctx) => {
+    ctx.extensions.logger?.log(`Building ${ctx.values.target}`);
+  },
+});
 ```
 
 **Combining multiple plugin types:**
-```typescript
-import type { I18nExtension } from '@gunshi/plugin-i18n'
-import type { AuthExtension } from './auth-plugin'
-import { pluginId as i18nId } from '@gunshi/plugin-i18n'
-import { pluginId as authId } from './auth-plugin'
 
-type CombinedExtensions =
-  Record<typeof i18nId, I18nExtension> &
-  Record<typeof authId, AuthExtension>
+```typescript
+import type { I18nExtension } from "@gunshi/plugin-i18n";
+import type { AuthExtension } from "./auth-plugin";
+import { pluginId as i18nId } from "@gunshi/plugin-i18n";
+import { pluginId as authId } from "./auth-plugin";
+
+type CombinedExtensions = Record<typeof i18nId, I18nExtension> &
+  Record<typeof authId, AuthExtension>;
 
 const cmd = defineWithTypes<{ extensions: CombinedExtensions }>()({
   // ... command definition
-})
+});
 ```
 
 ## Context Object (`ctx`)
@@ -173,87 +182,89 @@ const cmd = defineWithTypes<{ extensions: CombinedExtensions }>()({
 ```typescript
 interface CommandContext {
   // Parsed values
-  values: ArgValues<Args>           // Typed argument values
-  positionals: string[]             // Positional arguments
-  explicit: Record<string, boolean> // Which args user provided
-  rest: string[]                    // Args after '--'
+  values: ArgValues<Args>; // Typed argument values
+  positionals: string[]; // Positional arguments
+  explicit: Record<string, boolean>; // Which args user provided
+  rest: string[]; // Args after '--'
 
   // Command metadata
-  name?: string                     // Current command name
-  description?: string              // Command description
-  args: Args                        // Argument definitions
+  name?: string; // Current command name
+  description?: string; // Command description
+  args: Args; // Argument definitions
 
   // Environment
   env: {
-    name?: string                   // CLI name
-    version?: string                // CLI version
-    cwd?: string                    // Working directory
-  }
+    name?: string; // CLI name
+    version?: string; // CLI version
+    cwd?: string; // Working directory
+  };
 
   // Utilities
-  log(message?: string): void       // Output message
-  extensions: Record<string, any>   // Plugin extensions (use optional chaining)
+  log(message?: string): void; // Output message
+  extensions: Record<string, any>; // Plugin extensions (use optional chaining)
 
   // Call context
-  callMode: 'entry' | 'subCommand'
-  omitted: boolean                  // Was command name omitted?
+  callMode: "entry" | "subCommand";
+  omitted: boolean; // Was command name omitted?
 }
 ```
 
 ## Subcommands & Lazy Loading
 
 ```typescript
-import { lazy } from 'gunshi'
+import { lazy } from "gunshi";
 
 // Lazy load heavy command
 const heavyCmd = lazy(
   async () => {
-    const { processor } = await import('./heavy-module')
-    return async ctx => processor(ctx.values)
+    const { processor } = await import("./heavy-module");
+    return async (ctx) => processor(ctx.values);
   },
   {
-    name: 'process',
-    description: 'Process data',
-    args: { input: { type: 'string' } }
-  }
-)
+    name: "process",
+    description: "Process data",
+    args: { input: { type: "string" } },
+  },
+);
 
 // With plugin extensions
-import { lazyWithTypes } from 'gunshi'
+import { lazyWithTypes } from "gunshi";
 
 const typedLazy = lazyWithTypes<{ extensions: MyExtensions }>()({
-  loader: async () => import('./command'),
-  name: 'typed-command',
-  args: { /* ... */ }
-})
+  loader: async () => import("./command"),
+  name: "typed-command",
+  args: {
+    /* ... */
+  },
+});
 
 // Main command with subcommands
 const main = define({
-  name: 'cli',
-  run: ctx => console.log('Main command')
-})
+  name: "cli",
+  run: (ctx) => console.log("Main command"),
+});
 
 await cli(process.argv.slice(2), main, {
-  name: 'my-cli',
+  name: "my-cli",
   subCommands: {
     heavy: heavyCmd,
     create: createCmd,
-    list: listCmd
-  }
-})
+    list: listCmd,
+  },
+});
 ```
 
 ## CLI Configuration
 
 ```typescript
 await cli(process.argv.slice(2), command, {
-  name: 'my-app',
-  version: '1.0.0',
-  description: 'My CLI app',
+  name: "my-app",
+  version: "1.0.0",
+  description: "My CLI app",
 
   // Subcommands
   subCommands: { create: createCmd, list: listCmd },
-  fallbackToEntry: true,  // Handle unknown subcommands
+  fallbackToEntry: true, // Handle unknown subcommands
 
   // Plugins
   plugins: [logger(), i18n()],
@@ -264,53 +275,59 @@ await cli(process.argv.slice(2), command, {
   renderValidationErrors: async (ctx, error) => `Error: ${error.message}`,
 
   // Hooks
-  onBeforeCommand: async (ctx) => { /* setup */ },
-  onAfterCommand: async (ctx, result) => { /* cleanup */ },
-  onErrorCommand: async (ctx, error) => { /* handle error */ },
+  onBeforeCommand: async (ctx) => {
+    /* setup */
+  },
+  onAfterCommand: async (ctx, result) => {
+    /* cleanup */
+  },
+  onErrorCommand: async (ctx, error) => {
+    /* handle error */
+  },
 
   // Rendering options
-  usageOptionType: true,   // Show option types in help
-  usageSilent: false       // Suppress output
-})
+  usageOptionType: true, // Show option types in help
+  usageSilent: false, // Suppress output
+});
 ```
 
 ## Plugin System Basics
 
 ```typescript
-import { plugin } from 'gunshi/plugin'
+import { plugin } from "gunshi/plugin";
 
 export default plugin({
-  id: 'company:logger',
-  name: 'Logger Plugin',
-  dependencies: ['optional-plugin'],
+  id: "company:logger",
+  name: "Logger Plugin",
+  dependencies: ["optional-plugin"],
 
   // Setup phase (add global options, decorators)
-  setup: ctx => {
-    ctx.addGlobalOption('verbose', {
-      type: 'boolean',
-      description: 'Enable verbose output'
-    })
+  setup: (ctx) => {
+    ctx.addGlobalOption("verbose", {
+      type: "boolean",
+      description: "Enable verbose output",
+    });
 
     // Wrap command execution
-    ctx.decorateCommand(baseRunner => async (ctx) => {
-      console.log('Before command')
-      const result = await baseRunner(ctx)
-      console.log('After command')
-      return result
-    })
+    ctx.decorateCommand((baseRunner) => async (ctx) => {
+      console.log("Before command");
+      const result = await baseRunner(ctx);
+      console.log("After command");
+      return result;
+    });
   },
 
   // Extension phase (add ctx.extensions)
   extension: (ctx, cmd) => ({
     log: (msg) => console.log(msg),
-    error: (msg) => console.error(msg)
+    error: (msg) => console.error(msg),
   }),
 
   // Post-extension hook
   onExtension: (ctx, cmd) => {
     // Initialization after extension
-  }
-})
+  },
+});
 ```
 
 ## Key Differences from Other Frameworks

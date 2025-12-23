@@ -3,6 +3,7 @@
 ## src/lib Structures
 
 ### Basic
+
 ```
 $lib/
 ├── utils/           # Pure utility functions
@@ -14,6 +15,7 @@ $lib/
 ```
 
 ### Route-Colocated
+
 ```
 routes/
 ├── blog/
@@ -28,7 +30,9 @@ lib/
 ```
 
 ### DDD (Domain-Driven)
+
 For large apps with clear domain boundaries.
+
 ```
 $lib/
 ├── features/

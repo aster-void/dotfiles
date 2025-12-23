@@ -26,10 +26,10 @@ window#waybar.topbar {
  * Containers - soft rounded glow
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 4px;
   background: rgba(255, 113, 206, 0.08);
@@ -126,7 +126,7 @@ window#waybar.topbar {
   margin: 4px 8px;
 }
 
-#window>* {
+#window > * {
   color: rgba(1, 205, 254, 0.6);
   padding: 0 16px;
 }
@@ -163,7 +163,7 @@ window#waybar.topbar {
   color: #b967ff;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 8px;
 }
 

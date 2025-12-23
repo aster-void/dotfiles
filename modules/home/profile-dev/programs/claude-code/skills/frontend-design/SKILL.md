@@ -9,6 +9,7 @@ Create distinctive frontend interfaces that avoid generic "AI slop" aesthetics. 
 ## Design Thinking
 
 Before coding, commit to a BOLD aesthetic direction:
+
 - **Purpose**: What problem does this solve? Who uses it?
 - **Tone**: Pick an extreme: brutally minimal, maximalist chaos, retro-futuristic, organic/natural, luxury/refined, playful/toy-like, editorial/magazine, brutalist/raw, art deco/geometric, soft/pastel, industrial/utilitarian, etc.
 - **Constraints**: Technical requirements (framework, performance, accessibility)
@@ -40,17 +41,20 @@ Vary designs: light/dark themes, different fonts/aesthetics. NEVER converge on c
 ### Terminal-Style Portfolio
 
 **Design Philosophy**
+
 - Absolute commitment to metaphor — "Terminal × Space" as identity, not decoration
 - Constraints breed personality — Avoiding standard UI patterns and consistently applying unique rules creates memorability
 - Personal brand = Design system — Visuals themselves communicate "developer who cares about craft"
 
 **Graphics**
+
 - Colors: Deep navy background, cyan accents with glow effects
 - Typography: Monospace for nav/headings, sans-serif for body
 - Motifs: `└─` tree navigation, floating particles, dithered images, dot separators
 - Layout: Fixed sidebar + card sections + 2-column grid
 
 **User Experience**
+
 - Exploratory discovery — Tree structure evokes "exploring directories" feeling
 - Worldview immersion — Particles and glow breathe life into static pages
 - Developer empathy — Terminal-style UI makes technical users feel "at home"
@@ -58,17 +62,20 @@ Vary designs: light/dark themes, different fonts/aesthetics. NEVER converge on c
 ### Technical Community Platform
 
 **Design Philosophy**
+
 - Content-first — Design serves readability, doesn't assert itself
 - Platform thinking — Designed as a system (themes, spacing, components), not individual pages
 - Restraint builds trust — Less decoration = more professional appearance
 
 **Graphics**
+
 - Colors: Theme-aware (white/light gray, dark blue), blue interactive accents
 - Typography: Inter (600/700), clear hierarchy, generous line height
 - Components: Cards with metadata (likes/bookmarks), emoji badges, minimal navigation
 - Layout: Card grid, consistent padding, responsive
 
 **User Experience**
+
 - Scannability — Cards + hierarchy enable skimming, quick article access
 - Reduced cognitive load — Consistent patterns create "use without thinking" experience
 - Social proof — Like/comment counts function as quality indicators
@@ -76,17 +83,20 @@ Vary designs: light/dark themes, different fonts/aesthetics. NEVER converge on c
 ### Senior Engineer Portfolio
 
 **Design Philosophy**
+
 - Site as proof of competence — Site itself demonstrates "accessible and pixel-perfect" expertise
 - Practicality meets beauty — Pursues simplicity while maintaining technical sophistication
 - Progressive disclosure — Controls information density via pathways to full resume/archive
 
 **Graphics**
+
 - Colors: Dark blue-based dark theme
 - Typography: Inter, modern and highly readable
 - Motifs: Easter eggs (hobby references) add casual elements
 - Layout: Section hierarchy (About→Experience→Projects), list-style career display
 
 **User Experience**
+
 - First impression establishes expertise — Early presentation of job title
 - Trust building — Listing major company experience proves track record
 - Professional + approachable — Hobby/family mentions add humanity
@@ -94,17 +104,20 @@ Vary designs: light/dark themes, different fonts/aesthetics. NEVER converge on c
 ### Creative Engineer Portfolio
 
 **Design Philosophy**
+
 - Digital experience as art — Conveys emotional narrative beyond function
 - Project-specific storytelling — Each work has unique worldview, memorable experience design
 - Fusion of tech and design — 3D graphics, motion create immersion
 
 **Graphics**
+
 - Colors: Different palette per project (purple, pink, blue, etc.), dark backgrounds highlight content
 - Typography: Bold heading placement, text animation with motion
 - Motifs: 3D models (sculptures, etc.), gradient background animations
 - Layout: Large text in hero area, scroll triggers, grid-based project showcase
 
 **User Experience**
+
 - Wonder and empathy — Coexistence of technical prowess and humanity
 - Sparking curiosity — Natural pathways to detailed project pages
 - Intuitive location awareness — Visual changes per section clarify current position
@@ -112,17 +125,20 @@ Vary designs: light/dark themes, different fonts/aesthetics. NEVER converge on c
 ### Developer Tool SaaS
 
 **Design Philosophy**
+
 - "Purpose-built" philosophy — Clear positioning as "purpose-designed" not generic
 - Pursuit of simplicity — Organizing and simplifying complex processes
 - Performance obsession — Thorough use of preload, font optimization, lazy loading
 
 **Graphics**
+
 - Colors: Nearly pure black (#08090a) dark theme, refined restrained contrast
 - Typography: Inter Variable (variable font), systematic typography system, text-wrap: balance
 - Motifs: Blur→sharp fade-in, word-by-word animation, text gradients
 - Layout: Flexbox-centered, variable-managed spacers, responsive
 
 **User Experience**
+
 - First impression: Dark UI conveys "professional" "technical sophistication"
 - Promise of efficiency — Refined UI embodies "lean, fast experience"
 - Trust + innovation — Balance of robustness and modernity, animations convey cutting-edge

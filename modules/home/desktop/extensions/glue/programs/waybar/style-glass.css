@@ -17,7 +17,7 @@ window#waybar.topbar {
   background: transparent;
   border: none;
   border-radius: 0;
-  color: rgba(20, 20, 20, 0.80);
+  color: rgba(20, 20, 20, 0.8);
   transition: all 0.15s ease-out;
 }
 
@@ -25,10 +25,10 @@ window#waybar.topbar {
  * Pill containers - subtle inset look
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.04);
@@ -70,7 +70,7 @@ window#waybar.topbar {
 }
 
 #workspaces button.active {
-  color: rgba(20, 20, 20, 0.90);
+  color: rgba(20, 20, 20, 0.9);
   background: rgba(255, 255, 255, 0.45);
   box-shadow:
     0 1px 4px rgba(0, 0, 0, 0.06),
@@ -79,7 +79,7 @@ window#waybar.topbar {
 
 #workspaces button.urgent {
   color: @red;
-  background: rgba(237, 135, 150, 0.20);
+  background: rgba(237, 135, 150, 0.2);
 }
 
 /**
@@ -94,20 +94,20 @@ window#waybar.topbar {
 #custom-launcher {
   font-size: 15px;
   padding: 0 12px;
-  color: rgba(20, 20, 20, 0.70);
+  color: rgba(20, 20, 20, 0.7);
 }
 
 #custom-power {
   font-size: 14px;
   padding: 0 12px;
-  color: rgba(180, 60, 60, 0.70);
+  color: rgba(180, 60, 60, 0.7);
 }
 
 #window {
   margin: 4px 8px;
 }
 
-#window>* {
+#window > * {
   color: rgba(20, 20, 20, 0.55);
   padding: 0 16px;
 }
@@ -127,7 +127,7 @@ window#waybar.topbar {
   border-radius: 6px;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 8px;
 }
 
@@ -154,7 +154,7 @@ window#waybar.topbar {
  */
 tooltip {
   background: rgba(255, 255, 255, 0.85);
-  color: rgba(20, 20, 20, 0.90);
+  color: rgba(20, 20, 20, 0.9);
   border: 0.5px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   padding: 8px 12px;

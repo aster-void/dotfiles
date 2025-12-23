@@ -48,6 +48,7 @@ skill-name/
 ### Design Patterns
 
 See references/ for detailed patterns:
+
 - **references/workflows.md** - Multi-step processes, conditional logic
 - **references/output-patterns.md** - Templates, quality standards
 

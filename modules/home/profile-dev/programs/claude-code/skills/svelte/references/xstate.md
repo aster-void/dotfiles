@@ -35,58 +35,67 @@ Full-featured statecharts: actors, parallel states, visual editor (Stately).
 ## Async Actions
 
 ```ts
-import { createMachine, assign, fromPromise } from 'xstate';
+import { createMachine, assign, fromPromise } from "xstate";
 
-const fetchMachine = createMachine({
-  id: 'fetch',
-  initial: 'idle',
-  context: { data: null, error: null },
-  states: {
-    idle: {
-      on: { FETCH: 'loading' }
+const fetchMachine = createMachine(
+  {
+    id: "fetch",
+    initial: "idle",
+    context: { data: null, error: null },
+    states: {
+      idle: {
+        on: { FETCH: "loading" },
+      },
+      loading: {
+        invoke: {
+          src: "fetchData",
+          onDone: {
+            target: "success",
+            actions: assign({ data: ({ event }) => event.output }),
+          },
+          onError: {
+            target: "error",
+            actions: assign({ error: ({ event }) => event.error }),
+          },
+        },
+      },
+      success: { on: { FETCH: "loading" } },
+      error: { on: { FETCH: "loading" } },
     },
-    loading: {
-      invoke: {
-        src: 'fetchData',
-        onDone: { target: 'success', actions: assign({ data: ({ event }) => event.output }) },
-        onError: { target: 'error', actions: assign({ error: ({ event }) => event.error }) }
-      }
+  },
+  {
+    actors: {
+      fetchData: fromPromise(async () => {
+        const res = await fetch("/api/data");
+        return res.json();
+      }),
     },
-    success: { on: { FETCH: 'loading' } },
-    error: { on: { FETCH: 'loading' } }
-  }
-}, {
-  actors: {
-    fetchData: fromPromise(async () => {
-      const res = await fetch('/api/data');
-      return res.json();
-    })
-  }
-});
+  },
+);
 ```
 
 ## Parallel States
 
 ```ts
 const editorMachine = createMachine({
-  id: 'editor',
-  type: 'parallel',
+  id: "editor",
+  type: "parallel",
   states: {
     bold: {
-      initial: 'off',
+      initial: "off",
       states: {
-        off: { on: { TOGGLE_BOLD: 'on' } },
-        on: { on: { TOGGLE_BOLD: 'off' } }
-      }
+        off: { on: { TOGGLE_BOLD: "on" } },
+        on: { on: { TOGGLE_BOLD: "off" } },
+      },
     },
     italic: {
-      initial: 'off',
+      initial: "off",
       states: {
-        off: { on: { TOGGLE_ITALIC: 'on' } },
-        on: { on: { TOGGLE_ITALIC: 'off' } }
-      }
-    }
-  }
+        off: { on: { TOGGLE_ITALIC: "on" } },
+        on: { on: { TOGGLE_ITALIC: "off" } },
+      },
+    },
+  },
 });
 ```
 

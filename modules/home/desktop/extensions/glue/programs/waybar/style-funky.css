@@ -26,10 +26,10 @@ window#waybar.topbar {
  * Containers - chunky pills
  */
 #player,
-.modules-right>*>*,
+.modules-right > * > *,
 #custom-launcher,
 #custom-power,
-#window>*,
+#window > *,
 #workspaces {
   border-radius: 20px;
   background: #16213e;
@@ -57,11 +57,11 @@ window#waybar.topbar {
   border-color: #a29bfe;
 }
 
-.modules-right>*>*:nth-child(odd) {
+.modules-right > * > *:nth-child(odd) {
   border-color: #fdcb6e;
 }
 
-.modules-right>*>*:nth-child(even) {
+.modules-right > * > *:nth-child(even) {
   border-color: #74b9ff;
 }
 
@@ -142,7 +142,7 @@ window#waybar.topbar {
   margin: 3px 10px;
 }
 
-#window>* {
+#window > * {
   color: #dfe6e9;
   padding: 0 18px;
   background: #0f3460;
@@ -165,7 +165,7 @@ window#waybar.topbar {
   color: #ffeaa7;
 }
 
-.modules-right>*>#tray {
+.modules-right > * > #tray {
   padding: 2px 10px;
 }
 

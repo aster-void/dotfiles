@@ -24,27 +24,32 @@ The codebase is your domain. Improve it autonomously.
 Spawn these agents in parallel (`run_in_background=true`):
 
 Code health agent:
+
 ```
 Analyze codebase for bugs, security issues, performance problems.
 Return actionable findings with file:line references.
 ```
 
 Feature gaps agent:
+
 ```
 What's missing? What would users expect? What's half-implemented?
 Return concrete feature suggestions with rationale.
 ```
 
 Architecture agent:
+
 ```
 Analyze structure. Find inconsistencies, dead code, tech debt.
 Return refactoring opportunities.
 ```
 
 Context agent (if TODOS.md/TASKS.md exists):
+
 ```
 Read existing task files. Summarize current priorities.
 ```
+
 </discovery-phase>
 
 <decision-phase>
@@ -54,21 +59,27 @@ After discovery, YOU decide:
 - What to ask user about (unclear requirements, breaking changes)
 
 Create TODOS.md with your decisions:
+
 ```md
 # AGI Session {date}
 
 ## Priority Tasks (executing now)
+
 - [ ] {task} - {why this matters}
 
 ## Queued
+
 - [ ] {task}
 
 ## Deferred (needs user input)
+
 - [ ] {task} - {question for user}
 
 ## Rejected
+
 - {task} - {why not doing this}
 ```
+
 </decision-phase>
 
 <execution-phase>
