@@ -61,6 +61,9 @@ ck = Grep alternative (use instead of grep/rg)
 pipe = `set -o pipefail && cmd1 | cmd2`
 git-stash = forbidden
 git-worktree = Use `gtr` skill for parallel features or consistent verification
+git-unstage = `git unstage [file]` - unstage files (safe)
+git-uncommit = `git uncommit` - undo last commit, keep changes staged (safe)
+git-reset = `git reset HEAD` - ⚠️ DANGER: resets working tree files! Use `git unstage` instead
 </tools>
 
 <commits>
