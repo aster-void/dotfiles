@@ -1,7 +1,19 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  # Workaround for GTK4 crash on monitor hotplug (scale=0 assertion failure)
+  # https://github.com/ghostty-org/ghostty/discussions/3885
+  ghostty-x11 = pkgs.symlinkJoin {
+    name = "ghostty-x11";
+    paths = [pkgs.ghostty];
+    nativeBuildInputs = [pkgs.makeBinaryWrapper];
+    postBuild = ''
+      wrapProgram $out/bin/ghostty \
+        --set GDK_BACKEND x11
+    '';
+  };
+in {
   programs.ghostty = {
     enable = true;
-    package = pkgs.ghostty;
+    package = ghostty-x11;
     enableFishIntegration = true;
     settings = {
       theme = "Catppuccin Frappe";
