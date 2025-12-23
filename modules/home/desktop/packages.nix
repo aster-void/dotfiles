@@ -78,7 +78,6 @@ in {
 
     # == Terminals ==
     alacritty
-    ghostty
 
     # == Bluetooth ==
     blueberry

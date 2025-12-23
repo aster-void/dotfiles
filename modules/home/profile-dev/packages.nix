@@ -108,7 +108,6 @@ in {
     asciinema
 
     # == Terminal ==
-    ghostty
     tmux
 
     # == Shell prompt ==

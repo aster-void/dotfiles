@@ -7,9 +7,6 @@
   cfg = config.my.profiles.desktop;
 in {
   environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-    # Terminal (fallback)
-    ghostty
-
     # System
     bluez
     bluez-tools
