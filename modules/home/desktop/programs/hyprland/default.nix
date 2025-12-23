@@ -33,7 +33,6 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      package = null; # Use NixOS module's package
       plugins = [pkgs.hyprlandPlugins.hyprsplit];
       systemd = {
         enable = true;
@@ -41,11 +40,13 @@ in {
       };
       xwayland.enable = true;
 
-      settings = {
-        # Source nwg-displays config
-        source = ["~/.config/hypr/monitors.conf"];
+      # Source nwg-displays config at the end to override defaults
+      extraConfig = ''
+        source = ~/.config/hypr/monitors.conf
+      '';
 
-        # Fallback monitor configuration
+      settings = {
+        # Fallback monitor configuration (overridden by monitors.conf)
         monitor =
           if cfg.primaryMonitor != ""
           then
