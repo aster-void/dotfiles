@@ -16,13 +16,14 @@ description: Build Svelte 5 apps with async svelte and remote functions. Always 
 export const [useFoo, setupFoo] = createContext<Foo>();
 ```
 
-<tips>
+<do>
 - class arrays (built-in clsx): `class={["btn", active && "active", size]}`
 - `{@const x = derived}` - template内ローカル定数
 - `$bindable()` - 双方向バインディング用props: `let { value = $bindable() } = $props()`
-- top-level `await` - `{#snippet pending}` 不要。省略可
-- context は `await` より前に呼ぶ必要あり
-- `<slot />` は非推奨。`{#snippet}` と `{@render}` を使う:
+- リアクティブな async: `let data = $derived(await fetchData(id))` - idが変わると自動refetch
+- lazy init: `let x = $derived.by(() => expensiveComputation())` - 参照時に初めて評価
+- context は `await` より前に呼ぶ
+- `{#snippet}` と `{@render}` を使う:
 ```svelte
 <!-- 親: propsとしてsnippetを渡す -->
 <Card>
@@ -35,7 +36,13 @@ export const [useFoo, setupFoo] = createContext<Foo>();
 {@render header()}
 {@render children()}
 ```
-</tips>
+</do>
+
+<dont>
+- `<slot />` - 非推奨。`{#snippet}` を使う
+- `svelte:boundary` - 不要。top-level awaitでエラーは親に伝播、pendingは自動処理
+- `svelte:boundary` の `{#snippet pending()}` - 不安定。使う場合もpendingは避ける
+</dont>
 
 <layers>
 Anywhere → DAL (`$lib/data/*.remote.ts`) → DB (`$lib/server/database/*`)
