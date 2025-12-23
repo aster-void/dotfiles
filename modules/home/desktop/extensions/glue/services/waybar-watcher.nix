@@ -75,6 +75,7 @@ in {
 
                 systemctl --user reset-failed waybar || true
                 systemctl --user restart waybar || true
+                systemctl --user restart hyprpaper || true
                 ;;
             esac
           }
