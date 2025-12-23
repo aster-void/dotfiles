@@ -64,9 +64,14 @@ in {
                 ${updateHyprEnv}
                 sleep 1
 
-                # Reload monitor config from nwg-displays
+                # Workaround: disable monitors then reload to force xdg_output refresh
+                # (fixes waybar not appearing on second monitor - Hyprland bug)
+                for mon in $(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[].name'); do
+                  hyprctl keyword monitor "$mon,disable" >/dev/null 2>&1 || true
+                done
+                sleep 0.05
                 hyprctl reload >/dev/null 2>&1 || true
-                sleep 0.5
+                sleep 0.1
 
                 systemctl --user reset-failed waybar || true
                 systemctl --user restart waybar || true
