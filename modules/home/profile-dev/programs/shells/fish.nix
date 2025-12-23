@@ -15,7 +15,7 @@ in {
       set -g fish_greeting
       set -g __starship_fish_use_job_groups "false"
 
-      function cat
+      function view
         if test (count $argv) -eq 0; or test "$argv[1]" = "-"
           command cat
           return
@@ -23,14 +23,14 @@ in {
         for arg in $argv
           switch $arg
             case -h --help
-              echo "usage: cat [file...]"; echo "  images: chafa, others: bat, stdin: cat"; return
+              echo "usage: view [file...]"; echo "  images: chafa, others: bat, stdin: cat"; return
             case '-*'
-              echo "cat: unknown flag: $arg" >&2; return 1
+              echo "view: unknown flag: $arg" >&2; return 1
           end
         end
         for f in $argv
           if not test -e $f
-            echo "cat: $f: No such file" >&2; continue
+            echo "view: $f: No such file" >&2; continue
           end
           switch (file --brief --mime-type $f)
             case 'image/*'
