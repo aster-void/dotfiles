@@ -1,6 +1,4 @@
 {...}: {
-  my.profile-dev.docker.rootful = true;
-
   virtualisation.docker = {
     daemon.settings = {
       live-restore = false;
