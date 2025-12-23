@@ -64,14 +64,9 @@ in {
                 ${updateHyprEnv}
                 sleep 1
 
-                # Toggle scale to refresh GTK's scale cache (fixes ghostty crash)
-                for mon in $(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[].name'); do
-                  hyprctl keyword monitor "$mon,preferred,auto,1.01" >/dev/null 2>&1 || true
-                done
-                sleep 0.3
-                for mon in $(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[].name'); do
-                  hyprctl keyword monitor "$mon,preferred,auto,1" >/dev/null 2>&1 || true
-                done
+                # Reload monitor config from nwg-displays
+                hyprctl reload >/dev/null 2>&1 || true
+                sleep 0.5
 
                 systemctl --user reset-failed waybar || true
                 systemctl --user restart waybar || true

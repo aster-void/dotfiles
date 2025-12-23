@@ -11,7 +11,7 @@
       ];
       font-size = 14;
       confirm-close-surface = false;
-      mouse-scroll-multiplier = 3;
+      mouse-scroll-multiplier = 0.5;
       cursor-style = "block";
       gtk-titlebar = false;
       linux-cgroup = "always";
