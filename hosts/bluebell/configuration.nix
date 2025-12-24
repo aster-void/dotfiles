@@ -1,13 +1,11 @@
 {flake, ...}: {
   networking.hostName = "bluebell";
 
-  imports = [
-    flake.nixosModules.base
-    flake.nixosModules.profile-dev
-    flake.nixosModules.desktop
-    ./hardware-configuration.nix
-  ];
-
-  my.profiles.desktop.enable = true;
-  my.profiles.gaming.enable = true;
+  imports =
+    [
+      flake.nixosModules.base
+      flake.nixosModules.profile-dev
+      ./hardware-configuration.nix
+    ]
+    ++ flake.lib.collectFiles ./services;
 }
