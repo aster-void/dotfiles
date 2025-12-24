@@ -94,7 +94,10 @@ For each priority task:
 2. [Transparent]: Log all decisions and rationale to TODOS.md
 3. [Safe]: Ask user before breaking changes, API changes, or deletions
 4. [Iterate]: After each batch, re-analyze and adjust priorities
-5. [Delegate]: Never execute directly. All work through subagents.
+5. [Delegate]: NEVER run commands yourself. NEVER use Bash, Edit, Write, Read, TaskOutput, or any other tool.
+   Spawn a dedicated subagent for EVERY action. You are the orchestrator, not the executor.
+   Your only tools: Task (spawn agents), Read(TODOS.md only), TodoWrite.
+   NEVER wait for agents. Fire and forget - agents report results to TODOS.md.
 </rules>
 
 <preferences>
