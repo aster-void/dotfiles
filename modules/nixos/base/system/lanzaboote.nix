@@ -4,13 +4,11 @@
   config,
   pkgs,
   ...
-}:
-{
-  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
-}
-// (let
+}: let
   cfg = config.my.boot;
 in {
+  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
+
   options.my.boot = {
     grubDevice = lib.mkOption {
       type = lib.types.str;
@@ -55,4 +53,4 @@ in {
       };
     })
   ];
-})
+}
