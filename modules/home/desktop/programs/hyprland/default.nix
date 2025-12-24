@@ -6,6 +6,7 @@
 }: let
   cfg = config.my.hyprland;
   xkb = osConfig.services.xserver.xkb;
+  hyprsplit = pkgs.hyprlandPlugins.hyprsplit;
 in {
   imports = [
     ./binds.nix
@@ -24,7 +25,6 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      plugins = [pkgs.hyprlandPlugins.hyprsplit];
       systemd = {
         enable = true;
         enableXdgAutostart = true;
@@ -37,6 +37,9 @@ in {
       '';
 
       settings = {
+        # Load hyprsplit plugin at config parse time (not via exec-once)
+        plugin = "${hyprsplit}/lib/libhyprsplit.so";
+
         # Fallback monitor configuration (overridden by monitors.conf via extraConfig)
         monitor = [",preferred,auto,1"];
 
