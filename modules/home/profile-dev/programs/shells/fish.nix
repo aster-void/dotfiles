@@ -4,6 +4,7 @@
     cg = "cd $(git root)";
     sizeof = "du -sh";
     nixman = "cd /etc/nixos/; sudo -s;";
+    claude = "claude --dangerously-skip-permissions";
   };
 in {
   programs.fish = {
