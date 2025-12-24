@@ -49,6 +49,7 @@ in {
 
     # == Media ==
     amberol
+    mpv
     vlc
     playerctl
     kooha
