@@ -35,8 +35,13 @@ Your task: read TODOS.md / TASKS.md and pass them to workers.
 </rules>
 
 <task-format>
-Each task prompt must have a concrete goal, and optionally constraints.
-Example: `/swarm:worker Add login button to Header component constraints: Use SvelteKit remote functions`
+Use this format to pass tasks to /swarm:worker
+```
+<Task>{the task}</Task>
+<Context>{background info}</Context>
+<Do>{concrete action to perform}</Do>
+<Return>{what to report back to master}</Return>
+```
 </task-format>
 
 <kernel>
