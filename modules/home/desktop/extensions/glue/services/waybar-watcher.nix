@@ -5,22 +5,6 @@
   ...
 }: let
   cfg = config.my.desktop.shells.glue;
-
-  # Script to find and update HYPRLAND_INSTANCE_SIGNATURE
-  updateHyprEnv = pkgs.writeShellScript "update-hypr-env" ''
-    set -euo pipefail
-    # Find the current Hyprland instance (the one with .socket.sock)
-    for dir in /run/user/1000/hypr/*/; do
-      if [[ -S "$dir/.socket.sock" ]]; then
-        NEW_SIG=$(basename "$dir")
-        if [[ "$NEW_SIG" != "$HYPRLAND_INSTANCE_SIGNATURE" ]]; then
-          echo "Updating HYPRLAND_INSTANCE_SIGNATURE: $HYPRLAND_INSTANCE_SIGNATURE -> $NEW_SIG"
-          systemctl --user set-environment HYPRLAND_INSTANCE_SIGNATURE="$NEW_SIG"
-        fi
-        break
-      fi
-    done
-  '';
 in {
   config.systemd.user.services = lib.mkIf cfg.enable {
     waybar-watcher = {
@@ -59,6 +43,7 @@ in {
 
           LAST_HANDLED=0
           DEBOUNCE_SEC=5
+          SOCKET="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
 
           handle_event() {
             case "$1" in
@@ -71,18 +56,6 @@ in {
                 LAST_HANDLED=$NOW
 
                 echo "Monitor event: $1"
-                ${updateHyprEnv}
-                sleep 1
-
-                # Workaround: disable monitors then reload to force xdg_output refresh
-                # (fixes waybar not appearing on second monitor - Hyprland bug)
-                for mon in $(hyprctl monitors -j | ${pkgs.jq}/bin/jq -r '.[].name'); do
-                  hyprctl keyword monitor "$mon,disable" >/dev/null 2>&1 || true
-                done
-                sleep 0.05
-                hyprctl reload >/dev/null 2>&1 || true
-                sleep 0.1
-
                 systemctl --user reset-failed waybar || true
                 systemctl --user restart waybar || true
                 systemctl --user restart hyprpaper || true
@@ -90,25 +63,8 @@ in {
             esac
           }
 
-          # Find valid socket
-          find_socket() {
-            for dir in /run/user/1000/hypr/*/; do
-              if [[ -S "$dir/.socket2.sock" ]]; then
-                echo "$dir/.socket2.sock"
-                return 0
-              fi
-            done
-            return 1
-          }
-
-          while true; do
-            SOCKET=$(find_socket) || { sleep 2; continue; }
-            echo "Connecting to $SOCKET"
-            ${pkgs.socat}/bin/socat -U - "UNIX-CONNECT:$SOCKET" | while read -r line; do
-              handle_event "$line"
-            done
-            echo "Socket disconnected, reconnecting..."
-            sleep 1
+          ${pkgs.socat}/bin/socat -U - "UNIX-CONNECT:$SOCKET" | while read -r line; do
+            handle_event "$line"
           done
         ''}";
         Restart = "always";
