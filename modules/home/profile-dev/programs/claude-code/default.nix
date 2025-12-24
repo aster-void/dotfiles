@@ -35,6 +35,10 @@ in {
     settings = {
       env.CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "1";
       permissions.deny = ["Read(**/.env)"];
+      attribution = {
+        commit = "";
+        pr = "";
+      };
     };
   };
 
