@@ -1,9 +1,14 @@
 {
+  inputs,
   lib,
   config,
   pkgs,
   ...
-}: let
+}:
+{
+  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
+}
+// (let
   cfg = config.my.boot;
 in {
   options.my.boot = {
@@ -50,4 +55,4 @@ in {
       };
     })
   ];
-}
+})

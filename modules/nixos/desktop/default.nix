@@ -7,7 +7,6 @@
   imports =
     [
       inputs.nix-flatpak.nixosModules.nix-flatpak
-      inputs.lanzaboote.nixosModules.lanzaboote
       ./options.nix
       ./packages.nix
     ]
