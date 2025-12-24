@@ -22,7 +22,7 @@ Analyze, Execute, Review must be done by subagents.
 
 <workers>
 Discovery agents examples:
-- laziness analyzer
+- friction analyzer (minimize interaction cost and cognitive load)
 - UX/HCI designer
 - visual designer
 - accessibility verifier
