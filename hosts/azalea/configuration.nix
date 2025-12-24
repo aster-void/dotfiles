@@ -5,20 +5,10 @@
     [
       flake.nixosModules.base
       flake.nixosModules.profile-dev
-      flake.nixosModules.desktop
+      flake.nixosModules.profile-server
       ./hardware-configuration.nix
     ]
     ++ flake.lib.collectFiles ./services;
 
-  my.profiles.desktop.enable = true;
-  my.profiles.gaming.enable = true;
   my.boot.enableLanzaboote = true;
-
-  # Intel HDA audio codec doesn't respond, causing 4 second boot delay
-  # USB/HDMI/DisplayPort audio still works
-  boot.blacklistedKernelModules = ["snd_hda_intel"];
-
-  environment.sessionVariables = {
-    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
-  };
 }
