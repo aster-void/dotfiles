@@ -64,9 +64,15 @@
   zramSwap = {
     enable = true;
     algorithm = "zstd";
-    memoryPercent = 50;
+    memoryMax = 64 * 1024 * 1024 * 1024; # 64 GiB
   };
-  boot.kernel.sysctl."vm.swappiness" = 180;
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 180;
+    # Watchdog: auto-reboot on kernel hang
+    "kernel.softlockup_panic" = 1;
+    "kernel.hardlockup_panic" = 1;
+    "kernel.panic" = 10; # reboot 10s after panic
+  };
 
   # Locale settings
   # Language: English, Other formats (currency, time, etc.): Japanese
