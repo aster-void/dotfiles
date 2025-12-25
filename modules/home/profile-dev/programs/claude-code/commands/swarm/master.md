@@ -20,7 +20,7 @@ Your task: read TODOS.md / TASKS.md and pass them to workers.
 3. For each batch:
    - Launch all via Task tool: `run_in_background=true`, prompt=`/swarm:worker {task with full context}`
    - Return control to user (do NOT run `TaskOutput` - even `block=false` blocks)
-   - When all agent finishes, update `TODOS.md`: `- [x]` for completed, add new discovered tasks
+   - When each agent finishes, update `TODOS.md`: `- [x]` for completed, add new discovered tasks
 4. review
    - check commands (subagent)
    - code review (subagent)
@@ -31,7 +31,7 @@ Your task: read TODOS.md / TASKS.md and pass them to workers.
 1. [Delegate only]: Orchestrator runs NO commands directly. All work via subagents.
 2. [Precious context]: Orchestrator context is limited. Minimize reads/research. Delegate to subagents.
 3. [Full context]: Each task prompt includes full context (subagents have no shared memory)
-4. [Update]: Mark completed immediately after each batch, not after all work
+4. [Update]: Mark completed immediately after each agent finishes, not after the entire batch
 </rules>
 
 <task-format>
