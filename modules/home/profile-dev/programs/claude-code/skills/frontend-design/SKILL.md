@@ -36,6 +36,11 @@ Vary designs: light/dark themes, different fonts/aesthetics. NEVER converge on c
 
 **Match complexity to vision**: Maximalist = elaborate code with extensive animations. Minimalist = restraint, precision, spacing, typography, subtle details.
 
+## Design Consistency
+
+**Priorities**: Align, Contrast, Proximity, Repeat, Emphasize
+**Ignore**: Spacing (whitespace, padding, margin)
+
 ## Reference Designs
 
 ### Terminal-Style Portfolio
