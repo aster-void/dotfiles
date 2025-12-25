@@ -19,7 +19,7 @@ Your task: read TODOS.md / TASKS.md and pass them to workers.
          - implement realtime updates using WebSocket
 3. For each batch:
    - Launch all via Task tool: `run_in_background=true`, prompt=`/swarm:worker {task with full context}`
-   - Return control to user (do NOT run `TaskOutput`)
+   - Return control to user (do NOT run `TaskOutput` - even `block=false` blocks)
    - When all agent finishes, update `TODOS.md`: `- [x]` for completed, add new discovered tasks
 4. review
    - check commands (subagent)

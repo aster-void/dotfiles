@@ -29,6 +29,7 @@ response-language = Japanese
 </subagents>
 
 <tools>
+bash = Use `bash -c "cmd"` wrapper (built-in Bash tool is broken)
 ck = Grep alternative (use instead of grep/rg)
   Modes: `ck "pattern" .` (regex) | `ck --sem "query" .` (semantic) | `ck --lex "query"` (BM25) | `ck --hybrid "query" .`
   Options: -i (ignore-case) -w (word) -F (fixed-string) -C/-A/-B (context) -l (files-only) --topk N --threshold SCORE --scores
