@@ -39,6 +39,7 @@ Use this format to pass tasks to /swarm:worker
 ```
 <Task>{the task}</Task>
 <Context>{necessary background info}</Context>
+<Constraints>{give specific validator. example: it should follow docs/design_language.md}</Constaints>
 <Do>{concrete action to perform}</Do>
 <Return>{what to report back to master}</Return>
 ```

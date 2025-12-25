@@ -10,6 +10,18 @@ Execute the task autonomously without confirmation.
 $ARGUMENTS
 </task>
 
+<workflow>
+1. Execute task
+2. Self-review
+3. Output result
+</workflow>
+
+<self-review>
+1. For each requirement in task, state exactly where/how it's satisfied
+2. Check compliance against requirement docs - cite specific matches
+3. If any check fails, fix before reporting complete
+</self-review>
+
 <output>
 Return exactly what master specifies. Format:
 
