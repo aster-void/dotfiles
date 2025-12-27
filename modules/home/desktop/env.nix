@@ -42,5 +42,8 @@
 
     # Electron apps on Wayland
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
+
+    # Disable VRR for NVIDIA HDMI stability
+    export __GL_VRR_ALLOWED=0
   '';
 }

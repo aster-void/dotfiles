@@ -121,6 +121,10 @@ in {
         };
 
         cursor.no_hardware_cursors = false;
+
+        render = {
+          explicit_sync = true;
+        };
       };
     };
   };
