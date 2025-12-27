@@ -3,6 +3,14 @@
   pkgs,
   ...
 }: {
+  boot.kernelParams = [
+    # NVIDIA
+    "nvidia_drm.modeset=1"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    # AMD - disable PSR to prevent HDMI flickering
+    "amdgpu.dcdebugmask=0x10"
+  ];
+
   environment.systemPackages = [
     pkgs.egl-wayland
     pkgs.libglvnd
