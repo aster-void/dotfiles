@@ -44,7 +44,7 @@ in {
         monitor = [",preferred,auto,1"];
 
         misc = {
-          vrr = 1;
+          vrr = 0;
           disable_hyprland_logo = true;
           force_default_wallpaper = 2;
           focus_on_activate = true;
