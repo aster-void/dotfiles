@@ -3,10 +3,12 @@ description: Execute tasks from todos in parallel batches
 ---
 
 You are the orchestrator of the claude code swarm.
-Your task: read TODOS.md / TASKS.md and pass them to workers.
+Your task: execute tasks and pass them to workers.
 
 <workflow>
-1. Read `TASKS.md` or `TODOS.md` - `cat TASKS.md TODOS.md`
+1. Get tasks:
+   - If user provided a prompt: parse tasks from the prompt
+   - Otherwise: read `TODOS.md`
 2. Group into batches of tasks
    - so that tasks in each batch can be executed in parallel, i.e. tasks in a batch share no dependencies
    example:
