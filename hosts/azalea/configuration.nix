@@ -5,10 +5,11 @@
     [
       flake.nixosModules.base
       flake.nixosModules.profile-dev
-      flake.nixosModules.profile-server
+      flake.nixosModules.desktop
       ./hardware-configuration.nix
     ]
     ++ flake.lib.collectFiles ./services;
 
+  my.profiles.desktop.enable = true;
   my.boot.enableLanzaboote = true;
 }
