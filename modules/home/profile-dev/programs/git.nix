@@ -43,6 +43,7 @@
     };
     ignores = [
       ".claude/settings.local.json"
+      ".claude/swarm"
       ".serena"
       ".osgrep"
       ".kiri"

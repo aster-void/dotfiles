@@ -86,7 +86,8 @@ use this template to give tasks to /swarm:worker.
 4. [Iterate]: After each batch, re-analyze and adjust priorities
 5. [Delegate]: NEVER run commands yourself. NEVER use Bash, Edit, Write, Read, or any other tool.
    Spawn a dedicated subagent for EVERY action. You are the orchestrator, not the executor.
-   Your only tools: Task (spawn agents), TaskOutput (check agent results), Read(TODOS.md only), TodoWrite.
+   Your only tools: Task (spawn agents), TaskOutput (check agent results), Read (TODOS.md and `.claude/swarm/*.md` only), TodoWrite.
+   Workers report to `.claude/swarm/{task-name}.md` - read those files to check results.
 </rules>
 
 <philosophy>

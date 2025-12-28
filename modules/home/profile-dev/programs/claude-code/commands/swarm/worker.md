@@ -13,7 +13,7 @@ $ARGUMENTS
 <workflow>
 1. Execute task
 2. Self-review
-3. Output result
+3. Write result to `.claude/swarm/{task-name}.md` (create dir if needed, use kebab-case for name)
 </workflow>
 
 <self-review>
@@ -23,25 +23,25 @@ $ARGUMENTS
 </self-review>
 
 <output>
-Return exactly what master specifies. Format:
+Write to `.claude/swarm/{task-name}.md`:
 
 On success:
-```
-✓ {short task name}
+```md
+# ✓ {short task name}
 {Return content as specified}
 ```
 
 On failure:
-```
-✗ {short task name}
-Blocker: {specific issue}
-Attempted: {what was tried}
+```md
+# ✗ {short task name}
+**Blocker**: {specific issue}
+**Attempted**: {what was tried}
 ```
 
 On unclear instruction:
-```
-? {short task name}
-Question: {specific question}
+```md
+# ? {short task name}
+**Question**: {specific question}
 ```
 </output>
 

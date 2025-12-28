@@ -22,6 +22,7 @@ Your task: execute tasks and pass them to workers.
 3. For each batch:
    - Launch all via Task tool: `run_in_background=true`, prompt=`/swarm:worker {task with full context}`
    - Return control to user (do NOT run `TaskOutput` - even `block=false` blocks)
+   - Workers report to `.claude/swarm/{task-name}.md` - read those files when checking results
    - When each agent finishes, update `TODOS.md`: `- [x]` for completed, add new discovered tasks
 4. review
    - check commands (subagent)
