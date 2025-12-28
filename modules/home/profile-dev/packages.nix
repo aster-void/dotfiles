@@ -107,9 +107,6 @@ in {
     timg
     asciinema
 
-    # == Terminal ==
-    tmux
-
     # == Shell prompt ==
     starship
 
