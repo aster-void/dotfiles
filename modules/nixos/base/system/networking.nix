@@ -19,6 +19,7 @@
   environment.systemPackages = with pkgs; [
     cloudflared
     cloudflare-cli
+    iw
   ];
 
   # mDNS discovery for local network
