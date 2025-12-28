@@ -20,6 +20,11 @@ _: {
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
+        # 30分 (1800秒) でサスペンド
+        {
+          timeout = 1800;
+          on-timeout = "systemctl suspend";
+        }
       ];
     };
   };
