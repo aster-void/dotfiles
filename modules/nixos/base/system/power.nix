@@ -41,6 +41,7 @@ in {
 
       # USB
       USB_AUTOSUSPEND = 1;
+      USB_AUTOSUSPEND_DELAY_INIT = 3600; # 1 hour delay before suspend
       USB_BLACKLIST = "1e7d:2dcd 046d:c548"; # ROCCAT mouse & Logitech Bolt Receiver
 
       # GPU (Intel)
@@ -70,4 +71,7 @@ in {
 
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
+
+  # Use s2idle (suspend-to-idle) for faster wake and lower overhead
+  boot.kernelParams = ["mem_sleep_default=s2idle"];
 }

@@ -7,6 +7,10 @@
         Enable = "Source,Sink,Media,Socket";
         Experimental = true;
       };
+      Policy = {
+        AutoEnable = true;
+        IdleTimeout = 3600; # 1 hour before idle disconnect
+      };
     };
   };
 }
