@@ -8,12 +8,12 @@ in {
     mode = "0400";
   };
 
-  networking.networkmanager.unmanaged = ["wlp4s0"];
+  networking.networkmanager.unmanaged = ["wlo1"];
 
   systemd.network = {
     enable = true;
-    networks."30-wlp4s0" = {
-      matchConfig.Name = "wlp4s0";
+    networks."30-wlo1" = {
+      matchConfig.Name = "wlo1";
       address = ["10.89.0.1/24"];
       networkConfig.DHCPServer = false;
     };
@@ -21,12 +21,12 @@ in {
 
   services.hostapd = {
     enable = true;
-    radios.wlp4s0 = {
+    radios.wlo1 = {
       band = "2g";
       channel = 6;
       countryCode = "JP";
-      networks.wlp4s0 = {
-        ssid = "azalea";
+      networks.wlo1 = {
+        ssid = "bluebell";
         authentication = {
           mode = "wpa3-sae-transition";
           saePasswordsFile = wifiSecret.path;
@@ -39,7 +39,7 @@ in {
   services.dnsmasq = {
     enable = true;
     settings = {
-      interface = "wlp4s0";
+      interface = "wlo1";
       bind-interfaces = true;
       domain-needed = true;
       bogus-priv = true;
@@ -57,7 +57,7 @@ in {
 
   networking.nat = {
     enable = true;
-    externalInterface = "enp3s0";
-    internalInterfaces = ["wlp4s0"];
+    externalInterface = "eno2";
+    internalInterfaces = ["wlo1"];
   };
 }
