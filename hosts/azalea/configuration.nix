@@ -1,14 +1,12 @@
 {flake, ...}: {
   networking.hostName = "azalea";
 
-  imports =
-    [
-      flake.nixosModules.base
-      flake.nixosModules.profile-dev
-      flake.nixosModules.desktop
-      ./hardware-configuration.nix
-    ]
-    ++ flake.lib.collectFiles ./services;
+  imports = [
+    flake.nixosModules.base
+    flake.nixosModules.profile-dev
+    flake.nixosModules.desktop
+    ./hardware-configuration.nix
+  ];
 
   my.profiles.desktop.enable = true;
   my.boot.enableLanzaboote = true;
