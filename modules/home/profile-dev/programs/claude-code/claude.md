@@ -17,6 +17,11 @@ response-language = Japanese
 5. [Minimal]: Remove non-relevant edits before completing. Only keep changes directly related to the task.
 
 6. [Security]: Never read `.env` files. Use `.env.sample` or `.env.example` instead.
+
+7. [Stateless]: Don't introduce state. ANY KIND of state counts. Before adding state, repeat why it's absolutely necessary. This includes:
+   - Application-global state
+   - State that user has to track
+   - Code that needs to change whenever another file changes
 </rules>
 
 <subagents>
@@ -42,6 +47,10 @@ git-unstage = `git unstage [file]` - unstage files (safe)
 git-uncommit = `git uncommit` - undo last commit, keep changes staged (safe)
 git-reset = `git reset HEAD` - ⚠️ DANGER: resets working tree files! Use `git unstage` instead
 </tools>
+
+<skills>
+**READ THE AVAILABLE SKILLS** in the Skill tool description before starting any task. Use them when relevant.
+</skills>
 
 <when-stuck>
 **When stuck, STOP and follow this checklist:**
