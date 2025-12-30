@@ -16,6 +16,36 @@ description: Build Svelte 5 apps with async svelte and remote functions. Always 
 export const [useFoo, setupFoo] = createContext<Foo>();
 ```
 
+## Type-safe Navigation (`$app/paths`)
+
+```ts
+import { resolve, asset } from '$app/paths';
+
+// 静的パス (base path 付き)
+resolve('/about');
+
+// 動的パス - プレースホルダーは src/routes の構造と一致必須
+resolve('/blog/[slug]', { slug: 'my-post' }); // ✅
+resolve('/blog/[id]', { id: 'my-post' });     // ❌ TypeScript error
+
+// 静的アセット (static/ 内)
+asset('/favicon.png');
+```
+
+## Hydratable (v5.44+)
+
+SSR データをクライアントで再利用し、hydration 時の重複 fetch を排除:
+
+```ts
+// Before: SSR と hydration で2回 fetch
+const data = await fetchData();
+
+// After: SSR の結果を再利用、1回で済む
+const data = await hydratable('unique-key', () => fetchData());
+```
+
+注意: データは JSON serializable である必要あり
+
 <do>
 - class arrays (built-in clsx): `class={["btn", active && "active", size]}`
 - `{@const x = derived}` - template内ローカル定数
@@ -44,6 +74,7 @@ export const [useFoo, setupFoo] = createContext<Foo>();
 - `<slot />` - 非推奨。`{#snippet}` を使う
 - `svelte:boundary` - 不要。top-level awaitでエラーは親に伝播、pendingは自動処理
 - `svelte:boundary` の `{#snippet pending()}` - 不安定。使う場合もpendingは避ける
+- `base` from `$app/paths` - 非推奨。`resolve()` を使う
 </dont>
 
 <layers>
