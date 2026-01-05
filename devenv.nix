@@ -6,7 +6,7 @@
   env.RULES = "./secrets/secrets.nix";
 
   packages = with pkgs; [
-    inputs.agenix.packages.${stdenv.system}.default
+    inputs.agenix.packages.${stdenv.hostPlatform.system}.default
     lefthook
     alejandra
     bun

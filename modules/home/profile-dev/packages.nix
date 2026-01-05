@@ -4,7 +4,7 @@
   inputs,
   ...
 }: let
-  inherit (pkgs.stdenv) system;
+  inherit (pkgs.stdenv.hostPlatform) system;
   nix-repository = inputs.nix-repository.packages.${system};
 in {
   home.packages = with pkgs; [

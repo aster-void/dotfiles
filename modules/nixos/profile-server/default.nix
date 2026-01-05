@@ -1,13 +1,11 @@
 {pkgs, ...}: {
   # Prevent sleep on lid close and idle
-  services.logind = {
-    lidSwitch = "ignore";
-    lidSwitchExternalPower = "ignore";
-    lidSwitchDocked = "ignore";
-    powerKey = "poweroff";
-    settings.Login = {
-      IdleAction = "ignore";
-    };
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+    HandlePowerKey = "poweroff";
+    IdleAction = "ignore";
   };
 
   # Disable sleep/hibernate
