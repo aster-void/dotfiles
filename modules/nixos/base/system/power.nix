@@ -56,7 +56,7 @@ in {
       RADEON_DPM_PERF_LEVEL_ON_BAT = "low";
 
       # Platform profile (ThinkPad)
-      PLATFORM_PROFILE_ON_AC = "balanced";
+      PLATFORM_PROFILE_ON_AC = "performance";
       PLATFORM_PROFILE_ON_BAT = "low-power";
 
       # Power saving
