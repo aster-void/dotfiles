@@ -3,7 +3,11 @@
   flake,
   ...
 }: {
-  age.secrets.syncthing-password.file = "${flake}/secrets/syncthing-password.age";
+  age.secrets.syncthing-password = {
+    file = "${flake}/secrets/syncthing-password.age";
+    owner = "syncthing";
+    group = "syncthing";
+  };
 
   services.syncthing = {
     enable = true;
