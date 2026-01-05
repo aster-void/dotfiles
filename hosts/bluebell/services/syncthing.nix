@@ -11,7 +11,10 @@
     group = "users";
     dataDir = "/home/aster";
     openDefaultPorts = true;
-    settings.gui.user = "aster";
+    settings.gui = {
+      user = "aster";
+      insecureSkipHostCheck = true;
+    };
     guiPasswordFile = config.age.secrets.syncthing-password.path;
   };
 }
