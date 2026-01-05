@@ -7,12 +7,9 @@
 
   services.syncthing = {
     enable = true;
-    user = "aster";
-    group = "users";
-    dataDir = "/home/aster";
     openDefaultPorts = true;
     settings.gui = {
-      user = "aster";
+      user = "syncthing";
       insecureSkipHostCheck = true;
     };
     guiPasswordFile = config.age.secrets.syncthing-password.path;
