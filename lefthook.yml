@@ -5,16 +5,6 @@ pre-commit:
       glob: "*.nix"
       stage_fixed: true
 
-pre-push:
-  commands:
-    dry-build:
-      run: nixos-rebuild dry-build --flake ".#daisy"
-
-post-commit:
-  commands:
-    push:
-      run: ./scripts/auto-push.sh
-
 post-push:
   commands:
     comin-fetch:
