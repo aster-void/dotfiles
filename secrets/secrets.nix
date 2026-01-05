@@ -3,6 +3,7 @@ let
 in {
   "secrets/playit.toml.age".publicKeys = publicKeys;
   "secrets/cloudflared/cherry.json.age".publicKeys = publicKeys;
+  "secrets/cloudflared/bluebell.json.age".publicKeys = publicKeys;
   "secrets/cloudflared/cert.pem.age".publicKeys = publicKeys;
   "secrets/syncthing-password.age".publicKeys = publicKeys;
   "secrets/wifi/password.age".publicKeys = publicKeys;

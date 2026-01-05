@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     ./options.nix
+    ./cloudflared.nix
     ./docker.nix
     ./env.nix
     ./users.nix
