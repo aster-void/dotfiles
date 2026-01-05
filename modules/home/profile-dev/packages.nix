@@ -266,7 +266,7 @@ in {
     nix-repository.mcptools # mcp, mcpx
 
     # == MCP servers ==
-    mcp-nixos
+    mcp-nixos # broken: fastmcp requires mcp<1.17.0 but nixpkgs has 1.25.0
     nix-repository.mcp-language-server
     nix-repository.chrome-devtools-mcp
     # nix-repository.kiri # semantic grep

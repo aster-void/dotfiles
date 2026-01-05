@@ -20,5 +20,6 @@ TARGET="$1"
 IFS='|' read -r MAC RELAY <<< "${TARGETS[$TARGET]}"
 
 echo "Waking $TARGET ($MAC) via $RELAY..."
+# shellcheck disable=SC2029  # intentional client-side expansion
 ssh "$RELAY" "wakeonlan $MAC || wol $MAC"
 echo "Done."

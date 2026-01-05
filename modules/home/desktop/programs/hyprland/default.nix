@@ -37,7 +37,7 @@ in {
       '';
 
       settings = {
-        # Load hyprsplit plugin at config parse time (not via exec-once)
+        # Load hyprsplit plugin
         plugin = "${hyprsplit}/lib/libhyprsplit.so";
 
         # Fallback monitor configuration (overridden by monitors.conf via extraConfig)

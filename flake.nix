@@ -2,7 +2,7 @@
   description = "Home server infrastructure managed with Blueprint";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     systems.url = "github:nix-systems/x86_64-linux";
 
     blueprint.url = "github:numtide/blueprint";
@@ -25,7 +25,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -73,17 +73,6 @@
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
-      nixpkgs.overlays = [
-        (_final: _prev: {
-          inherit inputs;
-        })
-        # hyprshot fix overlay
-        (final: prev: {
-          hyprshot = prev.callPackage ./overlays/hyprshot-fix/package.nix {
-            hyprshot = prev.hyprshot;
-          };
-        })
-      ];
     };
 
   nixConfig = {
