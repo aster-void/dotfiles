@@ -1,12 +1,10 @@
 {
   config,
   osConfig,
-  pkgs,
   ...
 }: let
   cfg = config.my.hyprland;
   xkb = osConfig.services.xserver.xkb;
-  hyprsplit = pkgs.hyprlandPlugins.hyprsplit;
 in {
   imports = [
     ./binds.nix
@@ -37,9 +35,6 @@ in {
       '';
 
       settings = {
-        # Load hyprsplit plugin
-        plugin = "${hyprsplit}/lib/libhyprsplit.so";
-
         # Fallback monitor configuration (overridden by monitors.conf via extraConfig)
         monitor = [",preferred,auto,1"];
 
