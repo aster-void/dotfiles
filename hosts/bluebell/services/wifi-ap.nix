@@ -1,8 +1,12 @@
-{config, ...}: let
+{
+  config,
+  flake,
+  ...
+}: let
   wifiSecret = config.age.secrets."wifi-password";
 in {
   age.secrets."wifi-password" = {
-    file = ../../../secrets/wifi/password.age;
+    file = "${flake}/secrets/wifi/password.age";
     owner = "root";
     group = "root";
     mode = "0400";

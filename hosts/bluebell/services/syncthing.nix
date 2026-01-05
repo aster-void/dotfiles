@@ -1,5 +1,9 @@
-{config, ...}: {
-  age.secrets.syncthing-password.file = ../../../secrets/syncthing-password.age;
+{
+  config,
+  flake,
+  ...
+}: {
+  age.secrets.syncthing-password.file = "${flake}/secrets/syncthing-password.age";
 
   services.syncthing = {
     enable = true;

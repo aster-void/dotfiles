@@ -1,5 +1,9 @@
-{config, ...}: {
-  age.secrets.cloudflared-bluebell.file = ../../../../secrets/cloudflared/bluebell.json.age;
+{
+  config,
+  flake,
+  ...
+}: {
+  age.secrets.cloudflared-bluebell.file = "${flake}/secrets/cloudflared/bluebell.json.age";
   services.cloudflared = {
     enable = true;
     tunnels.bluebell = {

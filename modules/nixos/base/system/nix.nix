@@ -1,11 +1,12 @@
 {
   config,
+  flake,
   pkgs,
   ...
 }: {
   environment.systemPackages = [pkgs.cachix];
   age.secrets.nix-conf = {
-    file = ../../../../secrets/nix.conf.age;
+    file = "${flake}/secrets/nix.conf.age";
     mode = "400";
   };
 

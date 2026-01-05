@@ -1,6 +1,10 @@
-{config, ...}: {
+{
+  config,
+  flake,
+  ...
+}: {
   age.secrets.context7-api-key = {
-    file = ../../../secrets/context7-api-key.age;
+    file = "${flake}/secrets/context7-api-key.age";
     owner = "aster";
     group = "users";
     mode = "400";
