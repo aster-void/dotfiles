@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
 # Wake machines via Tailscale + relay
 # Usage: wol <hostname>
-
-set -euo pipefail
 
 declare -A TARGETS=(
     # [target]="mac|relay"

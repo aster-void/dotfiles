@@ -1,5 +1,6 @@
 {
   pkgs,
+  flake,
   inputs,
   ...
 }: let
@@ -83,6 +84,8 @@ in {
     avahi
     speedtest-cli
     cloudflared
+    wakeonlan
+    flake.packages.${system}.wol
 
     # == Archive ==
     rsync
