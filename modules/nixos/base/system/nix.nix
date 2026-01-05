@@ -13,6 +13,9 @@
   nix.extraOptions = ''
     !include ${config.age.secrets.nix-conf.path}
   '';
+  # CPU使用率を70%に制限（ビルド中もシステムを使えるように）
+  systemd.services.nix-daemon.serviceConfig.CPUQuota = "70%";
+
   nix.settings = {
     trusted-users = ["root" "@wheel"];
 
