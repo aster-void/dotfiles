@@ -1,6 +1,5 @@
 ;; Home row mods for Workman layout (GACS order)
-;; GACS = GUI-Alt-Ctrl-Shift (pinky to index)
-;; defsrc uses physical QWERTY key names
+;; Speed-based: fast = tap, slow hold = modifier
 
 (defcfg
   process-unmapped-keys yes
@@ -13,23 +12,23 @@
 
 (defvar
   tap-time 200
-  hold-time 150
+  hold-time 200
 )
 
 (defalias
-  ;; Left hand (pinky to index): GUI-Alt-Ctrl-Shift
-  ;; Workman: a-s-h-t
-  la (tap-hold $tap-time $hold-time a lmet)
-  ls (tap-hold $tap-time $hold-time s lalt)
-  ld (tap-hold $tap-time $hold-time d lctl)
-  lf (tap-hold $tap-time $hold-time f lsft)
+  ;; tap-hold-release:
+  ;; - h released first (while t held) → tap
+  ;; - t released first (while h held) → modifier
+  ;; - held alone past hold-time → modifier (for mouse combos)
+  la (tap-hold-release $tap-time $hold-time a lmet)
+  ls (tap-hold-release $tap-time $hold-time s lalt)
+  ld (tap-hold-release $tap-time $hold-time d lctl)
+  lf (tap-hold-release $tap-time $hold-time f lsft)
 
-  ;; Right hand (index to pinky): Shift-Ctrl-Alt-GUI
-  ;; Workman: n-e-o-i
-  rj (tap-hold $tap-time $hold-time j rsft)
-  rk (tap-hold $tap-time $hold-time k rctl)
-  rl (tap-hold $tap-time $hold-time l ralt)
-  r; (tap-hold $tap-time $hold-time ; rmet)
+  rj (tap-hold-release $tap-time $hold-time j rsft)
+  rk (tap-hold-release $tap-time $hold-time k rctl)
+  rl (tap-hold-release $tap-time $hold-time l ralt)
+  r; (tap-hold-release $tap-time $hold-time ; rmet)
 )
 
 (deflayer base
