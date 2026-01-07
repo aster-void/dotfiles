@@ -45,10 +45,4 @@
     dates = "04:00";
     allowReboot = false;
   };
-
-  environment.systemPackages = with pkgs; [
-    htop
-    iotop
-    ncdu
-  ];
 }

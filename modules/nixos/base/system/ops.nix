@@ -3,6 +3,9 @@
   environment.systemPackages = with pkgs; [
     git # Required for GitOps operations
     helix # Required for system administration
+    htop
+    iotop
+    ncdu
     wakeonlan
   ];
 
