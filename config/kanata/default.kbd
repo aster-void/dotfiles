@@ -34,5 +34,5 @@
 
 (deflayer base
   @la  @ls  @ld  @lf  @rj  @rk  @rl  @r;
-  esc  XX   XX   XX   XX   XX   XX   XX
+  esc  XX   XX   XX   lmet rmet XX   XX
 )
