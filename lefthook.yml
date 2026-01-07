@@ -4,8 +4,3 @@ pre-commit:
       run: alejandra {staged_files}
       glob: "*.nix"
       stage_fixed: true
-
-post-push:
-  commands:
-    comin-fetch:
-      run: comin fetch
