@@ -1,5 +1,6 @@
 {flake, ...}: {
   networking.hostName = "azalea";
+  networking.interfaces.enp3s0.wakeOnLan.enable = true;
 
   imports = [
     flake.nixosModules.base
