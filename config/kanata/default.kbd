@@ -1,0 +1,38 @@
+;; Home row mods for Workman layout (GACS order)
+;; GACS = GUI-Alt-Ctrl-Shift (pinky to index)
+;; defsrc uses physical QWERTY key names
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  a    s    d    f    j    k    l    ;
+  caps esc  lctl rctl lmet rmet lalt ralt
+)
+
+(defvar
+  tap-time 200
+  hold-time 150
+)
+
+(defalias
+  ;; Left hand (pinky to index): GUI-Alt-Ctrl-Shift
+  ;; Workman: a-s-h-t
+  la (tap-hold $tap-time $hold-time a lmet)
+  ls (tap-hold $tap-time $hold-time s lalt)
+  ld (tap-hold $tap-time $hold-time d lctl)
+  lf (tap-hold $tap-time $hold-time f lsft)
+
+  ;; Right hand (index to pinky): Shift-Ctrl-Alt-GUI
+  ;; Workman: n-e-o-i
+  rj (tap-hold $tap-time $hold-time j rsft)
+  rk (tap-hold $tap-time $hold-time k rctl)
+  rl (tap-hold $tap-time $hold-time l ralt)
+  r; (tap-hold $tap-time $hold-time ; rmet)
+)
+
+(deflayer base
+  @la  @ls  @ld  @lf  @rj  @rk  @rl  @r;
+  esc  XX   XX   XX   XX   XX   XX   XX
+)

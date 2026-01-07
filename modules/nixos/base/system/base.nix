@@ -51,7 +51,6 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "workman";
-    options = "caps:escape";
   };
 
   # Boot configuration
