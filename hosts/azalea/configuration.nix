@@ -2,9 +2,10 @@
   networking.hostName = "azalea";
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
 
-  # Intel I225-V (igc) needs reload after resume
-  powerManagement.resumeCommands = ''
-    modprobe -r igc && modprobe igc
+  # Intel I225-V (igc) has power management issues causing random disconnects
+  # Disable runtime PM for this device
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="net", DRIVERS=="igc", ATTR{device/power/control}="on"
   '';
 
   imports = [
