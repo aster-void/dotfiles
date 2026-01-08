@@ -1,14 +1,22 @@
 {
   flake,
+  config,
   lib,
   ...
-}: {
+}: let
+  devMode = config.my.nixos.devMode;
+  homeDir = config.users.users.${config.my.nixos.primaryUser}.home;
+  configFile =
+    if devMode
+    then "${homeDir}/${flake.lib.dotfilesRelPath}/config/kanata/default.kbd"
+    else "${flake}/config/kanata/default.kbd";
+in {
   hardware.uinput.enable = true;
 
   services.kanata = {
     enable = true;
     keyboards.default = {
-      configFile = "${flake}/config/kanata/default.kbd";
+      inherit configFile;
       devices = []; # empty = all keyboards
     };
   };
@@ -17,5 +25,6 @@
     DynamicUser = lib.mkForce false;
     User = "root";
     Group = "root";
+    ProtectHome = lib.mkIf devMode (lib.mkForce false);
   };
 }
