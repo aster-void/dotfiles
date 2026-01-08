@@ -23,6 +23,7 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/syncthing 0770 syncthing syncthing -"
+    "d /var/lib/syncthing 2770 syncthing syncthing -"
+    "a+ /var/lib/syncthing - - - - default:user::rwx,default:group::rwx,default:other::---"
   ];
 }
