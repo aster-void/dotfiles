@@ -5,9 +5,10 @@
   ...
 }: let
   devMode = config.my.nixos.devMode;
+  homeDir = config.users.users.${config.my.nixos.primaryUser}.home;
   configFile =
     if devMode
-    then "/home/aster/workspace/github.com/aster-void/dotfiles/config/kanata/default.kbd"
+    then "${homeDir}/${flake.lib.dotfilesRelPath}/config/kanata/default.kbd"
     else "${flake}/config/kanata/default.kbd";
 in {
   hardware.uinput.enable = true;

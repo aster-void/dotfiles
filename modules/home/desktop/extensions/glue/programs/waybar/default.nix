@@ -1,11 +1,12 @@
 {
   pkgs,
   config,
+  flake,
   ...
 }: let
   profile = config.my.desktop.shells.glue.type;
   devMode = config.my.desktop.devMode;
-  baseDir = "${config.home.homeDirectory}/workspace/github.com/aster-void/dotfiles/modules/home/desktop/extensions/glue/programs/waybar";
+  baseDir = "${config.home.homeDirectory}/${flake.lib.dotfilesRelPath}/modules/home/desktop/extensions/glue/programs/waybar";
   mkSource = file:
     if devMode
     then config.lib.file.mkOutOfStoreSymlink "${baseDir}/${file}"

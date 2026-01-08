@@ -42,6 +42,8 @@
     if hasDefaultNix
     then [(dir + "/default.nix")]
     else lib.flatten (lib.mapAttrsToList processEntry entries);
+  # Relative path from home directory to this dotfiles repo
+  dotfilesRelPath = "workspace/github.com/aster-void/dotfiles";
 in {
-  inherit collectFiles;
+  inherit collectFiles dotfilesRelPath;
 }
