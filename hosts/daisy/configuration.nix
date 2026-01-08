@@ -10,5 +10,6 @@
 
   my.profiles.desktop.enable = true;
   my.profiles.gaming.enable = true;
+  my.nixos.devMode = true;
   my.boot.enableLanzaboote = true;
 }

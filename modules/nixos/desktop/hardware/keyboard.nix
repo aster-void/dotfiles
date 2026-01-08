@@ -1,14 +1,21 @@
 {
   flake,
+  config,
   lib,
   ...
-}: {
+}: let
+  devMode = config.my.nixos.devMode;
+  configFile =
+    if devMode
+    then "/home/aster/workspace/github.com/aster-void/dotfiles/config/kanata/default.kbd"
+    else "${flake}/config/kanata/default.kbd";
+in {
   hardware.uinput.enable = true;
 
   services.kanata = {
     enable = true;
     keyboards.default = {
-      configFile = "${flake}/config/kanata/default.kbd";
+      inherit configFile;
       devices = []; # empty = all keyboards
     };
   };
