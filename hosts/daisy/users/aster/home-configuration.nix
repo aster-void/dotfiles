@@ -5,6 +5,7 @@
   ];
 
   my.desktop = {
+    devMode = true;
     gaming.enable = true;
     shells.glue.enable = true;
     shells.glue.type = "glass";

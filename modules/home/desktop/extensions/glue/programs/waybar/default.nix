@@ -4,7 +4,12 @@
   ...
 }: let
   profile = config.my.desktop.shells.glue.type;
-  styleFile = ./. + "/style-${profile}.css";
+  devMode = config.my.desktop.devMode;
+  baseDir = "${config.home.homeDirectory}/workspace/github.com/aster-void/dotfiles/modules/home/desktop/extensions/glue/programs/waybar";
+  mkSource = file:
+    if devMode
+    then config.lib.file.mkOutOfStoreSymlink "${baseDir}/${file}"
+    else ./. + "/${file}";
 in {
   programs.waybar = {
     enable = true;
@@ -14,10 +19,10 @@ in {
 
   # waybar configuration files (complex config with scripts)
   xdg.configFile = {
-    "waybar/config.jsonc".source = ./config.jsonc;
-    "waybar/style.css".source = styleFile;
-    "waybar/macchiato.css".source = ./macchiato.css;
-    "waybar/modules".source = ./modules;
-    "waybar/scripts".source = ./scripts;
+    "waybar/config.jsonc".source = mkSource "config.jsonc";
+    "waybar/style.css".source = mkSource "style-${profile}.css";
+    "waybar/macchiato.css".source = mkSource "macchiato.css";
+    "waybar/modules".source = mkSource "modules";
+    "waybar/scripts".source = mkSource "scripts";
   };
 }

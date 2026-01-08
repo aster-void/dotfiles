@@ -2,6 +2,7 @@
   options.my = {
     desktop = {
       gaming.enable = lib.mkEnableOption "gaming extension";
+      devMode = lib.mkEnableOption "use mkOutOfStoreSymlink for config files (edit without rebuild)";
       shells = {
         glue = {
           enable = lib.mkEnableOption "glued shell";
