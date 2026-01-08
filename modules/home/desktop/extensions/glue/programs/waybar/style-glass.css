@@ -139,14 +139,19 @@ window#waybar.topbar {
 /**
  * Battery States
  */
+#battery.charging {
+  color: rgba(20, 20, 20, 0.85);
+  background: rgba(52, 211, 153, 0.35);
+}
+
 #battery.warning {
-  color: @yellow;
-  background: rgba(238, 212, 159, 0.15);
+  color: rgba(20, 20, 20, 0.85);
+  background: rgba(238, 212, 159, 0.35);
 }
 
 #battery.critical {
-  color: @red;
-  background: rgba(237, 135, 150, 0.18);
+  color: rgba(20, 20, 20, 0.85);
+  background: rgba(237, 135, 150, 0.4);
 }
 
 /**

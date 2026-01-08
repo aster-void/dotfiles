@@ -161,6 +161,11 @@ window#waybar.topbar {
 /**
  * Battery States - stark warnings
  */
+#battery.charging {
+  color: #000000;
+  background: #00ff00;
+}
+
 #battery.warning {
   color: #000000;
   background: #ffff00;

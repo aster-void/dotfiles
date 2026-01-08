@@ -160,6 +160,10 @@ window#waybar.topbar {
 /**
  * Battery States - subtle warnings
  */
+#battery.charging {
+  color: #228b22;
+}
+
 #battery.warning {
   color: #b8860b;
 }

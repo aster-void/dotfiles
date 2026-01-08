@@ -140,6 +140,7 @@
       "critical": 15,
     },
     "format": "{icon} {capacity: >3}%",
+    "format-charging": "󱐋 {capacity: >3}%",
     "format-icons": ["", "", "", "", ""],
   },
   "bluetooth": {

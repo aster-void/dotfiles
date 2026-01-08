@@ -159,6 +159,12 @@ window#waybar.topbar {
 /**
  * Battery States
  */
+#battery.charging {
+  color: #39ff14;
+  background: rgba(57, 255, 20, 0.1);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.25);
+}
+
 #battery.warning {
   color: #ffcc00;
   background: rgba(255, 204, 0, 0.1);
