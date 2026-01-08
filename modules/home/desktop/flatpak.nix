@@ -10,7 +10,6 @@
     ];
     packages = [
       # Browsers
-      "app.zen_browser.zen"
       "com.brave.Browser"
 
       # Communication

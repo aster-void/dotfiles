@@ -34,6 +34,7 @@ in {
     dragon-drop
 
     # == Browsers ==
+    inputs.zen-browser.packages.${system}.beta
     firefox
     chromium
 
