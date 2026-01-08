@@ -11,6 +11,7 @@
       default = "http_status:404";
       ingress = {
         "syncthing.aster-void.dev" = "http://localhost:8384";
+        "webhook.aster-void.dev" = "http://localhost:8085";
         "bluebell.aster-void.dev" = "ssh://localhost:22";
       };
     };

@@ -699,6 +699,7 @@
         "playit-nixos-module": "playit-nixos-module",
         "rust-overlay": "rust-overlay_2",
         "systems": "systems_3",
+        "webhooker": "webhooker",
         "zen-browser": "zen-browser"
       }
     },
@@ -807,6 +808,26 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "webhooker": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767889632,
+        "narHash": "sha256-ETS8g1fTLAGMoV3yHaKygd0p+F18NsPUK8CUsenp448=",
+        "owner": "aster-void",
+        "repo": "webhooker",
+        "rev": "f13648dd711fa5a3773c5fbc52da74ad739f6892",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aster-void",
+        "repo": "webhooker",
         "type": "github"
       }
     },
