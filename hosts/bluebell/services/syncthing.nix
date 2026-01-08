@@ -21,4 +21,8 @@
     };
     guiPasswordFile = config.age.secrets.syncthing-password.path;
   };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/syncthing 0770 syncthing syncthing -"
+  ];
 }
