@@ -27,5 +27,7 @@ in {
     Group = "root";
     ProtectHome = lib.mkIf devMode (lib.mkForce false);
     PrivateUsers = lib.mkIf devMode (lib.mkForce false);
+    CapabilityBoundingSet = lib.mkIf devMode (lib.mkForce ["CAP_DAC_READ_SEARCH"]);
+    AmbientCapabilities = lib.mkIf devMode (lib.mkForce ["CAP_DAC_READ_SEARCH"]);
   };
 }
