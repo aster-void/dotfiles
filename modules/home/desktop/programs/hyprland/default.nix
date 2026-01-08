@@ -1,6 +1,7 @@
 {
   config,
   osConfig,
+  pkgs,
   ...
 }: let
   cfg = config.my.hyprland;
@@ -19,7 +20,10 @@ in {
       touch ~/.config/hypr/monitors.conf
     '';
 
-    xdg.portal.config.common.default = "*";
+    xdg.portal = {
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      config.common.default = "*";
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;
