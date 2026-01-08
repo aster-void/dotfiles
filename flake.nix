@@ -46,10 +46,6 @@
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.inputs.rust-overlay.follows = "rust-overlay";
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-    zen-browser.inputs.home-manager.follows = "home-manager";
-
     caelestia-shell.url = "github:caelestia-dots/shell";
     caelestia-shell.inputs.nixpkgs.follows = "nixpkgs";
 

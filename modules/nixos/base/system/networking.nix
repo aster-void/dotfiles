@@ -16,6 +16,8 @@
     '';
   };
 
+  networking.firewall.enable = true;
+
   environment.systemPackages = with pkgs; [
     cloudflared
     cloudflare-cli

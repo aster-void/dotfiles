@@ -18,6 +18,7 @@
       inputs.nix-hazkey.homeModules.hazkey
       ./options.nix
       ./env.nix
+      ./flatpak.nix
       ./packages.nix
       ./xdg.nix
     ]

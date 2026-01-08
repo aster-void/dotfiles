@@ -22,21 +22,6 @@
     readonly TMOUT
   '';
 
-  # Basic firewall (SSH already allowed in base)
-  networking.firewall.enable = true;
-
-  # Fail2ban for SSH brute-force protection
-  services.fail2ban = {
-    enable = true;
-    maxretry = 5;
-    bantime = "1h";
-    bantime-increment = {
-      enable = true;
-      maxtime = "48h";
-      factor = "4";
-    };
-  };
-
   # Automatic security updates
   system.autoUpgrade = {
     enable = true;

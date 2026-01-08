@@ -34,15 +34,11 @@ in {
     dragon-drop
 
     # == Browsers ==
-    inputs.zen-browser.packages.${system}.beta
     firefox
     chromium
-    brave
 
     # == Communication ==
     thunderbird
-    slack
-    discord
     vesktop # Vencord
     legcord
     jitsi
@@ -114,6 +110,9 @@ in {
 
     # == AI ==
     inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
+
+    # == Security ==
+    clamtk
 
     # == Custom ==
     flake.packages.${system}.setpaper
