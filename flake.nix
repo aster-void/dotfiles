@@ -19,21 +19,13 @@
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
     playit-nixos-module.inputs.nixpkgs.follows = "nixpkgs";
 
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-repository.url = "github:aster-void/nix-repository";
     nix-repository.inputs = {
       nixpkgs.follows = "nixpkgs";
       blueprint.follows = "blueprint";
-      treefmt-nix.follows = "treefmt-nix";
     };
 
     # Desktop inputs (from dotfiles)
@@ -42,7 +34,7 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.inputs.rust-overlay.follows = "rust-overlay";
 
