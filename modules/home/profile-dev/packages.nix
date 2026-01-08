@@ -95,6 +95,7 @@ in {
 
     # == Encryption ==
     age
+    xkcdpass
 
     # == Data processing ==
     jq
