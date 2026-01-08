@@ -1,15 +1,13 @@
 {
-  config,
   lib,
   pkgs,
   inputs,
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
-  cfg = config.my.profiles.desktop;
   myPkgs = inputs.nix-repository.packages.${system};
 in {
-  services = lib.mkIf cfg.enable {
+  services = {
     xserver.enable = true;
     displayManager = {
       defaultSession = "hyprland-uwsm";
@@ -34,5 +32,5 @@ in {
     };
   };
 
-  environment.systemPackages = lib.mkIf cfg.enable [myPkgs.sddm-astronaut-theme];
+  environment.systemPackages = [myPkgs.sddm-astronaut-theme];
 }

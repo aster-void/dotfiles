@@ -14,7 +14,6 @@
     ./hardware-configuration.nix
   ];
 
-  my.profiles.desktop.enable = true;
-  my.profiles.gaming.enable = true;
+  my.desktop.gaming.enable = true;
   my.boot.enableLanzaboote = true;
 }

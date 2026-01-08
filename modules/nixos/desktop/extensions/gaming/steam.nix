@@ -2,10 +2,8 @@
   lib,
   config,
   ...
-}: let
-  cfg = config.my;
-in {
-  programs.steam = lib.mkIf cfg.profiles.gaming.enable {
+}: {
+  programs.steam = lib.mkIf config.my.desktop.gaming.enable {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server

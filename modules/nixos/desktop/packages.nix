@@ -1,12 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  cfg = config.my.profiles.desktop;
-in {
-  environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
     # System
     bluez
     bluez-tools
@@ -21,5 +14,5 @@ in {
     gtk3
     gtk4
     xwayland
-  ]);
+  ];
 }
