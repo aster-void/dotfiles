@@ -26,5 +26,6 @@ in {
     User = "root";
     Group = "root";
     ProtectHome = lib.mkIf devMode (lib.mkForce false);
+    PrivateUsers = lib.mkIf devMode (lib.mkForce false);
   };
 }
