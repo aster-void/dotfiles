@@ -17,6 +17,7 @@
       linux-cgroup = "always";
       linux-cgroup-hard-fail = true;
       resize-overlay = "never";
+      keybind = "shift+space=text:\\x20";
     };
   };
 }
