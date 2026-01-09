@@ -8,6 +8,18 @@
         location = "https://flathub.org/repo/flathub.flatpakrepo";
       }
     ];
+    overrides = {
+      global = {
+        Context.filesystems = [
+          "host-etc"
+          "~/.config/fontconfig:ro"
+          "/nix/store:ro"
+        ];
+        Environment = {
+          FONTCONFIG_FILE = "/home/aster/.config/fontconfig/flatpak-fonts.conf";
+        };
+      };
+    };
     packages = [
       # Browsers
       "com.brave.Browser"
