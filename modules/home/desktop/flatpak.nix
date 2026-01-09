@@ -11,7 +11,6 @@
     overrides = {
       global = {
         Context.filesystems = [
-          "host-etc"
           "~/.config/fontconfig:ro"
           "/nix/store:ro"
         ];
