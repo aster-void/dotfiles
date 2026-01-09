@@ -818,11 +818,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767951830,
-        "narHash": "sha256-So/VPuBPcrD6CTCLm/bD5TeVcDMSGaeZ41TH3Eqt83Q=",
+        "lastModified": 1767955285,
+        "narHash": "sha256-e/NaOh5LmA7juLLGFkMiYliXWiVN2YfNnxwjyBDrkmw=",
         "owner": "aster-void",
         "repo": "webhooker",
-        "rev": "3f1c1a7b1f4f8e6a00ecca5eaafe1d616db2987b",
+        "rev": "a49654ce6dd7fce66bb9d32eb5b33bbd15513183",
         "type": "github"
       },
       "original": {
