@@ -158,6 +158,7 @@ in {
     clippy
     cargo-depgraph
     ## C/C++
+    gcc
     llvmPackages.clang-tools # clangd, clang-format
     ## Python
     pyright
