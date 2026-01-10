@@ -2,10 +2,14 @@
   networking.hostName = "azalea";
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
 
-  # Intel I225-V (igc) has power management issues causing random disconnects
-  # Disable runtime PM for this device
+  # Intel I225-V (igc) has power management issues
+  # 1. Disable runtime PM (prevents random disconnects)
+  # 2. Reload driver after suspend (driver doesn't recover link)
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="net", DRIVERS=="igc", ATTR{device/power/control}="on"
+  '';
+  powerManagement.resumeCommands = ''
+    modprobe -r igc && modprobe igc
   '';
 
   imports = [
