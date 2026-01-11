@@ -9,20 +9,20 @@ _: {
       };
 
       listener = [
-        # 5分 (300秒) でロック
+        # 20分 (1200秒) でロック
         {
-          timeout = 300;
+          timeout = 1200;
           on-timeout = "loginctl lock-session";
         }
-        # 15分 (900秒) で画面オフ
+        # 1時間 (3600秒) で画面オフ
         {
-          timeout = 900;
+          timeout = 3600;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
-        # 30分 (1800秒) でスリープ
+        # 2時間 (7200秒) でスリープ
         {
-          timeout = 1800;
+          timeout = 7200;
           on-timeout = "systemctl suspend";
         }
       ];
