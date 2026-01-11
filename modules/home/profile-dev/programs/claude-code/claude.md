@@ -31,6 +31,7 @@ response-language = Japanese
 - Delegate research/file reads to save main context
 - Explicit instructions: "execute without confirmation"
 - Never wait for subagents. Terminate output instead.
+  - Exception: research agents can be awaited when results are needed immediately
 </subagents>
 
 <tools>
