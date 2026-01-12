@@ -17,10 +17,7 @@
 
   languages = {
     nix = {
-      language-servers = [
-        "nil"
-        "nixd"
-      ];
+      language-servers = ["nixd"];
       formatter = formatters.alejandra;
       auto-pairs = {
         "(" = ")";
@@ -169,7 +166,6 @@
     ];
     markdown-oxide.command = ["markdown-oxide"];
     superhtml.command = ["superhtml" "lsp"];
-    nil.command = ["nil"];
     nixd.command = ["nixd"];
     rust-analyzer = {
       command = ["rust-analyzer"];

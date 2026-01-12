@@ -207,7 +207,6 @@ in {
     svelte-language-server
     tailwindcss-language-server
     ## Nix
-    nil
     nixd
     alejandra
     nixfmt-rfc-style
