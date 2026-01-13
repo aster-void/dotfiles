@@ -62,6 +62,8 @@
 
     webhooker.url = "github:aster-void/webhooker";
     webhooker.inputs.nixpkgs.follows = "nixpkgs";
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
   outputs = inputs:
@@ -75,11 +77,13 @@
       "https://playit-nixos-module.cachix.org"
       "https://nix-repository--aster-void.cachix.org"
       "https://helix.cachix.org"
+      "https://install.determinate.systems"
     ];
     extra-trusted-public-keys = [
       "playit-nixos-module.cachix.org-1:22hBXWXBbd/7o1cOnh+p0hpFUVk9lPdRLX3p5YSfRz4="
       "nix-repository--aster-void.cachix.org-1:A+IaiSvtaGcenevi21IvvODJoO61MtVbLFApMDXQ1Zs="
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+      "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
     ];
   };
 }
