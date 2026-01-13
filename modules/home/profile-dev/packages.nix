@@ -106,6 +106,8 @@ in {
     # == Multimedia ==
     ffmpeg
     imagemagick
+    libavif # avifenc
+    libwebp # cwebp
     chafa
     timg
     asciinema
