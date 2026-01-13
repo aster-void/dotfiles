@@ -27,6 +27,7 @@ in {
     skillsDir = ./skills;
     commandsDir = ./commands;
     settings = {
+      language = "ja";
       env.CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "1";
       permissions.deny = ["Read(**/.env)"];
       attribution = {
