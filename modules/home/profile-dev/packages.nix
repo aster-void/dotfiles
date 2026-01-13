@@ -30,7 +30,6 @@ in {
     eza
     bat
     fzf
-    yazi
 
     # == System monitoring ==
     btop
@@ -120,7 +119,6 @@ in {
     # == Git ==
     git
     ghq
-    lazygit
     difftastic
     tig
     gitleaks

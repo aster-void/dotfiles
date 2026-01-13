@@ -65,16 +65,15 @@ in {
     localsend
 
     # == Code editors ==
-    zed-editor
     windsurf
     code-cursor
     cursor-cli
 
-    # == Terminals ==
-    alacritty
-
     # == Bluetooth ==
     blueberry
+
+    # == KDE ==
+    kdePackages.kdeconnect-kde
 
     # == Audio/Video control ==
     pavucontrol
@@ -90,18 +89,10 @@ in {
     hyprpaper
     nwg-displays
 
-    # == Status bars ==
-    waybar
-    eww
-    cava
-
     # == Launchers ==
     nwg-launchers
     fuzzel
     rofi
-
-    # == Notification ==
-    dunst
 
     # == AI ==
     inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs

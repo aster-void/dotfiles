@@ -1,8 +1,3 @@
-{pkgs, ...}: {
-  services.desktopManager.plasma6 = {
-    enable = true;
-  };
-  environment.systemPackages = with pkgs; [
-    kdePackages.kdeconnect-kde
-  ];
+{...}: {
+  services.desktopManager.plasma6.enable = true;
 }
