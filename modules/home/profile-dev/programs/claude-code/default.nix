@@ -17,7 +17,7 @@
   nu = getExe pkgs.nushell;
 
   statusLineScript = pkgs.writeShellScript "statusline.sh" ''
-    ${nu} ${./statusline.nu}
+    ${nu} --stdin ${./statusline.nu}
   '';
 in {
   programs.claude-code = {
