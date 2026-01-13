@@ -68,6 +68,21 @@ scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewid
 nix-search <query>  # Package search (nix-search-cli)
 ```
 
+## Troubleshooting Logs
+
+Location: `.claude/troubleshooting-logs/`
+
+**Before troubleshooting**: Search existing logs for similar issues
+```sh
+grep -ri "<keyword>" .claude/troubleshooting-logs/
+```
+
+**After troubleshooting**: Create a log file documenting the issue and findings
+```sh
+# Format: {date}-{short-description}.md
+# Example: 2025-01-13-hyprland-cursor-missing.md
+```
+
 ## Tips
 
 - **Don't modify NixOS system/"global" config directly**: Don't edit `~/.config/` or `~/.claude.json` directly. Edit the corresponding file in this repo. Search by program name to find it.
