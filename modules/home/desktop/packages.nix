@@ -79,14 +79,13 @@ in {
     pavucontrol
     solaar # Logitech devices
 
-    # == Hyprland/Wayland ==
+    # == Wayland ==
     hyprpicker
     blobdrop
     hyprshot
     gpu-screen-recorder
     wf-recorder
     variety
-    hyprpaper
     nwg-displays
 
     # == Launchers ==

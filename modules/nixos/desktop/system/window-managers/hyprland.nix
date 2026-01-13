@@ -11,9 +11,6 @@
   programs.uwsm.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # walker
-    hyprland
-    hyprland-protocols
     hyprcursor
     hyprpaper
     hypridle
