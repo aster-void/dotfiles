@@ -4,6 +4,10 @@
    - `a || b` not `let x = a; if (!x) x = b;`
    - `condition ? a : b` not `let x; if (condition) x = a; else x = b;`
    - Transitions (mutation) are for side effects only, keep separate from calculations.
+
+[Deletable]: Optimize for deletion, not extension.
+   - Minimize dependencies and coupling
+   - Code that's easy to delete is easy to replace
 </rules>
 
 <when-stuck>
