@@ -40,8 +40,6 @@ in {
 
     # == Communication ==
     thunderbird
-    vesktop # Vencord
-    legcord
     jitsi
 
     # == Media ==
@@ -50,7 +48,6 @@ in {
     vlc
     playerctl
     kooha
-    nomacs
     gthumb
     gimp
     inkscape
@@ -66,7 +63,6 @@ in {
     mission-center
     authenticator # 2FA
     localsend
-    arandr
 
     # == Code editors ==
     zed-editor
@@ -92,12 +88,10 @@ in {
     wf-recorder
     variety
     hyprpaper
-    wdisplays # instant apply (no persistence)
-    nwg-displays # persistent config
+    nwg-displays
 
     # == Status bars ==
     waybar
-    polybar
     eww
     cava
 

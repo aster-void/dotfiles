@@ -37,7 +37,7 @@ in {
       "x-scheme-handler/http" = browser;
       "x-scheme-handler/https" = browser;
       "x-scheme-handler/chrome" = browser;
-      "x-scheme-handler/discord" = "discord.desktop";
+      "x-scheme-handler/discord" = "com.discordapp.Discord.desktop";
       "x-scheme-handler/slack" = "slack.desktop";
       "x-scheme-handler/notion" = "notion-app-enhanced.desktop";
       "application/x-zoom" = "us.zoom.Zoom.desktop";
