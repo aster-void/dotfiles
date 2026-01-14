@@ -60,6 +60,8 @@ scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewid
 ./scripts/nixos-build.sh [hostname?] [--dry]  # NixOS build check
 ```
 
+**Note**: This script never applies the config to the host. Without `--dry`, it builds only. With `--dry`, it evaluates only (no build).
+
 **When to run build**: Only run when config structure changes (new modules, imports, options). Skip for simple changes like adding packages or modifying program settings.
 
 ## Tools
