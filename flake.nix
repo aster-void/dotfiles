@@ -63,7 +63,7 @@
     webhooker.url = "github:aster-void/webhooker";
     webhooker.inputs.nixpkgs.follows = "nixpkgs";
 
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
   outputs = inputs:
@@ -79,7 +79,7 @@
       "https://helix.cachix.org"
       "https://devenv.cachix.org"
       "https://nix-community.cachix.org"
-      "https://install.determinate.systems"
+      # "https://install.determinate.systems"
     ];
     extra-trusted-public-keys = [
       "playit-nixos-module.cachix.org-1:22hBXWXBbd/7o1cOnh+p0hpFUVk9lPdRLX3p5YSfRz4="
