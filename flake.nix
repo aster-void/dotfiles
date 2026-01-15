@@ -63,6 +63,9 @@
     webhooker.url = "github:aster-void/webhooker";
     webhooker.inputs.nixpkgs.follows = "nixpkgs";
 
+    nvf.url = "github:notashelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
+
     # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
