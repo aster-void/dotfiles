@@ -35,6 +35,9 @@
   programs.fish.enable = true;
   programs.zoxide.enable = true;
 
+  # Enable SSH agent
+  programs.ssh.startAgent = true;
+
   # Nix configuration
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
