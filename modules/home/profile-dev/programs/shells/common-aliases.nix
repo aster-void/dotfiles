@@ -44,7 +44,7 @@
   hb = "nh home build";
   home = "home-manager";
   nixgc = "nix-collect-garbage";
-  rbs = "nh os switch";
+  rbs = "nh os switch --accept-flake-config";
   rbb = "nh os boot";
   rbbb = "nh os boot && reboot";
   rbt = "nh os test";

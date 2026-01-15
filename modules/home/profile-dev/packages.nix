@@ -257,9 +257,9 @@ in {
     # == AI assistants ==
     # claude-code is installed via programs/claude-code using edgepkgs
     codex
-    crush # coding agent
+    # crush # coding agent
     nix-repository.claude-flow # orchestrator
-    nix-repository.ruv-swarm
+    # nix-repository.ruv-swarm
     nix-repository.claude-squad
     nix-repository.ccmanager
 
