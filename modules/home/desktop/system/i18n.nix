@@ -7,7 +7,7 @@
   hazkey = inputs.nix-hazkey.packages.${system};
 in {
   services.hazkey.enable = true;
-  services.hazkey.libllama.package = hazkey.libllama-cpu;
+  services.hazkey.libllama.package = hazkey.libllama-vulkan;
 
   i18n.inputMethod = {
     enable = true;
