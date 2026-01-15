@@ -7,8 +7,8 @@ _: {
       # Launch apps on startup
       "[workspace 1 silent] ghostty"
       "[workspace 2 silent] zen-beta"
-      "[workspace 3 silent] discord"
-      "[workspace 4 silent] slack"
+      "[workspace 3 silent] flatpak run com.discordapp.Discord"
+      "[workspace 4 silent] flatpak run com.slack.Slack"
       "hyprctl dispatch workspace 1"
 
       # IME
