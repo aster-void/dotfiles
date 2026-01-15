@@ -25,6 +25,11 @@ _: {
           timeout = 7200;
           on-timeout = "systemctl suspend";
         }
+        # 4時間 (14400秒) でハイバネート
+        {
+          timeout = 14400;
+          on-timeout = "systemctl hibernate";
+        }
       ];
     };
   };
