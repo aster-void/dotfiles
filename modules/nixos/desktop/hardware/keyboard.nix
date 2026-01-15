@@ -4,17 +4,20 @@
     keyboards.default = {
       ids = ["*"];
       settings = {
+        global = {
+          overload_tap_timeout = 200;
+        };
         main = {
           # Home row mods (GACS order for Workman)
-          # overloadt: tap within timeout → key, hold past timeout + other key → modifier
-          a = "overloadt(meta, a, 250)";
-          s = "overloadt(alt, s, 250)";
-          d = "overloadt(control, d, 250)";
-          f = "overloadt(shift, f, 250)";
-          j = "overloadt(shift, j, 250)";
-          k = "overloadt(control, k, 250)";
-          l = "overloadt(alt, l, 250)";
-          ";" = "overloadt(meta, ;, 250)";
+          # overload + overload_tap_timeout: tap → key, hold past timeout → modifier only
+          a = "overload(meta, a)";
+          s = "overload(alt, s)";
+          d = "overload(control, d)";
+          f = "overload(shift, f)";
+          j = "overload(shift, j)";
+          k = "overload(control, k)";
+          l = "overload(alt, l)";
+          ";" = "overload(meta, ;)";
           # Caps Lock → Escape
           capslock = "esc";
         };
