@@ -7,6 +7,16 @@
       viAlias = true;
       vimAlias = true;
 
+      luaConfigRC.closeFloatWithEsc = ''
+        vim.api.nvim_create_autocmd("FileType", {
+          callback = function()
+            if vim.api.nvim_win_get_config(0).relative ~= "" then
+              vim.keymap.set("n", "<Esc>", "<cmd>close<CR>", { buffer = true })
+            end
+          end,
+        })
+      '';
+
       lsp = {
         enable = true;
         formatOnSave = true;
@@ -57,6 +67,15 @@
       };
 
       git.gitsigns.enable = true;
+
+      keymaps = [
+        {
+          key = "ge";
+          mode = ["n" "v"];
+          action = "G";
+          desc = "Go to end of file";
+        }
+      ];
     };
   };
 }
