@@ -12,14 +12,16 @@
           a = "lettermod(meta, a, 100, 200)";
           s = "lettermod(alt, s, 100, 200)";
           d = "lettermod(control, d, 100, 200)";
-          f = "lettermod(shift, f, 100, 200)";
-          j = "lettermod(shift, j, 100, 200)";
+          f = "lettermod(hrmshift, f, 100, 200)";
+          j = "lettermod(hrmshift, j, 100, 200)";
           k = "lettermod(control, k, 100, 200)";
           l = "lettermod(alt, l, 100, 200)";
           ";" = "lettermod(meta, ;, 100, 200)";
           # Caps Lock → Escape
           capslock = "esc";
         };
+        # Separate layer for home row mod shift (to avoid conflict with physical shift)
+        "hrmshift:S" = {};
       };
     };
   };

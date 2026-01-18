@@ -20,15 +20,10 @@ _: {
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
-        # 2時間 (7200秒) でスリープ
+        # 2時間 (7200秒) でスリープ → 2時間後にハイバネート
         {
           timeout = 7200;
-          on-timeout = "systemctl suspend";
-        }
-        # 4時間 (14400秒) でハイバネート
-        {
-          timeout = 14400;
-          on-timeout = "systemctl hibernate";
+          on-timeout = "systemctl suspend-then-hibernate";
         }
       ];
     };

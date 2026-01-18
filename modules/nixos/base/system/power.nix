@@ -74,4 +74,12 @@ in {
 
   # Use s2idle (suspend-to-idle) for faster wake and lower overhead
   boot.kernelParams = ["mem_sleep_default=s2idle"];
+
+  # Hibernate after 2 hours of suspend (for suspend-then-hibernate)
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=2h
+  '';
+
+  # Lid close behavior
+  services.logind.lidSwitch = "suspend-then-hibernate";
 }
