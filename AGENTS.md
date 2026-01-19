@@ -54,6 +54,11 @@ imports = flake.lib.collectFiles ./programs ++ flake.lib.collectFiles ./services
 Format: `{scope}: {description}`
 scope: `flake` / `hosts/{hostname}` / `modules/{module}` / `packages` / `treewide` / `meta`
 
+**Rules**:
+- Don't commit until explicitly told to
+- Don't amend or edit existing commits
+- Don't force push
+
 ## Scripts
 
 ```sh
