@@ -7,7 +7,7 @@
     ./users.nix
   ];
 
-  nixpkgs.overlays = [inputs.edgepkgs.overlays.default];
+  nixpkgs.overlays = [inputs.llm-agents.overlays.default];
 
   # Enable nix-ld for running unpatched binaries
   programs.nix-ld.enable = true;

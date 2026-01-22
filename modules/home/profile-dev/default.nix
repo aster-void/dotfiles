@@ -7,7 +7,7 @@
 }: {
   nixpkgs.overlays = [
     (_final: _prev: {inherit inputs;})
-    inputs.edgepkgs.overlays.default
+    inputs.llm-agents.overlays.default
     # GCC 15 strict type fixes
     (_final: prev: {
       netcat-openbsd = prev.netcat-openbsd.override {

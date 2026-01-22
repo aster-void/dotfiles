@@ -12,7 +12,7 @@
     };
   };
 
-  claude = getExe pkgs.edge.claude-code;
+  claude = getExe pkgs.llm-agents.claude-code;
   jq = getExe pkgs.jq;
   nu = getExe pkgs.nushell;
 
@@ -22,7 +22,7 @@
 in {
   programs.claude-code = {
     enable = true;
-    package = pkgs.edge.claude-code;
+    package = pkgs.llm-agents.claude-code;
     memory.source = ./claude.md;
     skillsDir = ./skills;
     commandsDir = ./commands;
