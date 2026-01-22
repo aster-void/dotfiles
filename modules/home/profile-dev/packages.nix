@@ -174,7 +174,7 @@ in {
     kotlin
     kotlin-language-server
     ## Julia
-    julia
+    # julia # broken: GCC 15 + LLVM incompatibility
     # LSP: install via Pkg.add("LanguageServer") in Julia
     ## R
     R
@@ -209,7 +209,7 @@ in {
     ## Nix
     nixd
     alejandra
-    nixfmt-rfc-style
+    nixfmt
     statix
     diffoscope
     ## Typst
@@ -258,7 +258,7 @@ in {
     # claude-code is installed via programs/claude-code using edgepkgs
     codex
     # crush # coding agent
-    nix-repository.claude-flow # orchestrator
+    # nix-repository.claude-flow # orchestrator
     # nix-repository.ruv-swarm
     nix-repository.claude-squad
     nix-repository.ccmanager

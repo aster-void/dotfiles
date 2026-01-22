@@ -81,5 +81,5 @@ in {
   '';
 
   # Lid close behavior
-  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
 }

@@ -2,7 +2,7 @@
   description = "Home server infrastructure managed with Blueprint";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/x86_64-linux";
 
     blueprint.url = "github:numtide/blueprint";
@@ -19,7 +19,7 @@
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
     playit-nixos-module.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-repository.url = "github:aster-void/nix-repository";

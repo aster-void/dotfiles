@@ -37,7 +37,6 @@
       };
 
       languages = {
-        enableLSP = true;
         enableTreesitter = true;
 
         nix.enable = true;
@@ -69,8 +68,8 @@
       autocomplete.nvim-cmp.enable = true;
 
       visuals = {
-        nvimWebDevicons.enable = true;
-        indentBlankline.enable = true;
+        nvim-web-devicons.enable = true;
+        indent-blankline.enable = true;
       };
 
       git.gitsigns.enable = true;
