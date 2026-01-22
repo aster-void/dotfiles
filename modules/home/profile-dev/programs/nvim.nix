@@ -27,7 +27,14 @@
         addDefaultGrammars = true;
       };
 
-      assistant.supermaven-nvim.enable = true;
+      assistant.supermaven-nvim = {
+        enable = true;
+        setupOpts.keymaps = {
+          accept_suggestion = "<C-]>";
+          clear_suggestion = "<C-[>";
+          accept_word = "<C-j>";
+        };
+      };
 
       languages = {
         enableLSP = true;
