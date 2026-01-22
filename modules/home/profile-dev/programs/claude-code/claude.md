@@ -1,3 +1,8 @@
+<terminology>
+"docs" = README.md or /docs/ directory (user-facing documentation)
+CLAUDE.md = AI instructions (not "docs")
+</terminology>
+
 <rules>
 [Expression]: Single expression over incremental accumulation.
    - `items.filter(...).map(...)` not `let result = []; for (...) result.push(...)`
