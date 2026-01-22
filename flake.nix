@@ -24,7 +24,7 @@
 
     nix-repository.url = "github:aster-void/nix-repository";
     nix-repository.inputs = {
-      nixpkgs.follows = "nixpkgs";
+      #  nixpkgs.follows = "nixpkgs";
       blueprint.follows = "blueprint";
     };
 
