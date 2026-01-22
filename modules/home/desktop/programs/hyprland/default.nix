@@ -120,6 +120,10 @@ in {
         };
 
         cursor.no_hardware_cursors = false;
+
+        debug = {
+          disable_logs = false;
+        };
       };
     };
   };
