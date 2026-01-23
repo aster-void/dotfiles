@@ -4,8 +4,8 @@
   "...." = "cd ../../../";
   "....." = "cd ../../../../";
 
-  h = "nvim";
-  "h." = "nvim .";
+  h = "helix";
+  "h." = "helix .";
 
   g = "git";
   glog = "git log --oneline";
