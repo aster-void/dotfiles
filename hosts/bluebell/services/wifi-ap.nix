@@ -40,6 +40,12 @@ in {
     };
   };
 
+  # Wait for wlo1 interface to be ready before starting dnsmasq
+  systemd.services.dnsmasq = {
+    after = ["sys-subsystem-net-devices-wlo1.device" "hostapd.service"];
+    bindsTo = ["sys-subsystem-net-devices-wlo1.device"];
+  };
+
   services.dnsmasq = {
     enable = true;
     settings = {
