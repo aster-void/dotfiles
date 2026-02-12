@@ -7,9 +7,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": [
-          "systems"
-        ]
+        "systems": "systems"
       },
       "locked": {
         "lastModified": 1770165109,
@@ -28,11 +26,10 @@
     "blueprint": {
       "inputs": {
         "nixpkgs": [
+          "llm-agents",
           "nixpkgs"
         ],
-        "systems": [
-          "systems"
-        ]
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1769353768,
@@ -51,10 +48,10 @@
     "blueprint_2": {
       "inputs": {
         "nixpkgs": [
-          "llm-agents",
+          "nix-repository",
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": "systems_4"
       },
       "locked": {
         "lastModified": 1769353768,
@@ -330,7 +327,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -480,7 +477,7 @@
     },
     "llm-agents": {
       "inputs": {
-        "blueprint": "blueprint_2",
+        "blueprint": "blueprint",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -596,9 +593,7 @@
     },
     "nix-repository": {
       "inputs": {
-        "blueprint": [
-          "blueprint"
-        ],
+        "blueprint": "blueprint_2",
         "helix-gj1118": "helix-gj1118",
         "nixpkgs": "nixpkgs"
       },
@@ -672,7 +667,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_3"
+        "systems": "systems_5"
       },
       "locked": {
         "lastModified": 1770490142,
@@ -711,7 +706,7 @@
           "nixpkgs"
         ],
         "playit-agent-source": "playit-agent-source",
-        "systems": "systems_4"
+        "systems": "systems_6"
       },
       "locked": {
         "lastModified": 1769951632,
@@ -796,7 +791,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "blueprint": "blueprint",
         "caelestia-cli": "caelestia-cli",
         "caelestia-shell": "caelestia-shell_2",
         "claude-desktop": "claude-desktop",
@@ -812,7 +806,6 @@
         "nvf": "nvf",
         "playit-nixos-module": "playit-nixos-module",
         "rust-overlay": "rust-overlay_2",
-        "systems": "systems_5",
         "webhooker": "webhooker",
         "zen-browser": "zen-browser"
       }
@@ -921,16 +914,31 @@
     },
     "systems_5": {
       "locked": {
-        "lastModified": 1680978846,
-        "narHash": "sha256-Gtqg8b/v49BFDpDetjclCYXm8mAnTrUzR0JnE2nv5aw=",
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
         "owner": "nix-systems",
-        "repo": "x86_64-linux",
-        "rev": "2ecfcac5e15790ba6ce360ceccddb15ad16d08a8",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
         "type": "github"
       },
       "original": {
         "owner": "nix-systems",
-        "repo": "x86_64-linux",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },

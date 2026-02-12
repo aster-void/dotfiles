@@ -1,20 +1,14 @@
 {
-  description = "Home server infrastructure managed with Blueprint";
+  description = "NixOS + Home Manager configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    systems.url = "github:nix-systems/x86_64-linux";
-
-    blueprint.url = "github:numtide/blueprint";
-    blueprint.inputs.nixpkgs.follows = "nixpkgs";
-    blueprint.inputs.systems.follows = "systems";
 
     comin.url = "github:nlewo/comin";
     comin.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.inputs.systems.follows = "systems";
 
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
     playit-nixos-module.inputs.nixpkgs.follows = "nixpkgs";
@@ -23,10 +17,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-repository.url = "github:aster-void/nix-repository";
-    nix-repository.inputs = {
-      #  nixpkgs.follows = "nixpkgs";
-      blueprint.follows = "blueprint";
-    };
 
     # Desktop inputs (from dotfiles)
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -69,11 +59,75 @@
     # determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
-  outputs = inputs:
-    inputs.blueprint {
-      inherit inputs;
-      nixpkgs.config.allowUnfree = true;
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
     };
+
+    mkNixosSystem = hostname:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          flake = self;
+        };
+        modules = [./nixos/hosts/${hostname}];
+      };
+
+    mkHome = {
+      hostname,
+      username,
+    }:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs;
+          flake = self;
+        };
+        modules = [
+          ./home-manager/hosts/${hostname}/${username}.nix
+          {nixpkgs.config.allowUnfree = true;}
+        ];
+      };
+  in {
+    lib = import ./lib {inherit (nixpkgs) lib;};
+
+    nixosConfigurations = {
+      azalea = mkNixosSystem "azalea";
+      bluebell = mkNixosSystem "bluebell";
+      daisy = mkNixosSystem "daisy";
+    };
+
+    homeConfigurations = {
+      "aster@azalea" = mkHome {
+        hostname = "azalea";
+        username = "aster";
+      };
+      "aster@bluebell" = mkHome {
+        hostname = "bluebell";
+        username = "aster";
+      };
+      "aster@daisy" = mkHome {
+        hostname = "daisy";
+        username = "aster";
+      };
+    };
+
+    packages.${system} = {
+      fhs = pkgs.callPackage ./packages/fhs {};
+      setpaper = pkgs.callPackage ./packages/setpaper {};
+      waydroid-ui = pkgs.callPackage ./packages/waydroid-ui {};
+      wol = pkgs.callPackage ./packages/wol {};
+      wpick = pkgs.callPackage ./packages/wpick {};
+    };
+  };
 
   nixConfig = {
     extra-substituters = [

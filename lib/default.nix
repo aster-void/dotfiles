@@ -1,10 +1,4 @@
-{
-  inputs,
-  flake,
-  ...
-}: let
-  lib = inputs.nixpkgs.lib;
-
+{lib}: let
   # Recursively collect all files in a directory.
   # If a directory contains "default.nix", only return that file (no recursion).
   # Otherwise, recurse into subdirectories and collect all files.

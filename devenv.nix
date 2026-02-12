@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  env.RULES = "./secrets/secrets.nix";
+  env.RULES = "./nixos/secrets/secrets.nix";
 
   packages = with pkgs; [
     inputs.agenix.packages.${stdenv.hostPlatform.system}.default
