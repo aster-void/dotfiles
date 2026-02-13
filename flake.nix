@@ -93,7 +93,11 @@
         };
         modules = [
           ./home-manager/hosts/${hostname}/${username}.nix
-          {nixpkgs.config.allowUnfree = true;}
+          {
+            home.username = username;
+            home.homeDirectory = "/home/${username}";
+            nixpkgs.config.allowUnfree = true;
+          }
         ];
       };
   in {
