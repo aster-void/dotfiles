@@ -14,6 +14,9 @@
     zellij
     jq
 
+    # compilers
+    gcc
+
     # monitor & analyze
     btop
     ncdu
