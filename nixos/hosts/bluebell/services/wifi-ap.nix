@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   flake,
   ...
 }: let
@@ -13,6 +14,7 @@ in {
   };
 
   networking.networkmanager.unmanaged = ["wlo1"];
+  networking.wireless.enable = lib.mkForce false; # avoid conflict with hostapd on wlo1
 
   systemd.network = {
     enable = true;
