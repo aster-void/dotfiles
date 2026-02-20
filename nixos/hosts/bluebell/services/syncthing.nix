@@ -4,7 +4,7 @@
   ...
 }: {
   age.secrets.syncthing-password = {
-    file = "${flake}/nixos/secrets/syncthing-password.age";
+    file = "${flake}/secrets/syncthing-password.age";
     owner = "syncthing";
     group = "syncthing";
   };

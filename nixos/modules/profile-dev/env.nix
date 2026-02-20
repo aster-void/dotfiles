@@ -4,7 +4,7 @@
   ...
 }: {
   age.secrets.context7-api-key = {
-    file = "${flake}/nixos/secrets/context7-api-key.age";
+    file = "${flake}/secrets/context7-api-key.age";
     owner = "aster";
     group = "users";
     mode = "400";

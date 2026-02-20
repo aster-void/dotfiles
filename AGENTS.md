@@ -4,25 +4,25 @@ Note: CLAUDE.md is symlinked to this file.
 
 ## Overview
 
-NixOS + Home Manager configuration. NixOS and home-manager are independent top-level directories.
+NixOS configuration. The `nixos/` directory is a self-contained flake subdirectory.
 
 ## Directory Structure
 
+- `nixos/flake.nix` - Flake entry point
 - `nixos/hosts/{hostname}/` - NixOS host-specific config (default.nix, services/)
 - `nixos/modules/` - NixOS system modules (base/, desktop/, profile-dev/, profile-server/)
 - `nixos/secrets/` - agenix encrypted secrets
-- `home-manager/hosts/{hostname}/` - home-manager per-host user config ({username}.nix)
-- `home-manager/modules/` - home-manager modules (base/, desktop/, profile-dev/)
-- `packages/` - Custom packages
-- `config/` - Static config files (JSON, etc.)
-- `dotter/` - Dotter-managed dotfiles
+- `nixos/lib/` - Shared Nix library functions
+- `nixos/packages/` - Custom packages
+- `nixos/config/` - Static config files (JSON, etc.)
+- `nixos/scripts/` - Build and utility scripts
 
 ## Rules
 
-**File Placement**: Shared across hosts → `{nixos,home-manager}/modules/`, host-specific → `{nixos,home-manager}/hosts/{hostname}/`
+**File Placement**: Shared across hosts → `nixos/modules/`, host-specific → `nixos/hosts/{hostname}/`
 
 **Module Structure**
-(`{nixos,home-manager}/modules/{module}/`):
+(`nixos/modules/{module}/`):
 
 - `default.nix` - imports submodules
 - `options.nix` - module `options`
@@ -54,7 +54,7 @@ imports = flake.lib.collectFiles ./programs ++ flake.lib.collectFiles ./services
 ## Commits
 
 Format: `{scope}: {description}`
-scope: `flake` / `nixos/hosts/{hostname}` / `nixos/modules/{module}` / `home-manager/hosts/{hostname}` / `home-manager/modules/{module}` / `packages` / `treewide` / `meta`
+scope: `flake` / `nixos/hosts/{hostname}` / `nixos/modules/{module}` / `packages` / `treewide` / `meta`
 
 **Rules**:
 - Don't commit until explicitly told to
@@ -64,7 +64,7 @@ scope: `flake` / `nixos/hosts/{hostname}` / `nixos/modules/{module}` / `home-man
 ## Scripts
 
 ```sh
-./scripts/nixos-build.sh [hostname?] [--dry]  # NixOS build check
+./nixos/scripts/nixos-build.sh [hostname?] [--dry]  # NixOS build check
 ```
 
 **Note**: This script never applies the config to the host. Without `--dry`, it builds only. With `--dry`, it evaluates only (no build).
@@ -95,7 +95,7 @@ grep -ri "<keyword>" .claude/troubleshooting-logs/
 ## Tips
 
 - **Don't modify NixOS system/"global" config directly**: Don't edit `~/.config/` or `~/.claude.json` directly. Edit the corresponding file in this repo. Search by program name to find it.
-- **claude.md** = `home-manager/modules/profile-dev/programs/claude-code/claude.md` (source for global CLAUDE.md)
+- **claude.md** = source for global CLAUDE.md
 - Assume filename = what the file defines. Don't read files unnecessarily to save context.
 - **Finding config for X**: `grep -r "filename"` (e.g., `grep -r zellij` to find zellij config)
 - **Simple changes**: Don't over-research. Read the file, make the change, done.

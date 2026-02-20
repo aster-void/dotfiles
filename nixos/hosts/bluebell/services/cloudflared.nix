@@ -3,7 +3,7 @@
   flake,
   ...
 }: {
-  age.secrets.cloudflared-bluebell.file = "${flake}/nixos/secrets/cloudflared/bluebell.json.age";
+  age.secrets.cloudflared-bluebell.file = "${flake}/secrets/cloudflared/bluebell.json.age";
   services.cloudflared = {
     enable = true;
     tunnels.bluebell = {

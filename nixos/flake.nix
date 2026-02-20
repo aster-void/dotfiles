@@ -37,7 +37,7 @@
           inherit inputs;
           flake = self;
         };
-        modules = [./nixos/hosts/bluebell];
+        modules = [./hosts/bluebell];
       };
     };
 

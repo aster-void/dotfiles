@@ -25,7 +25,7 @@
   # Automatic security updates
   system.autoUpgrade = {
     enable = true;
-    flake = "github:aster-void/dotfiles";
+    flake = "github:aster-void/dotfiles?dir=nixos";
     flags = ["--refresh"];
     dates = "04:00";
     allowReboot = false;

@@ -1,6 +1,7 @@
 {config, ...}: {
   services.comin = {
     enable = true;
+    repositorySubdir = "nixos";
     remotes = [
       {
         name = "origin";

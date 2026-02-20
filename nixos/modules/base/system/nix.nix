@@ -6,7 +6,7 @@
 }: {
   environment.systemPackages = [pkgs.cachix];
   age.secrets.nix-conf = {
-    file = "${flake}/nixos/secrets/nix.conf.age";
+    file = "${flake}/secrets/nix.conf.age";
     mode = "400";
   };
 

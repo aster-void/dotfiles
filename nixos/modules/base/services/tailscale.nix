@@ -3,7 +3,7 @@
   flake,
   ...
 }: {
-  age.secrets.tailscale-authkey.file = "${flake}/nixos/secrets/tailscale-authkey.age";
+  age.secrets.tailscale-authkey.file = "${flake}/secrets/tailscale-authkey.age";
 
   services.tailscale = {
     enable = true;
