@@ -75,6 +75,8 @@ scope: `flake` / `nixos/hosts/{hostname}` / `nixos/modules/{module}` / `packages
 
 ```sh
 nix-search <query>  # Package search (nix-search-cli)
+comin fetch          # Trigger comin to fetch and deploy latest commit (no sudo)
+journalctl -u comin.service --no-pager -n 30  # Check comin deploy logs (no sudo)
 ```
 
 ## Troubleshooting Logs
