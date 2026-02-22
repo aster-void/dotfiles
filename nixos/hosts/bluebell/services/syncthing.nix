@@ -22,5 +22,8 @@
     guiPasswordFile = config.age.secrets.syncthing-password.path;
   };
 
-  users.users.syncthing.linger = true;
+  users.users.syncthing = {
+    linger = true;
+    extraGroups = ["systemd-journal"];
+  };
 }
