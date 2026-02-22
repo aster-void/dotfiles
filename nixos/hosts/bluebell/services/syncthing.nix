@@ -1,7 +1,6 @@
 {
   config,
   flake,
-  lib,
   ...
 }: {
   age.secrets.syncthing-password = {
@@ -23,8 +22,5 @@
     guiPasswordFile = config.age.secrets.syncthing-password.path;
   };
 
-  users.users.syncthing = {
-    isNormalUser = true;
-    uid = lib.mkForce 1100;
-  };
+  users.users.syncthing.linger = true;
 }
