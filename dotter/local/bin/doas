@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ $# -lt 2 ]; then
+  echo "Usage: doas <user> <command...>" >&2
+  exit 1
+fi
+
+user="$1"
+shift
+cmd="$*"
+
+exec sudo -u "$user" bash -c 'XDG_RUNTIME_DIR=/run/user/$(id -u) '"$cmd"

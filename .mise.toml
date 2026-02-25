@@ -1,11 +1,10 @@
 [env]
 RULES = "./nixos/secrets/secrets.nix"
 
-[tools]
-bun = "latest"
-python = "latest"
-lefthook = "latest"
+[settings]
+lockfile = true
 
-[hooks.enter]
-shell = "bash"
-script = "lefthook install"
+[tools]
+[tools.lefthook]
+version = "latest"
+postinstall = "lefthook install"

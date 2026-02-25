@@ -1,2 +1,4 @@
-/result
-.ck
+dotter/.cache.toml
+dotter/local.toml
+result
+.claude/

@@ -1,0 +1,191 @@
+# Nordic-darker color palette
+#2e3440	user
+#3b4252	dir
+#434c5e	git
+#4c566a	version
+#5e81ac	doc (from dracula color palette)
+#6272a4	time (from dracula color palette)
+
+# some extra symbols
+# 
+# 
+
+#           _     _ 
+#  ______ _(_) __| |
+# |_  / _` | |/ _` |
+#  / / (_| | | (_| |
+# /___\__,_|_|\__,_|	zaid-hassan
+
+# ---------------------------------------------------------------
+format = """
+[░▒▓](#2e3440)\
+$os\
+[](bg:#3b4252 fg:#2e3440)\
+$hostname\
+[](fg:#3b4252 bg:#434c5e)\
+$git_branch\
+$git_status\
+[](fg:#434c5e bg:#4c566a)\
+$c\
+$python\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#4c566a bg:#5e81ac)\
+$docker_context\
+[](fg:#5e81ac bg:#6272a4)\
+$time\
+[ ](fg:#6272a4)
+$directory
+$cmd_duration\
+$character\
+"""
+#add_newline = false
+
+[line_break]
+disabled = false
+
+[hostname]
+ssh_only = true
+style = "bg:#3b4252"
+format = '[ $hostname ]($style)'
+disabled = false
+
+[os]
+style = "bg:#2e3440"
+disabled = false     # Disabled by default
+
+[os.symbols]
+Arch = " "
+Debian = " "
+Fedora = " "
+FreeBSD = " "
+Linux = " "
+Macos = " "
+NixOS = "󱄅 "
+Nobara = " "
+Pop = " "
+Raspbian = " "
+Ubuntu = " "
+Unknown = " "
+
+[directory]
+style = "fg:#6272a4"                                                                                             # "bg:#3b4252"
+format = "[ $path ]($style)"
+repo_root_format = "[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path ]($style)"
+before_repo_root_style = "fg:#4c566a"
+repo_root_style = "bold fg:#6272a4"
+truncation_length = 0
+truncation_symbol = "…/"
+truncate_to_repo = false
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[c]
+symbol = " "
+style = "bg:#4c566a"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style = "bg:#4c566a"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#5e81ac"
+format = '[ $symbol $context ]($style) $path'
+
+[elixir]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#434c5e"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#434c5e"
+format = '[$all_status$ahead_behind ]($style)'
+ahead = "^"
+behind = "v"
+diverged = "⇕"
+conflicted = "<=>"
+deleted = "d"
+modified = "*"
+renamed = ">"
+staged = "+"
+stashed = "stash"
+
+[golang]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = " "
+style = "bg:##434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#434c5e"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"             # Hour:Minute Format
+style = "bg:#6272a4"
+format = '[  $time ]($style)'
+
+[character]
+success_symbol = '[ ➜](#6272a4)'
+error_symbol = '[ ➜](bold red)'
+#style = "bg:#6272a4"
+
+[cmd_duration]
+min_time = 500
+format = ' [$duration](#6272a4)'

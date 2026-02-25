@@ -1,0 +1,40 @@
+[user]
+email = "137767097+aster-void@users.noreply.github.com"
+name = "aster-void"
+
+[diff]
+colorMoved = "default"
+
+[init]
+defaultBranch = "main"
+
+[merge]
+conflictstyle = "diff3"
+
+[pull]
+rebase = true
+
+[push]
+autoSetupRemote = true
+
+[alias]
+aa = "add -A"
+amend = "commit --amend --no-edit"
+b = "branch"
+behead = "!bash -c '\n  set -euo pipefail\n  git fetch --prune --all\n  git switch -d $(git symbolic-ref refs/remotes/${1:-origin}/HEAD)\n' _\n"
+cm = "commit -m"
+co = "checkout"
+detach = "switch --detach"
+last = "log -1 HEAD"
+ls = "ls-files"
+nuke = "!git checkout -f HEAD && git clean -f"
+recommit = "commit --amend"
+sw = "switch"
+sync = "fetch --prune --all"
+u = "push --set-upstream origin HEAD"
+uncommit = "reset HEAD~"
+unstage = "reset HEAD --"
+vacuum = "!git branch | grep -v --fixed-string '*' | xargs --no-run-if-empty git branch -d"
+
+[ghq]
+root = "~/workspace"

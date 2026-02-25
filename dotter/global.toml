@@ -1,0 +1,19 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+"CLAUDE.md" = ""
+home-manager = ""
+"scripts" = "~/.local/bin"
+"dotter/claude" = "~/.claude"
+"dotter/ssh" = "~/.ssh"
+"dotter/config" = "~/.config"
+"dotter/bashrc" = "~/.bashrc"
+"dotter/local" = "~/.local"
+
+[default.variables]
+
+[settings]
+default_target_type = "automatic"

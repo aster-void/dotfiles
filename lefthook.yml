@@ -1,6 +1,6 @@
 pre-commit:
   commands:
-    fmt:
-      run: alejandra {staged_files}
+    nixfmt:
       glob: "*.nix"
+      run: nixfmt {staged_files}
       stage_fixed: true
