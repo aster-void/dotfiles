@@ -5,18 +5,22 @@ Note: CLAUDE.md is symlinked to this file.
 ## Tools
 
 ```sh
-# Nix
-nix-search <query>                                   # Package search (nix-search-cli)
-
-# Installation & Utility commands
-./scripts/install.sh # install user-wide config [always run this after changes!]
-./scripts/install_system.sh # install system-wide config
+# cross-domain scripts
 ./scripts/upgrade.sh # update system and this config
 
-# NixOS
+# dotter/ and home-manager/
+./scripts/install.sh # install user-wide config [always run this after changes!]
+
+# etc/ (for imperative distros)
+./scripts/install_system.sh # install system-wide config
+
+# nixos/
 ./nixos/scripts/nixos-build.sh [hostname?] [--dry]   # Build check (never applies config; --dry = eval only)
 comin fetch                                          # Trigger comin to fetch and deploy latest commit (no sudo)
 journalctl -u comin.service --no-pager -n 30         # Check comin deploy logs (no sudo)
+
+# Utility Tools
+nix-search <query>                                   # Package search (nix-search-cli)
 ```
 
 When to run build: Only when config structure changes (new modules, imports, options). Skip for simple changes like adding packages or modifying program settings.
