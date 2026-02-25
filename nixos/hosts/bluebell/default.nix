@@ -11,6 +11,7 @@
     isNormalUser = true;
     home = "/home/claude";
     createHome = true;
+    linger = true;
     extraGroups = [
       "wheel"
       "users"
