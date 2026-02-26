@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail # -e flag omitted intentionally
 
-cd "$(dirname "$(readlink -f "$0")")/.."
+cd "$(dirname "$(readlink -f "$0")")/.." || exit
 
 # Generate gpu.nix with host's NVIDIA driver version (if applicable)
 gpu_nix=home-manager/modules/gpu.nix
@@ -48,6 +48,12 @@ set +u
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" 2>/dev/null || true
 set -u
 export PATH="$HOME/.nix-profile/bin:$PATH"
+if [[ ! -f dotter/local.toml ]]; then
+  cat > dotter/local.toml <<'EOF'
+includes = []
+packages = ["default"]
+EOF
+fi
 dotter -g dotter/global.toml -l dotter/local.toml --cache-file dotter/.cache.toml deploy -f -y
 
 # Claude Code (native binary, auto-updates on startup)
