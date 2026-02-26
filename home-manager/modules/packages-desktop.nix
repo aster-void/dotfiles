@@ -19,6 +19,44 @@
 
   systemd.user.services.flatpak-managed-install.Service.TimeoutStartSec = "10m";
 
+  # Fix flatpak DBus service files referencing wrong flatpak binary path.
+  # Flatpak generates DBus service files with hardcoded paths that may not
+  # exist on non-NixOS systems, breaking DBusActivatable apps launched from
+  # the app menu.
+  systemd.user.services.flatpak-fix-dbus-paths = {
+    Unit = {
+      Description = "Fix flatpak DBus service file paths";
+      After = [ "flatpak-managed-install.service" ];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.writeShellScript "fix-flatpak-dbus-paths" ''
+        src="$HOME/.local/share/flatpak/exports/share/dbus-1/services"
+        dst="$HOME/.local/share/dbus-1/services"
+
+        [ -d "$src" ] || exit 0
+
+        flatpak_bin=""
+        for candidate in /usr/bin/flatpak /run/current-system/sw/bin/flatpak; do
+          if [ -x "$candidate" ]; then
+            flatpak_bin="$candidate"
+            break
+          fi
+        done
+        [ -n "$flatpak_bin" ] || exit 1
+
+        mkdir -p "$dst"
+        for f in "$src"/*.service; do
+          [ -f "$f" ] || continue
+          ${pkgs.gnused}/bin/sed "s|Exec=[^ ]*/flatpak |Exec=$flatpak_bin |" "$f" > "$dst/$(basename "$f")"
+        done
+      ''}";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
   services.flatpak.enable = true;
   services.flatpak.remotes = [
     {
