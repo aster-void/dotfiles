@@ -51,6 +51,11 @@
     ghq
     lazygit
 
+    ## Utility CLIs
+    nh
+    nix-search-cli
+    agenix-cli
+
     ## Editor
     helix
 
@@ -60,8 +65,6 @@
     nixd
     nixfmt
     alejandra
-    agenix-cli
-    nh
     mcp-nixos
 
     ### Shell languages
