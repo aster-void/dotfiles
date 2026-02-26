@@ -44,6 +44,7 @@
     devenv
     nix-direnv
     mise
+    bun
 
     ## Git and GitHub
     git
