@@ -44,7 +44,10 @@
     devenv
     nix-direnv
     mise
+
+    ## Runtimes
     bun
+    nodejs
 
     ## Git and GitHub
     git
