@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# caffeinate - prevent the machine from sleeping until Ctrl+C
+set -euo pipefail
+
+echo "Caffeinate: keeping system awake. Press Ctrl+C to stop."
+exec systemd-inhibit --what=idle:sleep:handle-lid-switch --who=caffeinate --why="caffeinate: the machine is caffeinated" --mode=block sleep infinity
