@@ -1,4 +1,3 @@
-copy_command "wl-copy"
 copy_on_select true
 default_layout "compact"
 default_shell "fish"
