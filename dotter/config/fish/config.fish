@@ -1,5 +1,6 @@
 # PATH
 fish_add_path -g ~/.local/bin
+fish_add_path -g ~/.cache/.bun/bin
 
 # Session variables
 set -gx EDITOR hx
