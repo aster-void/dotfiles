@@ -42,7 +42,3 @@ Location: `.claude/troubleshooting-logs/`
 
 - Before Troubleshooting: Search existing logs with `grep -ri "<keyword>" .claude/troubleshooting-logs/`
 - After Troubleshooting: Create `{date}-{short-description}.md` documenting findings
-
-## Tips
-
-- Don't modify system config directly: Don't edit `~/.config/` or `~/.claude.json`. Edit the corresponding file in this repo.
