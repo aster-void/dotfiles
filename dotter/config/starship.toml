@@ -24,6 +24,7 @@ $os\
 $hostname\
 [](fg:#3b4252 bg:#434c5e)\
 $git_branch\
+$git_state\
 $git_status\
 [](fg:#434c5e bg:#4c566a)\
 $c\
@@ -121,6 +122,17 @@ format = '[ $symbol ($version) ]($style)'
 symbol = ""
 style = "bg:#434c5e"
 format = '[ $symbol $branch ]($style)'
+
+[git_state]
+style = "bold bg:#434c5e fg:#bf616a"
+format = '[ $state( $progress_current/$progress_total) ]($style)'
+rebase = "REBASE"
+merge = "MERGE"
+revert = "REVERT"
+cherry_pick = "CHERRY-PICK"
+bisect = "BISECT"
+am = "AM"
+am_or_rebase = "AM/REBASE"
 
 [git_status]
 style = "bg:#434c5e"
