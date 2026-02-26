@@ -40,15 +40,26 @@
     ];
   };
   services.flatpak.packages = [
+    # Browser & Communication
     "app.zen_browser.zen"
+    "com.google.ChromeDev"
+
+    # Documents
+    "md.obsidian.Obsidian"
+
+    # Communication
     "com.discordapp.Discord"
     "com.slack.Slack"
+
+    # Application Manager & System
     "com.github.tchx84.Flatseal"
-    "com.google.ChromeDev"
+    "it.mijorus.gearlever"
     "com.usebottles.bottles"
     "com.valvesoftware.Steam"
-    "it.mijorus.gearlever"
-    "md.obsidian.Obsidian"
+
+    # File viewer
     "org.gnome.eog"
+    "io.bassi.Amberol"
+    "com.github.neithern.g4music"
   ];
 }
