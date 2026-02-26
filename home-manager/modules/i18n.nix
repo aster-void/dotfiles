@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   ...
 }:
@@ -16,5 +15,4 @@
     fcitx5.waylandFrontend = true;
   };
 
-  systemd.user.services.fcitx5-daemon.Install.WantedBy = lib.mkForce [ ];
 }
