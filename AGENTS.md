@@ -32,6 +32,7 @@ When to run build: Only when config structure changes (new modules, imports, opt
 - Desktop/GUI packages + Flatpak apps: `home-manager/modules/packages-desktop.nix`
 - Dotter file mappings: `dotter/global.toml`
 - Dotter dotfiles source: `dotter/config/`, `dotter/ssh/`, `dotter/claude/`, `dotter/local/`
+- User scripts (on PATH): `dotter/local/bin/`
 - Home Manager modules: `home-manager/flake.nix` (imports all modules)
 - NixOS system config (for servers only): `nixos/`
 
