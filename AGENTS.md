@@ -41,4 +41,6 @@ When to run build: Only when config structure changes (new modules, imports, opt
 Location: `.claude/troubleshooting-logs/`
 
 - Before Troubleshooting: Search existing logs with `grep -ri "<keyword>" .claude/troubleshooting-logs/`
-- After Troubleshooting: Create `{date}-{short-description}.md` documenting findings
+- After Troubleshooting:
+  case new issue: Create `{date}-{short-description}.md` documenting findings
+  case existing issue re-occuring: Append to previous issue, add additional details and correct previous information as append-only with new date at top

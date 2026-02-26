@@ -44,8 +44,11 @@ if command -v non-nixos-gpu-setup &>/dev/null; then
   setup_script=$(command -v non-nixos-gpu-setup)
   new_store_path=$(grep -oP '/nix/store/\S+-non-nixos-gpu' "$setup_script" | head -1)
   current_store_path=$(readlink /etc/systemd/system/non-nixos-gpu.service 2>/dev/null | grep -oP '/nix/store/\S+-non-nixos-gpu')
-  if [[ "$new_store_path" != "$current_store_path" ]]; then
+  if [[ "$new_store_path" != "$current_store_path" ]] || [[ ! -e /run/opengl-driver ]]; then
     echo "=== Updating GPU drivers in /run/opengl-driver ==="
+    # restorecon: nix store files start as default_t; relabel to systemd_unit_file_t
+    # so SELinux allows systemd to read the symlinked service file.
+    sudo restorecon "$new_store_path/lib/systemd/system/non-nixos-gpu.service" 2>/dev/null || true
     sudo "$setup_script"
   fi
 fi

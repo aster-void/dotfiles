@@ -105,16 +105,12 @@ fi
 if command -v non-nixos-gpu-setup &>/dev/null; then
   echo ""
   echo "=== Setting up non-NixOS GPU compatibility ==="
-  # Run the setup script contents directly under system bash to avoid SELinux
-  # blocking Nix store's bash. The script just creates a symlink and enables a service.
+  # restorecon: nix store files start as default_t; relabel to systemd_unit_file_t
+  # so SELinux allows systemd to read the symlinked service file.
   setup_script=$(command -v non-nixos-gpu-setup)
-  service_file=$(grep -oP '(?<=ln -sf )\S+' "$setup_script" | head -1)
-  unit=/etc/systemd/system/non-nixos-gpu.service
-  sudo ln -sf "$service_file" "$unit"
-  sudo ln -sf "$unit" /nix/var/nix/gcroots/non-nixos-gpu.service
-  sudo cp --remove-destination "$(readlink -f "$unit")" "$unit"
-  sudo systemctl daemon-reload
-  sudo systemctl enable --now non-nixos-gpu.service
+  store_path=$(grep -oP '/nix/store/\S+-non-nixos-gpu' "$setup_script" | head -1)
+  sudo restorecon "$store_path/lib/systemd/system/non-nixos-gpu.service" 2>/dev/null || true
+  sudo "$setup_script"
 fi
 
 # --- Reconnect Cloudflare WARP ---
