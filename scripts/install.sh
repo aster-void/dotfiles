@@ -32,7 +32,12 @@ gpu.nix = $current_ver
 fi
 
 git add -A -N
-nix run home-manager/master -- switch --flake ./home-manager
+# Use flake's own home-manager CLI; fall back to nix build + activate for bootstrap
+if command -v home-manager &>/dev/null; then
+  home-manager switch --flake ./home-manager
+else
+  nix run home-manager/master -- switch --flake ./home-manager
+fi
 
 # Set up GPU drivers in /run/opengl-driver (requires root, only when changed)
 if command -v non-nixos-gpu-setup &>/dev/null; then

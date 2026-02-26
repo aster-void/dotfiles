@@ -20,7 +20,8 @@ comin fetch                                          # Trigger comin to fetch an
 journalctl -u comin.service --no-pager -n 30         # Check comin deploy logs (no sudo)
 
 # Utility Tools
-nix-search <query>                                   # Package search (nix-search-cli)
+nix-search package # Package search (nix-search-cli)
+nix-search --program myprogram # search by program name instead of package name
 ```
 
 When to run build: Only when config structure changes (new modules, imports, options). Skip for simple changes like adding packages or modifying program settings.
