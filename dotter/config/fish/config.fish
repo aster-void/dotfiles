@@ -67,6 +67,7 @@ if set -q GHOSTTY_RESOURCES_DIR
 end
 
 # Quickshell terminal integration (end4)
-if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-    cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-end
+# Disabled: overrides Ghostty's color theme with wallpaper-based colors
+# if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+#     cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+# end
