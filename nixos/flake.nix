@@ -17,35 +17,30 @@
     webhooker.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  in {
-    lib = import ./lib {inherit (nixpkgs) lib;};
+  outputs =
+    {
+      self,
+      nixpkgs,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+    in
+    {
+      lib = import ./lib { inherit (nixpkgs) lib; };
 
-    nixosConfigurations = {
-      bluebell = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          flake = self;
+      nixosConfigurations = {
+        bluebell = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            flake = self;
+          };
+          modules = [ ./hosts/bluebell ];
         };
-        modules = [./hosts/bluebell];
       };
-    };
 
-    packages.${system} = {
-      fhs = pkgs.callPackage ./packages/fhs {};
-      wol = pkgs.callPackage ./packages/wol {};
     };
-  };
 
   nixConfig = {
     extra-substituters = [

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Wake machines via Tailscale + relay
 # Usage: wol <hostname>
 
