@@ -19,10 +19,12 @@
 
   systemd.user.services.flatpak-managed-install.Service.TimeoutStartSec = "10m";
 
-  # Fix flatpak DBus service files referencing wrong flatpak binary path.
-  # Flatpak generates DBus service files with hardcoded paths that may not
-  # exist on non-NixOS systems, breaking DBusActivatable apps launched from
-  # the app menu.
+  # Workaround: nix-flatpak uses nixpkgs' flatpak binary, which hardcodes
+  # /run/current-system/sw/bin/flatpak into DBus service files. This path
+  # doesn't exist on non-NixOS (e.g. Fedora), so DBusActivatable apps fail
+  # to launch from the app menu. This service patches the exported DBus
+  # service files to use the actual flatpak binary path.
+  # See: https://github.com/NixOS/nixpkgs/issues/138956
   systemd.user.services.flatpak-fix-dbus-paths = {
     Unit = {
       Description = "Fix flatpak DBus service file paths";
