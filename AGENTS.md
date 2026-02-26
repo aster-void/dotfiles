@@ -26,6 +26,15 @@ nix-search --program myprogram # search by program name instead of package name
 
 When to run build: Only when config structure changes (new modules, imports, options). Skip for simple changes like adding packages or modifying program settings.
 
+## Quick Look
+
+- CLI packages: `home-manager/modules/packages.nix`
+- Desktop/GUI packages + Flatpak apps: `home-manager/modules/packages-desktop.nix`
+- Dotter file mappings: `dotter/global.toml`
+- Dotter dotfiles source: `dotter/config/`, `dotter/ssh/`, `dotter/claude/`, `dotter/local/`
+- Home Manager modules: `home-manager/flake.nix` (imports all modules)
+- NixOS system config (for servers only): `nixos/`
+
 ## Troubleshooting Logs
 
 Location: `.claude/troubleshooting-logs/`
