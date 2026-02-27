@@ -37,3 +37,7 @@ dbus-send --session --print-reply \
 ```sh
 systemctl --user restart xdg-desktop-portal xdg-desktop-portal-gtk
 ```
+
+## Recurrence
+
+- 2026-02-27: Same symptom reappeared. Portal restart fixed it again. Root config is correct, portal just gets into a bad state sometimes (possibly after sleep/resume or session restart).
