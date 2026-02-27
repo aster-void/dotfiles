@@ -1,9 +1,17 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
-  services.hazkey.enable = true;
+  services.hazkey = {
+    enable = true;
+    server.package =
+      inputs.nix-hazkey.packages.${pkgs.stdenv.hostPlatform.system}.hazkey-server.override
+        {
+          enableVulkan = true;
+        };
+  };
 
   i18n.inputMethod = {
     enable = true;
