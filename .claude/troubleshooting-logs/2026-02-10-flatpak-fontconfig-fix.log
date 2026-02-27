@@ -1,0 +1,79 @@
+Date: 2026-02-10
+Issue: Flatpak apps ignoring user fontconfig (JP font priority, missing Unicode blocks)
+Symptom: Japanese text rendered with Chinese glyphs; Mathematical Alphanumeric
+         Symbols (e.g. 𝘾𝙊𝙉𝙁𝙀𝙎𝙎) displayed as tofu in Zen browser
+
+========== ROOT CAUSE ==========
+
+Flatpak remaps XDG_CONFIG_HOME to ~/.var/app/<app-id>/config/ per app.
+The runtime's fontconfig (50-user.conf) uses prefix="xdg" to find user config,
+so it looks at ~/.var/app/<app-id>/config/fontconfig/ instead of ~/.config/fontconfig/.
+User's ~/.config/fontconfig/conf.d/50-user-jp-fonts.conf is never read.
+
+Previous workaround (FONTCONFIG_FILE global override) bypassed the entire
+runtime fontconfig chain, losing default font mappings (sans-serif, etc.)
+and breaking <include> directives.
+
+========== TRIALS ==========
+
+1. FONTCONFIG_FILE global Flatpak override → PARTIAL (previous session's fix)
+
+   What:
+     Set FONTCONFIG_FILE=/home/aster/.config/fontconfig/fonts.conf in
+     ~/.local/share/flatpak/overrides/global
+
+   Why partial:
+     Bypasses the runtime's entire fontconfig chain. Loses all default
+     font family mappings (sans-serif → DejaVu, etc.). The custom
+     fonts.conf must then replicate everything manually. Also, <include>
+     directives inside FONTCONFIG_FILE-specified files don't reliably
+     load conf.d.
+
+2. <include> inside custom fonts.conf → FAILED
+
+   What:
+     Added <include>/home/aster/.config/fontconfig/conf.d</include>
+     to fonts.conf, used with FONTCONFIG_FILE override.
+
+   Why failed:
+     <include> with absolute paths to conf.d did not load the JP rules.
+     FC_DEBUG showed the included rules were not present in the match
+     pattern. Root cause unclear — possibly FONTCONFIG_FILE mode
+     changes how <include> resolves.
+
+3. Symlink conf.d into app's XDG dir → WORKED (but per-app)
+
+   What:
+     $ ln -sf ~/.config/fontconfig/conf.d \
+         ~/.var/app/app.zen_browser.zen/config/fontconfig/conf.d
+
+   Why rejected:
+     Requires a symlink per Flatpak app. User wants a global fix.
+
+4. flatpak override --filesystem=xdg-config/fontconfig:ro → SUCCESS
+
+   What:
+     $ flatpak override --user --filesystem=xdg-config/fontconfig:ro
+     (set in ~/.local/share/flatpak/overrides/global)
+
+   Why worked:
+     xdg-config/fontconfig is a Flatpak-recognized path that exposes
+     the HOST's ~/.config/fontconfig/ into the sandbox. The runtime's
+     50-user.conf then finds and loads the user's fonts.conf and
+     conf.d/50-user-jp-fonts.conf through its normal prefix="xdg"
+     include mechanism. No FONTCONFIG_FILE hack needed.
+
+========== TAKEAWAY ==========
+
+- Flatpak's XDG_CONFIG_HOME remap is WHY user fontconfig is ignored.
+- Don't use FONTCONFIG_FILE override — it bypasses the runtime's fontconfig chain.
+- The correct global fix: flatpak override --user --filesystem=xdg-config/fontconfig:ro
+- This is a known Flatpak limitation (flatpak/flatpak#3947, still open).
+- Before inventing workarounds, search for the issue — this solution was
+  documented in flatpak/flatpak#4742.
+
+========== SEE ALSO ==========
+
+Previous (incomplete) fixes for the same underlying issue:
+- Actual fix for Korean fonts: ./2026-02-07-zen-korean-font-fix.log
+- Actual fix for math symbols: ./2026-02-10-zen-math-font-fix.log

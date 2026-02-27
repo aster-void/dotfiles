@@ -1,0 +1,55 @@
+Date: 2026-02-10
+Issue: Mathematical Alphanumeric Symbols not rendering in Zen browser (Flatpak)
+Symptom: Characters like 𝘾𝙊𝙉𝙁𝙀𝙎𝙎 (Mathematical Sans-Serif Bold Italic, U+1D400-U+1D7FF) displayed as boxes/tofu
+
+========== ROOT CAUSE ==========
+
+Custom ~/.config/fontconfig/fonts.conf only declared <dir>~/.local/share/fonts</dir>,
+causing Zen to ignore the Flatpak runtime's bundled fonts at /usr/share/fonts/.
+
+This fontconfig was intentionally created to fix CJK font priority (Chinese fonts
+rendering instead of Japanese). It replaced the default fontconfig entirely, which
+had the side effect of hiding all runtime-bundled fonts.
+
+Note: the Flatpak "Path /usr is reserved" warning is about the HOST's /usr — the
+runtime's internal /usr/share/fonts is accessible and is NOT blocked by Flatpak.
+
+========== TRIALS ==========
+
+1. Copy math fonts to user directory → WORKED (but not root cause fix)
+
+   What:
+     $ cp /usr/share/fonts/google-noto/NotoSansMath-Regular.ttf ~/.local/share/fonts/
+     $ cp -r /usr/share/fonts/stix-fonts/ ~/.local/share/fonts/stix-fonts
+     $ fc-cache -fv ~/.local/share/fonts
+
+   Why worked:
+     ~/.local/share/fonts/ was the only <dir> in the custom fontconfig,
+     so fonts placed here are always visible. Both NotoSansMath and
+     STIXTwoMath contain Mathematical Alphanumeric Symbols (confirmed
+     via fontTools cmap check).
+
+2. Add runtime font dir to custom fontconfig → SUCCESS (root cause fix)
+
+   What:
+     Added <dir>/usr/share/fonts</dir> to ~/.config/fontconfig/fonts.conf
+
+   Why worked:
+     The runtime (org.freedesktop.Platform) bundles DejaVu, Liberation,
+     Noto Emoji, TeX Gyre, etc. at /usr/share/fonts INSIDE the sandbox.
+     Adding this dir makes all runtime fonts visible again.
+
+   Why safe:
+     Runtime does not include any CJK fonts, so the Japanese font
+     priority fix is not affected.
+
+========== TAKEAWAY ==========
+
+- FONTCONFIG_FILE override replaces ALL default fontconfig behavior.
+  Any custom fonts.conf must explicitly list every font directory.
+- Flatpak's "/usr is reserved" only applies to the HOST's /usr.
+  The runtime's internal /usr/share/fonts is always accessible.
+- When debugging Flatpak font issues, check FONTCONFIG_FILE first —
+  a custom fontconfig hiding font dirs is more likely than a sandbox issue.
+
+Actual fix: ./2026-02-10-flatpak-fontconfig-fix.log

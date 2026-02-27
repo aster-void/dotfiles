@@ -1,0 +1,52 @@
+Date: 2026-02-07
+Issue: Korean (Hangul) characters not rendering in Zen browser (Flatpak)
+Symptom: Korean text displayed as boxes with hex codes (e.g., [68] [C5] [54])
+
+========== ROOT CAUSE ==========
+
+Zen browser is installed via Flatpak, which sandboxes the app.
+CJK fonts are installed at /usr/share/fonts/, but Flatpak blocks access to /usr paths.
+
+========== TRIALS ==========
+
+1. Symlink system fonts to user directory → FAILED
+
+   What:
+     $ ln -sf /usr/share/fonts/google-noto-sans-cjk-vf-fonts ~/.local/share/fonts/
+
+   Why failed:
+     Flatpak sandbox cannot follow symlinks pointing outside the sandbox.
+     The symlink target (/usr/share/fonts/...) is inaccessible, so the symlink
+     resolves to nothing from Flatpak's perspective.
+
+2. Flatpak filesystem override → FAILED
+
+   What:
+     $ flatpak override --user --filesystem=/usr/share/fonts:ro app.zen_browser.zen
+
+   Why failed:
+     /usr is a reserved path that Flatpak protects regardless of user overrides.
+     The override was accepted but had no effect - Flatpak still refused to
+     expose /usr/share/fonts to the sandbox.
+
+3. Copy font files to user directory → SUCCESS
+
+   What:
+     $ cp -r /usr/share/fonts/google-noto-sans-cjk-vf-fonts ~/.local/share/fonts/
+     $ cp -r /usr/share/fonts/google-noto-serif-cjk-vf-fonts ~/.local/share/fonts/
+     $ cp -r /usr/share/fonts/google-noto-sans-mono-cjk-vf-fonts ~/.local/share/fonts/
+     $ fc-cache -fv ~/.local/share/fonts
+
+   Why worked:
+     ~/.local/share/fonts/ is in the user's home directory, which Flatpak
+     exposes to sandboxed apps by default. Physical copies avoid all symlink
+     and /usr path restrictions.
+
+========== TAKEAWAY ==========
+
+When Flatpak apps can't access system fonts:
+- Symlinks don't work (sandbox can't follow them outside)
+- Filesystem overrides to /usr don't work (reserved path)
+- Copying fonts to ~/.local/share/fonts/ works (always accessible)
+
+Actual fix: ./2026-02-10-flatpak-fontconfig-fix.log
