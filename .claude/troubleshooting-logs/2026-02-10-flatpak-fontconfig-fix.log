@@ -63,6 +63,25 @@ and breaking <include> directives.
      conf.d/50-user-jp-fonts.conf through its normal prefix="xdg"
      include mechanism. No FONTCONFIG_FILE hack needed.
 
+5. /nix/store:ro filesystem override (for Home Manager symlinks) → SUCCESS
+
+   Date: 2026-02-27
+   Context:
+     After migrating fontconfig from manual 50-user-jp-fonts.conf to
+     Home Manager's fonts.fontconfig.defaultFonts, the conf files in
+     ~/.config/fontconfig/conf.d/ became symlinks into /nix/store/.
+     xdg-config/fontconfig:ro correctly exposed the conf.d directory,
+     but Flatpak couldn't follow the symlinks because /nix/store was
+     not accessible inside the sandbox.
+
+   What:
+     Added /nix/store:ro to global Flatpak filesystem overrides
+     (in services.flatpak.overrides.global.Context.filesystems).
+
+   Why worked:
+     Flatpak can now follow HM-generated symlinks through to the
+     actual config files in /nix/store.
+
 ========== TAKEAWAY ==========
 
 - Flatpak's XDG_CONFIG_HOME remap is WHY user fontconfig is ignored.
@@ -71,6 +90,9 @@ and breaking <include> directives.
 - This is a known Flatpak limitation (flatpak/flatpak#3947, still open).
 - Before inventing workarounds, search for the issue — this solution was
   documented in flatpak/flatpak#4742.
+- When using Home Manager with Flatpak, also add /nix/store:ro — HM config
+  files are symlinks into the nix store. This wasn't needed when fontconfig
+  was managed by dotter (plain files, no symlinks into /nix/store).
 
 ========== SEE ALSO ==========
 

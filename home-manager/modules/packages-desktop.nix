@@ -74,6 +74,7 @@
     global.Context.filesystems = [
       "xdg-config/fontconfig:ro"
       "~/.local/share/fonts:ro"
+      "/nix/store:ro" # HM fontconfig symlinks point into nix store
     ];
     "app.zen_browser.zen".Context.filesystems = [
       "xdg-run/speech-dispatcher:ro"
