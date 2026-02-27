@@ -1,4 +1,4 @@
-theme = Catppuccin Macchiato
+theme = Catppuccin Frappe
 confirm-close-surface = false
 # Ctrl+Backspace sends Ctrl+W (word deletion) — Ghostty doesn't send this by default
 keybind = ctrl+backspace=text:\x17
