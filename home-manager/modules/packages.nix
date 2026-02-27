@@ -48,6 +48,7 @@
     ## Runtimes
     bun
     nodejs
+    uv
 
     ## Git and GitHub
     git

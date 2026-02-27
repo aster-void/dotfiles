@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "user_filesystem": {
+      "command": "/home/aster/.nix-profile/bin/bunx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/home/aster"]
+    },
+    "user_shell": {
+      "command": "/home/aster/.nix-profile/bin/uvx",
+      "args": ["mcp-shell-server"],
+      "env": {
+        "ALLOW_COMMANDS": "*"
+      }
+    }
+  },
+  "preferences": {
+    "coworkScheduledTasksEnabled": false,
+    "sidebarMode": "chat"
+  }
+}
