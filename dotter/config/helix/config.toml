@@ -22,6 +22,9 @@ render = true
 display-inlay-hints = false
 display-messages = true
 
+[editor.file-picker]
+hidden = false
+
 [editor.soft-wrap]
 enable = true
 
