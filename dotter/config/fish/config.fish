@@ -53,8 +53,6 @@ alias yz="yazi"
 alias zel="zellij"
 alias sd="shutdown"
 
-alias claude="claude --dangerously-skip-permissions"
-
 # Tool integrations
 fzf --fish | source
 zoxide init fish | source
