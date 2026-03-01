@@ -25,6 +25,7 @@
     btop
     fastfetch
     nitch
+    ncdu
 
     ## File management
     yazi
@@ -90,6 +91,9 @@
     ### Data & Markup
     marksman
     taplo
+
+    # === Media ===
+    yt-dlp
 
     # === Documents ===
     pandoc
