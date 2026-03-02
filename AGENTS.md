@@ -40,7 +40,25 @@ When to run build: Only when config structure changes (new modules, imports, opt
 
 Location: `.claude/troubleshooting-logs/`
 
+### Before troubleshooting
+
 - Before Troubleshooting: Search existing logs with `grep -ri "<keyword>" .claude/troubleshooting-logs/`
-- After Troubleshooting:
-  case new issue: Create `{date}-{short-description}.md` documenting findings
-  case existing issue re-occuring: Append to previous issue, add additional details and correct previous information as append-only with new date at top
+
+### After troubleshooting (whether it completed or failed)
+
+match (the bug is a new one)
+case new issue: Create `{date}-{short-description}.md` documenting findings
+case existing issue re-occuring: Append to previous issue, add additional details and correct previous information as append-only with new date at top
+
+Log format:
+
+- **ROOT CAUSE** - brief context of the problem
+- **TRIALS** - what was tried, with "What" and "Why failed/worked" for each
+- **TAKEAWAY** - reusable knowledge summarized
+- Focus on reusable knowledge (what failed/worked and why), not machine state (my config is currently this).
+
+When you encounter unexpected behaviors, search for relevant debug logs, as they may help you debug the new issue.
+
+## Debugging Mindset
+
+When encountering an issue, always search the web for it first. Countless people exist in the world, and it's extremely rare that you're the only one experiencing a given problem. Existing solutions are almost always out there.
