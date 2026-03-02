@@ -17,6 +17,31 @@
     wl-clipboard
   ];
 
+  # Mask the auto-generated XDG autostart unit — it races with the graphical
+  # session and crashes because WAYLAND_DISPLAY isn't available yet.
+  # We replace it with our own service below that has proper ordering.
+  systemd.user.services."app-org.kde.xwaylandvideobridge@autostart" = {
+    Unit.Description = "Mask auto-generated xwaylandvideobridge autostart";
+    Install = { };
+  };
+
+  systemd.user.services.xwaylandvideobridge = {
+    Unit = {
+      Description = "Xwayland Video Bridge";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "/usr/bin/xwaylandvideobridge";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   systemd.user.services.flatpak-managed-install.Service.TimeoutStartSec = "10m";
 
   # Workaround: nix-flatpak uses nixpkgs' flatpak binary, which hardcodes
