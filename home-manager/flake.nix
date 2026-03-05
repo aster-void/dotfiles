@@ -33,7 +33,6 @@
         ./modules/packages-desktop.nix
         ./modules/syncthing.nix
         ./modules/i18n.nix
-        ./modules/ghostty.nix
         ./modules/fonts.nix
         { targets.genericLinux.enable = true; }
         ./modules/gpu.nix

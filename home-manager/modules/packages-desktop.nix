@@ -11,7 +11,6 @@
   home.packages = with pkgs; [
     # gui apps
     blueberry
-    wezterm
 
     # terminal utils that only make sense in gui env
     wl-clipboard

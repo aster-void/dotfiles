@@ -14,10 +14,13 @@ echo "=== Enabling COPR repositories ==="
 if ! dnf repolist | grep -q "alternateved.*keyd"; then
   sudo dnf copr enable -y alternateved/keyd
 fi
+if ! dnf repolist | grep -q "wezfurlong.*wezterm"; then
+  sudo dnf copr enable -y wezfurlong/wezterm-nightly
+fi
 
 # --- DNF packages ---
 echo "=== Installing DNF packages ==="
-sudo dnf install -y fish fuse-libs keyd
+sudo dnf install -y fish fuse-libs ghostty keyd wezterm
 
 # --- Shell setup ---
 echo ""
