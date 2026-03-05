@@ -1,15 +1,12 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
-  services.hazkey = {
-    enable = true;
-  };
+  services.hazkey.enable = false;
 
   i18n.inputMethod = {
-    enable = true;
+    enable = false;
     type = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
