@@ -126,5 +126,8 @@
     "org.gnome.eog"
     "io.bassi.Amberol"
     "com.github.neithern.g4music"
+
+    # Audio
+    "com.github.wwmm.easyeffects"
   ];
 }
