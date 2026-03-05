@@ -2,12 +2,13 @@
   config,
   flake,
   ...
-}: {
+}:
+{
   age.secrets.context7-api-key = {
     file = "${flake}/secrets/context7-api-key.age";
     owner = "aster";
     group = "users";
-    mode = "400";
+    mode = "440";
   };
 
   # $(cat ...) is expanded by the shell at session start, not at eval time
