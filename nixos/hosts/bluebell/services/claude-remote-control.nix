@@ -6,8 +6,7 @@
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      # Login shell so PATH from profile is available (binary install of claude)
-      ExecStart = "${pkgs.bash}/bin/bash -lc 'exec claude remote-control --name \"claude@bluebell\"'";
+      ExecStart = "/home/claude/.local/bin/claude remote-control --name \"claude@bluebell\"";
       User = "claude";
       Restart = "on-failure";
       RestartSec = 10;
