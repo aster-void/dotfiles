@@ -185,6 +185,7 @@
     # Communication
     "com.discordapp.Discord"
     "com.slack.Slack"
+    "org.telegram.desktop"
 
     # Application Manager & System
     "com.github.tchx84.Flatseal"

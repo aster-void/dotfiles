@@ -22,6 +22,7 @@ journalctl -u comin.service --no-pager -n 30         # Check comin deploy logs (
 # Utility Tools
 nix-search package # Package search (nix-search-cli)
 nix-search --program myprogram # search by program name instead of package name
+flatpak search <keyword> # Flatpak app search (app ID for packages-desktop.nix)
 ```
 
 When to run build: Only when config structure changes (new modules, imports, options). Skip for simple changes like adding packages or modifying program settings.
