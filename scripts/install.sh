@@ -68,3 +68,8 @@ dotter -g dotter/global.toml -l dotter/local.toml --cache-file dotter/.cache.tom
 if ! command -v claude &>/dev/null; then
   curl -fsSL https://claude.ai/install.sh | bash
 fi
+
+# Voxtype: download whisper model if voxtype is present
+if command -v voxtype &>/dev/null; then
+  voxtype setup --download --model large-v3-turbo --quiet
+fi

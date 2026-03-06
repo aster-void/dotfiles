@@ -22,6 +22,15 @@ fi
 echo "=== Installing DNF packages ==="
 sudo dnf install -y fish fuse-libs ghostty keyd wezterm
 
+# --- User groups ---
+echo ""
+echo "=== Setting up user groups ==="
+# input group: needed for voxtype evdev hotkey detection
+if ! groups "$USER" | grep -qw input; then
+  sudo usermod -aG input "$USER"
+  echo "Added $USER to input group (re-login required)"
+fi
+
 # --- Shell setup ---
 echo ""
 echo "=== Setting up shell ==="

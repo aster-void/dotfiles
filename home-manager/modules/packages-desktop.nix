@@ -14,9 +14,76 @@
 
     # terminal utils that only make sense in gui env
     wl-clipboard
-
     ydotool
+
+    voxtype-vulkan
   ];
+
+  systemd.user.services.ydotoold = {
+    Unit = {
+      Description = "ydotool daemon";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.ydotool}/bin/ydotoold";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
+  systemd.user.services.voxtype = {
+    Unit = {
+      Description = "Voxtype push-to-talk voice-to-text with auto-paste";
+      After = [
+        "graphical-session.target"
+        "ydotoold.service"
+      ];
+      PartOf = [ "graphical-session.target" ];
+      Requires = [ "ydotoold.service" ];
+    };
+    Service = {
+      Type = "simple";
+      Environment = [
+        # ALSA needs the pipewire PCM plugin to reach PipeWire on non-NixOS
+        "ALSA_PLUGIN_DIR=${pkgs.pipewire}/lib/alsa-lib"
+        # Use system NVIDIA Vulkan ICD instead of nix's (which can't find the driver)
+        "VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.x86_64.json"
+        "LD_LIBRARY_PATH=/usr/lib64"
+        "YDOTOOL_SOCKET=/run/user/1000/.ydotool_socket"
+      ];
+      # Wrapper: runs voxtype (clipboard mode) + watches state file to auto-paste via ydotool
+      ExecStart = "${pkgs.writeShellScript "voxtype-wrapper" ''
+        STATE="/run/user/1000/voxtype/state"
+
+        # Auto-paste: watch state file, Ctrl+V when transcription completes
+        (
+          sleep 2  # wait for voxtype to create state file
+          prev=""
+          while true; do
+            ${pkgs.inotify-tools}/bin/inotifywait -qq -e modify "$STATE" 2>/dev/null
+            cur=$(cat "$STATE" 2>/dev/null)
+            if [ "$prev" = "transcribing" ] && [ "$cur" = "idle" ]; then
+              sleep 0.05
+              ${pkgs.ydotool}/bin/ydotool key 29:1 47:1 47:0 29:0
+            fi
+            prev="$cur"
+          done
+        ) &
+
+        exec ${pkgs.voxtype-vulkan}/bin/voxtype
+      ''}";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 
   # Mask the auto-generated XDG autostart unit — it races with the graphical
   # session and crashes because WAYLAND_DISPLAY isn't available yet.
