@@ -14,6 +14,8 @@
 
     # terminal utils that only make sense in gui env
     wl-clipboard
+
+    ydotool
   ];
 
   # Mask the auto-generated XDG autostart unit — it races with the graphical
@@ -123,7 +125,11 @@
     "com.valvesoftware.Steam"
 
     # File viewer
+    # == pictures
     "org.gnome.eog"
+    "org.gnome.gThumb"
+
+    # == music
     "io.bassi.Amberol"
     "com.github.neithern.g4music"
 
