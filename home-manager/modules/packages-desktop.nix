@@ -60,7 +60,8 @@
       ExecStart = "${pkgs.writeShellScript "voxtype-wrapper" ''
         STATE="/run/user/1000/voxtype/state"
 
-        # Auto-paste: watch state file, Ctrl+V when transcription completes
+        # Auto-paste: watch state file, Ctrl+Shift+V when transcription completes
+        # Ctrl+Shift+V works in both terminals (paste) and GUI apps (paste without formatting)
         (
           sleep 2  # wait for voxtype to create state file
           prev=""
@@ -69,7 +70,7 @@
             cur=$(cat "$STATE" 2>/dev/null)
             if [ "$prev" = "transcribing" ] && [ "$cur" = "idle" ]; then
               sleep 0.05
-              ${pkgs.ydotool}/bin/ydotool key 29:1 47:1 47:0 29:0
+              ${pkgs.ydotool}/bin/ydotool key 29:1 42:1 47:1 47:0 42:0 29:0
             fi
             prev="$cur"
           done
