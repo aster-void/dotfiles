@@ -19,6 +19,12 @@ Note: CLAUDE.md is symlinked to this file.
 comin fetch                                          # Trigger comin to fetch and deploy latest commit (no sudo)
 journalctl -u comin.service --no-pager -n 30         # Check comin deploy logs (no sudo)
 
+# Bluebell deployment flow
+# 1. commit & push
+# 2. ssh claude@bluebell.local "comin fetch"
+# 3. ssh claude@bluebell.local "journalctl -u comin.service --no-pager -n 15"  # verify deploy
+# 4. ssh claude@bluebell.local "systemctl status <service>"                    # verify service
+
 # Utility Tools
 nix-search package # Package search (nix-search-cli)
 nix-search --program myprogram # search by program name instead of package name
