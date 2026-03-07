@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   # Core system packages
   environment.systemPackages = with pkgs; [
     # core utils
@@ -94,6 +95,7 @@
     LC_TIME = "en_US.UTF-8";
   };
   time.timeZone = "Asia/Tokyo";
+  environment.variables.TZ = "Asia/Tokyo";
 
   system.stateVersion = "26.05";
 }
