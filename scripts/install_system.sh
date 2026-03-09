@@ -23,8 +23,10 @@ fi
 
 # --- DNF packages ---
 echo "=== Installing DNF packages ==="
-# --allowerasing: ghostty's terminfo conflicts with ncurses-term
-sudo dnf install -y --allowerasing fish fuse-libs ghostty keyd wezterm
+sudo dnf install -y fish fuse-libs keyd wezterm
+# ghostty COPR ships a terminfo file that conflicts with ncurses-term;
+# dnf5 has no --replacefiles, so download and force-install via rpm
+sudo dnf download ghostty && sudo rpm -ivh --replacefiles ghostty-*.rpm && rm -f ghostty-*.rpm
 
 # --- User groups ---
 echo ""
