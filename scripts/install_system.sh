@@ -17,10 +17,14 @@ fi
 if ! dnf repolist | grep -q "wezfurlong.*wezterm"; then
   sudo dnf copr enable -y wezfurlong/wezterm-nightly
 fi
+if ! dnf repolist | grep -q "pgdev.*ghostty"; then
+  sudo dnf copr enable -y pgdev/ghostty
+fi
 
 # --- DNF packages ---
 echo "=== Installing DNF packages ==="
-sudo dnf install -y fish fuse-libs ghostty keyd wezterm
+# --allowerasing: ghostty's terminfo conflicts with ncurses-term
+sudo dnf install -y --allowerasing fish fuse-libs ghostty keyd wezterm
 
 # --- User groups ---
 echo ""
@@ -87,6 +91,9 @@ sudo sshd -t && sudo systemctl restart sshd
 
 echo "Reloading sysctl..."
 sudo sysctl --system > /dev/null
+
+echo "Restarting nix-daemon..."
+sudo systemctl restart nix-daemon
 
 # --- Tailscale ---
 echo ""
