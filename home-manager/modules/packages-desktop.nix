@@ -11,6 +11,7 @@
   home.packages = with pkgs; [
     # gui apps
     blueberry
+    winboat
 
     # terminal utils that only make sense in gui env
     wl-clipboard

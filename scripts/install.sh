@@ -62,7 +62,7 @@ includes = []
 packages = ["default"]
 EOF
 fi
-dotter -g dotter/global.toml -l dotter/local.toml --cache-file dotter/.cache.toml deploy -f -y
+dotter -g dotter/global.toml -l dotter/local.toml deploy -f -y
 
 # Claude Code (native binary, auto-updates on startup)
 if ! command -v claude &>/dev/null; then
