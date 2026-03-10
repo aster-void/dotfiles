@@ -3,6 +3,7 @@ default_layout "compact"
 default_shell "fish"
 keybinds {
 	unbind "Ctrl g"
+	unbind "Ctrl s"
 }
 mouse_mode true
 pane_frames true
