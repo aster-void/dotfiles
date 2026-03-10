@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # SSH server
   services.openssh = {
     enable = true;
@@ -7,6 +8,7 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "prohibit-password";
+      X11Forwarding = true;
     };
   };
   services.fail2ban = {
