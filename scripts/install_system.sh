@@ -31,6 +31,20 @@ if ! groups "$USER" | grep -qw input; then
   echo "Added $USER to input group (re-login required)"
 fi
 
+# --- KVM ---
+echo ""
+echo "=== Setting up KVM ==="
+sudo dnf install -y qemu-kvm libvirt virt-manager
+if ! groups "$USER" | grep -qw kvm; then
+  sudo usermod -aG kvm "$USER"
+  echo "Added $USER to kvm group (re-login required)"
+fi
+if ! groups "$USER" | grep -qw libvirt; then
+  sudo usermod -aG libvirt "$USER"
+  echo "Added $USER to libvirt group (re-login required)"
+fi
+sudo systemctl enable --now libvirtd
+
 # --- Shell setup ---
 echo ""
 echo "=== Setting up shell ==="
