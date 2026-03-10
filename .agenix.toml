@@ -1,0 +1,6 @@
+[identities]
+aster = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF/s0wpwuyulX1C0HRm/waecO06oh/uAg6L7u+uxACu6"
+
+[[paths]]
+glob = "nixos/secrets/**/*.age"
+identities = ["aster"]
