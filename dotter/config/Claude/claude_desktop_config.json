@@ -2,24 +2,14 @@
   "mcpServers": {
     "user_filesystem": {
       "command": "/home/aster/.nix-profile/bin/bunx",
-      "args": [
-        "@modelcontextprotocol/server-filesystem",
-        "/home/aster"
-      ]
+      "args": ["@modelcontextprotocol/server-filesystem", "/home/aster"]
     },
     "user_shell": {
       "command": "/home/aster/.nix-profile/bin/uvx",
-      "args": [
-        "mcp-shell-server"
-      ],
+      "args": ["mcp-shell-server"],
       "env": {
         "ALLOW_COMMANDS": "*"
       }
     }
-  },
-  "preferences": {
-    "coworkScheduledTasksEnabled": true,
-    "sidebarMode": "chat",
-    "coworkWebSearchEnabled": true
   }
 }
