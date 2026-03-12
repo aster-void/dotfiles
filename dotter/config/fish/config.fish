@@ -20,38 +20,37 @@ function fish_command_not_found
     echo "fish: Unknown command: $argv[1]" >&2
 end
 
-# Aliases
-alias ..="cd ../"
-alias ...="cd ../../"
-alias ....="cd ../../../"
-alias .....="cd ../../../../"
+# Abbreviations
+abbr .. "cd ../"
+abbr ... "cd ../../"
+abbr .... "cd ../../../"
+abbr ..... "cd ../../../../"
 
-alias h="hx"
-alias h.="hx ."
+abbr h hx
+abbr h. "hx ."
 
-alias g="git"
-alias gf="git fetch --prune"
-alias gs="git status -s"
-alias gp="git push"
-alias gl="git pull"
-alias gsv="git diff --cached"
-alias gd="git diff"
-alias lg="lazygit"
+abbr g git
+abbr gf "git fetch --prune"
+abbr gs "git status -s"
+abbr gp "git push"
+abbr gl "git pull"
+abbr gsv "git diff --cached"
+abbr gd "git diff"
+abbr lg lazygit
 
-alias claer="clear"
-alias cl="clear"
+abbr claer clear
+abbr cl clear
 
-alias sl="ls"
-alias ls="ez"
-alias ez="eza --icons --group-directories-first"
-alias l="ls"
+alias ls="eza --icons --group-directories-first"
+abbr sl="ls"
+abbr l="ls"
 
-alias flake="nix flake"
-alias home="home-manager"
-alias nixgc="nix-collect-garbage"
-alias yz="yazi"
-alias zel="zellij"
-alias sd="shutdown"
+abbr flake "nix flake"
+abbr home home-manager
+abbr nixgc nix-collect-garbage
+abbr yz yazi
+abbr zel zellij
+abbr sd shutdown
 
 # Tool integrations
 fzf --fish | source
