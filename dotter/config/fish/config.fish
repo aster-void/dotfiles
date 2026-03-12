@@ -42,8 +42,8 @@ abbr claer clear
 abbr cl clear
 
 alias ls="eza --icons --group-directories-first"
-abbr sl="ls"
-abbr l="ls"
+abbr sl ls
+abbr l ls
 
 abbr flake "nix flake"
 abbr home home-manager
