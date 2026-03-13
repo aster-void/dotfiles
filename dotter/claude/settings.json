@@ -3,5 +3,6 @@
     "defaultMode": "bypassPermissions"
   },
   "language": "日本語",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "voiceEnabled": true
 }
