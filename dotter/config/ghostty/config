@@ -1,4 +1,7 @@
+font-family = MesloLGS Nerd Font
 theme = Catppuccin Frappe
 confirm-close-surface = false
 # Ctrl+Backspace sends Ctrl+W (word deletion) — Ghostty doesn't send this by default
 keybind = ctrl+backspace=text:\x17
+# Disable discretionary ligatures that break Japanese text rendering (e.g. extra spaces in ビルド, コードポイント)
+font-feature = -dlig
