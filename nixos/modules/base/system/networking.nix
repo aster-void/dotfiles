@@ -42,7 +42,5 @@
       domain = true;
       workstation = true;
     };
-    # Relay mDNS between subnets (bluebell hosts a WiFi subnet for daisy)
-    reflector = true;
   };
 }
