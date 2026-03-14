@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Basic networking setup
   networking.networkmanager.enable = true;
   networking.networkmanager.dns = "systemd-resolved";
@@ -8,9 +9,15 @@
     enable = true;
     settings.Resolve = {
       DNSSEC = "false";
-      Domains = ["~."];
-      FallbackDNS = ["1.1.1.1" "8.8.8.8"];
-      DNS = ["1.1.1.1#cloudflare-dns.com" "8.8.8.8#dns.google"];
+      Domains = [ "~." ];
+      FallbackDNS = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
+      DNS = [
+        "1.1.1.1#cloudflare-dns.com"
+        "8.8.8.8#dns.google"
+      ];
       DNSOverTLS = "opportunistic";
       MulticastDNS = false;
     };
@@ -35,5 +42,7 @@
       domain = true;
       workstation = true;
     };
+    # Relay mDNS between subnets (bluebell hosts a WiFi subnet for daisy)
+    reflector = true;
   };
 }
