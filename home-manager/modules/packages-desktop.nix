@@ -115,24 +115,19 @@
   systemd.user.services.flatpak-managed-install.Service.TimeoutStartSec = "10m";
 
   # Workaround: nix-flatpak uses nixpkgs' flatpak binary, which hardcodes
-  # /run/current-system/sw/bin/flatpak into DBus service files. This path
-  # doesn't exist on non-NixOS (e.g. Fedora), so DBusActivatable apps fail
-  # to launch from the app menu. This service patches the exported DBus
-  # service files to use the actual flatpak binary path.
+  # nix store paths (or /app/bin/flatpak) into exported DBus service files
+  # and .desktop files. These paths don't exist on non-NixOS (e.g. Fedora),
+  # so DBusActivatable apps fail and .desktop launchers break.
   # See: https://github.com/NixOS/nixpkgs/issues/138956
-  systemd.user.services.flatpak-fix-dbus-paths = {
+  # See: https://github.com/NixOS/nixpkgs/issues/156664
+  systemd.user.services.flatpak-fix-exported-paths = {
     Unit = {
-      Description = "Fix flatpak DBus service file paths";
+      Description = "Fix flatpak exported DBus and desktop file paths";
       After = [ "flatpak-managed-install.service" ];
     };
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.writeShellScript "fix-flatpak-dbus-paths" ''
-        src="$HOME/.local/share/flatpak/exports/share/dbus-1/services"
-        dst="$HOME/.local/share/dbus-1/services"
-
-        [ -d "$src" ] || exit 0
-
+      ExecStart = "${pkgs.writeShellScript "fix-flatpak-exported-paths" ''
         flatpak_bin=""
         for candidate in /usr/bin/flatpak /run/current-system/sw/bin/flatpak; do
           if [ -x "$candidate" ]; then
@@ -142,11 +137,30 @@
         done
         [ -n "$flatpak_bin" ] || exit 1
 
-        mkdir -p "$dst"
-        for f in "$src"/*.service; do
-          [ -f "$f" ] || continue
-          ${pkgs.gnused}/bin/sed "s|Exec=[^ ]*/flatpak |Exec=$flatpak_bin |" "$f" > "$dst/$(basename "$f")"
-        done
+        # Fix DBus service files
+        dbus_src="$HOME/.local/share/flatpak/exports/share/dbus-1/services"
+        dbus_dst="$HOME/.local/share/dbus-1/services"
+        if [ -d "$dbus_src" ]; then
+          mkdir -p "$dbus_dst"
+          for f in "$dbus_src"/*.service; do
+            [ -f "$f" ] || continue
+            ${pkgs.gnused}/bin/sed "s|Exec=[^ ]*/flatpak |Exec=$flatpak_bin |" "$f" > "$dbus_dst/$(basename "$f")"
+          done
+        fi
+
+        # Fix .desktop files (Exec= lines with wrong flatpak path)
+        desktop_src="$HOME/.local/share/flatpak/exports/share/applications"
+        if [ -d "$desktop_src" ]; then
+          for f in "$desktop_src"/*.desktop; do
+            [ -f "$f" ] || continue
+            if ${pkgs.gnugrep}/bin/grep -q 'Exec=.*/flatpak ' "$f" && \
+               ! ${pkgs.gnugrep}/bin/grep -q "Exec=$flatpak_bin " "$f"; then
+              bad_path=$(${pkgs.gnugrep}/bin/grep -m1 'Exec=.*/flatpak ' "$f" | ${pkgs.gnused}/bin/sed 's/Exec=\([^ ]*\/flatpak\) .*/\1/')
+              echo "FIXED: $(basename "$f"): $bad_path -> $flatpak_bin"
+              ${pkgs.gnused}/bin/sed -i "s|Exec=[^ ]*/flatpak |Exec=$flatpak_bin |" "$f"
+            fi
+          done
+        fi
       ''}";
     };
     Install = {
